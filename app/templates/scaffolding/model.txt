@@ -1,0 +1,8 @@
+<?php
+
+class $NAME$ extends \Eloquent {
+    protected $guard = array();
+	// Don't forget to fill this array
+	protected $fillable = [];
+
+}

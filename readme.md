@@ -1,6 +1,3 @@
-quantringhilucsong
-==================
-
 #Trang quản trị của Nghị lực sống
 
 ##Các Package đã dùng

@@ -54,6 +54,11 @@ class HForm
                 ])
             ;
             break;
+            case 'password':
+            $str .= Form::password($name, ['class' => $class_input
+                ])
+            ;
+            break;
             case 'textarea':
             $str .= Form::textarea($name, $value, ['class' => $class_input, 'rows' => $rows
                 ])

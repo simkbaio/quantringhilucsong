@@ -58,11 +58,14 @@ $menuspacks = MenusPack::orderBy('name')->get();
                 @foreach($menuspacks as $menuspack)
                     <tr>
                         <td>{{$menuspack->id}}</td>
-                        <td><a href="{{URL::route('admin.menuspacks.show',$menuspack->id)}}">{{$menuspack->name}}</a></td>
-                        <td><a href="{{URL::route("admin.menuspacks.edit",$menuspack->id)}}" class="btn blue">EDIT</a></td>
+                        <td>
+                        <a href="{{URL::route('admin.menuspacks.show',$menuspack->id)}}">{{$menuspack->name}}</a></td>
+                        <td>
+
+                        <a href="{{URL::route("admin.menuspacks.edit",$menuspack->id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
                         <td>
                             {{Form::open(['route'=>['admin.menuspacks.destroy',$menuspack->id],'action'=>'DELETE'])}}
-                            {{Form::submit('DELETE',array("class"=>'btn red'))}}
+                            {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>
                     </tr>

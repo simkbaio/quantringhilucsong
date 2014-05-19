@@ -5,14 +5,7 @@ Route::get('/',function(){
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('thuxem',function(){
-    $per = Permission::create([
-       'name'=>'admin',
-       ]);
-    $per = Permission::create([
-       'name'=>'user',
-       ]);
-    return dd($per->toArray());
-
+    return  Request::server('PATH_INFO');
 });
 Route::get('theme',function(){
     return View::make('admin.example');
@@ -50,5 +43,13 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
 
     Route::get('menus/delete/{id}',['uses'=>'MenusController@QuickDeleteMenu']);
     Route::resource('menuspacks.menus','MenusController');
+
+    ##Quản lý học viên
+    #Sinh viên
+    Route::resource('students','StudentsController');
+    Route::resource('teachers','TeachersController');
+    Route::resource('classes','ClassesController');
+    Route::resource('disablities','DisablitiesController');
+
 
 });

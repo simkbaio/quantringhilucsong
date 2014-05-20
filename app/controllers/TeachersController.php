@@ -39,7 +39,9 @@ class TeachersController extends \BaseController {
      */
     public function store()
     {
-        $input = Input::except('_method','_token');
+        $input = Input::except('_method','_token','teacher_join_date','teacher_out_date');
+        $input['teacher_join_date'] = strtotime(Input::get('teacher_join_date'));
+        $input['teacher_out_date'] = strtotime(Input::get('teacher_out_date'));
 
         $this->teacherForm->validate(Input::all());
         $teacher = Teacher::create($input);

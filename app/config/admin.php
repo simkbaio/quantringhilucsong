@@ -93,6 +93,14 @@ return array(
 	1=>'Đã kết hôn',
 	),
 
+'educated'=>array(
+	0=>'Dưới trung học',
+	1=>'Trung học phổ thông',
+	2=>'Trung cấp',
+	3=>'Cao đẳng',
+	4=>'Đại học',
+	5=>'Cao học',
+),
 
 
 );

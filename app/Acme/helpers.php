@@ -36,6 +36,11 @@ function portlet_close(){
 #Functions
 
 function checkPermission($permission=null){
+//     Pass qua mọi quyền khi user là admin
+    $adminGroup = Sentry::findGroupByName('Quản trị viên');
+    if(Sentry::getUser()->inGroup($adminGroup)){
+        return true;
+    }
 	if($permission){
         $per = Permission::whereName($permission)->first();
         if(!$per){

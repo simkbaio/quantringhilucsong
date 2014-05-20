@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Quản lý Học viên
+                    Quản lý giáo viên
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
 
@@ -22,7 +22,7 @@
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                        Quản lý Học viên
+                        Quản lý giáo viên
 
                     </li>
                 </ul>
@@ -35,37 +35,41 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                <i class="fa fa-reorder"></i>Danh sách Học viên
+                <i class="fa fa-reorder"></i>Danh sách giáo viên
                 </div>
             </div>
             <div class="portlet-body">
 <?php
-$students = Student::orderBy('stu_name')->get();
+$teachers = teacher::orderBy('teacher_name')->get();
 ?>
-    <a href="{{URL::route('admin.students.create')}}" class="btn green" style="margin-bottom: 20px;">Tạo Học viên mới</a>
+    <a href="{{URL::route('admin.teachers.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm giáo viên mới</a>
 
             <table class="table table-striped table-bordered table-advance table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Ngày sinh</th>
+                        <th>Ngày gia nhập</th>
+                        <th>Ngày kết thúc</th>
                         <th class="col-md-1"></th>
                         <th class="col-md-1"></th>
 
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($students as $students)
+                @foreach($teachers as $teacher)
                     <tr>
-                        <td>{{$students->stu_id}}</td>
+                        <td>{{$teacher->teacher_id}}</td>
                         <td>
-                        <a href="#">{{$students->stu_name}}</a></td>
-                        <td>{{date('d-m-Y',$students->stu_birthday)}}</td>
+                        <a href="{{URL::route('admin.teachers.show',$teacher->teacher_id)}}">{{$teacher->teacher_name}}</a></td>
+
+                        <td>{{date('d-m-Y',$teacher->teacher_join_date)}}</td>
+                        <td>{{date('d-m-Y',$teacher->teacher_out_date)}}</td>
                         <td>
-                        <a href="{{URL::route("admin.students.edit",$students->stu_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
+                        <a href="{{URL::route("admin.teachers.edit",$teacher->teacher_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
+                        </td>
                         <td>
-                            {{Form::open(['route'=>['admin.students.destroy',$students->stu_id],'method'=>'DELETE'])}}
+                            {{Form::open(['route'=>['admin.teachers.destroy',$teacher->teacher_id],'method'=>'DELETE'])}}
                             {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>

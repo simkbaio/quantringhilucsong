@@ -15,7 +15,7 @@ class BaseController extends Controller
         }
     }
     public function checkPermission($permission){
-        if(!checkPermission('admin.menuspack.index')){
+        if(!checkPermission($permission)){
             throw new \Acme\Exceptions\PermissionException("Bạn không có quyền truy cập: ".URL::current());
         }
     }

@@ -7,6 +7,7 @@
  */
 
 class Teacher extends Eloquent{
+    public $timestamps = false;
     protected $table = "tbl_teacher";
     protected $connection ="hosohocvien";
     protected $guarded = [];

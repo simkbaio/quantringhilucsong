@@ -1,4 +1,14 @@
 @extends('admin.layouts.master')
+@section('footer')
+<script type="text/javascript" src="/admin_assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+$("#mask_date1").inputmask("m/d/y", {
+            "placeholder": "*"
+        });
+});
+</script>
+@stop
 
 @section('content')
 <div class="page-content-wrapper">
@@ -54,11 +64,15 @@
 						'data_input'=>Config::get('admin.sex'),
 						'width'=>'2',
 						],$errors)}}
-					{{HForm::input([
-						'name'=>'stu_birdday',
-						'title'=>'Ngày sinh',
-						'width'=>'4',
-						],$errors)}}
+						<div class="form-group col-md-3">
+						<label class="control-label">Ngày sinh</label>
+						<div>
+						<input type="text" id="mask_date1" name="stu_birthday" class="form-control" value="{{date('m/d/Y',$student->stu_birthday)}}">
+							<span class="help-block">
+								Nhập theo định dạng (tháng/ngày/năm)
+							</span>
+						</div>
+					</div>
 
 					{{HForm::input([
 						'name'=>'stu_address',
@@ -100,37 +114,43 @@
 
 
 					{{HForm::input([
-						'name'=>'stu_married',
-						'title'=>'Tình trạng hôn nhân',
-						'width'=>'4',
-						],$errors)}}
-
-					{{HForm::input([
-						'name'=>'stu_educated',
-						'title'=>'Học thức',
-						'width'=>'4',
-						],$errors)}}
-
-					{{HForm::input([
-						'name'=>'stu_type_disabilities',
-						'title'=>'Loại khuyết tật',
-						'width'=>'4',
-						],$errors)}}
-						<div class="col-md-12">
-							<h4>Thông tin người xác nhận</h4>
-
-						</div>
-						{{HForm::input([
-							'name'=>'stu_person_authen_name',
-							'title'=>'Người xác nhận',
-							'width'=>'6',
+							'name'=>'stu_married',
+							'title'=>'Tình trạng hôn nhân',
+							'width'=>'4',
+							'type'=>'select',
+							'data_input'=>Config::get('admin.married'),
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_person_authen_address',
-							'title'=>'Địa chỉ người xác nhận',
-							'width'=>'6',
+							'name'=>'stu_educated',
+							'title'=>'Học thức',
+							'width'=>'4',
+							'type'=>'select',
+							'data_input'=>Config::get('admin.educated'),
 							],$errors)}}
+
+						{{HForm::input([
+							'name'=>'stu_type_disabilities',
+							'title'=>'Loại khuyết tật',
+							'type'=>'select',
+							'width'=>'4',
+							'data_input'=>Config::get('admin.disabilities'),
+							],$errors)}}
+							<div class="col-md-12">
+								<h4>Thông tin người xác nhận</h4>
+
+							</div>
+							{{HForm::input([
+								'name'=>'stu_person_authen_name',
+								'title'=>'Người xác nhận',
+								'width'=>'6',
+								],$errors)}}
+
+							{{HForm::input([
+								'name'=>'stu_person_authen_address',
+								'title'=>'Địa chỉ người xác nhận',
+								'width'=>'6',
+								],$errors)}}
 							<div class="col-md-12" style="text-align: center;">
 							{{Form::submit('Cập nhật thông tin',['class'=>'btn blue'])}}
 							<a href="#" class="btn yellow">Đổi Mật khẩu</a>

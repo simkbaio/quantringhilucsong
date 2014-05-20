@@ -37,7 +37,9 @@
         <div class="row">
             <div class="col-md-12">
                 {{portlet_open('Bảng điều khiển','blue')}}
-                <h3>Nội dung ở đây</h3>
+                <h3>Lưu ý trong quá trình DEV</h3>
+
+</p>
                 {{portlet_close()}}
             </div>
         </div>

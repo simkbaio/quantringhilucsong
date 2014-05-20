@@ -11,21 +11,5 @@ namespace Acme\Exceptions;
 
 class PermissionException extends \Exception {
 
-    /**
-     * @param string $message
-     */
-    function __construct($message)
-    {
-        parent::__construct($message);
-    }
 
-    /**
-     * Get form validation errors
-     *
-     * @return mixed
-     */
-    public function getErrors()
-    {
-        return $this->errors;
-    }
 } 

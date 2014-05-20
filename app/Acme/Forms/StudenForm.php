@@ -16,7 +16,7 @@ class StudenForm extends FormValidator
     protected $rules = [
         'stu_name' => 'required',
         'stu_sex' => 'required',
-        'stu_birdday' => 'required',
+        'stu_birthday' => 'required',
         'stu_address' => 'required',
         'stu_hometown' => 'required',
         'stu_province_id' => 'required',
@@ -33,7 +33,7 @@ class StudenForm extends FormValidator
     protected $rules_update = [
         'stu_name' => 'required',
         'stu_sex' => 'required',
-        'stu_birdday' => 'required',
+        'stu_birthday' => 'required',
         'stu_address' => 'required',
         'stu_hometown' => 'required',
         'stu_province_id' => 'required',

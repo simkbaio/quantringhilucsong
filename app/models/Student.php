@@ -11,4 +11,5 @@ class Student extends Eloquent {
     protected $table = "tbl_student";
     public  $timestamps = false;
     protected $guarded = ['stu_id'];
-} 
+
+}

@@ -19,7 +19,8 @@ class StudentsController extends \BaseController {
 
     public function index()
 	{
-		return View::make('quanlyhoctap.students.index');
+        $this->checkPermission('admin.students.index');
+   		return View::make('quanlyhoctap.students.index');
 	}
 
 	/**
@@ -29,7 +30,9 @@ class StudentsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make("quanlyhoctap.students.create");
+        $this->checkPermission('admin.students.create');
+
+        return View::make("quanlyhoctap.students.create");
 	}
 
 	/**
@@ -39,17 +42,19 @@ class StudentsController extends \BaseController {
 	 */
 	public function store()
 	{
+
         $input = Input::except('_method','_token','password','password_confirmation');
+        $input['stu_birthday'] = strtotime( $input['stu_birthday']);
         $input['stu_regis_date']=time();
         $input['stu_last_update'] = time();
         $input['stu_active'] = 1;
+        $input['stu_password'] = md5(Input::get('password'));
+//        return dd($input);
         $this->studentForm->validate(Input::all());
         $student = Student::create($input);
-        $password = md5(Input::get('password'));
-        $student->save([
-           'stu_password'=>$password,
-        ]);
-        return dd($student->toArray());
+        $student->save();
+        return Redirect::route('admin.students.index')
+            ->withFlashMessage("Bạn đã thêm thành công học viên: ".$student->stu_name);
 
 
 	}
@@ -88,7 +93,7 @@ class StudentsController extends \BaseController {
 	public function update($id)
 	{
 		$input = Input::except('_method','_token','password','password_confirmation');
-        $input['stu_birdday']= strtotime($input['stu_birdday']);
+        $input['stu_birthday'] = strtotime( $input['stu_birthday']);
         $this->studentForm->UpdateValidate($input);
         $student = Student::where('stu_id','=',$id)->firstOrFail();
         Student::where('stu_id','=',$id)->update($input);

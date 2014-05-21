@@ -63,6 +63,7 @@ class HForm
             $str .= Form::textarea($name, $value, ['class' => $class_input, 'rows' => $rows
                 ])
             ;
+            break;
             case 'select':
             $str .= Form::select($name, $data_input, $value, ['class' => $class_input
                 ])

@@ -49,6 +49,7 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     Route::resource('students','StudentsController');
     Route::resource('teachers','TeachersController');
     Route::resource('classes','ClassesController');
+    Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');
 
 

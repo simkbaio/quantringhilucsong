@@ -8,8 +8,10 @@
         "willdurand/faker-bundle": "1.2.*@dev",
         "way/generators": "2.6",
 		"laracasts/validation": "~1.0",
-        "cartalyst/sentry": "2.1.*"
-	},
+        "cartalyst/sentry": "2.1.*",
+        "rtablada/package-installer": "dev-master",
+		"bugsnag/bugsnag-laravel": "dev-master"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",

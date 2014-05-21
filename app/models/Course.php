@@ -9,5 +9,6 @@
 class Course extends Eloquent{
     protected $table = "tbl_course";
     protected $connection ="hosohocvien";
+    public $timestamps =false;
     protected $guarded = [];
 }

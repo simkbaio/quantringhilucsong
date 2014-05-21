@@ -5,8 +5,8 @@ Nghị lực sống | Quản lý thành viên
 @stop
 <!-- Head Plugin -->
 @section('head')
-<link rel="stylesheet" type="/admin/text/css" href="/admin_assets/assets/plugins/select2/select2.css"/>
-<link rel="stylesheet" type="/admin/text/css" href="/admin_assets/assets/plugins/select2/select2-metronic.css"/>
+<link rel="stylesheet" type="/admin/text/css" href="/admin_assets/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="/admin/text/css" href="/admin_assets/plugins/select2/select2-metronic.css"/>
 <link rel="stylesheet" href="/admin_assets/plugins/data-tables/DT_bootstrap.css"/>
 
 @stop

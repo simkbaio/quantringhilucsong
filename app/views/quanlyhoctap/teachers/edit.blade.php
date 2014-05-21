@@ -51,7 +51,7 @@ $(".date_formated").inputmask("m/d/y", {
         <!-- BEGIN PAGE CONTENT-->
         <div class="row">
             <div class="col-md-12">
-                {{portlet_open('Nội dung cần nhập','green')}}
+                {{portlet_open('Nội dung cần nhập','blue')}}
                 <div class="row">
                     {{Form::model($teacher,['route'=>['admin.teachers.update',$teacher->teacher_id],'method'=>'PUT'])}}
                     {{HForm::input([
@@ -98,7 +98,7 @@ $(".date_formated").inputmask("m/d/y", {
                         </div>
                     </div>
                     <div class="col-md-12" style="text-align: center;">
-                            {{Form::submit('Tạo giáo viên mới',['class'=>'btn green'],$errors)}}
+                            {{Form::submit('Cập nhật',['class'=>'btn blue'],$errors)}}
 
                         </div>
                         

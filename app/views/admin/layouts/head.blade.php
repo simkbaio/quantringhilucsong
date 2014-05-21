@@ -34,6 +34,6 @@
     <link rel="stylesheet" href="/admin_assets/plugins/data-tables/DT_bootstrap.css"/>
     @yield('head')
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico"/>
-</head>
+<!--     <link rel="shortcut icon" href="favicon.ico"/>
+ --></head>
 <!-- END HEAD -->

@@ -5,7 +5,7 @@ Route::get('/',function(){
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('thuxem',function(){
-    return  Request::server('PATH_INFO');
+    $class = Nclass::first();
 });
 Route::get('theme',function(){
     return View::make('admin.example');

@@ -56,7 +56,11 @@
          @if($menu->child()->count())
          <ul class="sub-menu">
             @foreach($menu->child()->orderBy('order')->get() as $menu)
-            <li>
+            <li
+            @if($menu->link() == URL::current())
+            class="active"
+            @endif
+            >
                 <a href="{{$menu->link()}}">
                     <i class="{{$menu->icon}}"></i>
                     {{$menu->title}}

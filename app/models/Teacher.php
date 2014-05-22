@@ -11,4 +11,15 @@ class Teacher extends Eloquent{
     protected $table = "tbl_teacher";
     protected $connection ="hosohocvien";
     protected $guarded = [];
+    public static function getAllSelectData(){
+        $data = array();
+        $data[0]='Chưa xác định';
+        // Chỉ lựa chọn Giáo viên còn đang hoạt động
+        $teachers = Teacher::orderBy('teacher_name')->where('teacher_out_date','>',time())->get();
+        foreach($teachers as $teacher){
+            $data[$teacher->teacher_id] = $teacher->teacher_name;
+        }
+        return $data;
+
+    }
 }

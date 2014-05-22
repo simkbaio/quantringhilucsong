@@ -44,7 +44,6 @@ class CoursesController extends \BaseController {
         $input['course_end'] = strtotime(Input::get('course_end'));
         $this->courseForm->validate(Input::all());
         $course = Course::create($input);
-        return dd($course->toArray());
 
         return Redirect::route('admin.courses.index')
             ->withFlashMessage('Bạn đã thêm thành công khóa học mới: '.$course->course_name);

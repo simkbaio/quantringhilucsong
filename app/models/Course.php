@@ -20,7 +20,8 @@ class Course extends Eloquent{
             $data[$course->course_id] = $course->course_name;
         }
         return $data;
-
-
+    }
+    public function classes(){
+        return Course::hasMany('NClass','class_course_id','course_id');
     }
 }

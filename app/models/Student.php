@@ -11,5 +11,7 @@ class Student extends Eloquent {
     protected $table = "tbl_student";
     public  $timestamps = false;
     protected $guarded = ['stu_id'];
-
+    public function results(){
+        return Student::belongsTo('Student','result_student_id','stu_id');
+    }
 }

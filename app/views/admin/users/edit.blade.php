@@ -9,14 +9,21 @@
 <script type="text/javascript" src="/admin_assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="/admin_assets/plugins/select2/select2.min.js"></script>
 <script type="text/javascript" src="/admin_assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script> 
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/admin_assets/scripts/core/app.js"></script>
 <script>
 jQuery(document).ready(function($) {
     $('#all_permissions').multiSelect();
+     $('#changepassword').ajaxForm(function(e) { 
+        $('#change-password-result').html(e);
+        $('#change-password-result').css('display', '');
+            }); 
 });
+
 </script>
+
 @stop
 
 @section('content')
@@ -68,6 +75,9 @@ jQuery(document).ready(function($) {
                         <div class="col-md-5">
                         {{Form::text('email',null,array('placeholder'=>"Email",'class'=>"form-control",'disabled'=>''))}}
                            {{error_for('email"',$errors)}}
+                       </div>
+                       <div class="col-md-5">
+                           <a href="#changepassword" data-toggle="modal" class="btn yellow">Đổi mật khẩu</a>
                        </div>
                    </div>
                    <div class="form-group">
@@ -153,6 +163,6 @@ jQuery(document).ready(function($) {
     </div>
     <!-- END CONTENT -->
 </div>
-
+@include('admin.users.elements.modal_changepassword')->withId($user->id);
 
 @stop

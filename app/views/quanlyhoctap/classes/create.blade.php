@@ -44,17 +44,23 @@ Nghị lực sống | Thêm lớp học mới
         <div class="row">
             <div class="col-md-12">
                 {{portlet_open('Nội dung cần nhập','green')}}
+
                 <div class="row">
                     {{Form::open(['route'=>'admin.classes.store'])}}
+                    @if(Input::has('course'))
+                    {{Form::hidden('course',Input::get('course'))}}
+                    @endif
                     {{HForm::input([
                         'name'=>'class_name',
                         'title'=>'Tên lớp học',
                         ],$errors)}}
+
                     {{HForm::input([
                         'name'=>'class_course_id',
                         'title'=>'Khóa học',
                         'width'=>'6',
                         'type'=>'select',
+                        'value'=>(Input::has('course')?Input::get('course'):Input::old('course')),
                         'data_input'=>Course::getAllSelectData(),
                         ],$errors)}}
                     {{HForm::input([

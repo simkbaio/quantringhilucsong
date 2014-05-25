@@ -59,6 +59,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
             $user->first_name = $input['first_name'];
             $user->last_name = $input['last_name'];
             $user->activated = $input['activated'];
+            $user->permissions = $input['permissions'];
             $user->save();
 
         //Update User Info
@@ -172,7 +173,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         $this->attributes['password'] = Hash::make($password);
         return;
     }
-
+    public function setPermissionsAttribute($permissions = array()){
+        $per_arr = array();
+        if($permissions){
+            foreach($permissions as $per){
+                $per_arr[$per] = 1;
+            }
+            $this->attributes['permissions'] = json_encode($per_arr);
+            return;
+        }
+        return;
+    }
     //Custom function
     public function groups()
     {

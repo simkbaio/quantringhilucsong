@@ -56,16 +56,16 @@ $students = Student::orderBy('stu_name')->get();
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($students as $students)
+                @foreach($students as $student)
                     <tr>
-                        <td>{{$students->stu_id}}</td>
+                        <td>{{ $student->stu_id}}</td>
                         <td>
-                        <a href="#">{{$students->stu_name}}</a></td>
-                        <td>{{date('d-m-Y',$students->stu_birthday)}}</td>
+                        <a href="{{URL::route('admin.students.show',$student->stu_id)}}">{{ $student->stu_name}}</a></td>
+                        <td>{{date('d-m-Y', $student->stu_birthday)}}</td>
                         <td>
-                        <a href="{{URL::route("admin.students.edit",$students->stu_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
+                        <a href="{{URL::route("admin.students.edit", $student->stu_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
                         <td>
-                            {{Form::open(['route'=>['admin.students.destroy',$students->stu_id],'method'=>'DELETE'])}}
+                            {{Form::open(['route'=>['admin.students.destroy', $student->stu_id],'method'=>'DELETE'])}}
                             {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>

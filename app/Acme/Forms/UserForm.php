@@ -21,11 +21,19 @@ class UserForm extends FormValidator {
         'first_name'=>'required|max:250',
         'last_name'=>'required|max:250',
     );
+    protected $rules_changepassword = [
+        'password'=>'required|between:6,15|confirmed',
+    ];
+
     public function CreateValidate($input){
         return $this->validate($input);
     }
     public function UpdateValidate($input){
         $this->rules = $this->rules_update;
+        return $this->validate($input);
+    }
+    public function ChangePasswordValidate($input){
+        $this->rules = $this->rules_changepassword;
         return $this->validate($input);
     }
 } 

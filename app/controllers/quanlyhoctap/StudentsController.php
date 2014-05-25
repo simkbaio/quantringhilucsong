@@ -67,6 +67,8 @@ class StudentsController extends \BaseController {
 	 */
 	public function show($id)
 	{
+        $student = Student::where('stu_id','=',$id)->firstOrFail();
+        return View::make('quanlyhoctap.students.show')->withStudent($student);
 
 
 	}

@@ -1,25 +1,25 @@
 <?php
 
-use Acme\Forms\ClassForm;
+use Acme\Forms\StudenResultForm;
 
-class ClassesController extends \BaseController {
+class StudentResultsController extends \BaseController {
 
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    protected $classForm;
+    protected $studenResultForm;
 
-    function __construct(ClassForm $classForm)
+    function __construct(StudenResultForm $studenResultForm)
     {
-        $this->classForm = $classForm;
+        $this->classForm = $studenResultForm;
     }
 
 
     public function index()
     {
-        return View::make('quanlyhoctap.classes.index');
+        return View::make('quanlyhoctap.studentresults.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class ClassesController extends \BaseController {
      */
     public function create()
     {
-        return View::make("quanlyhoctap.classes.create");
+        return View::make("quanlyhoctap.studentresults.create");
     }
 
     /**
@@ -41,9 +41,9 @@ class ClassesController extends \BaseController {
     {
         $input = Input::except('_method','_token');
         $this->classForm->validate(Input::all());
-        $class = NClass::create($input);
+        $class = StudenResult::create($input);
 
-        return Redirect::route('admin.classes.index')
+        return Redirect::route('admin.studentresults.index')
             ->withFlashMessage('Bạn đã thêm thành công lớp học mới: '.$class->class_name);
 
     }
@@ -70,8 +70,8 @@ class ClassesController extends \BaseController {
     {
 
 
-        $class = NClass::where('class_id','=',$id)->firstOrFail();
-        return View::make('quanlyhoctap.classes.edit')->withClass($class);
+        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
+        return View::make('quanlyhoctap.studentresults.edit')->withClass($class);
     }
 
     /**
@@ -84,12 +84,12 @@ class ClassesController extends \BaseController {
     {
         $input = Input::except('_method','_token');
         $this->classForm->validate(Input::all());
-        $class = NClass::where('class_id','=',$id)->firstOrFail();
-        if(NClass::where('class_id','=',$id)->update($input))
-            return Redirect::route('admin.classes.index')
+        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
+        if(StudenResult::where('class_id','=',$id)->update($input))
+            return Redirect::route('admin.studentresults.index')
                 ->withFlashMessage('Bạn đã cập nhật thành công lớp học: '.$class->class_name);
         else
-            return Redirect::route('admin.classes.index')
+            return Redirect::route('admin.studentresults.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
 
     }
@@ -102,9 +102,9 @@ class ClassesController extends \BaseController {
      */
     public function destroy($id)
     {
-        $class = NClass::where('class_id','=',$id)->firstOrFail();
-        NClass::where('class_id','=',$id)->delete();
-        return Redirect::route('admin.classes.index')
+        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
+        StudenResult::where('class_id','=',$id)->delete();
+        return Redirect::route('admin.studentresults.index')
             ->withFlashMessage('Bạn đã xóa lớp học: '.$class->class_name);
     }
 

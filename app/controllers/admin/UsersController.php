@@ -91,7 +91,7 @@ class UsersController extends BaseController {
 	 */
 	public function update($id)
 	{
-        $input = Input::only('first_name','last_name','group','activated');
+        $input = Input::only('first_name','last_name','group','activated','permissions');
         $this->UserForm->UpdateValidate(Input::all());
         $user = User::updateUser($id,$input);
         return Redirect::route('admin.users.index')->withFlashMessage('Cập nhật thành công');
@@ -122,6 +122,21 @@ class UsersController extends BaseController {
         }
 
 	}
+    public function changepassword($id){
+        $user = Sentry::findUserById($id);
+        $valid = Validator::make(Input::all(),[
+           'password'=>'required|between:6,15|confirmed',
+        ]);
+        if($valid->passes()){
+            $user->password = Input::get('password');
+            $user->save();
+            return "Bạn đã đổi mật khẩu hành công!";
+        }else{
+            return $valid->errors()->first('password');
+        }
+
+         return "OK";
+    }
 
 
 }

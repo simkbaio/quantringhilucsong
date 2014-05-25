@@ -1,15 +1,20 @@
 <?php
 #home
+use \Carbon\Carbon;
 Route::get('/',function(){
     return Redirect::to('admin');
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('thuxem',function(){
-    $class = Nclass::first();
+
+    $students = StudentResult::where('result_class_id','=',2)->get(['result_student_id'])->toArray();
+    return dd($students);
+
 });
 Route::get('theme',function(){
     return View::make('admin.example');
 });
+
 # Registration
 Route::get('register', ['uses' => 'RegistrationController@create'])->before('guest');
 Route::post('register',['as'=>'registration.store','uses'=>'RegistrationController@store']);
@@ -32,6 +37,7 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     
 
     #Users
+    Route::any('users/changepassword/{id}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
     Route::resource('users', 'UsersController');
     #Groups
     Route::resource('groups','GroupsController');
@@ -48,6 +54,8 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     #Sinh viên
     Route::resource('students','StudentsController');
     Route::resource('teachers','TeachersController');
+
+    Route::post('admin/class/{class_id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
     Route::resource('classes','ClassesController');
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');

@@ -63,8 +63,21 @@
                                 <td>{{$class->class_id}}</td>
                                 <td>
                                     <a href="{{URL::route('admin.classes.show',$class->class_id)}}">{{$class->class_name}}</a></td>
-                                     <td>{{$class->course->course_name}}</td>
-                                        <td>{{$class->teacher->teacher_name}}</td>
+                                     <td>
+                                     @if ($class->course())
+                                         {{$class->course->course_name}}
+                                    @else
+                                        Chưa có học phần
+                                     @endif
+
+                                     </td>
+                                        <td>
+                                            @if($class->teacher())
+                                            {{$class->teacher->teacher_name}}
+                                            @else
+                                            Chưa có giáo viên
+                                            @endif
+                                        </td>
 
 
                                     <td>

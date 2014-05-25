@@ -1,5 +1,4 @@
 <?php
-
 use Acme\Forms\LoginForm;
 
 class SessionsController extends \BaseController

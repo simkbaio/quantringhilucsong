@@ -23,7 +23,9 @@
 		],
         "files":["app/Acme/helpers.php"],
         "psr-4": {
-            "Acme\\":"app/Acme"
+            "Acme\\":"app/Acme",
+            "Admin\\":"app/controllers/Admin",
+            "QuanLyHocTap\\":"app/controllers/quanlyhoctap"
         }
 	},
 	"scripts": {

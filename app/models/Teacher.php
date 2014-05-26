@@ -15,7 +15,7 @@ class Teacher extends Eloquent{
         $data = array();
         $data[0]='Chưa xác định';
         // Chỉ lựa chọn Giáo viên còn đang hoạt động
-        $teachers = Teacher::orderBy('teacher_name')->where('teacher_out_date','>',time())->get();
+        $teachers = Teacher::orderBy('teacher_name')->get();
         foreach($teachers as $teacher){
             $data[$teacher->teacher_id] = $teacher->teacher_name;
         }

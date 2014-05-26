@@ -1,0 +1,142 @@
+@extends('admin.layouts.master')
+
+@section('content')
+<div class="page-content-wrapper">
+	<div class="page-content">
+
+
+		<!-- BEGIN PAGE HEADER-->
+		<div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+				<h3 class="page-title">
+					Thông tin học viên: {{$student->stu_name}} <a href="{{URL::route('admin.students.edit',$student->stu_id)}}" class="btn btn-xs blue">Sửa thông tin sinh viên</a>
+				</h3>
+				<ul class="page-breadcrumb breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="{{URL::route('admin')}}">
+							Trang chủ
+						</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="{{URL::route('admin.students.index')}}">
+							Học viên
+						</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">
+							{{$student->stu_name}}
+						</a>
+					</li>
+				</ul>
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+		<!-- END PAGE HEADER-->
+		<!-- BEGIN PAGE CONTENT-->
+		<div class="row">
+			<div class="col-md-12">
+				{{portlet_open('Thông tin cơ bản','green')}}
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="list-group">
+
+							<li class="list-group-item">
+								Họ tên
+								<span class="label label-info pull-right">
+									{{$student->stu_name}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Ngày sinh
+								<span class="label label-info pull-right">
+									{{date('d/m/Y',$student->stu_birthday)}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Giới tính
+								<span class="label label-info pull-right">
+									{{Config::get('admin.sex')[$student->stu_sex]}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Địa chỉ
+								<span class="label label-info pull-right">
+									{{$student->stu_address}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Quê quán
+								<span class="label label-info pull-right">
+									{{$student->stu_hometown}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Tỉnh thành
+								<span class="label label-info pull-right">
+									{{Config::get('admin.province')[$student->stu_province_id]}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Số điện thoại
+								<span class="label label-info pull-right">
+									{{$student->stu_phone}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Hòm thư
+								<span class="label label-info pull-right">
+									{{$student->stu_email}}
+								</span>
+							</li>
+
+
+
+						</ul>
+
+					</div>
+					<div class="col-md-6">
+						<ul class="list-group">
+							<li class="list-group-item">
+								Cras justo odio
+								<span class="badge badge-default">
+									3
+								</span>
+							</li>
+							<li class="list-group-item">
+								Dapibus ac facilisis in
+								<span class="label label-info pull-right">
+									11
+								</span>
+							</li>
+							<li class="list-group-item">
+								Morbi leo risus
+								<span class="badge badge-danger">
+									new
+								</span>
+							</li>
+							<li class="list-group-item">
+								Porta ac consectetur ac
+								<span class="badge badge-warning">
+									4
+								</span>
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE CONTENT-->
+	</div>
+</div>
+<!-- END CONTENT -->
+</div>
+
+
+@stop

@@ -13,10 +13,10 @@
 
 ClassLoader::addDirectories(array(
 
-	app_path().'/commands',
-	app_path().'/controllers',
-	app_path().'/models',
-	app_path().'/database/seeds',
+    app_path() . '/commands',
+    app_path() . '/controllers',
+    app_path() . '/models',
+    app_path() . '/database/seeds',
 
 ));
 
@@ -31,7 +31,7 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles(storage_path().'/logs/laravel.log');
+Log::useFiles(storage_path() . '/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
@@ -46,48 +46,44 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
-	Log::error($exception);
+App::error(function (Exception $exception, $code) {
+    Log::error($exception);
 });
-App::error(function(Laracasts\Validation\FormValidationException $exception, $code)
-{
+App::error(function (Laracasts\Validation\FormValidationException $exception, $code) {
     return Redirect::back()->withInput()->withErrors($exception->getErrors());
 });
-App::error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $exception)
-{
-    return "Không tìm thấy đối tượng: ".$exception->getModel();
+App::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+    return "Không tìm thấy đối tượng: " . $exception->getModel();
 });
-App::error(function(Acme\Exceptions\PermissionException $exception){
-   return Redirect::route('admin')
-       ->withFlashMessage($exception->getMessage());
-});
+    App::error(function (Acme\Exceptions\PermissionException $exception) {
+        return Redirect::route('admin')
+            ->withFlashMessage($exception->getMessage());
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Maintenance Mode Handler
-|--------------------------------------------------------------------------
-|
-| The "down" Artisan command gives you the ability to put an application
-| into maintenance mode. Here, you will define what is displayed back
-| to the user if maintenance mode is in effect for the application.
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Handler
+    |--------------------------------------------------------------------------
+    |
+    | The "down" Artisan command gives you the ability to put an application
+    | into maintenance mode. Here, you will define what is displayed back
+    | to the user if maintenance mode is in effect for the application.
+    |
+    */
 
-App::down(function()
-{
-	return Response::make("Be right back!", 503);
-});
+    App::down(function () {
+        return Response::make("Be right back!", 503);
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Require The Filters File
-|--------------------------------------------------------------------------
-|
-| Next we will load the filters file for the application. This gives us
-| a nice separate location to store our route and application filter
-| definitions instead of putting them all in the main routes file.
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Require The Filters File
+    |--------------------------------------------------------------------------
+    |
+    | Next we will load the filters file for the application. This gives us
+    | a nice separate location to store our route and application filter
+    | definitions instead of putting them all in the main routes file.
+    |
+    */
 
-require app_path().'/filters.php';
+    require app_path() . '/filters.php';

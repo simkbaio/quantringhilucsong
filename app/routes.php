@@ -37,7 +37,7 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     
 
     #Users
-    Route::any('users/changepassword/{id}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
+    Route::post('users/changepassword/{id}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
     Route::resource('users', 'UsersController');
     #Groups
     Route::resource('groups','GroupsController');
@@ -53,6 +53,9 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     ##Quản lý học viên
     #Sinh viên
     Route::resource('students','StudentsController');
+    Route::post('students/changepassword/{id}',['as'=>'admin.students.changepassword','uses'=>'StudentsController@changepassword']);
+
+
     Route::resource('teachers','TeachersController');
 
     Route::post('admin/class/{class_id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);

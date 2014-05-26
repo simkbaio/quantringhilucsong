@@ -8,6 +8,19 @@ $("#mask_date1").inputmask("m/d/y", {
         });
 });
 </script>
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/admin_assets/scripts/core/app.js"></script>
+<script>
+jQuery(document).ready(function($) {
+     $('#changepassword').ajaxForm(function(e) { 
+        $('#change-password-result').html(e);
+        $('#change-password-result').css('display', '');
+            }); 
+});
+
+</script>
 @stop
 
 @section('content')
@@ -153,7 +166,7 @@ $("#mask_date1").inputmask("m/d/y", {
 								],$errors)}}
 							<div class="col-md-12" style="text-align: center;">
 							{{Form::submit('Cập nhật thông tin',['class'=>'btn blue'])}}
-							<a href="#" class="btn yellow">Đổi Mật khẩu</a>
+							<a  href="#changepassword" data-toggle="modal" class="btn yellow">Đổi Mật khẩu</a>
 
 							</div>
 
@@ -171,6 +184,7 @@ $("#mask_date1").inputmask("m/d/y", {
 		</div>
 		<!-- END CONTENT -->
 	</div>
+@include('quanlyhoctap.students.elements.modal_changepassword')->withId($student->stu_id);
 
 
 	@stop

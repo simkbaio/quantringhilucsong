@@ -38,7 +38,7 @@
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
 
-        <!-- Thêm sinh viên mới -->
+        <!-- Thêm học viên mới -->
         <div class="row">
             <div class="col-md-6">
                 {{portlet_open('Thông tin cơ bản','yellow')}}
@@ -68,11 +68,11 @@
              {{portlet_close()}}
          </div>
          <div class="col-md-6">
-            {{portlet_open('Thêm sinh viên vào lớp','green')}}
+            {{portlet_open('Thêm học viên vào lớp','green')}}
             <div class="row">
                 {{Form::open(['route'=>['admin.classes.addstudent',$class->class_id]])}}
                 {{HForm::input([
-                    'title'=>'Sinh viên',
+                    'title'=>'Học viên',
                     'name'=>'student',
                     'type'=>'select',
                     'data_input'=>$class->notInStudents(),
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <!-- Kết thúc thêm sinh viên mới -->
+        <!-- Kết thúc thêm học viên mới -->
         <div class="row">
             <div class="col-md-12">
                 {{portlet_open('Danh sách học viên','blue')}}

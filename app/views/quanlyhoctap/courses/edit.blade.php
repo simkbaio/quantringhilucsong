@@ -52,7 +52,7 @@ Nghị lực sống | Thêm khóa học mới
                     </li>
                     <li>
                         <a href="#">
-                            Thêm khóa học mới
+                            {{$course->course_name}}
                         </a>
                     </li>
                 </ul>
@@ -88,7 +88,7 @@ Nghị lực sống | Thêm khóa học mới
 
                     {{HForm::input([
                         'name'=>'course_description',
-                        'title'=>'Mô tả khóa khọc',
+                        'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}
 

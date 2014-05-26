@@ -93,6 +93,13 @@
 								</span>
 							</li>
 
+							<li class="list-group-item">
+								Facebook
+								<span class="label label-info pull-right">
+									{{$student->stu_facebook}}
+								</span>
+							</li>
+
 
 
 						</ul>
@@ -101,31 +108,46 @@
 					<div class="col-md-6">
 						<ul class="list-group">
 							<li class="list-group-item">
-								Cras justo odio
-								<span class="badge badge-default">
-									3
-								</span>
-							</li>
-							<li class="list-group-item">
-								Dapibus ac facilisis in
+								Tình trạng hôn nhân
 								<span class="label label-info pull-right">
-									11
-								</span>
-							</li>
-							<li class="list-group-item">
-								Morbi leo risus
-								<span class="badge badge-danger">
-									new
-								</span>
-							</li>
-							<li class="list-group-item">
-								Porta ac consectetur ac
-								<span class="badge badge-warning">
-									4
+									{{Config::get('admin.married')[$student->stu_married]}}
 								</span>
 							</li>
 
+							<li class="list-group-item">
+								Học thức
+								<span class="label label-info pull-right">
+									{{Config::get('admin.educated')[$student->stu_educated]}}
+								</span>
+							</li>
+
+							<li class="list-group-item">
+								Loại khuyết tật
+								<span class="label label-info pull-right">
+									{{Config::get('admin.disabilities')[$student->stu_type_disabilities]}}
+								</span>
+							</li>
+
+							<li class="list-group-item">
+								Người xác nhận
+								<span class="label label-info pull-right">
+									{{$student->stu_person_authen_name}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Địa chỉ người xác nhận
+								<span class="label label-info pull-right">
+									{{$student->stu_person_authen_address}}
+								</span>
+							</li>
+							<li class="list-group-item">
+								Ngày đăng kí
+								<span class="label label-info pull-right">
+									{{date('d-m-Y',$student->stu_regis_date)}}
+								</span>
+							</li>
 						</ul>
+
 
 					</div>
 

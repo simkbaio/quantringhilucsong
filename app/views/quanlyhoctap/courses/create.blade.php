@@ -88,7 +88,7 @@ Nghị lực sống | Thêm khóa học mới
 
                     {{HForm::input([
                         'name'=>'course_description',
-                        'title'=>'Mô tả khóa khọc',
+                        'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}
 

@@ -21,7 +21,7 @@ class StudenForm extends FormValidator
         'stu_hometown' => 'required',
         'stu_province_id' => 'required',
         'stu_phone' => 'required',
-        'stu_email' => 'required',
+        'stu_email' => 'required|unique:tbl_student,stu_email',
         'stu_facebook' => 'required',
         'stu_married' => 'required',
         'stu_educated' => 'required',

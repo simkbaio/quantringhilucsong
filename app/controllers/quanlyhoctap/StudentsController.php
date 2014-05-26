@@ -116,5 +116,20 @@ class StudentsController extends \BaseController {
         return Redirect::route('admin.students.index')
             ->withFlashMessage('Bạn đã xóa học viên: '.$student->stu_name);
 	}
+	public function changepassword($id){
+        $student = Student::where('stu_id','=',$id)->firstOrFail();
+        $valid = Validator::make(Input::all(),[
+           'password'=>'required|between:6,15|confirmed',
+        ]);
+        if($valid->passes()){
+            $student->stu_password = md5(Input::get('password'));
+            $student->save();
+            return "Bạn đã đổi mật khẩu hành công!";
+        }else{
+            return $valid->errors()->first('password');
+        }
+
+         return "OK";
+    }
 
 }

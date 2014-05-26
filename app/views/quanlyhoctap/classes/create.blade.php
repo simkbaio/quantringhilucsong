@@ -75,7 +75,7 @@ Nghị lực sống | Thêm lớp học mới
 
                     {{HForm::input([
                         'name'=>'class_description',
-                        'title'=>'Mô tả khóa khọc',
+                        'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}
 

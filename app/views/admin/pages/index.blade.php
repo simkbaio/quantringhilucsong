@@ -1,5 +1,24 @@
 @extends('admin.layouts.master')
+@section('footer')
+<script>
+	jQuery(document).ready(function($) {
+		$.ajax({
+			url: '{{URL::route('admin.ajax.changelog')}}',
+		})
 
+		.done(function(data) {
+			$("#changelog").html(data);
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+
+	});
+</script>
+@stop
 @section('content')
 <div class="page-content-wrapper">
 	<div class="page-content">
@@ -39,88 +58,89 @@
 							<a class="collapse" href="javascript:;">
 							</a>
 
-						</a>
+						</div>
+					</div>
+					<div class="portlet-body">
+						<div class="col-md-3">
+							<a href="{{URL::route('admin.courses.index')}}">
+								<div class="tile bg-green">
+									<div class="tile-body">
+										<i class="fa fa-leaf"></i>
+									</div>
+									<div class="tile-object">
+										<div class="name">
+											Khóa học
+										</div>
+										<div class="number">
+											{{Course::get()->count()}}
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="{{URL::route('admin.classes.index')}}">
+								<div class="tile bg-blue">
+									<div class="tile-body">
+										<i class="fa fa-coffee"></i>
+									</div>
+									<div class="tile-object">
+										<div class="name">
+											Lớp học
+										</div>
+										<div class="number">
+											{{Nclass::count()}}
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="{{URL::route('admin.students.index')}}">
+								<div class="tile bg-red">
+									<div class="tile-body">
+										<i class="fa fa-user"></i>
+									</div>
+									<div class="tile-object">
+										<div class="name">
+											Học viên
+										</div>
+										<div class="number">
+											{{Student::count()}}
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="{{URL::route('admin.teachers.index')}}">
+								<div class="tile bg-yellow">
+									<div class="tile-body">
+										<i class="fa fa-briefcase"></i>
+									</div>
+									<div class="tile-object">
+										<div class="name">
+											Giáo viên
+										</div>
+										<div class="number">
+											{{Teacher::count()}}
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						
 					</div>
 				</div>
-				<div class="portlet-body">
-					<div class="col-md-3">
-						<a href="{{URL::route('admin.courses.index')}}">
-							<div class="tile bg-green">
-							<div class="tile-body">
-								<i class="fa fa-leaf"></i>
-							</div>
-							<div class="tile-object">
-								<div class="name">
-									Khóa học
-								</div>
-								<div class="number">
-									{{Course::get()->count()}}
-								</div>
-							</div>
-						</div>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="{{URL::route('admin.classes.index')}}">
-							<div class="tile bg-blue">
-							<div class="tile-body">
-								<i class="fa fa-coffee"></i>
-							</div>
-							<div class="tile-object">
-								<div class="name">
-									Lớp học
-								</div>
-								<div class="number">
-									{{Nclass::count()}}
-								</div>
-							</div>
-						</div>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="{{URL::route('admin.students.index')}}">
-							<div class="tile bg-red">
-							<div class="tile-body">
-								<i class="fa fa-user"></i>
-							</div>
-							<div class="tile-object">
-								<div class="name">
-									Học viên
-								</div>
-								<div class="number">
-									{{Student::count()}}
-								</div>
-							</div>
-						</div>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="{{URL::route('admin.teachers.index')}}">
-							<div class="tile bg-yellow">
-							<div class="tile-body">
-								<i class="fa fa-briefcase"></i>
-							</div>
-							<div class="tile-object">
-								<div class="name">
-									Giáo viên
-								</div>
-								<div class="number">
-									{{Teacher::count()}}
-								</div>
-							</div>
-						</div>
-						</a>
-					</div>
-				</div>
+
 			</div>
-		</div>
-		<div class="col-md-6">
-			{{portlet_open('Thông báo nhanh','green')}}
-			<div class="row">
-				<div class="col-md-12">
-					<div id="disqus_thread"></div>
-					<script type="text/javascript">
-						/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			<div class="col-md-6">
+				{{portlet_open('Thông báo nhanh','green')}}
+				<div class="row">
+					<div class="col-md-12">
+						<div id="disqus_thread"></div>
+						<script type="text/javascript">
+							/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'admin-nls'; // required: replace example with your forum shortname
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -137,9 +157,20 @@
 
 {{portlet_close()}}
 </div>
-
-
 </div>
+				<div class="row">
+					<div class="col-span12">
+						{{portlet_open('Changelog','red')}}
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive" id="changelog">
+								Loading...
+							</div>
+							</div>
+						</div>
+						{{portlet_close()}}
+					</div>
+				</div>
 </div>
 <!-- END PAGE CONTENT-->
 </div>

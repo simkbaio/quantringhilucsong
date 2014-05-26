@@ -6,10 +6,15 @@ Route::get('/',function(){
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('thuxem',function(){
+    $curl = new MyCurl('https://api.github.com/repos/simkbaio/quantringhilucsong/commits');
+    $result = $curl->execute();
+    $result = json_decode($result);
 
-    $students = StudentResult::where('result_class_id','=',2)->get(['result_student_id'])->toArray();
-    return dd($students);
-
+    foreach($result as $r){
+        return dd($r->commit->committer);
+        echo $r->commit->message."<br/>";
+    }
+    return;
 });
 Route::get('theme',function(){
     return View::make('admin.example');
@@ -58,10 +63,11 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
 
     Route::resource('teachers','TeachersController');
 
-    Route::post('admin/class/{class_id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
+    Route::post('class/{class_id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
     Route::resource('classes','ClassesController');
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');
+    Route::get('ajax/changelog',['as'=>'admin.ajax.changelog','uses'=>'AjaxController@changelog']);
 
 
 });

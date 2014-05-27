@@ -24,6 +24,9 @@ class UserForm extends FormValidator {
     protected $rules_changepassword = [
         'password'=>'required|between:6,15|confirmed',
     ];
+    protected $rules_requestresetpassword = array(
+        'email'=>'required|exists:users,email',
+    );
 
     public function CreateValidate($input){
         return $this->validate($input);
@@ -34,6 +37,10 @@ class UserForm extends FormValidator {
     }
     public function ChangePasswordValidate($input){
         $this->rules = $this->rules_changepassword;
+        return $this->validate($input);
+    }
+    public function RequestResetPasswordValidate($input){
+        $this->rules = $this->rules_requestresetpassword;
         return $this->validate($input);
     }
 } 

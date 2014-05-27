@@ -59,7 +59,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface
             $user->first_name = $input['first_name'];
             $user->last_name = $input['last_name'];
             $user->activated = $input['activated'];
-            $user->permissions = $input['permissions'];
+            if(Input::has('permissions')){
+                $user->permissions = $input['permissions'];
+            }
             $user->save();
 
         //Update User Info

@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<div class="form-actions">
 			<label class="checkbox">
-				<input type="checkbox" name="remember" value="1"/> Remember me </label>
+				<input type="checkbox" name="remember" value="1"/> Ghi nhớ đăng nhập </label>
 				<button type="submit" class="btn green pull-right">
 					Login <i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -123,10 +123,11 @@ License: You must have a valid license purchased only from themeforest(the above
 		</form>
 		<!-- END LOGIN FORM -->
 		<!-- BEGIN FORGOT PASSWORD FORM -->
-		<form class="forget-form" action="index.html" method="post">
-			<h3>Forget Password ?</h3>
+<!-- 		<form class="forget-form" action="index.html" method="post">
+ -->		{{Form::open(['route'=>'admin.users.resetpasswordrequest','class'=>'forget-form'])}}
+			<h3>Quên mật khẩu ?</h3>
 			<p>
-				Enter your e-mail address below to reset your password.
+				Nhập hòm thư của bạn để khôi phục mật khẩu.
 			</p>
 			<div class="form-group">
 				<div class="input-icon">

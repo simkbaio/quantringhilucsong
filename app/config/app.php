@@ -124,6 +124,7 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
 		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
+        'Bogardo\Mailgun\MailgunServiceProvider',
 
 	),
 

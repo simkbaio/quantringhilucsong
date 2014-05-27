@@ -5,16 +5,32 @@ Route::get('/',function(){
     return Redirect::to('admin');
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
+Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
 Route::get('thuxem',function(){
-    $curl = new MyCurl('https://api.github.com/repos/simkbaio/quantringhilucsong/commits');
-    $result = $curl->execute();
-    $result = json_decode($result);
+    return Redirect::route('admin')->withFlashMessage('Hello Fucker!');
 
-    foreach($result as $r){
-        return dd($r->commit->committer);
-        echo $r->commit->message."<br/>";
-    }
-    return;
+
+    $mgClient = new \Mailgun\Mailgun('key-4n4k5wb7tvu-d3szvefg4lomr5k817m1');
+    $domain = "ecnet.vn";
+    $campaignId = 'c8vng';
+
+# Issue the call to the client.
+//    $result = $mgClient->get($domain."/campaings/".$campaignId."/stats");
+    return $domain."/campaings/".$campaignId."/stats";
+# Make the call to the client.
+//    $result = $mgClient->sendMessage("$domain",
+//        array('from'       => 'Developer <noreply@ecnet.vn>',
+//            'to'         => 'DEV <dev@ecnet.vn>',
+//            'subject'    => 'Hello DEV',
+//            'text'       => 'Testing some Mailgun awesomness!',
+//            'o:campaign' => 'c8vng'));
+
+//    $result = $mgClient->post("lists/$listAddress/members",
+//        array('address'     => 'simkbaio@gmail.com',
+//            'name'        => 'Ngọc Anh',
+//            'description' => 'Developer',
+//            'subscribed'  => true,
+//        ));
 });
 Route::get('theme',function(){
     return View::make('admin.example');
@@ -23,7 +39,8 @@ Route::get('theme',function(){
 # Registration
 Route::get('register', ['uses' => 'RegistrationController@create'])->before('guest');
 Route::post('register',['as'=>'registration.store','uses'=>'RegistrationController@store']);
-
+Route::post('admin/users/resetpasswordrequest',['as'=>'admin.users.resetpasswordrequest','uses'=>'UsersController@ResetPasswordRequest']);
+Route::any('admin/user/{id}/resetpassword/{resetcode}',['uses'=>'UsersController@ResetPassword']);
 
 
 #Profile
@@ -32,7 +49,7 @@ Route::post('register',['as'=>'registration.store','uses'=>'RegistrationControll
 //Route::post('/{profile}/edit',array('as'=>'profile.edit','uses'=>'ProfilesController@update'));
 
 
-//Route::resource('profile','ProfilesController',['only'=>['update','destroy','store']]);
+//Route::resource('profile','ProfilesController',['only'=>['update','destroy','store']]);lo
     Route::get('admin/login',['as'=>'admin.login','uses'=>'SessionsController@create']);
     Route::resource('admin/sessions','SessionsController',['only'=>['create','store','destroy']]);
 
@@ -42,7 +59,7 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     
 
     #Users
-    Route::post('users/changepassword/{id}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
+    Route::post('users/{id}/resetpassword/{resetCode}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
     Route::resource('users', 'UsersController');
     #Groups
     Route::resource('groups','GroupsController');

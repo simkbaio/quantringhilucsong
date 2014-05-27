@@ -10,7 +10,8 @@
 		"laracasts/validation": "~1.0",
         "cartalyst/sentry": "2.1.*",
         "rtablada/package-installer": "dev-master",
-		"bugsnag/bugsnag-laravel": "dev-master"
+		"bugsnag/bugsnag-laravel": "dev-master",
+        "bogardo/mailgun": "dev-master"
     },
 	"autoload": {
 		"classmap": [

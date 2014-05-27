@@ -43,7 +43,7 @@ class UsersController extends BaseController {
 	 */
 	public function store()
 	{
-	    $input = Input::only('email','password','first_name','last_name');
+	    $input = Input::only('email','password','first_name','last_name','group');
         $this->UserForm->CreateValidate(Input::all());
         $user = User::createUser(Input::all(),true);
         return Redirect::route('admin.users.index')->withFlassMessage('Bạn đã thêm thành công người dùng mới');
@@ -136,6 +136,44 @@ class UsersController extends BaseController {
         }
 
          return "OK";
+    }
+    function ResetPasswordRequest(){
+        $this->UserForm->RequestResetPasswordValidate(Input::all());
+        $user = Sentry::findUserByLogin(Input::get('email'));
+        $resetCode = $user->getResetPasswordCode();
+        $result = Mailgun::send('emails.users.reset_password',[
+            'user'=>$user,
+            'resetCode'=>$resetCode,
+
+        ], function($message)
+
+
+        {
+            $user = Sentry::findUserByLogin(Input::get('email'));
+            $message->to($user->email, $user->first_name)->subject('[ Nghị Lực Sống ] Khôi phục mật khẩu tài khoản');
+        });
+        return Redirect::route('admin.notice')->withFlashMessage('Bạn đã yêu cầu khôi phục mật khẩu thành công! Mời bạn kiểm tra hòm mail để biết thêm thông tin');
+
+    }
+    public function ResetPassword($id,$resetCode){
+
+        if(Request::isMethod('POST')){
+            $this->UserForm->ChangePasswordValidate(Input::all());
+            $user = Sentry::getUser();
+            $user->attemptResetPassword($resetCode,Input::get('password'));
+            return Redirect::route('admin')
+                ->withFlashMessage('Bạn đã khôi phục mật khẩu thành công');
+        }else{
+            $user = Sentry::findUserById($id);
+            if($user->checkResetPasswordCode($resetCode)){
+                Sentry::login($user);
+                return View::make('admin.users.resetpassword');
+            }else{
+                return Redirect::route('admin.notice')->withFlashMessage('Xin lỗi! Yêu cầu đổi lại mật khẩu của bạn đã quá hạn sử dụng. Mời bạn yêu cầu đổi mật khẩu lại');
+
+            }
+        }
+
     }
 
 

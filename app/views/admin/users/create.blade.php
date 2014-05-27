@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
                         <div class="checkbox-list">
                         @foreach(Sentry::findAllGroups() as $group)
                         <label>
-                            <input type="checkbox" value="$group->id" name="group[]"
+                            <input type="checkbox" value="{{$group->id}}" name="group[]"
                             > {{$group->name}} 
                         </label>
                         @endforeach

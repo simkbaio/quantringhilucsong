@@ -1,0 +1,188 @@
+.has-neutral {
+  .form-control-validation(@kvelle-color-neutral; @kvelle-color-neutral; @kvelle-color-neutral);
+
+  // datetime picker
+  &.bootstrap-datetimepicker-widget {
+    td {
+      &.day:hover,
+      &.hour:hover,
+      &.minute:hover,
+      &.second:hover
+      {
+        background-color: @kvelle-color-neutral;
+      }
+      &.old,
+      &.new
+      {
+        color: @kvelle-color-neutral;
+      }
+      &.active,
+      &.active:hover
+      {
+        background-color: @kvelle-color-neutral;
+        color: #fff;
+      }
+      span {
+        &.old {
+          color: @kvelle-color-neutral;
+        }
+
+        &:hover,
+        &.active,
+        &.active:hover
+        {
+          background-color: @kvelle-color-neutral;
+          color: #fff;
+        }
+      }
+    }
+
+    th {
+      &:hover {
+        background-color: @kvelle-color-neutral;
+      }
+    }
+
+    thead tr:first-child th {
+      &:hover
+      {
+        background: @kvelle-color-neutral;
+      }
+    }
+  }
+
+  // date range picker
+  &.daterangepicker {
+    .ranges li.active, .ranges li:hover {
+      background-color: @kvelle-color-neutral;
+    }
+    td.available:hover, th.available:hover {
+      background-color: @kvelle-color-neutral;
+    }
+    td.active, td.active:hover {
+      background-color: @kvelle-color-neutral;
+    }
+    td.in-range {
+      background: lighten(@kvelle-color-neutral, 10%);
+    }
+    .ranges li {
+      background: @kvelle-color-neutral;
+      border: 1px solid @kvelle-color-neutral;
+      color: lighten(@gray-light, 10%);
+    }
+    .ranges li.active, .ranges li:hover {
+      background-color: @kvelle-color-neutral;
+      border: 1px solid @kvelle-color-neutral;
+    }
+    .calendar th.prev, .calendar th.next {
+      &:hover {
+        background-color: @kvelle-color-neutral;
+      }
+    }
+  }
+  &.reportrange {
+    border: 1px solid @kvelle-color-neutral;
+    background-color: @kvelle-color-neutral;
+  }
+
+  // select2
+  .select2-container .select2-choice {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-container.select2-drop-above .select2-choice {
+    border-bottom-color: @kvelle-color-neutral;
+  }
+
+  .select2-drop {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-drop-auto-width {
+    border-top: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-drop.select2-drop-above {
+    border-top: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-drop.select2-drop-above.select2-drop-active {
+    border-top: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-container .select2-choice .select2-arrow {
+    border-left: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-search input {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-container .select2-choice,
+  .select2-container .select2-choices {
+    border: 1px solid @kvelle-color-neutral;
+    .box-shadow(inset 0 -3px 0 0 @kvelle-color-neutral);
+  }
+
+  .select2-dropdown-open.select2-drop-above .select2-choice,
+  .select2-dropdown-open.select2-drop-above .select2-choices {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-results .select2-highlighted {
+    background: @kvelle-color-neutral;
+  }
+
+  .select2-container-multi .select2-choices {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-container-multi .select2-choices .select2-search-choice,
+  .select2-container-multi .select2-choices .select2-search-choice-focus {
+    border: 1px solid @kvelle-color-neutral;
+  }
+
+  .select2-container .select2-choices .select2-search-field input,
+  .select2-container .select2-choice,
+  .select2-container .select2-choices {
+    border-color: @kvelle-color-neutral;
+  }
+
+  .select2-container .select2-choice .select2-arrow,
+  .select2-container .select2-choice div {
+    border-left: 1px solid @kvelle-color-neutral;
+  }
+
+  .has-warning .select2-container-active .select2-choice,
+  .has-warning .select2-container-multi.select2-container-active .select2-choices {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px @kvelle-color-neutral;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px @kvelle-color-neutral;
+  }
+
+  .select2-container-active .select2-choice,
+  .select2-container-multi.select2-container-active .select2-choices {
+    border-color: @kvelle-color-neutral;
+  }
+
+  .select2-drop-active {
+    border-color: @kvelle-color-neutral;
+  }
+
+  .select2-drop-auto-width,
+  .select2-drop.select2-drop-above.select2-drop-active {
+    border-top-color: @kvelle-color-neutral;
+  }
+
+  .select2-results .select2-highlighted {
+    background-color: @kvelle-color-neutral;
+  }
+
+  .select2-results .select2-highlighted table {
+    background-color: @kvelle-color-neutral;
+  }
+
+  // Bootstrap switch
+  .@{bootstrap-switch-name} {
+    border-color: @kvelle-color-neutral;
+  }
+}

@@ -10,7 +10,7 @@
 			<div class="col-md-12">
 				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 				<h3 class="page-title">
-					Thông tin học viên: {{$student->stu_name}} <a href="{{URL::route('admin.students.edit',$student->stu_id)}}" class="btn btn-xs blue">Sửa thông tin sinh viên</a>
+					Thông tin học viên: {{$student->name}} <a href="{{URL::route('admin.students.edit',$student->id)}}" class="btn btn-xs blue">Sửa thông tin sinh viên</a>
 				</h3>
 				<ul class="page-breadcrumb breadcrumb">
 					<li>
@@ -28,7 +28,7 @@
 					</li>
 					<li>
 						<a href="#">
-							{{$student->stu_name}}
+							{{$student->name}}
 						</a>
 					</li>
 				</ul>
@@ -47,56 +47,56 @@
 							<li class="list-group-item">
 								Họ tên
 								<span class="label label-info pull-right">
-									{{$student->stu_name}}
+									{{$student->name}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Ngày sinh
 								<span class="label label-info pull-right">
-									{{date('d/m/Y',$student->stu_birthday)}}
+									{{date('d/m/Y',$student->birthday)}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Giới tính
 								<span class="label label-info pull-right">
-									{{Config::get('admin.sex')[$student->stu_sex]}}
+									{{Config::get('admin.sex')[$student->sex]}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Địa chỉ
 								<span class="label label-info pull-right">
-									{{$student->stu_address}}
+									{{$student->address}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Quê quán
 								<span class="label label-info pull-right">
-									{{$student->stu_hometown}}
+									{{$student->hometown}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Tỉnh thành
 								<span class="label label-info pull-right">
-									{{Config::get('admin.province')[$student->stu_province_id]}}
+									{{Config::get('admin.province')[$student->province_id]}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Số điện thoại
 								<span class="label label-info pull-right">
-									{{$student->stu_phone}}
+									{{$student->phone}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Hòm thư
 								<span class="label label-info pull-right">
-									{{$student->stu_email}}
+									{{$student->email}}
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Facebook
 								<span class="label label-info pull-right">
-									{{$student->stu_facebook}}
+									{{$student->facebook}}
 								</span>
 							</li>
 
@@ -110,40 +110,40 @@
 							<li class="list-group-item">
 								Tình trạng hôn nhân
 								<span class="label label-info pull-right">
-									{{Config::get('admin.married')[$student->stu_married]}}
+									{{Config::get('admin.married')[$student->married]}}
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Học thức
 								<span class="label label-info pull-right">
-									{{Config::get('admin.educated')[$student->stu_educated]}}
+									{{Config::get('admin.educated')[$student->educated]}}
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Loại khuyết tật
 								<span class="label label-info pull-right">
-									{{Config::get('admin.disabilities')[$student->stu_type_disabilities]}}
+									{{Config::get('admin.disabilities')[$student->type_disabilities]}}
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Người xác nhận
 								<span class="label label-info pull-right">
-									{{$student->stu_person_authen_name}}
+									{{$student->person_authen_name}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Địa chỉ người xác nhận
 								<span class="label label-info pull-right">
-									{{$student->stu_person_authen_address}}
+									{{$student->person_authen_address}}
 								</span>
 							</li>
 							<li class="list-group-item">
 								Ngày đăng kí
 								<span class="label label-info pull-right">
-									{{date('d-m-Y',$student->stu_regis_date)}}
+									{{date('d-m-Y',$student->regis_date)}}
 								</span>
 							</li>
 						</ul>

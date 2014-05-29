@@ -1,0 +1,3398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../extra/jquery-ui/jquery-ui.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap-bright-green.min.css" rel="stylesheet" id="target">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../docs/js/ie8-responsive-file-warning.js"></script>
+    <script src="../docs/js/html5shiv.js"></script>
+    <script src="../docs/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <title>
+
+        KVELLE - Multifunctional Bootstrap Skin: manual
+
+    </title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="kvelle-font-700 kvelle-color-lighter">KVELLE manual</h1>
+    <h4>Version 1.0.0 for Bootstrap 3.1.1 · March 25th, 2014</h4>
+    <p>Created by Rakinjakk for codecanyon.net · All Rights Reserved</p>
+    <p class="lead">
+        <a href="http://codecanyon.net/user/rakinjakk" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">CLICK HERE FOR SUPPORT</a>
+    </p>
+    <p>Please report any problems so that I can continue improving this product. Your input is greatly appreciated!</p>
+
+    <p>
+        <strong>IMPORTANT</strong>
+        <br>
+        - Bootstrap tooltips conflict with jQuery UI CSS, make sure to load jQuery UI CSS before bootstrap CSS.<br>
+        - less/navbar.less: some obtrusive dropdown code had to be commented out because otherwise dropdowns on smaller screens would not have the correct styles.
+        It would be nicer if Bootstrap would group all dropdown styles in one place, sadly this is not the case leaving me no other option then to touch the original files.<br>
+        - Holder.js vs Chromium: there's a bug in Chrome which obligated me to add some workarounds: docs/js/images.js and misc.js have this, also docs/css/docs.css bottom of page has
+        a fix for it (both are needed). <a href="https://github.com/imsky/holder/issues/81">https://github.com/imsky/holder/issues/81</a>
+    </p>
+
+    <div class="column sortable">
+
+        <h2 class="push-down kvelle-font-400">Getting acquainted with the library</h2>
+
+        <div class="portlet">
+            <div class="panel panel-primary">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Application structure</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" data-rail-visible="1" data-always-visible="1">
+                        <div class="alert alert-info fade in">
+                            <p>
+                                <i class="fa fa-info-circle"></i> <strong>Note:</strong> it is highly recommended to copy-paste code from the preview into your project to avoid you having to find out how everything works. View the source and use a browser
+                                inspector when unsure and don't be afraid to contact me when in doubt. By knowing your questions and doubts I can improve the product and manual.
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="img/folder-structure.png">
+                            </div>
+                            <div class="col-sm-9">
+                                <h5 class="kvelle-font-400">CSS</h5>
+                                <p>
+                                    Contains all the bootstrap CSS files, one for each theme color. Use the minified version in your live projects; the non-minified
+                                    version is useful when debugging with your preferred browser inspector.
+                                </p>
+                                <h5 class="kvelle-font-400">DOCS</h5>
+                                <p>
+                                    2 subfolders: <strong>css & js</strong>.<br>
+                                    <i class="fa fa-chevron-circle-right kvelle-color"></i> <span class="kvelle-font-400">CSS:</span><br>
+                                    <i class="fa fa-angle-right kvelle-color"></i> <span class="kvelle-font-400">docs.css:</span> only used for preview purposes<br>
+                                    <i class="fa fa-angle-right kvelle-color"></i> <span class="kvelle-font-400">others:</span> contains some styles for specific pages.
+                                    These will be discussed below in detail when discussing the plugin in detail.<br>
+                                    <i class="fa fa-chevron-circle-right kvelle-color"></i> <span class="kvelle-font-400">JS:</span><br>
+                                    each jQuery plugin needs some JavaScript code to work - these files take
+                                    care of that (also discussed in detail in the jQuery plugin overview).<br>
+                                    kvelle.js contains some site-wide styles: holder fix, style switch are not needed for your project. The dropdown effect
+                                    and sidebar are not needed if you don't want to use them.
+                                </p>
+                                <h5 class="kvelle-font-400">EXTRA</h5>
+                                <p>
+                                    All jQuery plugins are kept here.
+                                </p>
+                                <h5 class="kvelle-font-400">FONTS</h5>
+                                <p>
+                                    Container for Font Awesome and Glyphicons.
+                                </p>
+                                <h5 class="kvelle-font-400">IMG</h5>
+                                <p>
+                                    Where your images could be stored - blank.png is used for Lightbox2 in IE8-10.
+                                </p>
+                                <h5 class="kvelle-font-400">JS</h5>
+                                <p>
+                                    Folder for only Bootstrap JS files.
+                                </p>
+                                <h5 class="kvelle-font-400">LESS</h5>
+                                <p>
+                                    The LESS files are stored here. The default Bootstrap LESS files can be found here.<br>
+                                    Furthermore there are 3 subfolders:<br>
+                                    <i class="fa fa-chevron-circle-right kvelle-color"></i> <span class="kvelle-font-400">expansions:</span> styles for jQuery plugins and new look & feel for
+                                    this skin.<br>
+                                    <i class="fa fa-chevron-circle-right kvelle-color"></i> <span class="kvelle-font-400">fa:</span> Font Awesome LESS files.<br>
+                                    <i class="fa fa-chevron-circle-right kvelle-color"></i> <span class="kvelle-font-400">kvelle:</span> overriding the default Bootstrap styles.<br>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-light">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Getting started</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 400px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>Quickstart: create a new HTML5 file and copy over the top and bottom code from a preview template.</p>
+                        <p>As you are building up your design it could be interesting to investigate individual HTML files from the preview and copy over
+                            the HTML blocks needed.<br>
+                            For example if you want portlets, look at the head tags and you will see that it uses a
+                            jQuery UI stylesheet. Then look at the bottom code to know which JavaScript files to use. <span class="kvelle-font-400">The docs/js/ file
+                            always has the actual executing code whilst the extra folder holds the jQuery libraries.</span> Not all pages use the
+                            same scripts.
+                        </p>
+                        <p>
+                            <strong>Loading Bootstrap CSS</strong>
+                        </p>
+                        <p>There are 10 minified CSS files and 10 non-minified files. It is best to use a minified version to decrease loading times.<br>
+                            You can opt to use the non-minified versions of the files and edit them directly if you don't want to
+                            recompile the code with LESS. Compiling with LESS is really easy and fun though! We'll get into this later.</p>
+                        <p>
+                        <p>
+                        These colors are available:<br>
+                            <strong>bright-green, flat-green, red, bordeaux, blue, purple-blue, aqua, hard-pink, mokka, gray</strong>
+                        </p>
+                        <pre>&lt;!-- Bootstrap core CSS --&gt;<br>&lt;link href=&quot;css/bootstrap.COLOR.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+
+                        <p>
+                            Add the old IE support tags:
+                        </p>
+                        <pre>&lt;!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --&gt;<br>&lt;!--[if lt IE 9]&gt;<br>&lt;script src=&quot;docs/js/html5shiv.js&quot;&gt;&lt;/script&gt;<br>&lt;script src=&quot;docs/js/respond.min.js&quot;&gt;&lt;/script&gt;<br>&lt;![endif]--&gt;</pre>
+
+                        <p>
+                            Favicons (best create your own) and Font files:
+                        </p>
+<pre>&lt;!-- Favicons --&gt;
+&lt;link rel=&quot;apple-touch-icon-precomposed&quot; sizes=&quot;144x144&quot; href=&quot;img/favicon_precomposed.jpg&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;img/favicon.jpg&quot;&gt;
+<br>&lt;!-- Fonts --&gt;
+&lt;link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic' rel='stylesheet' type='text/css'&gt;</pre>
+
+                        <p>
+                            Now on the bottom of the page just above the body tag load jQuery and any JS files you need: the below method
+                            is used to make certain that when one CDN fails, the other will take over.
+                        </p>
+                        <pre>&lt;script src=&quot;https://code.jquery.com/jquery-1.10.2.min.js&quot;&gt;&lt;/script&gt;<br>&lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;\x3C/script&gt;')&lt;/script&gt;</pre>
+                        <p>
+                            Load the Bootstrap minified JS file:
+                        </p>
+                        <pre>&lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</pre>
+                        <p>
+                            Optionally, load the jQuery UI JS file where needed BEFORE the Bootstrap JS file:
+                        </p>
+                        <pre>&lt;script src=&quot;extra/jquery-ui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;<br>&lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</pre>
+                        <p>
+                            If you do this, be sure to load the jQuery UI CSS file BEFORE the bootstrap.css file:
+                        </p>
+                        <pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;extra/jquery-ui/jquery-ui.min.css&quot;&gt;<br>&lt;link href=&quot;css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; id=&quot;target&quot;&gt;</pre>
+                        <p>
+                            Load any other scripts from extra, create any JS files you need for your project (using the docs/js as examples) - the code below is used on this manual page.
+                        </p>
+                        <pre>&lt;script src=&quot;extra/slim-scroll/jquery.slimscroll.min.js&quot;&gt;&lt;/script&gt;<br>&lt;script src=&quot;js/portlets.js&quot;&gt;&lt;/script&gt;<br>&lt;script src=&quot;js/slim-scroll.js&quot;&gt;&lt;/script&gt;</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-lighter">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Overview of our LESS structure</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 400px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <h4>How it works</h4>
+                        <p>
+                            We override the default Bootstrap styles in less/kvelle: existing styles will be rewritten here.<br>
+                            We create new Bootstrap styles in less/expansions/kvelle: new styles based on existing Bootstrap elements will be added here;
+                            we also create swatch-specific styles for plugins here. Each swatch has a subfolder: less/expansions/kvelle/dark,
+                            less/expansions/kvelle/darker, less/expansions/kvelle/light, less/expansions/kvelle/ligher, less/expansions/kvelle/neutral.
+                            Teh 12 extra color styles re found in less/expansions/kvelle/extra-colors.<br>
+                            All other folders in less/expansions relate to plugins and contain default plugin styling.<br>
+                        </p>
+                        <p>
+                            This means that there is a default style for each element and plugin which works without adding extra classes. Each element/plugin
+                            also has extra styles which are defined as described above. Everything is kept separate for maximum flexibility.
+                        </p>
+
+                        <h4>less/kvelle/CORE.LESS</h4>
+                        <p>
+                            <span class="kvelle-font-400">description:</span> this file loads all custom made LESS code and is loaded in less/bootstrap.less (bottom of file).<br>
+                            <span class="kvelle-font-400">path:</span> less/kvelle/core.less<br>
+                            This file starts by loading all Kvelle specific LESS files and expansions.<br>
+                            LINE 46: here we load the <strong>less/expansions/kvelle/core-expansions.less</strong> file which contains theme color swatch specific imports. This means you can
+                            turn on color swatches you do not need: you have a very fine control over what you want to add and what to leave out.<br>
+                            LINE 131: adding new variable definitions: here you can set the main color by editing <code>@kvelle-color</code>.<br>
+                            LINE147: adding new system-wide classes:<br>
+                            <i class="fa fa fa-angle-right"></i> text colors;<br>
+                            <i class="fa fa fa-angle-right"></i> font sizes;<br>
+                            <i class="fa fa fa-angle-right"></i> navbar offset;<br>
+                            <i class="fa fa fa-angle-right"></i> other offsets, very handy for vertical spacing;<br>
+                            <i class="fa fa fa-angle-right"></i> site and page title styling.<br>
+                            LINE 203: overriding the default Bootstrap variables starts here.<br>
+                        </p>
+
+                        <h4>less/expansions/kvelle/CORE-EXPANSIONS.LESS</h4>
+                        <p>
+                            Description: this file loads all styles for new components and new look & feel: each theme color has 5 swatches and there's also a neutral color:<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/dark: contains styles for dark swatch;<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/darker: contains styles for darker swatch;<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/light: contains styles for light swatch;<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/lighter: contains styles for lighter swatch;<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/neutral: contains styles for nautral color;<br>
+                            <i class="fa fa fa-angle-right"></i> less/expansions/kvelle/extra-colors: contains styles for the 12 extra colors which are added to the skin.<br>
+                            You can disable individual swatches easily in core-expansions.less (just comment the stuff you do not need)<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Extra colors</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 400px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <h5>12 colors were added</h5>
+                        <p>These are applied to expansions for several sections, for example: alerts, wells, panels, buttons,
+                            pillboxes, table colors, etc</p>
+                        <ul class="list-unstyled iconized-alt">
+                            <li>@color-cyanide:             #3498DB;</li>
+                            <li>@color-meadow:              #8A9B0F;</li>
+                            <li>@color-cocktail:            #E97F02;</li>
+                            <li>@color-hearts:              #BD1550;</li>
+                            <li>@color-party:               #490A3D;</li>
+                            <li>@color-midnight:            #2C3E50;</li>
+                            <li>@color-concrete:            #95A5A6;</li>
+                            <li>@color-gunmetal:            #292E37;</li>
+                            <li>@color-hollow:              #423732;</li>
+                            <li>@color-mango:               #EEB816;</li>
+                            <li>@color-berry:               #E74C3C;</li>
+                            <li>@color-cello:               #B66432;</li>
+                        </ul>
+                        <p class="push-down-margin-thin">Thanks to these colors you will always have some extra options for putting extra tints in your design. You'll
+                            notice that our 10 main theme colors and their swatches match some of the 12 extra colors fairly nicely: at least 2 extra colors are highly
+                            compatible with a theme color.</p>
+                        <p>Note: some of these colors are hard-coded in the JS file for circular graphs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="push-down kvelle-font-400">Combining classes</h2>
+        <p>Some parts are fairly complex, this section should clear up possible confusions.</p>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Core classes</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            These classes are available system-wide and offer some basic functionality.<br>
+                        </p>
+                        <h5>Text color classes</h5>
+                        <p>
+                            <code>kvelle-color</code> (default color)<br>
+                            <code>kvelle-color-light</code><br>
+                            <code>kvelle-color-lighter</code><br>
+                            <code>kvelle-color-dark</code><br>
+                            <code>kvelle-color-darker</code><br>
+                            <code>kvelle-color-neutral</code><br>
+                            <code>kvelle-color-white</code><br>
+                        </p>
+                        <h5>Font sizes</h5>
+                        <p>
+                            <code>kvelle-font-100</code><br>
+                            <code>kvelle-font-300</code><br>
+                            <code>kvelle-font-400</code><br>
+                            <code>kvelle-font-700</code><br>
+                        </p>
+                        <h5>Offsets (change to hearts desire either in CSS or LESS)</h5>
+                        <code>navbar-offset-top</code> (for navbar top offset when using fixed navbar on top)<br>
+                        <code>push-down</code> (52px padding-top)<br>
+                        <code>push-down-thin</code> (26px padding-top)<br>
+                        <code>push-down-tiny</code> (6px padding-top)<br>
+                        <br>
+                        <code>push-up</code> (52px padding-bottom)<br>
+                        <code>push-up-thin</code> (26px padding-bottom)<br>
+                        <code>push-up-tiny</code> (6px padding-bottom)<br>
+                        <br>
+                        <code>push-down-margin</code> (40px margin-top)<br>
+                        <code>push-down-margin-thin</code> (20px margin-top)<br>
+                        <code>push-down-margin-tiny</code> (6px margin-top)<br>
+                        <br>
+                        <code>push-up-margin</code> (40px margin-bottom)<br>
+                        <code>push-up-margin-thin</code> (20px margin-bottom)<br>
+                        <code>push-up-margin-tiny</code> (6px margin-bottom)<br>
+                        <br>
+                        <code>no-margins</code> (eliminates all margins)<br>
+                        <code>no-padding</code> (idem but for padding)<br>
+                        <h5>Site and page title</h5>
+                        <code>site-title</code> (120px font size, size is smaler on smaller screens = 2.6 times base font size)<br>
+                        <code>page-title</code> (font weight = 100; size = 4 times base font size, currently 64px - on smaller screens size goes down to 2.6 times base font size)<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Datatables</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            To change the color of a data table these steps are needed:<br>
+                        </p>
+                        <p>
+                            <i class="fa fa fa-angle-right"></i> Pagination: in docs/js/datatables.js (LINE 13) the <code>paginationClass</code> should be set to one defined in
+                            a pagination.less file. Available classes are <code>dark</code>, <code>darker</code>, <code>light</code>, <code>lighter</code>, <code>neutral</code>.
+                        </p>
+                        <p>
+                            <i class="fa fa fa-angle-right"></i> Table style: add a class from any tables.less file. Available classes are <code>table-color</code>, <code>table-color-dark</code>,
+                            <code>table-color-darker</code>, <code>table-color-light</code>, <code>table-color-lighter</code>, <code>table-color-neutral</code>.
+                        </p>
+                        <p>
+                            <i class="fa fa fa-angle-right"></i> Styling the form elements: The only way to do this in a flexible way is through jQuery.
+                        </p>
+                        <pre>
+$('#basic_wrapper').addClass('has-lighter');
+$('#basic_length label select').addClass('form-control');
+$('#basic_filter label input').addClass('form-control').css("width", "150px");</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Forms</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            Forms can be styled by using a class on a surrounding HTML element. This can be done on individual form elements
+                            or by surrounding a whole form with a wrapper div.
+                            <br>
+                            Extra colored forms are also available.
+                        </p>
+                        <p>
+                            This also works for forms-extra, the date pickers are also styled when you wrap them with this kind of class.
+                        </p>
+                        <p>
+                            Available swatch classes:<br>
+                            <code>has-dark</code><br>
+                            <code>has-darker</code><br>
+                            <code>has-light</code><br>
+                            <code>has-lighter</code><br>
+                            <code>has-neutral</code><br>
+                            <code>has-dark</code><br>
+                        </p>
+                        <p>
+                            Available extra color classes:<br>
+                            <code>has-cyanide</code><br>
+                            <code>has-meadow</code><br>
+                            <code>has-cocktail</code><br>
+                            <code>has-mango</code><br>
+                            <code>has-berry</code><br>
+                            <code>has-hearts</code><br>
+                            <code>has-party</code><br>
+                            <code>has-cello</code><br>
+                            <code>has-midnight</code><br>
+                            <code>has-concrete</code><br>
+                            <code>has-gunmetal</code><br>
+                            <code>has-hollow</code><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Jumbotron</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            Styles within jumbotrons are predefined, however you can override these with the main classes defined in core.less LINE 131.
+                        </p>
+                        <p>
+                            The class <code>decreased-padding</code> reduces padding on the jumbotron so that you don't have the large padding where needed.
+                            The page titles use this class - the site title on the main index.html is an example of standard padding where this class is not used.
+                        </p>
+                        <p>
+                            The class <code>jumbotron-push</code> provides extra margins to a jumbotron - index.html has an example of this (in combination with the site-title
+                            class).
+                        </p>
+                        <p>
+                            Small text can be attained by using the <code>small</code> class.
+                        </p>
+                        <p>
+                            The default jumbotron does not need any additional classes and has the default background color, lighter text and dark links. Theme color
+                            swatches are used by adding a class for example <code>jumbotron-light</code> to the existing jumbotron container.
+                        </p>
+                        <p>
+                            Jumbotrons with white and transparent background have a different link style: it has a bottom border which fades away on hover.
+                        </p>
+                        <p>
+                            Availabe classes:<br>
+                            <code>jumbotron-default-white</code> (white background)<br>
+                            <code>jumbotron-default-transparent</code><br>
+                            <code>jumbotron-dark</code> (colored background using dark swatch)<br>
+                            <code>jumbotron-dark-white</code><br> (dark colored text using white background)
+                            <code>jumbotron-dark-transparent</code><br> (transparent background)
+                            <code>jumbotron-darker</code><br>
+                            <code>jumbotron-darker-white</code><br>
+                            <code>jumbotron-darker-transparent</code><br>
+                            <code>jumbotron-light</code><br>
+                            <code>jumbotron-light-white</code><br>
+                            <code>jumbotron-light-transparent</code><br>
+                            <code>jumbotron-lighter</code><br>
+                            <code>jumbotron-lighter-white</code><br>
+                            <code>jumbotron-lighter-transparent</code><br>
+                            <code>jumbotron-neutral</code><br>
+                            <code>jumbotron-neutral-white</code><br>
+                            <code>jumbotron-neutral-transparent</code><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Magnific popups</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            The CSS for magnific popup can be confusing.<br>
+                            <span class="kvelle-font-400">docs/css/magnific-popup.css</span> contains 2 styles that take care of some visual effects.
+                            They are there mainly to show that you can add styles without including them into the LESS project.<br>
+                            <span class="kvelle-font-400">less/expansions/magnific-popup/magnific-popup.less</span> has 6 visual effects coded in so they
+                            are available in the whole project (LINE 399 and onwards):<br>
+                            <code>mfp-zoom-in</code><br>
+                            <code>mfp-newspaper</code><br>
+                            <code>mfp-move-horizontal</code><br>
+                            <code>mfp-move-from-top</code><br>
+                            <code>mfp-3d-unfold</code><br>
+                            <code>mfp-zoom-out</code><br>
+                            <span class="kvelle-font-400">docs/js/magnific-popup.js</span> contains the scripts that call the CSS class when a visual effect is desired.<br>
+                        </p>
+                        <p>
+                            <strong>There are 2 ways to get a visual effect:</strong><br>
+                            - add it manually in jQuery by adding for example <code>mainClass: 'mfp-zoom-in-single'</code> (class is found in CSS file)<br>
+                            - use data-effect="class-name"<br>
+                            Example LINE 136 (docs/js/magnific-popup.js):
+                        </p>
+                        <pre>this.st.mainClass = this.st.el.attr('data-effect');</pre>
+                        <p>
+                            Zoom effects can also be obtained by using the built-in plugin settings:<br>
+                            Example LINE 74 (docs/js/magnific-popup.js):
+                        </p>
+                        <pre>
+zoom: {
+    enabled: true,
+    duration: 300, // don't forget to change the duration also in CSS
+    opener: function(element) {
+        return element.find('img');
+    }
+}
+                        </pre>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Styling the a tag</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div class="slimScroller" style="height: 240px; position: relative;" data-rail-visible="1" data-always-visible="1">
+                        <p>
+                            The default link style has the main theme color and darkens on hover.
+                        </p>
+                        <p>
+                            A combination of classes is possible to change the default link style. These classes are defined in less/expansions/kvelle/type.less.<br>
+                            These classes are not split up into swatch color groups so that they remain avaialble even when disabling a certain color via LESS.
+                        </p>
+                        <h5>Colors</h5>
+                        <p>
+                            <code>color-dark</code><br>
+                            <code>color-darker</code><br>
+                            <code>color-light</code><br>
+                            <code>color-lighter</code><br>
+                            <code>color-neutral</code><br>
+                            <code>color-white</code><br>
+                        </p>
+                        <h5>Bottom borders (fade away on hover)</h5>
+                        <p>
+                            <code>border-main</code> (main color)<br>
+                            <code>border-darker</code><br>
+                            <code>border-dark</code><br>
+                            <code>border-light</code><br>
+                            <code>border-lighter</code><br>
+                            <code>border-neutral</code><br>
+                            <code>border-white</code><br>
+                        </p>
+                        <h5>Background colors</h5>
+                        <p>
+                            <code>background-main</code><br>
+                            <code>background-dark</code><br>
+                            <code>background-darker</code><br>
+                            <code>background-light</code><br>
+                            <code>background-lighter</code><br>
+                            <code>background-neutral</code><br>
+                            <code>background-white</code><br>
+                        </p>
+                        <h5>Hover effects</h5>
+                        <h6>Text hover effects</h6>
+                        <p>
+                            <code>hover-main</code><br>
+                            <code>hover-dark</code><br>
+                            <code>hover-darker</code><br>
+                            <code>hover-light</code><br>
+                            <code>hover-lighter</code><br>
+                            <code>hover-neutral</code><br>
+                            <code>hover-white</code><br>
+                        </p>
+                        <h6>Text background effects</h6>
+                        <p>
+                            <code>hover-bg-main</code><br>
+                            <code>hover-bg-dark</code><br>
+                            <code>hover-bg-darker</code><br>
+                            <code>hover-bg-light</code><br>
+                            <code>hover-bg-lighter</code><br>
+                            <code>hover-bg-neutral</code><br>
+                            <code>hover-bg-white</code><br>
+                            <code>hover-bg-transparent</code> (removes background color on hover)<br>
+                        </p>
+                        <p>
+                            Example:<br>
+                            <pre>&lt;a href=&quot;javascript:&quot; class=&quot;border-darker color-darker kvelle-font-400 hover-white&quot;&gt;Aenean viverra ligula sit&lt;/a&gt;</pre>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-dark">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Styling backgrounds</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                        <p>
+                            Several background colors are available: add it to the wrapper HTML tag containing the markup you want to give a colored
+                            background. Examples can be found in typography.html.<br>
+                            Page headers receive a style automatically depending on the text color that was given to the page header. The default page
+                            header color is the text color (a gray shade) but you can override it with the classes that apply text color.<br>
+                            These background color styles are defined in the type.less files found in less/expansions/kvelle and swatch subfolders.
+                        </p>
+                        <p>
+                            For example, <code>kvelle-background-main</code> gives the background the main theme color.<br>
+                            When you add <code>kvelle-color-lighter</code> the page header will not have the default text color but it will have the color
+                            that corresponds with the lighter swatch of the theme color. You do not have to add this text color class to the same container
+                            as the background color class: color classes can be added to all HTML tags, allowing for great flexibility when applying text colors.<br>
+                            The <code>page-header</code> class will apply a bottom border color and bottom box shadow that fits this background color.
+                        </p>
+                        <p>
+                            Page header colors are carefully chosen to work well with the currently applied background color:<br>
+                            <code>kvelle-background-main</code> is the main theme color background class and has 3 predefined page header styles:<br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-lighter</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-darker</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-white</code><br>
+                            <br>
+                            <code>kvelle-background-darker</code> has 4 predefined page header styles:<br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-white</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-light</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-lighter</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color</code> (default color)<br>
+                            <br>
+                            <code>kvelle-background-dark</code> has 3 predefined page header styles:<br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-white</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-light</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-lighter</code><br>
+                            <br>
+                            <code>kvelle-background-light</code> has 3 predefined page header styles:<br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-white</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-dark</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-darker</code><br>
+                            <br>
+                            <code>kvelle-background-lighter</code> has 4 predefined page header styles:<br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-white</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-dark</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color-darker</code><br>
+                            <i class="fa fa fa-angle-right"></i> <code>kvelle-color</code> (default color)<br>
+                            <br>
+                            <code>kvelle-background-white</code> and <code>kvelle-background-transparent</code> have all 6 colors: 5 swatches and the neutral gray color<br>
+                            <br>
+                            Again, look at typography.html to see how it works. When in doubt contact support - we're here to help, after all you paid for the product.
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="push-down kvelle-font-400">jQuery plugins</h2>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Bootstrap Select</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                        <p>
+                            Fancy select styling available in many colors.
+                        </p>
+                        <p>
+                            <a href="http://silviomoreto.github.io/bootstrap-select/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Style the dropdown via the <code>data-dropdown</code> attribute.
+                        </p>
+<pre>
+&lt;h4&gt;Single&lt;/h4&gt;
+&lt;select class=&quot;selectpicker&quot; data-dropdown=&quot;default-color&quot;&gt;
+    &lt;option&gt;Mustard&lt;/option&gt;
+    &lt;option&gt;Ketchup&lt;/option&gt;
+    &lt;option&gt;Relish&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h4&gt;Option groups&lt;/h4&gt;
+&lt;select class=&quot;selectpicker&quot; data-width=&quot;100%&quot; data-dropdown=&quot;default-bgcolor&quot;&gt;
+    &lt;optgroup label=&quot;Picnic&quot;&gt;
+        &lt;option&gt;Mustard&lt;/option&gt;
+        &lt;option&gt;Ketchup&lt;/option&gt;
+        &lt;option&gt;Relish&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label=&quot;Camping&quot;&gt;
+        &lt;option&gt;Tent&lt;/option&gt;
+        &lt;option&gt;Flashlight&lt;/option&gt;
+        &lt;option&gt;Toilet Paper&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;h4&gt;Multiple&lt;/h4&gt;
+&lt;select class=&quot;selectpicker&quot; multiple data-dropdown=&quot;default-border&quot;&gt;
+    &lt;option&gt;Mustard&lt;/option&gt;
+    &lt;option&gt;Ketchup&lt;/option&gt;
+    &lt;option&gt;Relish&lt;/option&gt;
+&lt;/select&gt;</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                            The plugin page contains a full overview with all options and methods.
+                        </p>
+<pre>
+$('.selectpicker').selectpicker({
+    width: '100%'
+});</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Bootstrap Switch</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                        <p>
+                            Styled checkbox and radiobox.
+                        </p>
+                        <p>
+                            <a href="http://www.bootstrap-switch.org/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> use a combination of form wrappers for border color and
+                            use data attributes to define switch background colors.
+                        </p>
+<pre>
+&lt;h5&gt;Default&lt;/h5&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;bs-switch&quot; name=&quot;test&quot; checked&gt;
+&lt;/div&gt;
+
+&lt;h5&gt;+ lighter background&lt;/h5&gt;
+&lt;div class=&quot;has-lighter&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;bs-switch&quot; name=&quot;test&quot; checked data-on-color=&quot;lighter&quot;&gt;
+&lt;/div&gt;</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+$(&quot;input.bs-switch&quot;).bootstrapSwitch();</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Bootstrap Touchspin</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                        <p>
+                            Number spinner: increase/decrease with options.
+                        </p>
+                        <p>
+                            <a href="http://www.virtuosoft.eu/code/bootstrap-touchspin/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> color can be added by using extra classes from this class.
+                        </p>
+<pre>
+&lt;input id=&quot;demo1&quot; type=&quot;text&quot; value=&quot;55&quot; name=&quot;demo1&quot;&gt;</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+$(&quot;input[name='demo1']&quot;).TouchSpin({
+    min: 0,
+    max: 100,
+    step: 0.1,
+    decimals: 2,
+    boostat: 5,
+    maxboostedstep: 10,
+    postfix: '%'
+});
+
+// playing with colors
+$(&quot;input[name='mango']&quot;).TouchSpin({
+    min: 0,
+    max: 100,
+    step: 0.1,
+    decimals: 2,
+    boostat: 5,
+    maxboostedstep: 10,
+    postfix: '%',
+    buttondown_class: &quot;btn btn-mango&quot;,
+    buttonup_class: &quot;btn btn-mango&quot;
+});</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Check A Box</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Custom checkboxes and radio boxes. These are full retina ready, the JS library has been converted to work as was needed.
+                        </p>
+                        <p>
+                            <a href="http://immobilienscout24.github.io/CheckABox/#options" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> add color with form classes e.g. <code>has-lighter</code>.
+                        </p>
+<pre>
+&lt;div class=&quot;custom-checkbox&quot;&gt;
+    &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot;&gt; Check me out
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;input-group&quot;&gt;
+    &lt;span class=&quot;input-group-addon custom-checkbox&quot;&gt;
+        &lt;input type=&quot;checkbox&quot;&gt;
+    &lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;
+&lt;/div&gt;&lt;!-- /input-group --&gt;
+
+// radio
+&lt;div class=&quot;input-group custom-checkbox&quot;&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;
+        &lt;input type=&quot;radio&quot;&gt;
+    &lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;
+&lt;/div&gt;&lt;!-- /input-group --&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+/* checkabox
+    ---------------------------------------------------------- */
+var checkboxSelector = &quot;.custom-checkbox input[type='checkbox']&quot;,
+radioSelector = &quot;.custom-checkbox input[type='radio']&quot;;
+
+$(checkboxSelector).checkABox(&quot;bind&quot;);
+$(radioSelector).checkABox(&quot;bind&quot;, {
+    &quot;iconClass&quot;: &quot;ui-icon ui-icon-round&quot;
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Colorpickers</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>Four different color pickers are available.
+                        </p>
+                        <p>
+                            <a href="http://www.eyecon.ro/bootstrap-colorpicker/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> form elements are styles with has-[colorname].
+                        </p>
+<pre>
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;#8fff00&quot; id=&quot;cp1&quot;&gt;
+
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;rgb(0,194,255,0.78)&quot; id=&quot;cp2&quot; data-color-format=&quot;rgba&quot;&gt;
+
+&lt;div class=&quot;input-group color&quot; data-color=&quot;rgb(255, 0, 0)&quot; data-color-format=&quot;rgb&quot; id=&quot;cp3&quot;&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;&quot;&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;
+        &lt;i style=&quot;background-color: rgb(255, 0, 0)&quot;&gt;&lt;/i&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;a href=&quot;javascript:&quot; class=&quot;btn btn-primary small&quot; id=&quot;cp4&quot; data-color-format=&quot;hex&quot; data-color=&quot;rgb(255, 255, 255)&quot;&gt;Change background color&lt;/a&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+/* colorpicker
+---------------------------------------------------------- */
+$('#cp1').colorpicker({
+    format: 'hex'
+});
+$('#cp2').colorpicker();
+$('#cp3').colorpicker();
+var bodyStyle = $('body')[0].style;
+$('#cp4').colorpicker().on('changeColor', function(ev){
+    bodyStyle.backgroundColor = ev.color.toHex();
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Datatables</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Sortable and searchable tables with pagination.
+                        </p>
+                        <p>
+                            <a href="http://www.datatables.net" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> datatables.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> for styling see above section under Combining classes.
+                        </p>
+<pre>
+&lt;table class=&quot;table table-striped table-hover table-bordered&quot; id=&quot;basic&quot;&gt;
+...
+&lt;/table&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/datatables.js
+                        </p>
+<pre>
+// basic
+$('#basic').dataTable( {
+    &quot;sPaginationType&quot;: &quot;bs_normal&quot;,
+        &quot;oLanguage&quot;: {
+        &quot;oPaginate&quot;: {
+        &quot;sPrevious&quot;: &quot;&quot;,
+        &quot;sNext&quot;: &quot;&quot;
+    },
+    &quot;sInfo&quot;: &quot;Showing _START_ to _END_ of _TOTAL_ records&quot;,
+    &quot;sLengthMenu&quot;: &quot;_MENU_ records&quot;,
+    &quot;sInfoEmpty&quot;: &quot;Showing 0 to 0 of 0 records&quot;,
+    &quot;sInfoFiltered&quot;: &quot;(filtered from _MAX_ total records)&quot;,
+    &quot;sSearch&quot;: &quot;&lt;span class=\&quot;datatables_search\&quot;&gt;Search:&lt;/span&gt;&quot;
+    }
+});
+
+// adding Bootstrap form-control manually
+// post by Jorex (August 2013): https://www.datatables.net/forums/discussion/16809/bootstrap-3
+$('#basic_length label select').addClass('form-control');
+$('#basic_filter label input').addClass('form-control').css(&quot;width&quot;, &quot;150px&quot;);
+//set alternate pagination style
+$('#basic').closest('.row').find('.pagination').addClass('pagination-nocolor');
+
+// basic 2
+$('#basic2').dataTable( {
+    &quot;aaSorting&quot;: [[ 2, &quot;asc&quot; ]],
+    &quot;sPaginationType&quot;: &quot;bs_normal&quot;,
+    &quot;oLanguage&quot;: {
+        &quot;oPaginate&quot;: {
+        &quot;sPrevious&quot;: &quot;&quot;,
+        &quot;sNext&quot;: &quot;&quot;
+    },
+    &quot;sInfo&quot;: &quot;Showing _START_ to _END_ of _TOTAL_ records&quot;,
+    &quot;sLengthMenu&quot;: &quot;_MENU_ records&quot;,
+    &quot;sInfoEmpty&quot;: &quot;Showing 0 to 0 of 0 records&quot;,
+    &quot;sInfoFiltered&quot;: &quot;(filtered from _MAX_ total records)&quot;,
+    &quot;sSearch&quot;: &quot;&lt;span class=\&quot;datatables_search\&quot;&gt;Search:&lt;/span&gt;&quot;
+    }
+});
+$('#basic2_length label select').addClass('form-control');
+$('#basic2_filter label input').addClass('form-control').css(&quot;width&quot;, &quot;150px&quot;);
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Date range picker</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Detailed date range selection.
+                        </p>
+                        <p>
+                            <a href="https://github.com/dangrossman/bootstrap-daterangepicker" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> apply an id and use it to call the jQuery plugin.
+                        </p>
+<pre>
+&lt;div class=&quot;input-group&quot;&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-calendar icon-calendar&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;reservation&quot; id=&quot;reservation&quot; value=&quot;03/18/2013 - 03/23/2013&quot; /&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;input-group&quot;&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-calendar icon-calendar&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;reservation&quot; id=&quot;reservationtime&quot; value=&quot;08/01/2013 1:00 PM - 08/01/2013 1:30 PM&quot;&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;reportrange&quot;&gt;
+    &lt;i class=&quot;fa fa-calendar icon-calendar icon-large&quot;&gt;&lt;/i&gt;
+    &lt;span&gt;&lt;/span&gt; &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+/* date range picker
+---------------------------------------------------------- */
+$('#reservation').daterangepicker();
+$('#reservationtime').daterangepicker({
+    timePicker: true,
+    timePickerIncrement: 30,
+    format: 'MM/DD/YYYY h:mm A'
+});
+
+$('#reportrange').daterangepicker(
+{
+    startDate: moment().subtract('days', 29),
+    endDate: moment(),
+    minDate: '01/01/2012',
+    maxDate: '12/31/2014',
+    dateLimit: { days: 60 },
+    showDropdowns: true,
+    showWeekNumbers: true,
+    timePicker: false,
+    timePickerIncrement: 1,
+    timePicker12Hour: true,
+    ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+        'Last 7 Days': [moment().subtract('days', 6), moment()],
+        'Last 30 Days': [moment().subtract('days', 29), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+    },
+    opens: 'left',
+    buttonClasses: ['btn btn-default'],
+    applyClass: 'btn-small btn-primary',
+    cancelClass: 'btn-small',
+    format: 'MM/DD/YYYY',
+    separator: ' to ',
+    locale: {
+        applyLabel: 'Submit',
+        fromLabel: 'From',
+        toLabel: 'To',
+        customRangeLabel: 'Custom Range',
+        daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+        monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        firstDay: 1
+    }
+},
+function(start, end) {
+    //console.log(&quot;Callback has been called!&quot;);
+    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+);
+
+//Set the initial state of the picker label
+$('#reportrange span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Date-time picker</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Apply an id and use it to call the jQuery plugin.
+                        <p>
+                            <a href="http://www.eyecon.ro/bootstrap-datepicker/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> apply an id and use it to call the jQuery plugin.
+                        </p>
+<pre>
+&lt;div class='input-group date' id='datetimepicker1'&gt;
+    &lt;input type='text' class=&quot;form-control&quot; data-format='MM/dd/yyyy hh:mm:ss'&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-calendar&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class='input-group date' id='datetimepicker2' data-picker-position=&quot;bottom-left&quot;&gt;
+    &lt;input type='text' class=&quot;form-control&quot; data-format='hh:mm:ss'&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-clock-o&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class='input-group date' id='datetimepicker3'&gt;
+    &lt;input type='text' class=&quot;form-control&quot; data-format='MM/dd/yyyy'&gt;
+    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-calendar&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+/* datetime picker
+    ---------------------------------------------------------- */
+    $('#datetimepicker1').datetimepicker({
+        language: 'en',
+        pick12HourFormat: true
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        pickDate: false
+    });
+
+    $('#datetimepicker3').datetimepicker({
+        pickTime: false
+    });
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Fitvids</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Fully responsive video placing, compatible with several providers.
+                        <p>
+                            <a href="https://github.com/davatron5000/FitVids.js" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> fitvids.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> uses docs/css/fitvids.css for some specific styling necessary to make this work.
+                        </p>
+<pre>
+&lt;div class=&quot;vendor&quot;&gt;<br />
+    &lt;iframe width=&quot;425&quot; height=&quot;349&quot; src=&quot;http://www.youtube.com/embed/41QFL4QB3NE&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;<br />
+&lt;/div&gt;<br />
+&lt;div class=&quot;vendor push-down-thin&quot;&gt;<br />
+    &lt;iframe src=&quot;http://player.vimeo.com/video/25708134?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;<br />
+&lt;/div&gt;<br />
+&lt;div class=&quot;vendor push-down-thin&quot;&gt;<br />
+    &lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-444553540000&quot; width=&quot;437&quot; height=&quot;288&quot; id=&quot;viddler&quot;&gt;&lt;param name=&quot;movie&quot; value=&quot;http://www.viddler.com/player/d6c37b62/&quot; /&gt;&lt;param name=&quot;allowScriptAccess&quot; value=&quot;always&quot; /&gt;&lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;&lt;param name=&quot;flashvars&quot; value=&quot;fake=1&quot;/&gt;&lt;embed src=&quot;http://www.viddler.com/player/d6c37b62/&quot; width=&quot;437&quot; height=&quot;288&quot; type=&quot;application/x-shockwave-flash&quot; allowScriptAccess=&quot;always&quot; allowFullScreen=&quot;true&quot; flashvars=&quot;fake=1&quot; name=&quot;viddler&quot; &gt;&lt;/embed&gt;&lt;/object&gt;<br />
+&lt;/div&gt;<br />
+&lt;div class=&quot;vendor push-down-thin&quot;&gt;<br />
+    &lt;embed src=&quot;http://blip.tv/play/AYHCnikC&quot; type=&quot;application/x-shockwave-flash&quot; width=&quot;550&quot; height=&quot;396&quot; wmode=&quot;transparent&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; &gt;&lt;/embed&gt;<br />
+&lt;/div&gt;<br />
+&lt;div class=&quot;vendor push-down-thin&quot;&gt;<br />
+    &lt;iframe frameborder=&quot;0&quot; height=&quot;410px&quot; src=&quot;http://www.kickstarter.com/projects/30453381/the-shape-of-design/widget/video.html&quot; width=&quot;480px&quot;&gt;&lt;/iframe&gt;<br />
+&lt;/div&gt;<br />
+&lt;div class=&quot;vendor push-down-thin&quot;&gt;<br />
+    &lt;iframe width=&quot;520px&quot; height=&quot;391px&quot; src=&quot;http://socialcam.com/videos/XRMP3Y5t/embed?utm_campaign=web&amp;utm_source=embed&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;<br />
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/fitvids.js<br>
+                        </p>
+<pre>
+$(&quot;.vid-wrapper&quot;).fitVids();<br>
+// Custom selector and No-Double-Wrapping Prevention Test
+$(&quot;.vid-wrapper&quot;).fitVids({
+    customSelector: &quot;iframe[src^='http://socialcam.com']&quot;
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">FUEL UX Combobox, pillbox, search, select, spinner wizard</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Have a look in their excellent manual for usages.
+                        </p>
+                        <p>
+                            <a href="http://exacttarget.github.io/fuelux/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                        </p>
+                        <p>
+                            <br><code>extra/fuel-ux/combobox.js</code>
+                            <br><code>extra/fuel-ux/pillbox.js</code>
+                            <br><code>extra/fuel-ux/search.js</code>
+                            <br><code>extra/fuel-ux/select.js</code>
+                            <br><code>extra/fuel-ux/spinner.js</code>
+                            <br><code>extra/fuel-ux/wizard.js</code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">File input</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Using Jasny Bootstrap plugin to style an HTML file upload section.
+                        </p>
+                        <p>
+                            <a href="http://jasny.github.io/bootstrap/javascript/#fileinput" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> works by data attributes.
+                        </p>
+<pre>
+&lt;div class=&quot;fileupload fileupload-new&quot; data-provides=&quot;fileupload&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+        &lt;div class=&quot;uneditable-input form-control&quot;&gt;
+        &lt;i class=&quot;fa fa-file fileupload-exists&quot;&gt;&lt;/i&gt;&amp;nbsp;
+        &lt;span class=&quot;fileupload-preview&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;input-group-btn&quot;&gt;
+        &lt;span class=&quot;btn btn-default btn-file&quot;&gt;
+            &lt;span class=&quot;fileupload-new&quot;&gt;Select file&lt;/span&gt;
+                &lt;span class=&quot;fileupload-exists&quot;&gt;Change&lt;/span&gt;
+                &lt;input type=&quot;file&quot;&gt;
+                &lt;/span&gt;
+            &lt;/span&gt;
+        &lt;a href=&quot;javascript:&quot; class=&quot;btn btn-default fileupload-exists fileupload-remove&quot; data-dismiss=&quot;fileupload&quot;&gt;Remove&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;fileupload fileupload-new&quot; data-provides=&quot;fileupload&quot;&gt;
+    &lt;span class=&quot;btn btn-default btn-file&quot;&gt;
+        &lt;span class=&quot;fileupload-new&quot;&gt;Select file&lt;/span&gt;
+            &lt;span class=&quot;fileupload-exists&quot;&gt;Change&lt;/span&gt;
+                &lt;input type=&quot;file&quot;&gt;
+            &lt;/span&gt;
+        &lt;span class=&quot;fileupload-preview&quot;&gt;&lt;/span&gt;
+    &lt;a href=&quot;javascript:&quot; class=&quot;close fileupload-exists&quot; data-dismiss=&quot;fileupload&quot; style=&quot;float: none&quot;&gt;&#x00d7;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Rowlinks</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Using Jasny Bootstrap plugin to style an HTML table row adding hover styles and functionality.
+                        </p>
+                        <p>
+                            <a href="http://jasny.github.io/bootstrap/javascript/#rowlink" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> tables.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> works by data attributes. Hover and cursor on table rows. Styled with CSS on <code>class="rowlink"</code>.
+                        </p>
+<pre>
+&lt;table class=&quot;table table-hover&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;#&lt;/th&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;Username&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody data-link=&quot;row&quot; class=&quot;rowlink&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;Mark&lt;/td&gt;
+            &lt;td&gt;Otto&lt;/td&gt;
+            &lt;td&gt;@mdo&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;2&lt;/td&gt;
+            &lt;td&gt;Jacob&lt;/td&gt;
+            &lt;td&gt;Thornton&lt;/td&gt;
+            &lt;td&gt;@fat&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td colspan=&quot;2&quot;&gt;Larry the Bird&lt;/td&gt;
+            &lt;td&gt;@twitter&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Input mask</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Using Jasny Bootstrap plugin to style an HTML input field for input mask.
+                        </p>
+                        <p>
+                            <a href="http://jasny.github.io/bootstrap/javascript/#inputmask" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> works by data attributes.
+                        </p>
+<pre>
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; data-mask=&quot;999-99-999-9999-9&quot;&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Gmaps</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Google maps come in all forms and sizes. <a href="http://hpneo.github.io/gmaps/examples.html">Visit the examples page here</a> for more possibilities.
+                        </p>
+                        <p>
+                            <a href="http://hpneo.github.io/gmaps/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> gmaps.html<br>
+                        </p>
+<pre>
+&lt;div id=&quot;gmap-basic&quot; class=&quot;gmaps&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;gmap-marker&quot; class=&quot;gmaps&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;gmap-polyline&quot; class=&quot;gmaps&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;gmap-geo&quot; class=&quot;gmaps&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;gmap-geocode&quot; class=&quot;gmaps-coding&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;gmap-polygon&quot; class=&quot;gmaps&quot;&gt;&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/gmaps.js
+                        </p>
+<pre>
+// basic
+new GMaps({
+    div: '#gmap-basic',
+    lat: -12.043333,
+    lng: -77.028333
+});
+
+// markers
+var map = new GMaps({
+    div: '#gmap-marker',
+    lat: -12.043333,
+    lng: -77.028333
+});
+map.addMarker({
+    lat: -12.043333,
+    lng: -77.028333,
+    title: 'Lima',
+    click: function(e) {
+    alert('You clicked in this marker');
+}
+});
+
+// geolocation
+var mapGeo = new GMaps({
+    div: '#gmap-geo',
+    lat: -12.043333,
+    lng: -77.028333
+});
+
+GMaps.geolocate({
+    success: function(position){
+        mapGeo.setCenter(position.coords.latitude, position.coords.longitude);
+    },
+    error: function(error){
+        alert('Geolocation failed: '+error.message);
+    },
+    not_supported: function(){
+        alert(&quot;Your browser does not support geolocation&quot;);
+    },
+    always: function(){
+        alert(&quot;Geolocation done!&quot;);
+    }
+});
+
+// geocoding
+var mapGeocode = new GMaps({
+    div: '#gmap-geocode',
+    lat: -12.043333,
+    lng: -77.028333
+});
+$('#geocoding_form').submit(function(e){
+    e.preventDefault();
+    GMaps.geocode({
+        address: $('#address').val().trim(),
+        callback: function(results, status){
+            if(status=='OK'){
+                var latlng = results[0].geometry.location;
+                mapGeocode.setCenter(latlng.lat(), latlng.lng());
+                mapGeocode.addMarker({
+                    lat: latlng.lat(),
+                    lng: latlng.lng()
+                });
+            }
+        }
+    });
+});        // polylines
+var mapPoly = new GMaps({
+    div: '#gmap-polyline',
+    lat: -12.043333,
+    lng: -77.028333,
+    click: function(e){
+    //console.log(e);
+}
+});
+
+path = [[-12.044012922866312, -77.02470665341184], [-12.05449279282314, -77.03024273281858], [-12.055122327623378, -77.03039293652341], [-12.075917129727586, -77.02764635449216], [-12.07635776902266, -77.02792530422971], [-12.076819390363665, -77.02893381481931], [-12.088527520066453, -77.0241058385925], [-12.090814532191756, -77.02271108990476]];
+
+mapPoly.drawPolyline({
+    path: path,
+    strokeColor: '#131540',
+    strokeOpacity: 0.6,
+    strokeWeight: 6
+});
+mapPoly.setZoom(12);
+
+// polygon
+var mapPolygon = new GMaps({
+    div: '#gmap-polygon',
+    lat: -12.043333,
+    lng: -77.028333
+});
+
+var path = [[-12.040397656836609,-77.03373871559225],
+[-12.040248585302038,-77.03993927003302],
+[-12.050047116528843,-77.02448169303511],
+[-12.044804866577001,-77.02154422636042]];
+
+polygon = mapPolygon.drawPolygon({
+    paths: path,
+    strokeColor: '#BBD8E9',
+    strokeOpacity: 1,
+    strokeWeight: 3,
+    fillColor: '#BBD8E9',
+    fillOpacity: 0.6
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Circular graphs</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            These do not work in IE8! Fallback = input field.<br>
+                        </p>
+                        <p>
+                            <a href="http://anthonyterrien.com/knob/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page - jQuery Knob</a><br>
+                            <a href="http://justgage.com/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page - JustGage</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> graphs-circular.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> color styles for Knob are added in jQuery - color hex codes are hardcoded there. Any color is possible!
+                        </p>
+<pre>
+// KNOB
+&lt;input class=&quot;knob&quot; data-width=&quot;200&quot; data-fgColor=&quot;#3498DB&quot; data-displayInput=&quot;false&quot; value=&quot;35&quot;&gt;
+&lt;input class=&quot;knob&quot; data-width=&quot;200&quot; data-cursor=true data-fgColor=&quot;#222222&quot; value=&quot;29&quot;&gt;
+&lt;input class=&quot;knob&quot; data-min=&quot;-15000&quot; data-displayPrevious=true data-max=&quot;15000&quot; data-step=&quot;1000&quot; data-fgColor=&quot;#BD1550&quot; value=&quot;-11000&quot;&gt;
+&lt;input class=&quot;knob&quot; data-width=&quot;200&quot; data-min=&quot;-100&quot; data-fgColor=&quot;#2C3E50&quot; data-displayPrevious=&quot;true&quot; value=&quot;44&quot;&gt;
+&lt;input class=&quot;knob&quot; data-angleOffset=&quot;90&quot; data-linecap=&quot;round&quot; data-fgColor=&quot;#E74C3C&quot; value=&quot;35&quot;&gt;
+&lt;input class=&quot;knob&quot; data-fgColor=&quot;#490A3D&quot; data-thickness=&quot;.1&quot; value=&quot;45&quot;&gt;
+&lt;input class=&quot;knob&quot; data-fgColor=&quot;#8A9B0F&quot; readonly value=&quot;22&quot;&gt;&lt;input class=&quot;knob&quot; data-angleOffset=&quot;90&quot; data-angleArc=&quot;180&quot; data-fgColor=&quot;#E97F02&quot; value=&quot;35&quot;&gt;
+&lt;input class=&quot;knob&quot; data-fgColor=&quot;#292E37&quot; data-thickness=&quot;.6&quot; value=&quot;45&quot;&gt;
+
+// JustGage
+&lt;div id=&quot;g1&quot; style=&quot;height:500px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;g2&quot; style=&quot;height:250px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;g4&quot; style=&quot;height:283px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;g5&quot; style=&quot;height:283px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;g6&quot; style=&quot;height:283px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;g3&quot; style=&quot;height:100px;&quot;&gt;&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/graphs-circular.js<br>
+                        </p>
+<pre>
+/* jQuery knob
+---------------------------------------------------------- */
+$(&quot;.knob&quot;).knob({
+    change : function (value) {
+        //console.log(&quot;change : &quot; + value);
+    },
+    release : function (value) {
+        //console.log(this.$.attr('value'));
+        //console.log(&quot;release : &quot; + value);
+    },
+    cancel : function () {
+        //console.log(&quot;cancel : &quot;, this);
+    }
+});
+
+/* justGage
+---------------------------------------------------------- */
+var g1 = new JustGage({
+    id: &quot;g1&quot;,
+    value: getRandomInt(0, 100),
+    min: 0,
+    max: 100,
+    title: &quot;Big Fella&quot;,
+    label: &quot;pounds&quot;
+});
+
+var g2 = new JustGage({
+    id: &quot;g2&quot;,
+    value: getRandomInt(0, 100),
+    min: 0,
+    max: 100,
+    title: &quot;Small Buddy&quot;,
+    label: &quot;oz&quot;
+});
+
+var g3 = new JustGage({
+    id: &quot;g3&quot;,
+    value: getRandomInt(0, 100),
+    min: 0,
+    max: 100,
+    title: &quot;Tiny Lad&quot;,
+    label: &quot;oz&quot;
+});
+
+setInterval(function() {
+    g1.refresh(getRandomInt(50, 100));
+    g2.refresh(getRandomInt(50, 100));
+    g3.refresh(getRandomInt(0, 50));
+}, 2500);
+
+var g4 = new JustGage({
+    id: &quot;g4&quot;,
+    value: getRandomInt(0, 100),
+    min: 0,
+    max: 100,
+    title: &quot;Animation effects&quot;,
+    label: &quot;pounds&quot;,
+    startAnimationType: &quot;bounce&quot;
+});
+
+var g5 = new JustGage({
+    id: &quot;g5&quot;,
+    value: getRandomInt(0, 230),
+    min: 0,
+    max: 230,
+    title: &quot;Gauge width&quot;,
+    label: &quot;members&quot;,
+    gaugeWidthScale: &quot;.2&quot;
+});
+
+var myColors = [&quot;#3498DB&quot;, &quot;#8A9B0F&quot;, &quot;#E97F02&quot;, &quot;#E74C3C&quot;, &quot;#490A3D&quot;];
+var g6 = new JustGage({
+    id: &quot;g6&quot;,
+    value: getRandomInt(0, 100),
+    min: 0,
+    max: 100,
+    title: &quot;Alternate level colors&quot;,
+    label: &quot;units&quot;,
+    levelColors : myColors
+});
+
+setInterval(function() {
+    g4.refresh(getRandomInt(50, 100));
+    g5.refresh(getRandomInt(50, 100));
+    g6.refresh(getRandomInt(0, 50));
+}, 2500);
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Gritter</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Popup notifications with events, options.
+                        </p>
+                        <p>
+                            <a href="https://github.com/jboesch/Gritter" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <a href="http://boedesign.com/blog/2009/07/11/growl-for-jquery-gritter/">Blog post with good info</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> misc.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> there's only one style for Gritter, unfortunately no swatches could be added to the original jQuery file.
+                        </p>
+<pre>
+// gritter triggers for demo purposes
+&lt;ul class=&quot;list-unstyled gritter-buttons&quot;&gt;
+    &lt;li style=&quot;margin-bottom: 5px;&quot;&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-regular&quot; class=&quot;btn btn-cyanide&quot;&gt;Add regular notification&lt;/a&gt;
+        &lt;br&gt;Fades out after a certain amount of time, can be set for each notification.
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-sticky&quot; class=&quot;btn btn-meadow&quot;&gt;Add sticky notification&lt;/a&gt;
+        &lt;br&gt;Doesn't run on a fade timer.  Just sits there until the user manually removes it by clicking on the (X).
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-without-image&quot; class=&quot;btn btn-cocktail&quot;&gt;Add notification without image&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-gritter-light&quot; class=&quot;btn btn-berry&quot;&gt;Add a white notification&lt;/a&gt;
+        &lt;br&gt;Has a 'gritter-light' class_name applied to it.
+    &lt;/li&gt;
+    &lt;li&gt;
+     &lt;a href=&quot;javascript:&quot; id=&quot;add-with-callbacks&quot; class=&quot;btn btn-cello&quot;&gt;Add notification (with callbacks)&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-sticky-with-callbacks&quot; class=&quot;btn btn-gunmetal&quot;&gt;Add a sticky notification (with callbacks)&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;add-max&quot; class=&quot;btn btn-party&quot;&gt;Add notification with max of 3&lt;/a&gt;
+        &lt;br&gt;If there are 3 messages already on screen, it won't show another one.
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;remove-all&quot; class=&quot;btn btn-midnight&quot;&gt;Remove all notifications&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;javascript:&quot; id=&quot;remove-all-with-callbacks&quot; class=&quot;btn btn-hearts&quot;&gt;Remove all notifications (with callbacks)&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/misc.js<br>
+                        </p>
+<pre>
+(code is huge, just copy-paste from misc.js)
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Hover dropdowns</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Dropdowns show on hover with transition effect.
+                        </p>
+                        <p>
+                            <a href="https://github.com/CWSpear/bootstrap-hover-dropdown" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> buttons.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> uses data attributes.
+                        </p>
+<pre>
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-default dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Button &lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left primary-back&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-primary dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Primary &lt;i class=&quot;fa fa-angle-double-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left primary-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-danger dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Danger &lt;i class=&quot;fa fa-chevron-circle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left danger-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-warning dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Warning &lt;i class=&quot;fa fa-arrow-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left warning-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-success dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Success &lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left success-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-info dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Info &lt;i class=&quot;fa fa-angle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left info-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-cyanide dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Cyanide &lt;i class=&quot;fa fa-arrow-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left cyanide-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-meadow dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Meadow &lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left meadow-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-cocktail dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Cocktail &lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left cocktail-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-mango dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Mango &lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left mango-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-hearts dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Hearts &lt;i class=&quot;fa fa-long-arrow-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left hearts-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-party dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Party &lt;i class=&quot;fa fa-arrow-circle-o-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left party-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-midnight dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Midnight &lt;i class=&quot;fa fa-angle-double-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left midnight-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-concrete dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Concrete &lt;i class=&quot;fa fa-angle-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left concrete-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-gunmetal dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Gunmetal &lt;i class=&quot;fa fa-share fa-rotate-90&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left gunmetal-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn btn-hollow dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; data-hover=&quot;dropdown&quot;&gt;Hollow &lt;i class=&quot;fa fa-caret-square-o-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu text-left hollow-back-light&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; &lt;!-- .btn-group --&gt;
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Ion Range sliders</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Simple input fields will be converted to sliders automatically. Many settings available.<br>
+                        </p>
+                        <p>
+                            <a href="http://ionden.com/a/plugins/ion.rangeSlider/en.html" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> sliders.html<br>
+                        </p>
+<pre>
+&lt;input type=&quot;text&quot; id=&quot;basic-ion&quot; name=&quot;rangeName&quot; value=&quot;10;100&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;min-max-incr-ion&quot; name=&quot;rangeName&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;years-ion&quot; name=&quot;rangeName&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;min-max-ion&quot; name=&quot;rangeName&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;digit-ion&quot; name=&quot;rangeName&quot;&gt;
+&lt;input type=&quot;text&quot; id=&quot;distance-ion&quot; name=&quot;rangeName&quot; value=&quot;1000000;100000000&quot;&gt;
+&lt;pre id=&quot;result&quot; class=&quot;well well-info-light&quot; style=&quot;margin-top: 8px;&quot;&gt;&lt;/pre&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/sliders.js<br>
+                        </p>
+<pre>
+// Ion.range ---------------------------------------------------------------------------------
+$(&quot;#basic-ion&quot;).ionRangeSlider({
+    hasGrid: true
+});
+
+$(&quot;#min-max-ion&quot;).ionRangeSlider({
+    min: 0,
+    max: 5000,
+    from: 1000,
+    to: 4000,
+    type: 'double',
+    step: 1,
+    prefix: &quot;$&quot;,
+    prettify: true,
+    hasGrid: true
+});
+
+$(&quot;#min-max-incr-ion&quot;).ionRangeSlider({
+    min: 1000,
+    max: 100000,
+    from: 30000,
+    to: 90000,
+    type: 'double',
+    step: 500,
+    prefix: &quot;$&quot;,
+    prettify: true,
+    hasGrid: true
+});
+
+$(&quot;#digit-ion&quot;).ionRangeSlider({
+    min: 0,
+    max: 10,
+    type: 'single',
+    step: 0.1,
+    postfix: &quot; mm&quot;,
+    prettify: false,
+    hasGrid: true
+});
+
+$(&quot;#years-ion&quot;).ionRangeSlider({
+    min: 1000,
+    max: 1000000,
+    type: &quot;single&quot;,
+    step: 100,
+    postfix: &quot; light years&quot;,
+    from: 55000,
+    hideMinMax: true,
+    hideFromTo: false
+});
+
+$(&quot;#distance-ion&quot;).ionRangeSlider({
+    type: &quot;double&quot;,
+    postfix: &quot; miles&quot;,
+    step: 10000,
+    from: 25000000,
+    to: 35000000,
+    onChange: function(obj){
+    var t = &quot;&quot;;
+    for(var prop in obj) {
+        t += prop + &quot;: &quot; + obj[prop] + &quot;\r\n&quot;;
+    }
+    $(&quot;#result&quot;).html(t);
+    },
+    onLoad: function(obj) {
+    //
+    }
+});
+
+$(&quot;#updateLast&quot;).on(&quot;click&quot;, function(){ // grabbing data
+    $(&quot;#range_3&quot;).ionRangeSlider(&quot;update&quot;, {
+        min: Math.round(10000 + Math.random() * 40000),
+        max: Math.round(200000 + Math.random() * 100000),
+        step: 1,
+        from: Math.round(40000 + Math.random() * 40000),
+        to: Math.round(150000 + Math.random() * 80000)
+    });
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">jQuery UI sliders</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Sliders based on jQuery UI.
+                        </p>
+                        <p>
+                            <a href="http://jqueryui.com/slider/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> sliders.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Needs jQuery UI CSS FILE! Add ABOVE bootstrap.min.css in HTML head tag.
+                        </p>
+<pre>
+// USE THIS IN head tags!
+&lt;link rel=&quot;stylesheet&quot; href=&quot;extra/jquery-ui/jquery-ui.min.css&quot;&gt;
+
+// HTML CODE IN BODY
+&lt;div id=&quot;slider&quot;&gt;&lt;/div&gt;
+
+&lt;div id=&quot;slider-snap&quot;&gt;&lt;/div&gt;
+
+&lt;form id=&quot;reservation&quot;&gt;
+    &lt;label for=&quot;minbeds&quot;&gt;Select amount:&lt;/label&gt;
+    &lt;select name=&quot;minbeds&quot; id=&quot;minbeds&quot; class=&quot;form-control&quot; style=&quot;width: 120px; margin-bottom: 12px;&quot;&gt;
+        &lt;option&gt;1&lt;/option&gt;
+        &lt;option&gt;2&lt;/option&gt;
+        &lt;option&gt;3&lt;/option&gt;
+        &lt;option&gt;4&lt;/option&gt;
+        &lt;option&gt;5&lt;/option&gt;
+        &lt;option&gt;6&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;
+
+&lt;p&gt;
+    Amount: &lt;span id=&quot;amount-vertical&quot;&gt;&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;div id=&quot;slider-vertical&quot; style=&quot;height:200px;&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;
+    Range: &lt;span id=&quot;amount&quot;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&quot;slider-range&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;
+    Range: &lt;span id=&quot;amount_range_max_target&quot;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&quot;slider-range-max&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;
+    Range: &lt;span id=&quot;amount_range_min_target&quot;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&quot;slider-range-min&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;
+    Amount: &lt;span id=&quot;amount-vertical-range&quot;&gt;&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;div id=&quot;slider-vertical-range&quot; style=&quot;height:200px;&quot;&gt;&lt;/div&gt;
+
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/sliders.js<br>
+                        </p>
+<pre>
+// jQuery UI ---------------------------------------------------------------------------------
+$( &quot;#slider&quot; ).slider();
+
+// slider with range
+var sliderRange = $(&quot;#slider-range&quot;);
+sliderRange.slider({
+    range: true,
+    min: 0,
+    max: 500,
+    values: [ 75, 300 ],
+    slide: function( event, ui ) {
+        $( &quot;#amount&quot; ).text( &quot;$&quot; + ui.values[ 0 ] + &quot; - $&quot; + ui.values[ 1 ] );
+    }
+});
+$( &quot;#amount&quot; ).text( &quot;$&quot; + sliderRange.slider( &quot;values&quot;, 0 ) +
+&quot; - $&quot; + sliderRange.slider( &quot;values&quot;, 1 ) );
+
+// slider with fixed max range
+var sliderMax = $(&quot;#slider-range-max&quot;);
+sliderMax.slider({
+    range: &quot;max&quot;,
+    min: 0,
+    max: 20,
+    value: 5,
+    slide: function( event, ui ) {
+        $( &quot;#amount_range_max_target&quot; ).text( ui.value );
+    }
+});
+$( &quot;#amount_range_max_target&quot; ).text( sliderMax.slider( &quot;value&quot; ) );
+
+// slider with fixed min range
+var sliderMin = $(&quot;#slider-range-min&quot;);
+sliderMin.slider({
+    range: &quot;min&quot;,
+    value: 37,
+    min: 0,
+    max: 700,
+    slide: function( event, ui ) {
+        $( &quot;#amount_range_min_target&quot; ).text( &quot;$&quot; + ui.value );
+    }
+});
+$( &quot;#amount_range_min_target&quot; ).text( &quot;$&quot; + sliderMin.slider( &quot;value&quot; ) );
+
+// slider bound to select
+var select = $( &quot;#minbeds&quot; );
+var slider = $( &quot;&lt;div id='slider_select'&gt;&lt;/div&gt;&quot; ).insertAfter( select ).slider({
+    min: 1,
+    max: 6,
+    range: &quot;min&quot;,
+    value: select[ 0 ].selectedIndex + 1,
+    slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+    }
+});
+select.change(function() {
+    slider.slider( &quot;value&quot;, this.selectedIndex + 1 );
+});
+
+// snap
+var sliderSnap = $( &quot;#slider-snap&quot; );
+sliderSnap.slider({
+    value:100,
+    min: 0,
+    max: 500,
+    step: 50,
+    slide: function( event, ui ) {
+        $( &quot;#amount-snap-target&quot; ).text( &quot;$&quot; + ui.value );
+    }
+});
+$( &quot;#amount-snap-target&quot; ).text( &quot;$&quot; + sliderSnap.slider( &quot;value&quot; ) );
+
+// vertical
+var sliderVertical = $( &quot;#slider-vertical&quot; );
+sliderVertical.slider({
+    orientation: &quot;vertical&quot;,
+    range: &quot;min&quot;,
+    min: 0,
+    max: 100,
+    value: 60,
+    slide: function( event, ui ) {
+        $( &quot;#amount-vertical&quot; ).text( ui.value );
+    }
+});
+$( &quot;#amount-vertical&quot; ).text( sliderVertical.slider( &quot;value&quot; ) );
+
+// vertical range
+var sliderVerticalRange = $( &quot;#slider-vertical-range&quot; );
+sliderVerticalRange.slider({
+    orientation: &quot;vertical&quot;,
+    range: true,
+    values: [ 17, 67 ],
+    slide: function( event, ui ) {
+        $( &quot;#amount-vertical-range&quot; ).text( &quot;$&quot; + ui.values[ 0 ] + &quot; - $&quot; + ui.values[ 1 ] );
+    }
+});
+$( &quot;#amount-vertical-range&quot; ).text( &quot;$&quot; + sliderVerticalRange.slider( &quot;values&quot;, 0 ) +
+&quot; - $&quot; + sliderVerticalRange.slider( &quot;values&quot;, 1 ) );
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Lightbox 2.6</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Lightbox 2.6 with transparent gif fix for IE8, 9 and 10 and works with data attributes.
+                        </p>
+                        <p>
+                            <a href="http://lokeshdhakar.com/projects/lightbox2/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> images.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Hover effects on images with or without caption on fixed or responsive images.
+                        </p>
+<pre>
+&lt;div class=&quot;row download-tooltip&quot;&gt;
+    &lt;div class=&quot;col-md-3&quot;&gt;
+        &lt;div class=&quot;thumbnail-hover thumbnail-fade&quot;&gt;
+            &lt;div class=&quot;caption&quot;&gt;
+                &lt;h4&gt;Thumbnail Headline&lt;/h4&gt;
+                &lt;p&gt;short thumbnail description&lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href=&quot;img/highres/800x600_1.jpg&quot; class=&quot;btn btn-cyanide&quot; data-lightbox=&quot;image-group&quot; title=&quot;Image one caption, put your text here&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                    &lt;a href=&quot;javascript:&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Download&quot;&gt;&lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;img src=&quot;img/highres/800x600_1.jpg&quot; class=&quot;img-responsive img-thumbnail&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-md-3&quot;&gt;
+        &lt;div class=&quot;thumbnail-hover thumbnail-fade&quot;&gt;
+            &lt;div class=&quot;caption caption-center&quot;&gt;
+                &lt;p&gt;
+                    &lt;a href=&quot;img/highres/800x600_2.jpg&quot; class=&quot;btn btn-midnight&quot; data-lightbox=&quot;image-group&quot; title=&quot;Second caption for another beautiful free image thanks to unsplash.com&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                    &lt;a href=&quot;javascript:&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Download&quot;&gt;&lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;img src=&quot;img/highres/800x600_2.jpg&quot; class=&quot;img-responsive img-thumbnail&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;div class=&quot;col-md-3&quot;&gt;
+    &lt;div class=&quot;thumbnail-hover thumbnail-slide&quot;&gt;
+        &lt;div class=&quot;caption&quot;&gt;
+            &lt;h4&gt;Thumbnail Headline&lt;/h4&gt;
+                &lt;p&gt;short thumbnail description&lt;/p&gt;
+                &lt;p&gt;
+                    &lt;a href=&quot;img/highres/800x600_3.jpg&quot; class=&quot;btn btn-concrete&quot; data-lightbox=&quot;image-group&quot; title=&quot;Picture number three has another awesome caption for you to read&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                    &lt;a href=&quot;javascript:&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Download&quot;&gt;&lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;img src=&quot;img/highres/800x600_3.jpg&quot; class=&quot;img-responsive img-thumbnail&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-md-3&quot;&gt;
+        &lt;div class=&quot;thumbnail-hover thumbnail-slide&quot;&gt;
+            &lt;div class=&quot;caption caption-center&quot;&gt;
+                &lt;p&gt;
+                    &lt;a href=&quot;img/highres/800x600_4.jpg&quot; class=&quot;btn btn-meadow&quot; data-lightbox=&quot;image-group&quot; title=&quot;And our last picutre: isn't this just great?&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                    &lt;a href=&quot;javascript:&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Download&quot;&gt;&lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;img src=&quot;img/highres/800x600_4.jpg&quot; class=&quot;img-responsive img-thumbnail&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+ &lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/images.js<br>
+                        </p>
+<pre>
+// image hovers
+$('.thumbnail-slide').hover(
+function(){
+    //$(this).find('.caption').stop(true, true).slideDown(150);
+    $(this).find('.caption').stop(true, true).slideDown({ duration: 200, easing: &quot;easeInOutQuart&quot; });
+},
+function(){
+    // $(this).find('.caption').stop(true, true).slideUp(150);
+    $(this).find('.caption').stop(true, true).slideUp({ duration: 200, easing: &quot;easeInOutQuart&quot; });
+}
+);
+$('.thumbnail-fade').hover(
+    function(){
+        $(this).find('.caption').stop(true, true);
+        $(this).find('.caption').fadeIn(200);
+    },
+    function(){
+        $(this).find('.caption').stop(true, true);
+        $(this).find('.caption').fadeOut(200);
+    }
+);
+$('.download-tooltip').tooltip({
+    selector: &quot;[data-toggle=tooltip]&quot;,
+    container: &quot;body&quot;
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Magnific popups</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Image popups with many different styles and animation effects.
+                        </p>
+                        <p>
+                            <a href="https://github.com/dimsemenov/Magnific-Popup" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> magnific-popup.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Have a look above in the Combining classes section.
+                        </p>
+<pre>
+&lt;div&gt;
+    &lt;a class=&quot;image-popup-vertical-fit&quot; href=&quot;http://farm9.staticflickr.com/8241/8589392310_7b6127e243_b.jpg&quot; title=&quot;Caption. Can be aligned to any side and contain any HTML.&quot;&gt;
+        &lt;img src=&quot;http://farm9.staticflickr.com/8241/8589392310_7b6127e243_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;image-popup-fit-width&quot; href=&quot;http://farm9.staticflickr.com/8379/8588290361_ecf8c27021_b.jpg&quot; title=&quot;This image fits only horizontally.&quot;&gt;
+        &lt;img src=&quot;http://farm9.staticflickr.com/8379/8588290361_ecf8c27021_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;image-popup-no-margins&quot; href=&quot;http://farm4.staticflickr.com/3721/9207329484_ba28755ec4_o.jpg&quot;&gt;
+        &lt;img src=&quot;http://farm4.staticflickr.com/3721/9207329484_ba28755ec4_o.jpg&quot; width=&quot;107&quot; height=&quot;75&quot;&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;popup-gallery&quot;&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg&quot; title=&quot;The Cleaner&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg&quot; title=&quot;Winter Dance&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_b.jpg&quot; title=&quot;The Uninvited Guest&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8383/8563475581_df05e9906d_b.jpg&quot; title=&quot;Oh no, not again!&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8383/8563475581_df05e9906d_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_b.jpg&quot; title=&quot;Swan Lake&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_b.jpg&quot; title=&quot;The Shake&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_b.jpg&quot; title=&quot;Who's that, mommy?&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_s.jpg&quot; width=&quot;75&quot; height=&quot;75&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;ul id=&quot;inline-popups&quot;&gt;
+    &lt;!--li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-zoom-in&quot;&gt;Zoom&lt;/a&gt;&lt;/li--&gt;
+    &lt;li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-newspaper&quot;&gt;Newspaper&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-move-horizontal&quot;&gt;Horizontal move&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-move-from-top&quot;&gt;Move from top&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-3d-unfold&quot;&gt;3d unfold&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#test-popup&quot; data-effect=&quot;mfp-zoom-out&quot;&gt;Zoom-out&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul id=&quot;image-popups&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-zoom-in&quot;&gt;Zoom&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-newspaper&quot;&gt;Newspaper&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-move-horizontal&quot;&gt;Horizontal move&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-move-from-top&quot;&gt;Move from top&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-3d-unfold&quot;&gt;3d unfold&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg/800px-Prasat_Sikhoraphum_-_Sikhoraphum_edit1.jpg&quot; data-effect=&quot;mfp-zoom-out&quot;&gt;Zoom-out&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/magnific-popups.js
+                        </p>
+<pre>
+// basic examples
+$('.image-popup-vertical-fit').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+        verticalFit: true
+    }
+
+});
+
+$('.image-popup-fit-width').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    image: {
+        verticalFit: false
+    }
+});
+
+$('.image-popup-no-margins').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins', // class to remove default margin from left and right side
+    image: {
+        verticalFit: true
+    },
+    zoom: {
+        enabled: true,
+        duration: 300 // don't forget to change the duration also in CSS
+    }
+});
+
+// popup gallery
+$('.popup-gallery').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    tLoading: 'Loading image #%curr%...',
+    mainClass: 'mfp-img-mobile',
+    gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+    image: {
+        tError: '&lt;a href=&quot;%url%&quot;&gt;The image #%curr%&lt;/a&gt; could not be loaded.',
+        titleSrc: function(item) {
+            return item.el.attr('title') + '&lt;small&gt;by Marsel Van Oosten&lt;/small&gt;';
+        }
+    }
+});
+
+// zoom gallery
+$('.zoom-gallery').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    closeOnContentClick: false,
+    closeBtnInside: false,
+    mainClass: 'mfp-img-mobile',
+    image: {
+        verticalFit: true,
+        titleSrc: function(item) {
+            return item.el.attr('title') + ' &amp;middot; &lt;a class=&quot;image-source-link&quot; href=&quot;'+item.el.attr('data-source')+'&quot; target=&quot;_blank&quot;&gt;image source&lt;/a&gt;';
+        }
+    },
+    gallery: {
+        enabled: true
+    },
+    zoom: {
+        enabled: true,
+        duration: 300, // don't forget to change the duration also in CSS
+        opener: function(element) {
+            return element.find('img');
+        }
+    }
+
+});
+
+// video &amp; map
+$('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+    disableOn: 700,
+    type: 'iframe',
+    mainClass: 'mfp-fade',
+    removalDelay: 160,
+    preloader: false,
+
+    fixedContentPos: false
+});
+
+// CSS animations
+$('.popup-with-zoom-anim').magnificPopup({
+    type: 'inline',
+
+    fixedContentPos: false,
+    fixedBgPos: true,
+
+    overflowY: 'auto',
+
+    closeBtnInside: true,
+    preloader: false,
+
+    midClick: true,
+    removalDelay: 300,
+    mainClass: 'mfp-zoom-in-single'
+});
+$('.popup-with-move-anim').magnificPopup({
+    type: 'inline',
+
+    fixedContentPos: false,
+    fixedBgPos: true,
+
+    overflowY: 'auto',
+
+    closeBtnInside: true,
+    preloader: false,
+
+    midClick: true,
+    removalDelay: 300,
+    mainClass: 'my-mfp-slide-bottom'
+});
+
+// Inline popups
+$('#inline-popups').magnificPopup({
+    delegate: 'a',
+    removalDelay: 500, //delay removal by X to allow out-animation
+    callbacks: {
+        beforeOpen: function() {
+            this.st.mainClass = this.st.el.attr('data-effect');
+        }
+    },
+    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+});
+
+// Image popups
+$('#image-popups').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    removalDelay: 500, //delay removal by X to allow out-animation
+    callbacks: {
+        beforeOpen: function() {
+            // just a hack that adds mfp-anim class to markup
+            this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+            this.st.mainClass = this.st.el.attr('data-effect');
+        }
+    },
+    closeOnContentClick: true,
+    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+});
+
+// popup
+$('.popup-with-form').magnificPopup({
+    type: 'inline',
+    preloader: false,
+    focus: '#name',
+
+    // When elemened is focused, some mobile browsers in some cases zoom in
+    // It looks not nice, so we disable it:
+    callbacks: {
+        beforeOpen: function() {
+            if($(window).width() &lt; 700) {
+                this.st.focus = false;
+            } else {
+                this.st.focus = '#name';
+            }
+        }
+    }
+});
+
+// modal
+$('.popup-modal').magnificPopup({
+    type: 'inline',
+    preloader: false,
+    focus: '#username',
+    modal: true
+});
+$(document).on('click', '.popup-modal-dismiss', function (e) {
+    e.preventDefault();
+    $.magnificPopup.close();
+});
+
+// AJAX
+$('.simple-ajax-popup-align-top').magnificPopup({
+    type: 'ajax',
+    alignTop: true,
+    overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+});
+$('.simple-ajax-popup').magnificPopup({
+    type: 'ajax'
+});
+
+// error handling
+$('#broken-image, #broken-ajax').magnificPopup({});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Maxlength</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Limit the number of characters in an HTML form element.
+                        </p>
+                        <p>
+                            <a href="http://mimo84.github.io/bootstrap-maxlength/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> add color with form classes e.g. <code>has-lighter</code>.
+                        </p>
+<pre>
+&lt;h4&gt;Default usage&lt;/h4&gt;
+    &lt;p&gt;The badge will show up by default when the remaining chars are 10 or less&lt;/p&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control maxlength&quot; maxlength=&quot;25&quot; name=&quot;default&quot; id=&quot;ml_default&quot;&gt;
+
+    &lt;h4&gt;Some options&lt;/h4&gt;
+    &lt;div class=&quot;has-dark&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control maxlength&quot; maxlength=&quot;25&quot; name=&quot;moreoptions&quot; id=&quot;moreoptions&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;h4&gt;All options&lt;/h4&gt;
+    &lt;div class=&quot;has-gunmetal&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control maxlength&quot; maxlength=&quot;25&quot; name=&quot;alloptions&quot; id=&quot;alloptions&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;h4&gt;Textarea&lt;/h4&gt;
+    &lt;div class=&quot;has-berry&quot;&gt;
+        &lt;textarea id=&quot;ml_textarea&quot; class=&quot;form-control&quot; maxlength=&quot;225&quot; rows=&quot;2&quot; placeholder=&quot;This textarea has a limit of 225 chars.&quot;&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+
+    &lt;h4&gt;Position&lt;/h4&gt;
+    &lt;div class=&quot;has-cocktail&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control maxlength&quot; maxlength=&quot;25&quot; name=&quot;placement&quot; id=&quot;placement&quot;&gt;
+    &lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/forms-extra.js
+                        </p>
+<pre>
+$('input#ml_default').maxlength();
+
+$('input#moreoptions').maxlength({
+    alwaysShow: true,
+    threshold: 10,
+    warningClass: &quot;label label-primary&quot;,
+    limitReachedClass: &quot;label label-danger&quot;
+});
+
+$('input#alloptions').maxlength({
+    alwaysShow: true,
+    threshold: 10,
+    warningClass: &quot;label label-gunmetal&quot;,
+    limitReachedClass: &quot;label label-danger&quot;,
+    separator: ' of ',
+    preText: 'You have used ',
+    postText: ' chars.',
+    validate: true
+});
+
+$('textarea#ml_textarea').maxlength({
+    alwaysShow: true,
+    warningClass: &quot;label label-berry&quot;,
+    limitReachedClass: &quot;label label-danger&quot;
+});
+
+$('input#placement').maxlength({
+    alwaysShow: true,
+    placement: 'top-left',
+    warningClass: &quot;label label-cocktail&quot;,
+    limitReachedClass: &quot;label label-danger&quot;
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Nestable</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Draggable and nestable items.
+                        </p>
+                        <p>
+                            <a href="https://github.com/dbushell/Nestable" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> nestable.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> swatch colors can be called with a class e.g. <code>dd-dark</code>. alternative style also available.
+                        </p>
+<pre>
+&lt;div class=&quot;cf nestable-lists&quot;&gt;
+    &lt;div class=&quot;dd&quot; id=&quot;nestable&quot;&gt;
+        &lt;ol class=&quot;dd-list&quot;&gt;
+            &lt;li class=&quot;dd-item&quot; data-id=&quot;1&quot;&gt;
+                &lt;div class=&quot;dd-handle&quot;&gt;Item 1&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;dd-item&quot; data-id=&quot;2&quot;&gt;
+                &lt;div class=&quot;dd-handle&quot;&gt;Item 2&lt;/div&gt;
+                &lt;ol class=&quot;dd-list&quot;&gt;
+                    &lt;li class=&quot;dd-item&quot; data-id=&quot;3&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 3&lt;/div&gt;&lt;/li&gt;
+                    &lt;li class=&quot;dd-item&quot; data-id=&quot;4&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 4&lt;/div&gt;&lt;/li&gt;
+                    &lt;li class=&quot;dd-item&quot; data-id=&quot;5&quot;&gt;
+                        &lt;div class=&quot;dd-handle&quot;&gt;Item 5&lt;/div&gt;
+                            &lt;ol class=&quot;dd-list&quot;&gt;
+                                &lt;li class=&quot;dd-item&quot; data-id=&quot;6&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 6&lt;/div&gt;&lt;/li&gt;
+                                &lt;li class=&quot;dd-item&quot; data-id=&quot;7&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 7&lt;/div&gt;&lt;/li&gt;
+                                &lt;li class=&quot;dd-item&quot; data-id=&quot;8&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 8&lt;/div&gt;&lt;/li&gt;
+                            &lt;/ol&gt;
+                        &lt;/li&gt;
+                    &lt;li class=&quot;dd-item&quot; data-id=&quot;9&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 9&lt;/div&gt;&lt;/li&gt;
+                    &lt;li class=&quot;dd-item&quot; data-id=&quot;10&quot;&gt;&lt;div class=&quot;dd-handle&quot;&gt;Item 10&lt;/div&gt;&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;dd-item&quot; data-id=&quot;11&quot;&gt;
+                &lt;div class=&quot;dd-handle&quot;&gt;Item 11&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;dd-item&quot; data-id=&quot;12&quot;&gt;
+                &lt;div class=&quot;dd-handle&quot;&gt;Item 12&lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/nestable.js<br>
+                        </p>
+<pre>
+var updateOutput = function(e)
+    {
+    var list   = e.length ? e : $(e.target),
+    output = list.data('output');
+    if (window.JSON) {
+        output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+    } else {
+        output.val('JSON browser support required for this demo.');
+    }
+};
+
+// activate Nestable for list 1
+$('#nestable').nestable({
+    group: 1
+})
+.on('change', updateOutput);
+
+// activate Nestable for list 2
+$('#nestable2').nestable({
+    group: 1
+})
+.on('change', updateOutput);
+
+// output initial serialised data
+updateOutput($('#nestable').data('output', $('#nestable-output')));
+updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+$('#nestable-menu').on('click', function(e)
+{
+    var target = $(e.target),
+    action = target.data('action');
+    if (action === 'expand-all') {
+        $('.dd').nestable('expandAll');
+    }
+    if (action === 'collapse-all') {
+    $('.dd').nestable('collapseAll');
+    }
+});
+
+$('#nestable3').nestable();
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Progress bars</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Animated progress bars. Many, <i>many</i> options available.
+                        </p>
+                        <p>
+                            <a href="https://github.com/minddust/bootstrap-progressbar" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> progress-bars.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> extra colors available by adding e.g. <code>progress-bar-berry</code>.
+                        </p>
+
+                        <p>
+                            There's a ton of HTML in progress-bars.html, please look at that page (copy-paste t your project).
+                        </p>
+
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/progress-bars.js<br>
+                        </p>
+
+                        <p>
+                            Please look at docs/js/progress-bars.js, lots of code to choose from there :)
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Select2</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Fancy select boxes.
+                        </p>
+                        <p>
+                            <a href="http://fk.github.io/select2-bootstrap-css/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> using forms class styles e.g. <code>has-dark</code> you can use all theme color swatches.
+                        </p>
+<pre>
+&lt;div id=&quot;MySelect&quot; class=&quot;select btn-group&quot; data-resize=&quot;auto&quot;&gt;
+    &lt;button data-toggle=&quot;dropdown&quot; class=&quot;btn btn-default dropdown-toggle&quot; name=&quot;form-select&quot;&gt;
+        &lt;span class=&quot;dropdown-label&quot;&gt;&lt;/span&gt;
+        &lt;i class=&quot;fa fa-chevron-circle-down&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu&quot;&gt;
+        &lt;li data-value=&quot;1&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;One&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;2&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Two&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;3&quot; data-selected=&quot;true&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Three&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;4&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Four&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;5&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Five&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;6&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Six&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;7&quot; data-fizz=&quot;buzz&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Seven&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;8&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Eight&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&quot;MySelect2&quot; class=&quot;select btn-group&quot; data-resize=&quot;auto&quot;&gt;
+    &lt;button data-toggle=&quot;dropdown&quot; class=&quot;btn btn-primary dropdown-toggle&quot; name=&quot;form-select&quot;&gt;
+        &lt;span class=&quot;dropdown-label&quot;&gt;&lt;/span&gt;
+        &lt;i class=&quot;fa fa-angle-double-down&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;ul class=&quot;dropdown-menu primary-back-light&quot;&gt;
+        &lt;li data-value=&quot;1&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;One&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;2&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Two&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;3&quot; data-selected=&quot;true&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Three&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;4&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Four&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;5&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Five&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;6&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Six&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;7&quot; data-fizz=&quot;buzz&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Seven&lt;/a&gt;&lt;/li&gt;
+        &lt;li data-value=&quot;8&quot;&gt;&lt;a href=&quot;javascript:&quot;&gt;Eight&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/select2.js<br>
+                        </p>
+                        <p>
+                        (please check the js file docs/js/select2.js for complete code)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Side menu</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Google Nexus style menu based on Codrops article
+                        </p>
+                        <p>
+                            <a href="http://tympanus.net/codrops/2013/07/30/google-nexus-website-menu/" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> all fiels have the side menu.
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> incorporated in the navbar.
+                        </p>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/kvelle.js<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Slim scroll</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            jQuery scroller that is used inside portlets.
+                        </p>
+                        <p>
+                            <a href="http://rocha.la/jQuery-slimScroll" class="kvelle-font-700 border-dark hover-bg-darker hover-lighter">Plugin page</a><br>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> portlets.html.<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Can be used on any block element. Use class <code>.slimScroller</code> and data attributes.<br>
+                            Uses jQuery UI!
+                        </p>
+<pre>
+// PUT IN HEAD TAG
+&lt;link rel=&quot;stylesheet&quot; href=&quot;extra/jquery-ui/jquery-ui.min.css&quot;&gt;
+
+    // EXAMPLE WITH PORTLETS
+&lt;div class=&quot;portlet&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading clearfix&quot;&gt;
+            &lt;div class=&quot;panel-caption&quot;&gt;
+                &lt;h3 class=&quot;panel-title&quot;&gt;Default panel portlet&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;panel-options&quot;&gt;
+                &lt;a href=&quot;javascript:&quot; class=&quot;panel-collapse&quot;&gt;
+                &lt;i class=&quot;fa fa-chevron-up&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href=&quot;javascript:&quot; class=&quot;panel-remove&quot;&gt;
+                &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+            &lt;div class=&quot;slimScroller&quot; style=&quot;height:200px; position: relative;&quot; data-rail-visible=&quot;1&quot; data-always-visible=&quot;1&quot;&gt;
+                &lt;p&gt;
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper
+                    dolor ut urna consectetur, id interdum purus pellentesque. Suspendisse fringilla
+                    nunc erat, nec consectetur nisi tristique nec. Etiam dignissim hendrerit vehicula.
+                    Cras eu dui vel nulla cursus feugiat. Suspendisse sem purus, molestie quis diam ac,
+                    facilisis hendrerit elit. Morbi molestie ligula ut volutpat commodo. Donec ultrices,
+                    metus a adipiscing ultrices, risus nibh rutrum nibh, vel interdum quam justo nec
+                    nibh. Maecenas non orci a metus sollicitudin sollicitudin. Phasellus volutpat
+                    ornare eros sit amet aliquam. Nam sollicitudin sem nec elit laoreet condimentum.
+                    Praesent id mollis magna. Phasellus id sagittis felis, id tempus justo. Vestibulum
+                    non neque feugiat, pellentesque magna eu, bibendum enim.
+                &lt;/p&gt;
+                &lt;p&gt;
+                    Aliquam mollis justo ut ligula semper, dictum faucibus neque vehicula. In ornare
+                    erat non ligula tincidunt euismod. Aliquam erat volutpat. Duis ac convallis diam,
+                    ut condimentum felis. Proin eu augue est. Phasellus posuere, massa eget euismod
+                    condimentum, velit lacus placerat lacus, sit amet mattis velit ante quis elit.
+                    Vivamus eu sem eros. Maecenas volutpat nec purus sit amet tincidunt. Ut id
+                    sagittis risus. In hac habitasse platea dictumst. Vivamus tincidunt dapibus dui,
+                    nec bibendum neque interdum id.
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/slim-scroll.js<br>
+                        </p>
+<pre>
+$('.slimScroller').each(function () {
+    $(this).slimScroll({
+        size: '7px',
+        color: '#a1b2bd',
+        railColor: '#ccc',
+        //position: isRTL ? 'left' : 'right',
+        height: $(this).css('height'),
+        alwaysVisible: ($(this).attr(&quot;data-always-visible&quot;) == &quot;1&quot; ? true : false),
+        railVisible: ($(this).attr(&quot;data-rail-visible&quot;) == &quot;1&quot; ? true : false),
+        disableFadeOut: false
+    });
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Portlets</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            This page uses portlets. For more examples please view the portlets.html source code.
+                        </p>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> portlets.html.<br>
+                            <span class="kvelle-font-400 kvelle-color-light">KVELLE:</span> Uses jQuery UI sortable (optional) and slimscroll (also optional)
+                        </p>
+<pre>
+    // EXAMPLE WITH PORTLETS
+&lt;div class=&quot;portlet&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading clearfix&quot;&gt;
+            &lt;div class=&quot;panel-caption&quot;&gt;
+                &lt;h3 class=&quot;panel-title&quot;&gt;Default panel portlet&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;panel-options&quot;&gt;
+                &lt;a href=&quot;javascript:&quot; class=&quot;panel-collapse&quot;&gt;
+                &lt;i class=&quot;fa fa-chevron-up&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href=&quot;javascript:&quot; class=&quot;panel-remove&quot;&gt;
+                &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+            &lt;div class=&quot;slimScroller&quot; style=&quot;height:200px; position: relative;&quot; data-rail-visible=&quot;1&quot; data-always-visible=&quot;1&quot;&gt;
+                &lt;p&gt;
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper
+                    dolor ut urna consectetur, id interdum purus pellentesque. Suspendisse fringilla
+                    nunc erat, nec consectetur nisi tristique nec. Etiam dignissim hendrerit vehicula.
+                    Cras eu dui vel nulla cursus feugiat. Suspendisse sem purus, molestie quis diam ac,
+                    facilisis hendrerit elit. Morbi molestie ligula ut volutpat commodo. Donec ultrices,
+                    metus a adipiscing ultrices, risus nibh rutrum nibh, vel interdum quam justo nec
+                    nibh. Maecenas non orci a metus sollicitudin sollicitudin. Phasellus volutpat
+                    ornare eros sit amet aliquam. Nam sollicitudin sem nec elit laoreet condimentum.
+                    Praesent id mollis magna. Phasellus id sagittis felis, id tempus justo. Vestibulum
+                    non neque feugiat, pellentesque magna eu, bibendum enim.
+                &lt;/p&gt;
+                &lt;p&gt;
+                    Aliquam mollis justo ut ligula semper, dictum faucibus neque vehicula. In ornare
+                    erat non ligula tincidunt euismod. Aliquam erat volutpat. Duis ac convallis diam,
+                    ut condimentum felis. Proin eu augue est. Phasellus posuere, massa eget euismod
+                    condimentum, velit lacus placerat lacus, sit amet mattis velit ante quis elit.
+                    Vivamus eu sem eros. Maecenas volutpat nec purus sit amet tincidunt. Ut id
+                    sagittis risus. In hac habitasse platea dictumst. Vivamus tincidunt dapibus dui,
+                    nec bibendum neque interdum id.
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">jQuery:</span> docs/js/portlets.js
+                        </p>
+<pre>
+$( &quot;.column&quot; ).sortable({
+    connectWith: &quot;.column&quot;,
+    handle: &quot;.panel-heading&quot;,
+    cancel: &quot;.portlet-toggle&quot;,
+    placeholder: &quot;portlet-placeholder ui-corner-all&quot;,
+    forcePlaceholderSize: true
+});
+
+var body = $('body');
+body.on('click', '.portlet &gt; .panel &gt; .panel-heading &gt; .panel-options &gt; .panel-collapse, .portlet &gt; .panel &gt; .panel-heading &gt; .panel-options &gt; .panel-expand', function (evt) {
+//body.on('click', '.panel-collapse, .panel-expand', function (evt) { // if above doesn't work, no problems found yet
+    evt.preventDefault();
+    var el = $(this).closest(&quot;.portlet&quot;).find(&quot;.panel-body&quot;);
+    //console.log(el);
+    if ($(this).hasClass(&quot;panel-collapse&quot;)) {
+        $(this).removeClass(&quot;panel-collapse&quot;).addClass(&quot;panel-expand&quot;);
+        $(this).find('i').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+        el.slideUp(200);
+    } else {
+        $(this).removeClass(&quot;panel-expand&quot;).addClass(&quot;panel-collapse&quot;);
+        $(this).find('i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        el.slideDown(200);
+    }
+});
+
+body.on('click', '.portlet &gt; .panel &gt; .panel-heading &gt; .panel-options &gt; .panel-remove', function (evt) {
+    evt.preventDefault();
+    var el = $(this).closest(&quot;.portlet&quot;);
+    el.fadeOut(&quot;normal&quot;, function() {
+        $(this).remove();
+    });
+});
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet">
+            <div class="panel panel-meadow">
+                <div class="panel-heading clearfix">
+                    <div class="panel-caption">
+                        <h3 class="panel-title">Typeahead</h3>
+                    </div>
+                    <div class="panel-options">
+                        <a href="javascript:" class="panel-expand">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <a href="javascript:" class="panel-remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body panel-hidden">
+                    <div>
+                        <p>
+                            Works with data attributes. Taken from BS 2.3.2.
+                        </p>
+                        <p>
+                            <span class="kvelle-font-400 kvelle-color-light">HTML:</span> forms-extra.html.<br>
+                        </p>
+<pre>
+&lt;section class=&quot;panel panel-default&quot; id=&quot;typeahead&quot;&gt;
+    &lt;div class=&quot;panel-heading&quot;&gt;
+        &lt;h3 class=&quot;panel-title&quot;&gt;Typeahead&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;panel-body&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; style=&quot;margin: 0 auto;&quot; data-provide=&quot;typeahead&quot; data-items=&quot;4&quot; data-source='[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]' placeholder=&quot;US state&quot;&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">\x3C/script>')</script>
+
+<script src="../extra/jquery-ui/jquery-ui.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script src="../extra/slim-scroll/jquery.slimscroll.min.js"></script>
+<script src="../docs/js/portlets.js"></script>
+<script src="../docs/js/slim-scroll.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+/* custom inclusion of right, left and below tabs taken from 2.3.2 */
+// based on http://stackoverflow.com/questions/18432577/stacked-tabs-in-bootstrap-3
+
+// tabs below
+.tabs-below > .nav-tabs {
+  border-bottom: 0 !important;
+  border-radius: 0;
+  margin-top: 10px;
+  border-top: 1px solid @kvelle-color;
+
+  > li:first-child.active > a,
+  > li:first-child > a:hover {
+    border-radius: 0;
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
+.tabs-below > .nav-tabs > li {
+  margin-bottom: 0;
+
+  > a {
+    box-shadow: inset 0 -1px 0 0 lighten(@kvelle-color, 8%);
+
+    &:active {
+      box-shadow: inset 0 0 6px 6px darken(@kvelle-color, 2%);
+    }
+  }
+}
+
+
+// tabs left
+.tabs-left > .nav-tabs {
+  border-radius: 0;
+  border-left: 1px solid @kvelle-color;
+  border-bottom: 0 !important;
+
+  > li:first-child.active > a,
+  > li:first-child > a:hover {
+    border-radius: 0;
+  }
+
+  > li:last-child.active > a,
+  > li:last-child > a:hover {
+    border-radius: 0;
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
+.tabs-left > .nav-tabs > li {
+  float: none;
+}
+
+.tabs-left > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  box-shadow: inset -1px 0 0 0 lighten(@kvelle-color, 8%);
+
+  &:active {
+    box-shadow: inset 0 0 6px 6px darken(@kvelle-color, 2%);
+  }
+}
+
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+}
+
+
+//tabs right
+.tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  border-radius: 0 !important;
+  border-right: 1px solid @kvelle-color;
+  border-bottom: 0 !important;
+
+  > li:first-child.active > a,
+  > li:first-child > a:hover {
+    border-radius: 0;
+  }
+
+  > li:last-child.active > a,
+  > li:last-child > a:hover {
+    border-radius: 0;
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
+.tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  border-radius: 0;
+  box-shadow: inset 1px 0 0 0 lighten(@kvelle-color, 8%);
+
+  &:active {
+    box-shadow: inset 0 0 6px 6px darken(@kvelle-color, 2%);
+  }
+}
+
+.tabs-right > .nav-tabs > li {
+  float: none;
+  margin-bottom: -1px;
+}

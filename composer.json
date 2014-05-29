@@ -11,7 +11,8 @@
         "cartalyst/sentry": "2.1.*",
         "rtablada/package-installer": "dev-master",
 		"bugsnag/bugsnag-laravel": "dev-master",
-        "bogardo/mailgun": "dev-master"
+        "bogardo/mailgun": "dev-master",
+        "boparaiamrit/facebook": "dev-master"
     },
 	"autoload": {
 		"classmap": [

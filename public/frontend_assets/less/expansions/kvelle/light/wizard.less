@@ -1,0 +1,42 @@
+.wizard {
+  &.wizard-light {
+    border: 1px solid @kvelle-color-light;
+
+    ul > li {
+      .chevron {
+        border-left: 14px solid @kvelle-color-light;
+      }
+      &.complete {
+        background: @kvelle-color-light;
+
+        .badge {
+          color: @kvelle-color-light;
+        }
+
+        .chevron:before {
+          border-left: 14px solid @kvelle-color-light;
+        }
+
+        &:hover {
+          background: @kvelle-color;
+
+          .chevron:before {
+            border-left: 14px solid @kvelle-color;
+          }
+        }
+      }
+
+      &.active {
+        background: @kvelle-color-light;
+
+        .chevron:before {
+          border-left: 14px solid @kvelle-color-light;
+        }
+
+        .badge {
+          color: @kvelle-color-light;
+        }
+      }
+    }
+  }
+}

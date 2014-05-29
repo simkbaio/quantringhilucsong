@@ -1,0 +1,42 @@
+.dd {
+  &.dd-light {
+    .dd-handle {
+      border: 1px solid @kvelle-color-lighter;
+      background: lighten(@kvelle-color-lighter, 10%);
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-light;
+        border: 1px solid @kvelle-color-light;
+      }
+    }
+
+    .dd3-content {
+      border: 1px solid @kvelle-color-lighter;
+      background: lighten(@kvelle-color-lighter, 10%);
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-light;
+        border: 1px solid @kvelle-color-light;
+      }
+    }
+
+    .dd3-handle {
+      border: 1px solid @kvelle-color-light;
+      background: @kvelle-color-lighter;
+    }
+
+    &.dd-light-alternate {
+      .dd-handle {
+        border: 1px solid @kvelle-color-light;
+        background: @kvelle-color-light;
+
+        &:hover {
+          background: lighten(@kvelle-color-lighter, 10%);
+          border: 1px solid @kvelle-color-lighter;
+        }
+      }
+    }
+  }
+}

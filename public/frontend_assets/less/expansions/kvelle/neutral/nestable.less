@@ -1,0 +1,47 @@
+.dd {
+  &.dd-neutral {
+    .dd-handle {
+      border: 1px solid lighten(@kvelle-color-neutral, 10%);
+      background: lighten(@kvelle-color-neutral, 20%);
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-neutral;
+        border: 1px solid @kvelle-color-neutral;
+      }
+
+      &:focus {
+        border: 1px solid lighten(@kvelle-color-neutral, 10%);
+        background: lighten(@kvelle-color-neutral, 20%);
+      }
+    }
+
+    .dd3-content {
+      border: 1px solid lighten(@kvelle-color-neutral, 10%);
+      background: lighten(@kvelle-color-neutral, 20%);
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-neutral;
+        border: 1px solid @kvelle-color-neutral;
+      }
+    }
+
+    .dd3-handle {
+      border: 1px solid @kvelle-color-neutral;
+      background: lighten(@kvelle-color-neutral, 10%);
+    }
+
+    &.dd-neutral-alternate {
+      .dd-handle {
+        border: 1px solid @kvelle-color-neutral;
+        background: @kvelle-color-neutral;
+
+        &:hover {
+          background: lighten(@kvelle-color-neutral, 20%);
+          border: 1px solid lighten(@kvelle-color-neutral, 10%);
+        }
+      }
+    }
+  }
+}

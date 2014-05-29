@@ -1,0 +1,11 @@
+.alert {
+  &.alert-neutral {
+    .alert-variant(@kvelle-color-neutral; darken(@kvelle-color-neutral, 20%); #fff);
+  }
+  &.alert-neutral-text {
+    .alert-variant(lighten(@kvelle-color-neutral, 8%); darken(@kvelle-color-neutral, 10%); lighten(@kvelle-color-neutral, 32%));
+  }
+  &.alert-neutral-light-color {
+    .alert-variant(#fff; @kvelle-color-neutral; @kvelle-color-neutral);
+  }
+}

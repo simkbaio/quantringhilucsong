@@ -40,7 +40,7 @@
             </div>
             <div class="portlet-body">
 <?php
-$teachers = teacher::orderBy('teacher_name')->get();
+$teachers = teacher::orderBy('name')->get();
 ?>
     <a href="{{URL::route('admin.teachers.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm giáo viên mới</a>
 
@@ -59,17 +59,17 @@ $teachers = teacher::orderBy('teacher_name')->get();
                 <tbody>
                 @foreach($teachers as $teacher)
                     <tr>
-                        <td>{{$teacher->teacher_id}}</td>
+                        <td>{{$teacher->id}}</td>
                         <td>
-                        <a href="{{URL::route('admin.teachers.show',$teacher->teacher_id)}}">{{$teacher->teacher_name}}</a></td>
+                        <a href="{{URL::route('admin.teachers.show',$teacher->id)}}">{{$teacher->name}}</a></td>
 
-                        <td>{{date('d-m-Y',$teacher->teacher_join_date)}}</td>
-                        <td>{{date('d-m-Y',$teacher->teacher_out_date)}}</td>
+                        <td>{{date('d-m-Y',$teacher->join_date)}}</td>
+                        <td>{{date('d-m-Y',$teacher->out_date)}}</td>
                         <td>
-                        <a href="{{URL::route("admin.teachers.edit",$teacher->teacher_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
+                        <a href="{{URL::route("admin.teachers.edit",$teacher->id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
                         </td>
                         <td>
-                            {{Form::open(['route'=>['admin.teachers.destroy',$teacher->teacher_id],'method'=>'DELETE'])}}
+                            {{Form::open(['route'=>['admin.teachers.destroy',$teacher->id],'method'=>'DELETE'])}}
                             {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>

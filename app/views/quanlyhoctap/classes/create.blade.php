@@ -51,20 +51,20 @@ Nghị lực sống | Thêm lớp học mới
                     {{Form::hidden('course',Input::get('course'))}}
                     @endif
                     {{HForm::input([
-                        'name'=>'class_name',
+                        'name'=>'name',
                         'title'=>'Tên lớp học',
                         ],$errors)}}
 
                     {{HForm::input([
-                        'name'=>'class_course_id',
+                        'name'=>'course_id',
                         'title'=>'Khóa học',
                         'width'=>'6',
                         'type'=>'select',
-                        'value'=>(Input::has('course')?Input::get('course'):Input::old('course')),
+                        'value'=>(Input::has('course')?Input::get('course'):Input::old('course_id')),
                         'data_input'=>Course::getAllSelectData(),
                         ],$errors)}}
                     {{HForm::input([
-                        'name'=>'class_teacher_id',
+                        'name'=>'teacher_id',
                         'title'=>'Giáo viên giảng dạy',
                         'width'=>'6',
                         'type'=>'select',
@@ -74,7 +74,7 @@ Nghị lực sống | Thêm lớp học mới
 
 
                     {{HForm::input([
-                        'name'=>'class_description',
+                        'name'=>'description',
                         'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}

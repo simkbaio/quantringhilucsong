@@ -1,0 +1,51 @@
+.pagination {
+  &.neutral {
+    > li {
+      > a,
+      > span {
+        text-shadow: 0 1px 0 darken(@kvelle-color-neutral, 10%);
+        .transition(~"all 170ms ease-out");
+        background-color: @kvelle-color-neutral;
+        border: 1px solid darken(@kvelle-color-neutral, 10%);
+      }
+    }
+
+    > li > a,
+    > li > span {
+      &:hover,
+      &:focus {
+        text-shadow: 1px 1px 0 darken(@kvelle-color-neutral, 10%);
+        background-color: lighten(@kvelle-color-neutral, 10%);
+        border-color: lighten(@kvelle-color-neutral, 10%);
+        border: 1px solid @kvelle-color-neutral;
+        box-shadow: inset 0 -4px 0 0 @kvelle-color-neutral;
+      }
+    }
+
+    > .active > a,
+    > .active > span {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @pagination-active-bg;
+        border-color: @kvelle-color-neutral;
+        text-shadow: none;
+        color: @kvelle-color-neutral;
+      }
+    }
+
+    > .disabled {
+      > span,
+      > span:hover,
+      > span:focus,
+      > a,
+      > a:hover,
+      > a:focus {
+        color: @gray-light;
+        background-color: @kvelle-color-neutral;
+        border-color: @kvelle-color-neutral;
+        text-shadow: none;
+      }
+    }
+  }
+}

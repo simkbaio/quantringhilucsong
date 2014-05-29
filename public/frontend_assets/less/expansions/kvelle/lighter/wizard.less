@@ -1,0 +1,42 @@
+.wizard {
+  &.wizard-lighter {
+    border: 1px solid @kvelle-color-lighter;
+
+    ul > li {
+      .chevron {
+        border-left: 14px solid @kvelle-color-lighter;
+      }
+      &.complete {
+        background: @kvelle-color-lighter;
+
+        .badge {
+          color: @kvelle-color-lighter;
+        }
+
+        .chevron:before {
+          border-left: 14px solid @kvelle-color-lighter;
+        }
+
+        &:hover {
+          background: @kvelle-color-light;
+
+          .chevron:before {
+            border-left: 14px solid @kvelle-color-light;
+          }
+        }
+      }
+
+      &.active {
+        background: @kvelle-color-lighter;
+
+        .chevron:before {
+          border-left: 14px solid @kvelle-color-lighter;
+        }
+
+        .badge {
+          color: @kvelle-color-lighter;
+        }
+      }
+    }
+  }
+}

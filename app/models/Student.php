@@ -10,8 +10,8 @@ class Student extends Eloquent {
     protected $connection = "hosohocvien";
     protected $table = "tbl_student";
     public  $timestamps = false;
-    protected $guarded = ['stu_id'];
+    protected $guarded = ['id'];
     public function results(){
-        return Student::belongsTo('Student','result_student_id','stu_id');
+        return Student::belongsTo('Student','result_student_id','id');
     }
 }

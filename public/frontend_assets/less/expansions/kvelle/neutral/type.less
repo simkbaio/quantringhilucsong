@@ -1,0 +1,19 @@
+// List options
+ul {
+  &.iconized,
+  &.iconized-alt {
+    &.list-neutral {
+      > li:before {
+        color: @kvelle-color-neutral;
+      }
+      > li > ul li:before {
+        color: @kvelle-color-neutral;
+      }
+    }
+  }
+}
+
+// contextual background
+.bg-neutral {
+  .bg-variant(@kvelle-color-neutral);
+}

@@ -67,7 +67,7 @@ Nghị lực sống | Thêm khóa học mới
                 <div class="row">
                     {{Form::open(['route'=>'admin.courses.store'])}}
                     {{HForm::input([
-                        'name'=>'course_name',
+                        'name'=>'name',
                         'title'=>'Tên khóa học',
                         'width'=>'6',
                         ],$errors)}}
@@ -75,19 +75,19 @@ Nghị lực sống | Thêm khóa học mới
 
                     <div class="form-group  col-md-3">
                         <label>Ngày bắt đầu</label>
-                        <input class="form-control input-medium date-picker" name="course_start" type="text" value=""/>
-                        {{error_for('course_start',$errors)}}
+                        <input class="form-control input-medium date-picker" name="start" type="text" value=""/>
+                        {{error_for('start',$errors)}}
                     </div>
                     <div class="form-group  col-md-3">
                         <label>Ngày kết thúc</label>
-                        <input class="form-control input-medium date-picker" name="course_end" type="text" value=""/>
-                        {{error_for('course_end',$errors)}}
+                        <input class="form-control input-medium date-picker" name="end" type="text" value=""/>
+                        {{error_for('end',$errors)}}
 
                     </div>
 
 
                     {{HForm::input([
-                        'name'=>'course_description',
+                        'name'=>'description',
                         'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}

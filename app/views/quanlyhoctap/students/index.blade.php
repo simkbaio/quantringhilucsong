@@ -40,7 +40,7 @@
             </div>
             <div class="portlet-body">
 <?php
-$students = Student::orderBy('stu_name')->get();
+$students = Student::orderBy('name')->get();
 ?>
     <a href="{{URL::route('admin.students.create')}}" class="btn green" style="margin-bottom: 20px;">Tạo Học viên mới</a>
 
@@ -58,14 +58,14 @@ $students = Student::orderBy('stu_name')->get();
                 <tbody>
                 @foreach($students as $student)
                     <tr>
-                        <td>{{ $student->stu_id}}</td>
+                        <td>{{ $student->id}}</td>
                         <td>
-                        <a href="{{URL::route('admin.students.show',$student->stu_id)}}">{{ $student->stu_name}}</a></td>
-                        <td>{{date('d-m-Y', $student->stu_birthday)}}</td>
+                        <a href="{{URL::route('admin.students.show',$student->id)}}">{{ $student->name}}</a></td>
+                        <td>{{date('d-m-Y', $student->birthday)}}</td>
                         <td>
-                        <a href="{{URL::route("admin.students.edit", $student->stu_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
+                        <a href="{{URL::route("admin.students.edit", $student->id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a></td>
                         <td>
-                            {{Form::open(['route'=>['admin.students.destroy', $student->stu_id],'method'=>'DELETE'])}}
+                            {{Form::open(['route'=>['admin.students.destroy', $student->id],'method'=>'DELETE'])}}
                             {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>

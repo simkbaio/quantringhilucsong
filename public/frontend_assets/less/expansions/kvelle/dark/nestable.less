@@ -1,0 +1,42 @@
+.dd {
+  &.dd-dark {
+    .dd-handle {
+      border: 1px solid @kvelle-color-dark;
+      background: @kvelle-color-light;
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-dark;
+        border: 1px solid @kvelle-color-dark;
+      }
+    }
+
+    .dd3-content {
+      border: 1px solid @kvelle-color;
+      background: @kvelle-color-light;
+
+      &:hover {
+        color: #fff;
+        background: @kvelle-color-dark;
+        border: 1px solid @kvelle-color-dark;
+      }
+    }
+
+    .dd3-handle {
+      border: 1px solid @kvelle-color-dark;
+      background: @kvelle-color;
+    }
+
+    &.dd-dark-alternate {
+      .dd-handle {
+        border: 1px solid @kvelle-color-dark;
+        background: @kvelle-color-dark;
+
+        &:hover {
+          background: @kvelle-color-light;
+          border: 1px solid @kvelle-color;
+        }
+      }
+    }
+  }
+}

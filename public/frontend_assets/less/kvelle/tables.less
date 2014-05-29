@@ -1,0 +1,13 @@
+.table {
+  > thead > tr > th {
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  // remove border around responsive table on small screens
+  .table-responsive {
+    border: 0;
+  }
+}

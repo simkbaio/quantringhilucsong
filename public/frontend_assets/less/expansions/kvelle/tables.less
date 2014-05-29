@@ -1,0 +1,107 @@
+// new mixin for extra table variations based on color shadings
+// border color classes
+.table-border-variant(@bg-color; @color: @text-color;) {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border-color: @bg-color;
+        .transition(~"all 250ms ease-out");
+      }
+    }
+  }
+
+  > thead > tr > th {
+    border-bottom: 2px solid @bg-color;
+  }
+
+  > tbody + tbody {
+    border-top: 2px solid @bg-color;
+  }
+
+  &.table-bordered {
+    border: 1px solid @bg-color;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border: 1px solid @bg-color;
+        }
+      }
+    }
+  }
+
+  &.table-striped {
+    > tbody > tr:nth-child(odd) {
+      > td,
+      > th {
+        background-color: @bg-color;
+        color: @color;
+      }
+    }
+  }
+
+  &.table-hover {
+    > tbody > tr:hover {
+      > td,
+      > th {
+        background-color: @bg-color;
+        color: @color;
+      }
+    }
+  }
+}
+
+// Rewriting table mixin LINE 446 tables.less
+.table-row-variant(@state; @background; @color: @text-color;) {
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      color: @color;
+      background-color: @background !important;
+    }
+  }
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &.@{state}:hover > th {
+      background-color: darken(@background, 5%) !important;
+    }
+  }
+}
+
+.table {
+  // theme color
+  &.color {
+    color: @kvelle-color;
+  }
+
+  &.table-color {
+    .table-border-variant(@kvelle-color; #fff);
+  }
+}
+
+// Recreating contextual classes LINE 158 tables.less
+.table-row-variant(active; @kvelle-color-neutral; #fff);
+.table-row-variant(success; @state-success-bg; #fff);
+.table-row-variant(info; @state-info-bg; #fff);
+.table-row-variant(warning; @state-warning-bg; #fff);
+.table-row-variant(danger; @state-danger-bg; #fff);
+.table-row-variant(active-light; @table-bg-active; #000);
+.table-row-variant(success-light; lighten(@state-success-bg, 30%); #000);
+.table-row-variant(info-light; lighten(@state-info-bg, 30%); #000);
+.table-row-variant(warning-light; lighten(@state-warning-bg, 30%); #000);
+.table-row-variant(danger-light; lighten(@state-danger-bg, 30%); #000);
+
+// theme color row variant
+.table-row-variant(main; @kvelle-color; #fff);
+

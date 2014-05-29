@@ -12,20 +12,20 @@ class StudentTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Student::create([
-                'stu_name' => $faker->name,
-                'stu_sex' => '0',
-                'stu_birdday' => $faker->time(),
-                'stu_address' => $faker->address,
-                'stu_hometown' => $faker->address,
-                'stu_province_id' => 1,
-                'stu_phone' => $faker->phoneNumber,
-                'stu_email' => $faker->email,
-                'stu_facebook' => "fackebook.com/".$faker->sentence(10),
-                'stu_married' => 0,
-                'stu_educated' => 0,
-                'stu_type_disabilities' => 0,
-                'stu_person_authen_name' => $faker->name,
-                'stu_person_authen_address' => $faker->address,
+                'name' => $faker->name,
+                'sex' => '0',
+                'birdday' => $faker->time(),
+                'address' => $faker->address,
+                'hometown' => $faker->address,
+                'province_id' => 1,
+                'phone' => $faker->phoneNumber,
+                'email' => $faker->email,
+                'facebook' => "fackebook.com/".$faker->sentence(10),
+                'married' => 0,
+                'educated' => 0,
+                'type_disabilities' => 0,
+                'person_authen_name' => $faker->name,
+                'person_authen_address' => $faker->address,
 			]);
 		}
 	}

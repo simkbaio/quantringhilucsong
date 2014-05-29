@@ -45,20 +45,20 @@ Nghị lực sống | Sửa thông tin lớp học
             <div class="col-md-12">
                 {{portlet_open('Nội dung cần nhập','blue')}}
                 <div class="row">
-                    {{Form::model($class,['route'=>['admin.classes.update',$class->class_id],'method'=>'PUT'])}}
+                    {{Form::model($class,['route'=>['admin.classes.update',$class->id],'method'=>'PUT'])}}
                     {{HForm::input([
-                        'name'=>'class_name',
+                        'name'=>'name',
                         'title'=>'Tên lớp học',
                         ],$errors)}}
                     {{HForm::input([
-                        'name'=>'class_course_id',
+                        'name'=>'id',
                         'title'=>'Khóa học',
                         'width'=>'6',
                         'type'=>'select',
                         'data_input'=>Course::getAllSelectData(),
                         ],$errors)}}
                     {{HForm::input([
-                        'name'=>'class_teacher_id',
+                        'name'=>'teacher_id',
                         'title'=>'Giáo viên giảng dạy',
                         'width'=>'6',
                         'type'=>'select',
@@ -68,7 +68,7 @@ Nghị lực sống | Sửa thông tin lớp học
 
 
                     {{HForm::input([
-                        'name'=>'class_description',
+                        'name'=>'description',
                         'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}

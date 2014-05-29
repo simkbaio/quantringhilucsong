@@ -1,0 +1,50 @@
+.pagination {
+  &.darker {
+    > li {
+      > a,
+      > span {
+        text-shadow: 0 1px 0 darken(@kvelle-color-darker, 10%);
+        .transition(~"all 170ms ease-out");
+        background-color: @kvelle-color-darker;
+        border: 1px solid darken(@kvelle-color-darker, 10%);
+      }
+    }
+
+    > li > a,
+    > li > span {
+      &:hover,
+      &:focus {
+        text-shadow: 1px 1px 0 darken(@kvelle-color-darker, 10%);
+        background-color: @kvelle-color-dark;
+        border-color: @kvelle-color-darker;
+        box-shadow: inset 0 -4px 0 0 @kvelle-color-darker;
+      }
+    }
+
+    > .active > a,
+    > .active > span {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @pagination-active-bg;
+        border-color: @kvelle-color-darker;
+        text-shadow: none;
+        color: @kvelle-color-darker;
+      }
+    }
+
+    > .disabled {
+      > span,
+      > span:hover,
+      > span:focus,
+      > a,
+      > a:hover,
+      > a:focus {
+        color: @gray-light;
+        background-color: @kvelle-color-darker;
+        border-color: @kvelle-color-darker;
+        text-shadow: none;
+      }
+    }
+  }
+}

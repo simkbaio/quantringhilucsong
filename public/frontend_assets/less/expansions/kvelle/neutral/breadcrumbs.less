@@ -1,0 +1,20 @@
+.breadcrumb {
+  &.breadcrumb-neutral {
+    border-bottom: 1px solid @kvelle-color-neutral;
+    > li {
+      + li:before {
+        color: @kvelle-color-neutral;
+      }
+      > a {
+        color: @kvelle-color-neutral;
+
+        &:hover {
+          color: lighten(@kvelle-color-neutral, 10%);
+        }
+      }
+    }
+    > .active {
+      color: @kvelle-color-neutral;
+    }
+  }
+}

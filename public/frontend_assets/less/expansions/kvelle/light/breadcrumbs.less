@@ -1,0 +1,20 @@
+.breadcrumb {
+  &.breadcrumb-light {
+    border-bottom: 1px solid @kvelle-color-light;
+    > li {
+      + li:before {
+        color: @kvelle-color-light;
+      }
+      > a {
+        color: @kvelle-color-light;
+
+        &:hover {
+          color: @kvelle-color-lighter;
+        }
+      }
+    }
+    > .active {
+      color: @kvelle-color-light;
+    }
+  }
+}

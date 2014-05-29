@@ -1,0 +1,56 @@
+// New variant to build new wells
+.well-variant(@color; @bg-color; @box-shadow; @border-color: @bg-color;) {
+  color: @color;
+  background-color: @bg-color;
+  box-shadow: inset 0 -4px 0 0 @box-shadow;
+  border-color: @border-color;
+}
+
+// Theme color variations
+.well-default {
+  .well-variant(#fff; @kvelle-color; @kvelle-color-lighter);
+}
+.well-default-light-border {
+  .well-variant(@kvelle-color; #fff; @kvelle-color; @kvelle-color);
+}
+
+// Bootstrap colored wells
+.well-info {
+  .well-variant(#fff; @brand-info; lighten(@brand-info, 10%));
+}
+.well-info-light {
+  .well-variant(@brand-info; lighten(@brand-info, 40%); lighten(@brand-info, 50%););
+}
+.well-info-light-text {
+  .well-variant(@text-color; lighten(@brand-info, 40%); lighten(@brand-info, 50%););
+}
+
+.well-success {
+  .well-variant(#fff; @brand-success; lighten(@brand-success, 10%));
+}
+.well-success-light {
+  .well-variant(darken(@brand-success, 10%); lighten(@brand-success, 30%); lighten(@brand-success, 40%););
+}
+.well-success-light-text {
+  .well-variant(@text-color; lighten(@brand-success, 30%); lighten(@brand-success, 40%););
+}
+
+.well-warning {
+  .well-variant(#fff; @brand-warning; lighten(@brand-warning, 10%));
+}
+.well-warning-light {
+  .well-variant(darken(@brand-warning, 10%); lighten(@brand-warning, 30%); lighten(@brand-warning, 40%););
+}
+.well-warning-light-text {
+  .well-variant(@text-color; lighten(@brand-warning, 30%); lighten(@brand-warning, 40%););
+}
+
+.well-danger {
+  .well-variant(#fff; @brand-danger; lighten(@brand-danger, 10%));
+}
+.well-danger-light {
+  .well-variant(darken(@brand-danger, 10%); lighten(@brand-danger, 30%); lighten(@brand-danger, 40%););
+}
+.well-danger-light-text {
+  .well-variant(@text-color; lighten(@brand-danger, 30%); lighten(@brand-danger, 40%););
+}

@@ -1,0 +1,27 @@
+.panel-title {
+  font-size: 24px;
+}
+
+.panel {
+  // based on theme colors
+  &.panel-default {
+    .panel-variant(transparent; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+  }
+  &.panel-primary {
+    .panel-variant(transparent; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+  }
+
+  // default extra colors
+  &.panel-success {
+    .panel-variant(transparent; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+  }
+  &.panel-info {
+    .panel-variant(transparent; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+  }
+  &.panel-warning {
+    .panel-variant(transparent; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+  }
+  &.panel-danger {
+    .panel-variant(transparent; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+  }
+}

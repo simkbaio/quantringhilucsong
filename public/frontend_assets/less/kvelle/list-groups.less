@@ -1,0 +1,61 @@
+// Mixins LINE 474
+.list-group-item-variant(@state; @background; @color) {
+  .list-group-item-@{state} {
+    color: @color;
+    background-color: @background;
+
+    a& {
+      color: @color !important;
+
+      .list-group-item-heading { color: inherit; }
+
+      &:hover,
+      &:focus {
+        color: @color;
+        background-color: darken(@background, 5%) !important;
+      }
+      &.active,
+      &.active:hover,
+      &.active:focus {
+        color: #fff;
+        background-color: @color;
+        border-color: @color;
+      }
+    }
+  }
+}
+
+.list-group {
+  line-height: 1.6;
+  color: @kvelle-color;
+}
+
+// list-group.less LINE 44
+.list-group-item {
+  border-color: @kvelle-color;
+  > .badge {
+    top: 3px;
+    position: relative;
+  }
+}
+
+a.list-group-item {
+  border-color: @kvelle-color;
+  &:hover,
+  &:focus {
+    color: @list-group-active-color;
+    .list-group-item-heading {
+      color: @list-group-active-color;
+    }
+  }
+}
+
+.list-group-item-heading {
+  .transition(~"all 200ms ease-in");
+}
+
+// rewrite call to variant
+.list-group-item-variant(success; lighten(@state-success-bg, 20%); @state-success-text);
+.list-group-item-variant(info; lighten(@state-info-bg, 20%); @state-info-text);
+.list-group-item-variant(warning; lighten(@state-warning-bg, 20%); @state-warning-text);
+.list-group-item-variant(danger; lighten(@state-danger-bg, 20%); @state-danger-text);

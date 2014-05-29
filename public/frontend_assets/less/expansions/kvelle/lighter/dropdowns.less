@@ -1,0 +1,18 @@
+.dropdown-menu {
+  &.lighter-color {
+    .dropdown-variant(@kvelle-color-lighter);
+  }
+  &.lighter-bgcolor {
+    .dropdown-variant-bgcolor(@kvelle-color-lighter);
+  }
+  &.lighter-border {
+    .dropdown-variant-border(@kvelle-color-lighter);
+  }
+  // works with lighter navbar
+  &.lighterer-color {
+    .dropdown-variant(lighten(@kvelle-color-lighter, 10%));
+  }
+  &.lighterer-bgcolor {
+    .dropdown-variant-bgcolor(lighten(@kvelle-color-lighter, 10%));
+  }
+}

@@ -40,7 +40,7 @@
             </div>
             <div class="portlet-body">
                 <?php
-                $classes = NClass::orderBy('class_name')->get();
+                $classes = NClass::orderBy('name')->get();
                 ?>
                 <a href="{{URL::route('admin.classes.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm lớp học mới</a>
 
@@ -60,12 +60,12 @@
                         <tbody>
                             @foreach($classes as $class)
                             <tr>
-                                <td>{{$class->class_id}}</td>
+                                <td>{{$class->id}}</td>
                                 <td>
-                                    <a href="{{URL::route('admin.classes.show',$class->class_id)}}">{{$class->class_name}}</a></td>
+                                    <a href="{{URL::route('admin.classes.show',$class->id)}}">{{$class->name}}</a></td>
                                      <td>
                                      @if ($class->course())
-                                         {{$class->course->course_name}}
+                                         {{$class->course->name}}
                                     @else
                                         Chưa có học phần
                                      @endif
@@ -83,10 +83,10 @@
                                     <td>
 
 
-                                        <a href="{{URL::route("admin.classes.edit",$class->class_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
+                                        <a href="{{URL::route("admin.classes.edit",$class->id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
                                     </td>
                                     <td>
-                                        {{Form::open(['route'=>['admin.classes.destroy',$class->class_id],'method'=>'DELETE'])}}
+                                        {{Form::open(['route'=>['admin.classes.destroy',$class->id],'method'=>'DELETE'])}}
                                         {{Form::submit('Xóa',array("class"=>'btn red'))}}
                                         {{Form::close()}}
                                     </td>

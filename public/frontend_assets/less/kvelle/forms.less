@@ -1,0 +1,34 @@
+// OVERRIDING DEFAULT BOOTSTRAP LESS
+
+.form-control {
+  box-shadow: inset 0 -3px 0 0 @kvelle-color;
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+    border-radius: 1px;
+  }
+
+}
+
+label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.input-group-addon {
+  color: #fff;
+}
+
+// Feedback states
+.has-success {
+  .form-control-validation(@state-success-bg; @state-success-bg; @state-success-bg);
+}
+.has-warning {
+  .form-control-validation(@state-warning-bg; @state-warning-bg; @state-warning-bg);
+}
+.has-error {
+  .form-control-validation(@state-danger-bg; @state-danger-bg; @state-danger-bg);
+}

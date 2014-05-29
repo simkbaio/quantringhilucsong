@@ -1,0 +1,62 @@
+.jumobtron-variant(@color; @bgcolor; @lead-color) {
+  background-color: @bgcolor;
+  a:not(.btn) {
+    color: darken(@bgcolor, 20%);
+    &:hover {
+      color: @color;
+    }
+  }
+  .lead {
+    color: @lead-color;
+  }
+}
+
+.jumobtron-variant-white(@color; @lead-color; @bgcolor: #fff) {
+  background-color: @bgcolor;
+  .h1,
+  h1 {
+    color: @color;
+  }
+  p {
+    color: @text-color;
+  }
+  a:not(.btn) {
+    border-bottom: 1px solid @color;
+    color: darken(@color, 20%);
+    &:hover {
+      border-bottom: 1px solid transparent;
+      color: @color;
+    }
+  }
+  .lead {
+    color: @lead-color;
+  }
+}
+
+.jumbotron {
+
+  // small text
+  .small {
+    font-size: 16px;
+  }
+
+  // decreased padding
+  &.decreased-padding {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  // providing extra margins to jumbotron
+  .jumbotron-push {
+    margin-top: 60px;
+    margin-bottom: 70px;
+  }
+
+  // variants
+  &.jumbotron-default-white {
+    .jumobtron-variant-white(@kvelle-color; (@kvelle-color-lighter));
+  }
+  &.jumbotron-default-transparent {
+    .jumobtron-variant-white(@kvelle-color; (@kvelle-color-lighter); transparent);
+  }
+}

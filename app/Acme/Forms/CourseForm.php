@@ -13,9 +13,9 @@ use Laracasts\Validation\FormValidator;
 
 class CourseForm extends FormValidator {
     protected $rules = [
-        'course_name'=>'required|max:250',
-        'course_start'=>'required|date',
-        'course_end'=>'required|date',
+        'name'=>'required|max:250',
+        'start'=>'required|date',
+        'end'=>'required|date',
 
 
     ];

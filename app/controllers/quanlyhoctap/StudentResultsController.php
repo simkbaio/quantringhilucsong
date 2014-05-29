@@ -44,7 +44,7 @@ class StudentResultsController extends \BaseController {
         $class = StudenResult::create($input);
 
         return Redirect::route('admin.studentresults.index')
-            ->withFlashMessage('Bạn đã thêm thành công lớp học mới: '.$class->class_name);
+            ->withFlashMessage('Bạn đã thêm thành công lớp học mới: '.$class->name);
 
     }
 
@@ -70,7 +70,7 @@ class StudentResultsController extends \BaseController {
     {
 
 
-        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
+        $class = StudenResult::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.studentresults.edit')->withClass($class);
     }
 
@@ -84,10 +84,10 @@ class StudentResultsController extends \BaseController {
     {
         $input = Input::except('_method','_token');
         $this->classForm->validate(Input::all());
-        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
-        if(StudenResult::where('class_id','=',$id)->update($input))
+        $class = StudenResult::where('id','=',$id)->firstOrFail();
+        if(StudenResult::where('id','=',$id)->update($input))
             return Redirect::route('admin.studentresults.index')
-                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: '.$class->class_name);
+                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: '.$class->name);
         else
             return Redirect::route('admin.studentresults.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
@@ -102,10 +102,10 @@ class StudentResultsController extends \BaseController {
      */
     public function destroy($id)
     {
-        $class = StudenResult::where('class_id','=',$id)->firstOrFail();
-        StudenResult::where('class_id','=',$id)->delete();
+        $class = StudenResult::where('id','=',$id)->firstOrFail();
+        StudenResult::where('id','=',$id)->delete();
         return Redirect::route('admin.studentresults.index')
-            ->withFlashMessage('Bạn đã xóa lớp học: '.$class->class_name);
+            ->withFlashMessage('Bạn đã xóa lớp học: '.$class->name);
     }
 
 }

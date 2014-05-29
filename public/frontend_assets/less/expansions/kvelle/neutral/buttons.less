@@ -1,0 +1,15 @@
+.btn {
+  &.btn-neutral {
+    .button-variant(#fff; @kvelle-color-neutral; @kvelle-color-neutral; @kvelle-color-neutral;);
+  }
+  &.btn-neutral-light {
+    .button-variant(@kvelle-color-neutral; lighten(@kvelle-color-neutral, 50%); lighten(@kvelle-color-neutral, 30%); #D3D3D3;);
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open .dropdown-toggle& {
+      border-color: lighten(@kvelle-color-neutral, 30%);
+    }
+  }
+}

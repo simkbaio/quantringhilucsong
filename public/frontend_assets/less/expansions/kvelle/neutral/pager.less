@@ -1,0 +1,33 @@
+.pager-neutral {
+  &.pager {
+    li {
+      > a,
+      > span {
+        text-shadow: 0 1px 0 darken(@kvelle-color-neutral, 10%);
+        border: 1px solid @kvelle-color-neutral;
+        background-color: @kvelle-color-neutral;
+      }
+
+      > a:hover,
+      > a:focus,
+      > a:active {
+        text-shadow: 1px 1px 0 @kvelle-color-neutral;
+        border: 1px solid lighten(@kvelle-color-neutral, 10%);
+        border-bottom: 1px solid @kvelle-color-neutral;
+        background-color: lighten(@kvelle-color-neutral, 10%);
+      }
+    }
+
+    .disabled {
+      > a,
+      > a:hover,
+      > a:focus,
+      > span {
+        background-color: lighten(@kvelle-color-neutral, 25%) !important;
+        border: 1px solid lighten(@kvelle-color-neutral, 25%) !important;
+        border-bottom-color: @kvelle-color-neutral !important;
+        color: @gray-lighter !important;
+      }
+    }
+  }
+}

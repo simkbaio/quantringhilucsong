@@ -1,0 +1,33 @@
+.pager-dark {
+  &.pager {
+    li {
+      > a,
+      > span {
+        text-shadow: 0 1px 0 @kvelle-color-darker;
+        border: 1px solid @kvelle-color-dark;
+        background-color: @kvelle-color-dark;
+      }
+
+      > a:hover,
+      > a:focus,
+      > a:active {
+        text-shadow: 1px 1px 0 @kvelle-color-darker;
+        border: 1px solid @kvelle-color;
+        border-bottom: 1px solid @kvelle-color-dark;
+        background-color: @kvelle-color;
+      }
+    }
+
+    .disabled {
+      > a,
+      > a:hover,
+      > a:focus,
+      > span {
+        background-color: desaturate(@kvelle-color-light, 25%) !important;
+        border: 1px solid desaturate(@kvelle-color-light, 25%) !important;
+        border-bottom-color: @kvelle-color-dark !important;
+        color: @gray-lighter !important;
+      }
+    }
+  }
+}

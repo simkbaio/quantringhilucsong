@@ -1,0 +1,24 @@
+.breadcrumb {
+  border-bottom: 1px solid @kvelle-color;
+
+  > li {
+
+    + li:before {
+      font-family: fontawesome;
+      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: @breadcrumb-color;
+    }
+    > a {
+      color: @kvelle-color;
+
+      &:hover {
+        color: @kvelle-color-light;
+      }
+    }
+  }
+
+  > .active {
+    color: @kvelle-color;
+  }
+}

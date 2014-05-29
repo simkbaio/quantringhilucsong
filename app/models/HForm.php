@@ -6,8 +6,8 @@ class HForm
     {
         $title = "Unknow Title";
         $name = "Unknow";
-        $class_input = "form-control";
-        $class_label = "";
+        $input = "form-control";
+        $label = "";
         $width = "12";
         $type = 'text';
         $data_input = array();
@@ -25,11 +25,11 @@ class HForm
         if (isset($data['name'])) {
             $name = $data['name'];
         }
-        if (isset($data['class_input'])) {
-            $class_input = $data['class_input'];
+        if (isset($data['input'])) {
+            $input = $data['input'];
         }
-        if (isset($data['class_label'])) {
-            $class_label = $data['class_label'];
+        if (isset($data['label'])) {
+            $label = $data['label'];
         }
         if (isset($data['width'])) {
             $width = $data['width'];
@@ -45,27 +45,27 @@ class HForm
         }
 
         $str = '<div class="form-group col-md-' . $width . '">' .
-        Form::label($name, $title, ['class' => $class_label
+        Form::label($name, $title, ['class' => $label
             ])
         ;
         switch ($type) {
             case 'text':
-            $str .= Form::text($name, $value, ['class' => $class_input
+            $str .= Form::text($name, $value, ['class' => $input
                 ])
             ;
             break;
             case 'password':
-            $str .= Form::password($name, ['class' => $class_input
+            $str .= Form::password($name, ['class' => $input
                 ])
             ;
             break;
             case 'textarea':
-            $str .= Form::textarea($name, $value, ['class' => $class_input, 'rows' => $rows
+            $str .= Form::textarea($name, $value, ['class' => $input, 'rows' => $rows
                 ])
             ;
             break;
             case 'select':
-            $str .= Form::select($name, $data_input, $value, ['class' => $class_input
+            $str .= Form::select($name, $data_input, $value, ['class' => $input
                 ])
             ;
             default:

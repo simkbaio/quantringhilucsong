@@ -2,7 +2,10 @@
 #home
 use \Carbon\Carbon;
 Route::get('/',function(){
-    return Redirect::to('admin');
+    return View::make('frontend.layouts.master');
+});
+Route::get('facebook/login',function(){
+    return Facebook::loginUrl();
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
@@ -80,7 +83,7 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
 
     Route::resource('teachers','TeachersController');
 
-    Route::post('class/{class_id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
+    Route::post('class/{id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
     Route::resource('classes','ClassesController');
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');

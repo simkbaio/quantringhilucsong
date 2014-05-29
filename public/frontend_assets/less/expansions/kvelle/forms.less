@@ -1,0 +1,115 @@
+// overriding mixins.less line 900
+.form-control-focus(@color: @input-border-focus) {
+  //@color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    //border-color: @color;
+    outline: 0;
+    box-shadow: inset 0 0 0 0 @kvelle-color, 0 0 2px 0 lighten(@kvelle-color, 20%);
+  }
+}
+
+// overriding mixins.less line 855
+.form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
+  // Color the label and help text
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
+    color: @text-color;
+  }
+  // Set the border and box shadow on specific inputs to match
+  .form-control {
+    border-color: @border-color;
+    .box-shadow(inset 0 -3px 0 0 @background-color);
+    &:focus {
+      border-color: @border-color;
+      box-shadow: inset 0 0 0 0 @background-color, 0 0 2px 0 lighten(@border-color, 20%);
+    }
+  }
+  // Set validation states also for addons
+  .input-group-addon {
+    color: #fff;
+    border-color: @border-color;
+    background-color: @background-color;
+  }
+  // Optional feedback icon
+  .form-control-feedback {
+    color: @text-color;
+  }
+
+  .custom-checkbox .fa-check {
+    color: @text-color;
+    border: 1px solid @border-color;
+  }
+
+  .custom-checkbox .empty {
+    color: #fff;
+    background-color: #fff;
+    &:hover {
+      background-color: @background-color;
+    }
+  }
+
+  .custom-checkbox .my-ui-icon-round {
+    font-size: 1em;
+    padding: 1px;
+    border-radius: 50%;
+  }
+}
+
+// New feedback states based on mixin above
+.has-success {
+  .form-control-validation(@state-success-bg; @state-success-bg; @state-success-bg);
+}
+.has-warning {
+  .form-control-validation(@state-warning-bg; @state-warning-bg; @state-warning-bg);
+}
+.has-error {
+  .form-control-validation(@state-danger-bg; @state-danger-bg; @state-danger-bg);
+}
+// new feedback state for .has-info using mixin above
+.has-info {
+  .form-control-validation(@state-info-bg; @state-info-bg; @state-info-bg);
+}
+
+// Custom checkbox styling
+input[type='checkbox'], input[type='radio'] {
+  display: none;
+}
+.custom-checkbox .my-ui-icon {
+  border-radius: 0;
+  font-size: 1em;
+  display: inline-block;
+  padding: 1px;
+}
+.custom-checkbox .fa-check {
+  color: @kvelle-color;
+  border: 1px solid @kvelle-color;
+  background-color: #fff;
+  .transition(~"color 200ms linear, background-color 200ms linear");
+  cursor: pointer;
+  font-size: 13px;
+}
+.custom-checkbox .my-ui-icon-round {
+  font-size: 1em;
+  padding: 1px;
+  border-radius: 50%;
+}
+.custom-checkbox .empty {
+  color: #fff;
+  &:hover {
+    background-color: @kvelle-color;
+  }
+}
+.custom-checkbox {
+  // fixing input group addon custom checkboxes
+  .input-group-lg & {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .input-group-sm & {
+    line-height: 1.25;
+  }
+}

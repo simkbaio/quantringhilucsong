@@ -39,14 +39,14 @@ class CoursesController extends \BaseController {
      */
     public function store()
     {
-        $input = Input::except('_method','_token','course_start','course_end');
-        $input['course_start'] = strtotime(Input::get('course_start'));
-        $input['course_end'] = strtotime(Input::get('course_end'));
+        $input = Input::except('_method','_token','start','end');
+        $input['start'] = strtotime(Input::get('start'));
+        $input['end'] = strtotime(Input::get('end'));
         $this->courseForm->validate(Input::all());
         $course = Course::create($input);
 
         return Redirect::route('admin.courses.index')
-            ->withFlashMessage('Bạn đã thêm thành công khóa học mới: '.$course->course_name);
+            ->withFlashMessage('Bạn đã thêm thành công khóa học mới: '.$course->name);
 
     }
 
@@ -58,7 +58,7 @@ class CoursesController extends \BaseController {
      */
     public function show($id)
     {
-        $course = Course::where('course_id','=',$id)->firstOrFail();
+        $course = Course::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.courses.show')->withCourse($course);
 
     }
@@ -73,7 +73,7 @@ class CoursesController extends \BaseController {
     {
 
 
-        $course = Course::where('course_id','=',$id)->firstOrFail();
+        $course = Course::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.courses.edit')->withCourse($course);
     }
 
@@ -85,14 +85,14 @@ class CoursesController extends \BaseController {
      */
     public function update($id)
     {
-        $input = Input::except('_method','_token','course_start','course_end');
+        $input = Input::except('_method','_token','start','end');
         $this->courseForm->validate(Input::all());
-        $input['course_start'] = strtotime(Input::get('course_start'));
-        $input['course_end'] = strtotime(Input::get('course_end'));
-        $course = Course::where('course_id','=',$id)->firstOrFail();
-        if(Course::where('course_id','=',$id)->update($input))
+        $input['start'] = strtotime(Input::get('start'));
+        $input['end'] = strtotime(Input::get('end'));
+        $course = Course::where('id','=',$id)->firstOrFail();
+        if(Course::where('id','=',$id)->update($input))
             return Redirect::route('admin.courses.index')
-                ->withFlashMessage('Bạn đã cập nhật thành công khóa học: '.$course->course_name);
+                ->withFlashMessage('Bạn đã cập nhật thành công khóa học: '.$course->name);
         else
             return Redirect::route('admin.courses.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
@@ -107,10 +107,10 @@ class CoursesController extends \BaseController {
      */
     public function destroy($id)
     {
-        $course = Course::where('course_id','=',$id)->firstOrFail();
-        Course::where('course_id','=',$id)->delete();
+        $course = Course::where('id','=',$id)->firstOrFail();
+        Course::where('id','=',$id)->delete();
         return Redirect::route('admin.courses.index')
-            ->withFlashMessage('Bạn đã xóa khóa học: '.$course->course_name);
+            ->withFlashMessage('Bạn đã xóa khóa học: '.$course->name);
     }
 
 }

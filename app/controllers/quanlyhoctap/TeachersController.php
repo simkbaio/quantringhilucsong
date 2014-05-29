@@ -39,15 +39,15 @@ class TeachersController extends \BaseController {
      */
     public function store()
     {
-        $input = Input::except('_method','_token','teacher_join_date','teacher_out_date');
-        $input['teacher_join_date'] = strtotime(Input::get('teacher_join_date'));
-        $input['teacher_out_date'] = strtotime(Input::get('teacher_out_date'));
+        $input = Input::except('_method','_token','join_date','out_date');
+        $input['join_date'] = strtotime(Input::get('join_date'));
+        $input['out_date'] = strtotime(Input::get('out_date'));
 
         $this->teacherForm->validate(Input::all());
         $teacher = Teacher::create($input);
 
         return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã thêm thành công giáo viên mới: '.$teacher->teacher_name);
+            ->withFlashMessage('Bạn đã thêm thành công giáo viên mới: '.$teacher->name);
 
     }
 
@@ -59,6 +59,8 @@ class TeachersController extends \BaseController {
      */
     public function show($id)
     {
+        $teacher = Teacher::findOrFail($id);
+        return View::make('quanlyhoctap.teachers.show')->withTeacher($teacher);
 
 
     }
@@ -73,7 +75,7 @@ class TeachersController extends \BaseController {
     {
 
 
-        $teacher = Teacher::where('teacher_id','=',$id)->firstOrFail();
+        $teacher = findOrFail($id);
 //        return dd($teacher);
         return View::make('quanlyhoctap.teachers.edit')->withTeacher($teacher);
     }
@@ -86,14 +88,14 @@ class TeachersController extends \BaseController {
      */
     public function update($id)
     {
-        $input = Input::except('_method','_token','teacher_join_date','teacher_out_date');
-        $input['teacher_join_date'] = strtotime(Input::get('teacher_join_date'));
-        $input['teacher_out_date'] = strtotime(Input::get('teacher_out_date'));
+        $input = Input::except('_method','_token','join_date','out_date');
+        $input['join_date'] = strtotime(Input::get('join_date'));
+        $input['out_date'] = strtotime(Input::get('out_date'));
 
-        $teacher = Teacher::where('teacher_id','=',$id)->firstOrFail();
-        if(Teacher::where('teacher_id','=',$id)->update($input))
+        $teacher = Teacher::where('id','=',$id)->firstOrFail();
+        if(Teacher::where('id','=',$id)->update($input))
             return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã cập nhật thành công giáo viên: '.$teacher->teacher_name);
+            ->withFlashMessage('Bạn đã cập nhật thành công giáo viên: '.$teacher->name);
         else
             return Redirect::route('admin.teachers.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
@@ -108,10 +110,10 @@ class TeachersController extends \BaseController {
      */
     public function destroy($id)
     {
-        $teacher = Teacher::where('teacher_id','=',$id)->firstOrFail();
-        Teacher::where('teacher_id','=',$id)->delete();
+        $teacher = Teacher::where('id','=',$id)->firstOrFail();
+        Teacher::where('id','=',$id)->delete();
         return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã xóa giáo viên: '.$teacher->teacher_name);
+            ->withFlashMessage('Bạn đã xóa giáo viên: '.$teacher->name);
     }
 
 }

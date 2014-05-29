@@ -1,0 +1,119 @@
+/*  ###  -  USAGE NOT ADVISED  -  ###  */
+/* ONLY HERE FOR DOCUMENTATION PURPOSES */
+
+/* spacing requirements */
+.buttons-whitespace .btn-group {
+    margin-bottom: 5px;
+    margin-right: 3px;
+}
+
+.buttons-whitespace-social button {
+    margin-bottom: 4px;
+}
+
+.example-control-sizing .input-group,
+.example-control-sizing .form-inline,
+.example-control-sizing input[type=text]+input[type=text],
+.example-control-sizing select {
+    margin-top: 14px;
+}
+
+/* portlets */
+.portlet .slimScroller {
+    height: 180px;
+}
+
+/* nestable */
+#nestable-menu {
+    padding: 0; margin: 20px 0;
+}
+
+footer {
+    background-color: #ccc;
+}
+
+/* theme colors */
+.theme-bg-bright-green {
+    background-color: #618E20;
+}
+.theme-bg-flat-green {
+    background-color: #43923E;
+}
+.theme-bg-red {
+    background-color: #D1461B;
+}
+.theme-bg-bordeaux {
+    background-color: #974441;
+}
+.theme-bg-blue {
+    background-color: #236B9B;
+}
+.theme-bg-aqua {
+    background-color: #348B8B;
+}
+.theme-bg-purple-blue {
+    background-color: #515C93;
+}
+.theme-bg-hard-pink {
+    background-color: #B73DBD;
+}
+.theme-bg-mokka {
+    background-color: #8F6D0F;
+}
+.theme-bg-gray {
+    background-color: #646464;
+}
+
+.theme-color-bright-green {
+    color: #618E20;
+}
+.theme-color-flat-green {
+    color: #43923E;
+}
+.theme-color-red {
+    color: #D1461B;
+}
+.theme-color-bordeaux {
+    color: #974441;
+}
+.theme-color-blue {
+    color: #236B9B;
+}
+.theme-color-purple-blue {
+    color: #515C93;
+}
+.theme-color-aqua {
+    color: #348B8B;
+}
+.theme-color-hard-pink {
+    color: #B73DBD;
+}
+.theme-color-mokka {
+    color: #8F6D0F;
+}
+.theme-color-gray {
+    color: #646464;
+}
+
+.tint {
+    font-size: 48px;
+    border-bottom: 1px solid transparent !important;
+}
+
+/* HOLDER FIX
+https://code.google.com/p/chromium/issues/detail?id=336476
+https://github.com/imsky/holder/issues/81
+ */
+body
+{
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0.1s;
+}
+
+@-webkit-keyframes fontfix{
+    from{ opacity: 1; }
+    to{ opacity: 1; }
+}

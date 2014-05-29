@@ -52,7 +52,7 @@ Nghị lực sống | Thêm khóa học mới
                     </li>
                     <li>
                         <a href="#">
-                            {{$course->course_name}}
+                            {{$course->name}}
                         </a>
                     </li>
                 </ul>
@@ -65,9 +65,9 @@ Nghị lực sống | Thêm khóa học mới
             <div class="col-md-12">
                 {{portlet_open('Nội dung cần nhập','blue')}}
                 <div class="row">
-                    {{Form::model($course,['route'=>['admin.courses.update',$course->course_id],'method'=>'PUT'])}}
+                    {{Form::model($course,['route'=>['admin.courses.update',$course->id],'method'=>'PUT'])}}
                     {{HForm::input([
-                        'name'=>'course_name',
+                        'name'=>'name',
                         'title'=>'Tên khóa học',
                         'width'=>'6',
                         ],$errors)}}
@@ -75,19 +75,19 @@ Nghị lực sống | Thêm khóa học mới
 
                     <div class="form-group  col-md-3">
                         <label>Ngày bắt đầu</label>
-                        <input class="form-control input-medium date-picker" name="course_start" type="text" value="{{date('m/d/Y',$course->course_start)}}"/>
-                        {{error_for('course_start',$errors)}}
+                        <input class="form-control input-medium date-picker" name="start" type="text" value="{{date('m/d/Y',$course->start)}}"/>
+                        {{error_for('start',$errors)}}
                     </div>
                     <div class="form-group  col-md-3">
                         <label>Ngày kết thúc</label>
-                        <input class="form-control input-medium date-picker" name="course_end" type="text" value="{{date('m/d/Y',$course->course_end)}}"/>
-                        {{error_for('course_end',$errors)}}
+                        <input class="form-control input-medium date-picker" name="end" type="text" value="{{date('m/d/Y',$course->end)}}"/>
+                        {{error_for('end',$errors)}}
 
                     </div>
 
 
                     {{HForm::input([
-                        'name'=>'course_description',
+                        'name'=>'description',
                         'title'=>'Mô tả khóa học',
                         'type'=>'textarea',
                         ],$errors)}}

@@ -53,16 +53,16 @@ $(".date_formated").inputmask("m/d/y", {
             <div class="col-md-12">
                 {{portlet_open('Nội dung cần nhập','blue')}}
                 <div class="row">
-                    {{Form::model($teacher,['route'=>['admin.teachers.update',$teacher->teacher_id],'method'=>'PUT'])}}
+                    {{Form::model($teacher,['route'=>['admin.teachers.update',$teacher->id],'method'=>'PUT'])}}
                     {{HForm::input([
-                    'name'=>'teacher_name',
+                    'name'=>'name',
                     'title'=>'Tên giáo viên',
                     'width'=>'6',
                     ],$errors)}}
 
 
                     {{HForm::input([
-                    'name'=>'teacher_address',
+                    'name'=>'address',
                     'title'=>'Địa chỉ',
                     'width'=>'4',
                     ],$errors)}}
@@ -70,20 +70,20 @@ $(".date_formated").inputmask("m/d/y", {
 
 
                     {{HForm::input([
-                    'name'=>'teacher_phone',
+                    'name'=>'phone',
                     'title'=>'Số điện thoại',
                     'width'=>'6',
                     ],$errors)}}
 
                     {{HForm::input([
-                    'name'=>'teacher_email',
+                    'name'=>'email',
                     'title'=>'Hòm Thư',
                     'width'=>'6',
                     ],$errors)}}
                     <div class="form-group col-md-6">
                         <label class="control-label">Ngày gia nhập</label>
                         <div>
-                        <input type="text" class="date_formated  form-control" name="teacher_join_date" class="form-control" value="{{date("m-d-Y",$teacher->teacher_join_date)}}">
+                        <input type="text" class="date_formated  form-control" name="join_date" class="form-control" value="{{date("m-d-Y",$teacher->join_date)}}">
                             <span class="help-block">
                                 Nhập theo định dạng (tháng/ngày/năm)
                             </span>
@@ -92,9 +92,9 @@ $(".date_formated").inputmask("m/d/y", {
                         <div class="form-group col-md-6">
                         <label class="control-label">Ngày kết thúc</label>
                         <div>
-                        <input type="text" class="date_formated form-control" name="teacher_out_date" class="form-control" value="{{date("m/d/Y",$teacher->teacher_out_date)}}">
+                        <input type="text" class="date_formated form-control" name="out_date" class="form-control" value="{{date("m/d/Y",$teacher->out_date)}}">
                             <span class="help-block">
-                                Nhập theo định dạng (tháng/ngày/năm) {{date("m-d-Y",$teacher->teacher_out_date)}}
+                                Nhập theo định dạng (tháng/ngày/năm) {{date("m-d-Y",$teacher->out_date)}}
                         </div>
                     </div>
                     <div class="col-md-12" style="text-align: center;">

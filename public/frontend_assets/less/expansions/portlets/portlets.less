@@ -1,0 +1,72 @@
+.portlet {
+  .panel-heading {
+    padding: 10px 15px 10px;
+    cursor: move;
+  }
+  .panel-caption {
+    float: left;
+  }
+
+  .panel-options {
+    float: right;
+    margin-top: 4px;
+    .panel-collapse,
+    .panel-expand,
+    .panel-remove {
+      color: #fff;
+      > a {
+        .transition(~"none");
+        font-size: 18px;
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    }
+    .panel-collapse,
+    .panel-expand {
+      margin-right: 3px;
+    }
+
+    &.dark {
+      .panel-collapse,
+      .panel-expand,
+      .panel-remove {
+        color: @text-color;
+        > a {
+          &:hover,
+          &:focus {
+            color: @text-color;
+          }
+        }
+      }
+    }
+  }
+
+  > .panel.panel-default {
+    .panel-options {
+      .panel-collapse,
+      .panel-expand,
+      .panel-remove {
+        color: @text-color;
+        > a {
+          &:hover,
+          &:focus {
+            color: @text-color;
+          }
+        }
+      }
+    }
+  }
+
+  .panel-hidden {
+    display: none;
+  }
+}
+
+.portlet-placeholder {
+  background-color: #f5f5f5;
+  border: 1px dashed #ddd;
+  border-radius: @border-radius-base !important;
+  margin-bottom: 18px;
+}

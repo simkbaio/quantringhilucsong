@@ -1,0 +1,127 @@
+.nav-tabs-light {
+  &.nav {
+    > li {
+
+      // Disabled state sets text to gray and nukes hover/tab effects
+      &.disabled > a {
+        background-color: desaturate(@kvelle-color-lighter, 20%) !important;
+        color: @gray-lighter !important;
+      }
+    }
+
+    .open > a {
+      background-color: lighten(@kvelle-color-light, 6%);
+      &,
+      &:hover,
+      &:focus {
+        border-color: @kvelle-color-light;
+        background-color: lighten(@kvelle-color-light, 6%);
+      }
+    }
+  }
+
+  &.nav-tabs {
+    border-bottom: 1px solid @kvelle-color-light;
+
+    > li {
+      > a {
+        box-shadow: inset 0 1px 0 0 lighten(@kvelle-color-light, 8%);
+        background-color: @kvelle-color-light;
+        text-shadow: 0 1px 0 @kvelle-color;
+
+        &:hover,
+        &:focus {
+          background-color: lighten(@kvelle-color-light, 6%);
+          text-shadow: 1px 1px 0 @kvelle-color;
+        }
+
+        &:active {
+          text-shadow: 1px 1px 0 @kvelle-color;
+          box-shadow: inset 0 0 6px 6px darken(@kvelle-color-light, 2%);
+          background-color: @kvelle-color-light;
+        }
+      }
+
+      &.active > a {
+        text-shadow: 1px 1px 0 @kvelle-color;
+        &,
+        &:hover,
+        &:focus {
+          background-color: lighten(@kvelle-color-light, 6%) !important;
+        }
+      }
+    }
+
+    &.nav-justified {
+      border-bottom: 1px solid @kvelle-color-light;
+    }
+  }
+
+  //== Tabs below
+  &.tabs-below > .nav-tabs {
+    border-top: 1px solid @kvelle-color-light;
+  }
+
+  &.tabs-below > .nav-tabs > li {
+    > a {
+      box-shadow: inset 0 -1px 0 0 lighten(@kvelle-color-light, 8%);
+
+      &:active {
+        box-shadow: inset 0 0 6px 6px darken(@kvelle-color-light, 2%);
+      }
+    }
+  }
+
+  //== Tabs left
+  &.tabs-left > .nav-tabs {
+    border-left: 1px solid @kvelle-color-light;
+  }
+
+  &.tabs-left > .nav-tabs > li > a {
+    box-shadow: inset -1px 0 0 0 lighten(@kvelle-color-light, 8%);
+
+    &:active {
+      box-shadow: inset 0 0 6px 6px darken(@kvelle-color-light, 2%);
+    }
+  }
+
+  //== Tabs right
+  &.tabs-right > .nav-tabs {
+    border-right: 1px solid @kvelle-color-light;
+  }
+
+  &.tabs-right > .nav-tabs > li > a {
+    box-shadow: inset 1px 0 0 0 lighten(@kvelle-color-light, 8%);
+
+    &:active {
+      box-shadow: inset 0 0 6px 6px darken(@kvelle-color-light, 2%);
+    }
+  }
+
+  //== Pills
+  &.nav-pills {
+    > li {
+      > a {
+        border-bottom: 1px solid @kvelle-color-light;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: @kvelle-color-light;
+          box-shadow: inset 0 -4px 0 0 lighten(@kvelle-color-light, 8%);
+        }
+      }
+
+      &.active > a {
+        color: @kvelle-color-light;
+        box-shadow: inset 0 -4px 0 0 lighten(@kvelle-color-light, 8%);
+      }
+
+      // Disabled state sets text to gray and nukes hover/tab effects
+      &.disabled > a {
+        background-color: @nav-pills-active-link-hover-bg !important;
+        color: @gray-light !important;
+      }
+    }
+  }
+}

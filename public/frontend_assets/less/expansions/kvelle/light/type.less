@@ -1,0 +1,46 @@
+/* define page headers with dark background color in combination with a specific text color
+ - white
+ - dark
+ - darker
+ (light and main are not available as they do not differ enough from @kvelle-color-light)
+ */
+.kvelle-background-light {
+  background-color: @kvelle-color-light;
+  .kvelle-color-dark .page-header {
+    border-color: @kvelle-color-dark;
+    box-shadow: 0 4px 0 0 @kvelle-color-lighter;
+  }
+  .kvelle-color-darker .page-header {
+    border-color: @kvelle-color-darker;
+    box-shadow: 0 4px 0 0 @kvelle-color-lighter;
+  }
+  .kvelle-color-white .page-header {
+    border-color: #fff;
+    box-shadow: 0 4px 0 0 @kvelle-color-lighter;
+  }
+
+  // when using this class in combination with .tab-content, add some padding
+  &.tab-content {
+    padding: 10px;
+  }
+}
+
+// List options
+ul {
+  &.iconized,
+  &.iconized-alt {
+    &.list-light {
+      > li:before {
+        color: @kvelle-color-light;
+      }
+      > li > ul li:before {
+        color: @kvelle-color-light;
+      }
+    }
+  }
+}
+
+// contextual background
+.bg-light {
+  .bg-variant(@kvelle-color-light);
+}

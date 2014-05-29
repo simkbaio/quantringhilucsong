@@ -1,0 +1,46 @@
+.ui-slider {
+  border: 1px solid @kvelle-color !important;
+  > a {
+    .transition(~"none") !important;
+  }
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: @kvelle-color-light;
+  border: 1px solid @kvelle-color;
+  border-radius: 0 !important;
+  padding: 0;
+  outline: none;
+}
+
+.ui-widget-content {
+  background: @input-bg !important;
+  border-radius: 0 !important;
+}
+
+.ui-slider-horizontal {
+  height: 9px !important;
+
+  .ui-slider-handle {
+    top: -7px !important;
+    width: .6em !important;
+    margin-left: -.25em !important;
+  }
+}
+
+.ui-widget-header {
+  background: @kvelle-color !important;
+}
+
+.ui-slider-vertical {
+  width: 8px !important;
+  > .ui-slider-handle {
+    left: -7px !important;
+    height: .6em !important;
+    margin-bottom: -.3em !important;
+  }
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+  border-radius: 0 !important;
+}

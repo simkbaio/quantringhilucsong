@@ -60,12 +60,12 @@ $("#mask_date1").inputmask("m/d/y", {
 				<div class="row">
 					{{Form::open(['route'=>'admin.students.store'])}}
 					{{HForm::input([
-						'name'=>'stu_name',
+						'name'=>'name',
 						'title'=>'Tên học viên',
 						'width'=>'6',
 						],$errors)}}
 					{{HForm::input([
-						'name'=>'stu_sex',
+						'name'=>'sex',
 						'title'=>'Giới tính',
 						'type'=>'select',
 						'data_input'=>Config::get('admin.sex'),
@@ -74,7 +74,7 @@ $("#mask_date1").inputmask("m/d/y", {
 						<div class="form-group col-md-3">
 						<label class="control-label">Ngày sinh</label>
 							<div>
-								<input type="text" id="mask_date1" name="stu_birthday" class="form-control">
+								<input type="text" id="mask_date1" name="birthday" class="form-control">
 								<span class="help-block">
 									Nhập theo định dạng (tháng/ngày/năm)
 								</span>
@@ -82,18 +82,18 @@ $("#mask_date1").inputmask("m/d/y", {
 						</div>
 
 						{{HForm::input([
-							'name'=>'stu_address',
+							'name'=>'address',
 							'title'=>'Địa chỉ',
 							'width'=>'4',
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_hometown',
+							'name'=>'hometown',
 							'title'=>'Quê quán',
 							'width'=>'4',
 							],$errors)}}
 						{{HForm::input([
-							'name'=>'stu_province_id',
+							'name'=>'province_id',
 							'title'=>'Tỉnh thành',
 							'type'=>'select',
 							'data_input'=>Config::get('admin.province'),
@@ -101,19 +101,19 @@ $("#mask_date1").inputmask("m/d/y", {
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_phone',
+							'name'=>'phone',
 							'title'=>'Số điện thoại',
 							'width'=>'4',
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_email',
+							'name'=>'email',
 							'title'=>'Hòm Thư',
 							'width'=>'4',
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_facebook',
+							'name'=>'facebook',
 							'title'=>'Facebook',
 							'width'=>'4',
 							],$errors)}}
@@ -121,7 +121,7 @@ $("#mask_date1").inputmask("m/d/y", {
 
 
 						{{HForm::input([
-							'name'=>'stu_married',
+							'name'=>'married',
 							'title'=>'Tình trạng hôn nhân',
 							'width'=>'4',
 							'type'=>'select',
@@ -129,7 +129,7 @@ $("#mask_date1").inputmask("m/d/y", {
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_educated',
+							'name'=>'educated',
 							'title'=>'Học thức',
 							'width'=>'4',
 							'type'=>'select',
@@ -137,7 +137,7 @@ $("#mask_date1").inputmask("m/d/y", {
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_type_disabilities',
+							'name'=>'type_disabilities',
 							'title'=>'Loại khuyết tật',
 							'type'=>'select',
 							'width'=>'4',
@@ -148,13 +148,13 @@ $("#mask_date1").inputmask("m/d/y", {
 
 							</div>
 							{{HForm::input([
-								'name'=>'stu_person_authen_name',
+								'name'=>'person_authen_name',
 								'title'=>'Người xác nhận',
 								'width'=>'6',
 								],$errors)}}
 
 							{{HForm::input([
-								'name'=>'stu_person_authen_address',
+								'name'=>'person_authen_address',
 								'title'=>'Địa chỉ người xác nhận',
 								'width'=>'6',
 								],$errors)}}

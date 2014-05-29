@@ -1,0 +1,11 @@
+.alert {
+  &.alert-lighter {
+    .alert-variant(@kvelle-color-lighter; @kvelle-color; #fff;);
+  }
+  &.alert-lighter-text {
+    .alert-variant(lighten(@kvelle-color-lighter, 8%); @kvelle-color-light; @kvelle-color);
+  }
+  &.alert-lighter-light-color {
+    .alert-variant(#fff; @kvelle-color-lighter; @kvelle-color-lighter;);
+  }
+}

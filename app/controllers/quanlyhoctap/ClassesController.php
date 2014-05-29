@@ -45,10 +45,10 @@ class ClassesController extends \BaseController
         $class = NClass::create($input);
         if (Input::has('course')) {
             return Redirect::route('admin.courses.show', Input::get('course'))
-                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: ' . $class->class_name);
+                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: ' . $class->name);
         }
         return Redirect::route('admin.classes.index')
-            ->withFlashMessage('Bạn đã thêm thành công lớp học mới: ' . $class->class_name);
+            ->withFlashMessage('Bạn đã thêm thành công lớp học mới: ' . $class->name);
 
     }
 
@@ -60,7 +60,7 @@ class ClassesController extends \BaseController
      */
     public function show($id)
     {
-        $class = NClass::where('class_id','=',$id)->firstOrFail();
+        $class = NClass::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.classes.show')->withClass($class);
 
 
@@ -76,7 +76,7 @@ class ClassesController extends \BaseController
     {
 
 
-        $class = NClass::where('class_id', '=', $id)->firstOrFail();
+        $class = NClass::where('id', '=', $id)->firstOrFail();
         return View::make('quanlyhoctap.classes.edit')->withClass($class);
     }
 
@@ -90,10 +90,10 @@ class ClassesController extends \BaseController
     {
         $input = Input::except('_method', '_token');
         $this->classForm->validate(Input::all());
-        $class = NClass::where('class_id', '=', $id)->firstOrFail();
-        if (NClass::where('class_id', '=', $id)->update($input))
-            return Redirect::route('admin.classes.show',$class->class_id)
-                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: ' . $class->class_name);
+        $class = NClass::where('id', '=', $id)->firstOrFail();
+        if (NClass::where('id', '=', $id)->update($input))
+            return Redirect::route('admin.classes.show',$class->id)
+                ->withFlashMessage('Bạn đã cập nhật thành công lớp học: ' . $class->name);
         else
             return Redirect::route('admin.classes.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
@@ -108,14 +108,14 @@ class ClassesController extends \BaseController
      */
     public function destroy($id)
     {
-        $class = NClass::where('class_id', '=', $id)->firstOrFail();
-        NClass::where('class_id', '=', $id)->delete();
+        $class = NClass::where('id', '=', $id)->firstOrFail();
+        NClass::where('id', '=', $id)->delete();
         return Redirect::back()
-            ->withFlashMessage('Bạn đã xóa lớp học: ' . $class->class_name);
+            ->withFlashMessage('Bạn đã xóa lớp học: ' . $class->name);
     }
     public function addstudent($id){
-        $class = NClass::where('class_id','=',$id)->firstOrFail();
-        $class->addstudent(Input::get('student'));
+        $class = NClass::where('id','=',$id)->firstOrFail();
+        $class->addstudent(Input::get('student_id'));
         return Redirect::back()->withFlashMessage('Đã thêm sinh viên mới thành công');
     }
 

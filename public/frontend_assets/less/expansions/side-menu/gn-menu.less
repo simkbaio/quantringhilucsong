@@ -1,0 +1,299 @@
+// source: http://tympanus.net/codrops/2013/07/30/google-nexus-website-menu/
+.gn-menu-main,
+.gn-menu-main ul {
+		margin: 0;
+		padding: 0;
+		background: white;
+		color: @kvelle-color;
+		list-style: none;
+		text-transform: none;
+		font-weight: 300;
+		font-family: 'Lato', Arial, sans-serif;
+		line-height: 60px;
+}
+
+.gn-menu-main {
+        float: left;
+        position: relative;
+        right: 15px;
+        left: -15px;
+		width: 60px;
+		height: 60px;
+}
+
+.gn-menu-main a {
+		display: block;
+		height: 100%;
+		color: @kvelle-color;
+		text-decoration: none;
+		cursor: pointer;
+        padding-left: 14px;
+}
+
+.no-touch .gn-menu-main a:hover,
+.no-touch .gn-menu li.gn-search-item:hover,
+.no-touch .gn-menu li.gn-search-item:hover a {
+		background: @kvelle-color;
+		color: white;
+}
+
+.gn-menu-main > li {
+		display: block;
+		float: left;
+		height: 100%;
+		border-right: 1px solid @kvelle-color;
+		text-align: center;
+}
+
+/* icon-only trigger (menu item) */
+
+.gn-menu-main li.gn-trigger {
+		position: relative;
+		width: 60px;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+}
+
+.gn-menu-main > li:last-child {
+		float: right;
+		border-right: none;
+		border-left: 1px solid @kvelle-color;
+}
+
+.gn-menu-main > li > a {
+		padding: 0 30px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: bold;
+}
+
+.gn-menu-main:after {
+		display: table;
+		clear: both;
+		content: "";
+}
+
+.gn-menu-wrapper {
+        display: none; // hide by default so that it doesn't flash when having heavy HTML pages (like forms.html)
+		position: fixed;
+		top: 60px;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+		width: 60px;
+		border-top: 1px solid @kvelle-color;
+		background: white;
+		-webkit-transform: translateX(-60px);
+		-moz-transform: translateX(-60px);
+		transform: translateX(-60px);
+		-webkit-transition: -webkit-transform 0.3s, width 0.3s;
+		-moz-transition: -moz-transform 0.3s, width 0.3s;
+		transition: transform 0.3s, width 0.3s;
+}
+
+.gn-scroller {
+		position: absolute;
+		overflow-y: scroll;
+		width: 370px;
+		height: 100%;
+}
+
+.gn-menu {
+		border-bottom: 1px solid @kvelle-color;
+		text-align: left;
+		font-size: 18px;
+}
+
+.gn-menu li:not(:first-child),
+.gn-menu li li {
+		box-shadow: inset 0 1px @kvelle-color
+}
+
+
+/* hide placeholder when active in Chrome */
+.gn-search:focus::-webkit-input-placeholder,
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:focus::-webkit-input-placeholder {
+		color: transparent
+}
+
+input.gn-search:focus {
+		cursor: text
+}
+
+.no-touch .gn-menu li.gn-search-item:hover input.gn-search {
+		color: white
+}
+
+/* placeholder */
+.no-touch .gn-menu li.gn-search-item:hover .gn-search::-webkit-input-placeholder {
+		color: white
+}
+
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:-moz-placeholder {
+		color: white
+}
+
+.no-touch .gn-menu li.gn-search-item:hover .gn-search::-moz-placeholder {
+		color: white
+}
+
+.no-touch .gn-menu li.gn-search-item:hover .gn-search:-ms-input-placeholder {
+		color: white
+}
+
+.gn-menu-main a.gn-icon-search {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 60px;
+}
+
+.gn-icon::before {
+		display: inline-block;
+		width: 60px;
+		text-align: center;
+		text-transform: none;
+		font-weight: normal;
+		font-style: normal;
+		font-variant: normal;
+		font-family: 'fontawesome';
+		line-height: 1;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+}
+
+/* if an icon anchor has a span, hide the span */
+.gn-icon span {
+		width: 0;
+		height: 0;
+		display: block;
+		overflow: hidden;
+}
+
+.gn-icon-menu::before {
+		//margin-left: -15px;
+  text-align: center;
+		vertical-align: -2px;
+		width: 30px;
+		height: 3px;
+		background: @kvelle-color;
+		box-shadow: 0 3px white, 0 -6px @kvelle-color, 0 -9px white, 0 -12px @kvelle-color;
+		content: '';
+}
+
+.no-touch .gn-icon-menu:hover::before,
+.no-touch .gn-icon-menu.gn-selected:hover::before {
+		background: white;
+		box-shadow: 0 3px @kvelle-color, 0 -6px white, 0 -9px @kvelle-color, 0 -12px white;
+}
+
+.gn-icon-menu.gn-selected::before {
+		background: @kvelle-color;
+		box-shadow: 0 3px white, 0 -6px @kvelle-color, 0 -9px white, 0 -12px @kvelle-color;
+}
+
+/* styles for opening menu */
+
+.gn-menu-wrapper.gn-open-all,
+.gn-menu-wrapper.gn-open-part {
+		-webkit-transform: translateX(0px);
+		-moz-transform: translateX(0px);
+		transform: translateX(0px);
+}
+
+.gn-menu-wrapper.gn-open-all {
+		width: 340px
+}
+
+.gn-menu-wrapper.gn-open-all .gn-submenu li {
+		height: 60px
+}
+
+@media screen and (max-width: 422px) {
+	.gn-menu-wrapper.gn-open-all {
+			-webkit-transform: translateX(0px);
+			-moz-transform: translateX(0px);
+			transform: translateX(0px);
+			width: 100%;
+	}
+
+	.gn-menu-wrapper.gn-open-all .gn-scroller {
+			width: 130%
+	}
+}
+
+// overrides of default code above (where unused stuff has been removed)
+.gn-menu .fa {
+  padding-left: 15px;
+}
+
+.gn-menu-main {
+
+  @media screen and (max-width: @screen-sm-min) {
+    left: 0; right: 0;
+  }
+}
+
+.gn-icon {
+  .transition(~"none");
+}
+.gn-menu-wrapper {
+
+  //display: none;
+
+  border-right: 1px solid @kvelle-color;
+  border-top: 1px solid @kvelle-color;
+
+  z-index: 1001;
+
+  .nav {
+
+    li {
+      > a {
+        font-size: 24px;
+        border-bottom: 1px solid @kvelle-color-light;
+      }
+    }
+
+    .parent,
+    .child {
+      padding: 0;
+
+      .parent-first {
+        width: 60px;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .parent-icon {
+        position: relative;
+        right: 26px;
+        top: 25px;
+        float: right;
+        font-size: 14px;
+      }
+    }
+
+    .no-icon {
+      padding-left: 60px;
+    }
+
+    .child {
+      .child-first {
+        width: 60px;
+        font-size: 24px;
+        text-align: center;
+      }
+    }
+  }
+
+
+  .navbar-fixed-bottom & {
+    margin-bottom: 61px;
+    top: 0;
+  }
+}

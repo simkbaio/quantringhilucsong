@@ -1,0 +1,100 @@
+.gethovercolor (@color; @bgcolor) when (@color = #fff) {
+  color: darken(@bgcolor, 10%) !important;
+}
+
+// override mixins.less LINE 405
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+  box-shadow: ~"none";
+  border-color: @border;
+
+  .panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-bottom: 1px solid @heading-border;
+    box-shadow: 0 4px 0 0 lighten(@heading-border, 10%);
+    margin-bottom: 4px;
+
+    a:hover,
+    a:focus {
+      color: lighten(@heading-bg-color, 20%);
+      .gethovercolor(@heading-bg-color; @heading-text-color);
+    }
+
+    + .panel-collapse .panel-body {
+      border-top-color: @border;
+    }
+
+    & > .panel-title {
+      font-size: 24px;
+    }
+  }
+
+  .panel-body {
+    background-color: #fff;
+  }
+
+  .panel-footer {
+    border-top: 1px solid @heading-border;
+    background-color: lighten(@heading-bg-color, 10%);
+    font-size: 14px;
+    color: @heading-text-color;
+
+    + .panel-collapse .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
+
+.panel {
+  // default colors
+  &.panel-primary-border {
+    .panel-variant(@kvelle-color; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+  }
+  &.panel-primary-light { // is in fact the same as panel-default
+    .panel-variant(transparent; @panel-primary-heading-bg; #fff; @panel-primary-border);
+  }
+  &.panel-primary-light-border { // is in fact the same as panel-default
+    .panel-variant(@kvelle-color; @panel-primary-heading-bg; #fff; @panel-primary-border);
+  }
+
+  // contextual colors
+  &.panel-success-border {
+    .panel-variant(@brand-success; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+  }
+  &.panel-success-white {
+    .panel-variant(transparent; @panel-success-heading-bg; @panel-success-text; @panel-success-border);
+  }
+  &.panel-success-white-border {
+    .panel-variant(@brand-success; @panel-success-heading-bg; @panel-success-text; @panel-success-border);
+  }
+
+  &.panel-info-border {
+    .panel-variant(@brand-info; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+  }
+  &.panel-info-white {
+    .panel-variant(transparent; @panel-info-heading-bg; @panel-info-text; @panel-info-border);
+  }
+  &.panel-info-white-border {
+    .panel-variant(@brand-info; @panel-info-heading-bg; @panel-info-text; @panel-info-border);
+  }
+
+  &.panel-warning-border {
+    .panel-variant(@brand-warning; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+  }
+  &.panel-warning-white {
+    .panel-variant(transparent; @panel-warning-heading-bg; @panel-warning-text; @panel-warning-border);
+  }
+  &.panel-warning-white-border {
+    .panel-variant(@brand-warning; @panel-warning-heading-bg; @panel-warning-text; @panel-warning-border);
+  }
+
+  &.panel-danger-border {
+    .panel-variant(@brand-danger; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+  }
+  &.panel-danger-white {
+    .panel-variant(transparent; @panel-danger-heading-bg; @panel-danger-text; @panel-danger-border);
+  }
+  &.panel-danger-white-border {
+    .panel-variant(@brand-danger; @panel-danger-heading-bg; @panel-danger-text; @panel-danger-border);
+  }
+}

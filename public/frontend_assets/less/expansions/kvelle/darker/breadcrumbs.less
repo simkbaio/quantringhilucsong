@@ -1,0 +1,20 @@
+.breadcrumb {
+  &.breadcrumb-darker {
+    border-bottom: 1px solid @kvelle-color-darker;
+    > li {
+      + li:before {
+        color: @kvelle-color-darker;
+      }
+      > a {
+        color: @kvelle-color-darker;
+
+        &:hover {
+          color: @kvelle-color-dark;
+        }
+      }
+    }
+    > .active {
+      color: @kvelle-color-darker;
+    }
+  }
+}

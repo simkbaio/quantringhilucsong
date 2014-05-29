@@ -15,11 +15,14 @@ class Teacher extends Eloquent{
         $data = array();
         $data[0]='Chưa xác định';
         // Chỉ lựa chọn Giáo viên còn đang hoạt động
-        $teachers = Teacher::orderBy('teacher_name')->get();
+        $teachers = Teacher::orderBy('name')->get();
         foreach($teachers as $teacher){
-            $data[$teacher->teacher_id] = $teacher->teacher_name;
+            $data[$teacher->id] = $teacher->name;
         }
         return $data;
 
+    }
+    public function classes(){
+        return Teacher::hasMany('NClass','teacher_id','id');
     }
 }

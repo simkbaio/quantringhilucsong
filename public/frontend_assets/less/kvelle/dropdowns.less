@@ -1,0 +1,23 @@
+.dropdown-menu {
+
+  .box-shadow(0 3px 6px rgba(0,0,0,.175));
+
+  > li > a {
+    font-weight: 300;
+    outline: none;
+    &:hover {
+      color: @kvelle-color;
+    }
+  }
+
+  .divider {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.dropup {
+  .dropdown-menu {
+    .box-shadow(0 -3px 6px rgba(0,0,0,.175));
+  }
+}

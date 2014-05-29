@@ -15,13 +15,13 @@ class Course extends Eloquent{
         $data = array();
         $data[0]='Chưa xác định';
 //        Chỉ lựa chọn khóa học còn đang mở
-        $courses = Course::orderBy('course_name')->where('course_end','>',time())->get();
+        $courses = Course::orderBy('name')->where('end','>',time())->get();
         foreach($courses as $course){
-            $data[$course->course_id] = $course->course_name;
+            $data[$course->id] = $course->name;
         }
         return $data;
     }
     public function classes(){
-        return Course::hasMany('NClass','class_course_id','course_id');
+        return Course::hasMany('NClass','course_id','id');
     }
 }

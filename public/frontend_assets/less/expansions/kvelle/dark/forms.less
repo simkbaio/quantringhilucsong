@@ -1,0 +1,188 @@
+.has-dark {
+  .form-control-validation(@kvelle-color-dark; @kvelle-color-dark; @kvelle-color-dark);
+
+  // datetime picker
+  &.bootstrap-datetimepicker-widget {
+    td {
+      &.day:hover,
+      &.hour:hover,
+      &.minute:hover,
+      &.second:hover
+      {
+        background-color: @kvelle-color-dark;
+      }
+      &.old,
+      &.new
+      {
+        color: @kvelle-color-dark;
+      }
+      &.active,
+      &.active:hover
+      {
+        background-color: @kvelle-color-dark;
+        color: #fff;
+      }
+      span {
+        &.old {
+          color: @kvelle-color-dark;
+        }
+
+        &:hover,
+        &.active,
+        &.active:hover
+        {
+          background-color: @kvelle-color-dark;
+          color: #fff;
+        }
+      }
+    }
+
+    th {
+      &:hover {
+        background-color: @kvelle-color-dark;
+      }
+    }
+
+    thead tr:first-child th {
+      &:hover
+      {
+        background: @kvelle-color-dark;
+      }
+    }
+  }
+
+  // date range picker
+  &.daterangepicker {
+    .ranges li.active, .ranges li:hover {
+      background-color: @kvelle-color-dark;
+    }
+    td.available:hover, th.available:hover {
+      background-color: @kvelle-color-dark;
+    }
+    td.active, td.active:hover {
+      background-color: @kvelle-color-dark;
+    }
+    td.in-range {
+      background: lighten(@kvelle-color-dark, 10%);
+    }
+    .ranges li {
+      background: @kvelle-color-dark;
+      border: 1px solid @kvelle-color-dark;
+      color: @kvelle-color-light;
+    }
+    .ranges li.active, .ranges li:hover {
+      background-color: @kvelle-color-dark;
+      border: 1px solid @kvelle-color-dark;
+    }
+    .calendar th.prev, .calendar th.next {
+      &:hover {
+        background-color: @kvelle-color-dark;
+      }
+    }
+  }
+  &.reportrange {
+    border: 1px solid @kvelle-color-dark;
+    background-color: @kvelle-color-dark;
+  }
+
+  // select2
+  .select2-container .select2-choice {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-container.select2-drop-above .select2-choice {
+    border-bottom-color: @kvelle-color-dark;
+  }
+
+  .select2-drop {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-drop-auto-width {
+    border-top: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-drop.select2-drop-above {
+    border-top: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-drop.select2-drop-above.select2-drop-active {
+    border-top: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-container .select2-choice .select2-arrow {
+    border-left: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-search input {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-container .select2-choice,
+  .select2-container .select2-choices {
+    border: 1px solid @kvelle-color-dark;
+    .box-shadow(inset 0 -3px 0 0 @kvelle-color-dark);
+  }
+
+  .select2-dropdown-open.select2-drop-above .select2-choice,
+  .select2-dropdown-open.select2-drop-above .select2-choices {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-results .select2-highlighted {
+    background: @kvelle-color-dark;
+  }
+
+  .select2-container-multi .select2-choices {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-container-multi .select2-choices .select2-search-choice,
+  .select2-container-multi .select2-choices .select2-search-choice-focus {
+    border: 1px solid @kvelle-color-dark;
+  }
+
+  .select2-container .select2-choices .select2-search-field input,
+  .select2-container .select2-choice,
+  .select2-container .select2-choices {
+    border-color: @kvelle-color-dark;
+  }
+
+  .select2-container .select2-choice .select2-arrow,
+  .select2-container .select2-choice div {
+    border-left: 1px solid @kvelle-color-dark;
+  }
+
+  .has-warning .select2-container-active .select2-choice,
+  .has-warning .select2-container-multi.select2-container-active .select2-choices {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px @kvelle-color-dark;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px @kvelle-color-dark;
+  }
+
+  .select2-container-active .select2-choice,
+  .select2-container-multi.select2-container-active .select2-choices {
+    border-color: @kvelle-color-dark;
+  }
+
+  .select2-drop-active {
+    border-color: @kvelle-color-dark;
+  }
+
+  .select2-drop-auto-width,
+  .select2-drop.select2-drop-above.select2-drop-active {
+    border-top-color: @kvelle-color-dark;
+  }
+
+  .select2-results .select2-highlighted {
+    background-color: @kvelle-color-dark;
+  }
+
+  .select2-results .select2-highlighted table {
+    background-color: @kvelle-color-dark;
+  }
+
+  // Bootstrap switch
+  .@{bootstrap-switch-name} {
+    border-color: @kvelle-color-dark;
+  }
+}

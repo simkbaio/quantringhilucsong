@@ -40,7 +40,7 @@
             </div>
             <div class="portlet-body">
                 <?php
-                $courses = Course::orderBy('course_name')->get();
+                $courses = Course::orderBy('name')->get();
                 ?>
                 <a href="{{URL::route('admin.courses.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm khóa học mới</a>
 
@@ -59,17 +59,17 @@
                     <tbody>
                     @foreach($courses as $course)
                     <tr>
-                        <td>{{$course->course_id}}</td>
+                        <td>{{$course->id}}</td>
                         <td>
-                            <a href="{{URL::route('admin.courses.show',$course->course_id)}}">{{$course->course_name}}</a></td>
+                            <a href="{{URL::route('admin.courses.show',$course->id)}}">{{$course->name}}</a></td>
 
-                        <td>{{date('d-m-Y',$course->course_start)}}</td>
-                        <td>{{date('d-m-Y',$course->course_end)}}</td>
+                        <td>{{date('d-m-Y',$course->start)}}</td>
+                        <td>{{date('d-m-Y',$course->end)}}</td>
                         <td>
-                            <a href="{{URL::route("admin.courses.edit",$course->course_id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
+                            <a href="{{URL::route("admin.courses.edit",$course->id)}}" class="btn blue"> <i class="fa fa-cogs"></i></a>
                         </td>
                         <td>
-                            {{Form::open(['route'=>['admin.courses.destroy',$course->course_id],'method'=>'DELETE'])}}
+                            {{Form::open(['route'=>['admin.courses.destroy',$course->id],'method'=>'DELETE'])}}
                             {{Form::submit('Xóa',array("class"=>'btn red'))}}
                             {{Form::close()}}
                         </td>

@@ -1,0 +1,239 @@
+.navbar-nav {
+  li > .dropdown-menu {
+    padding-top: 1px;
+    border: 0;
+    border-top: 1px solid transparent;
+  }
+}
+
+.navbar-default {
+    font-size: 16px;
+    box-shadow: none;
+
+  .navbar-nav {
+    > li {
+      > a {
+        border-right: 1px solid @kvelle-color-light;
+      }
+    }
+
+    &.navbar-right {
+      > li > a {
+        border-right: none;
+        border-left: 1px solid @kvelle-color-light;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    &:hover,
+    &:focus {
+      color: #fff;
+
+      .icon-bar {
+        background-color: #fff;
+      }
+    }
+  }
+
+  .navbar-brand {
+    border-right: 1px solid @kvelle-color-light;
+    height: inherit;
+    display: block;
+
+    .navbar-fixed-top &,
+    .navbar-static-top &,
+    .navbar-fixed-bottom & {
+      margin-left: 15px;
+    }
+  }
+}
+
+.navbar-toggle {
+  outline: none;
+}
+
+// smaller screen size alternate navigation style
+@media screen and (max-width: @grid-float-breakpoint-max) {
+  .navbar {
+    .navbar-nav {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      .dropdown-menu {
+        box-shadow: none;
+        position: static;
+        float: none;
+        width: auto;
+        //margin-top: -1px; // could be handy when using fadeout effect on dropdowns to remove margin flash
+        > li > a,
+        .dropdown-header {
+          padding: 5px 15px 5px 25px;
+        }
+        > li > a {
+          line-height: @line-height-computed;
+          &:hover,
+          &:focus {
+            background-image: none;
+          }
+        }
+      }
+
+      > li > a {
+        border-right: 0 !important;
+      }
+      &.navbar-right {
+        > li > a {
+          border-left: 0 !important;
+        }
+      }
+    }
+
+    .navbar-brand {
+      margin-left: 0;
+    }
+  }
+}
+
+.navbar-inverse {
+  .navbar-nav {
+    > li {
+      > a {
+        border-right: 1px solid @kvelle-color-dark;
+        &:hover,
+        &:focus {
+          border-right: 1px solid @kvelle-color-dark;
+        }
+      }
+    }
+
+    &.navbar-right {
+      > li > a {
+        border-right: none;
+        border-left: 1px solid @kvelle-color-dark;
+        &:hover,
+        &:focus {
+          border-left: 1px solid @kvelle-color-dark;
+        }
+      }
+    }
+
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @kvelle-color-light;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    .icon-bar {
+      background-color: #fff;
+    }
+    border-color: #fff;
+    &:hover,
+    &:focus {
+      background-color: #fff;
+      border-color: @kvelle-color;
+      color: #fff;
+      .icon-bar {
+        background-color: @kvelle-color;
+      }
+    }
+  }
+
+  .navbar-brand {
+    border-right: 1px solid @kvelle-color-dark;
+    height: inherit;
+    display: block;
+
+    &:hover {
+      color: @kvelle-color-light;
+    }
+
+    .navbar-fixed-top &,
+    .navbar-static-top &,
+    .navbar-fixed-bottom & {
+      margin-left: 15px;
+    }
+  }
+
+  // Links in navbars
+  .navbar-link {
+    color: #fff;
+    &:hover {
+      color: @kvelle-color-lighter;
+    }
+  }
+
+  // sidebar menu
+  .gn-menu-main {
+    background-color: @kvelle-color;
+  }
+
+  .gn-menu-main,
+  .gn-menu-main ul {
+    color: #fff;
+    background-color: @kvelle-color;
+  }
+
+  .gn-menu-main a {
+    color: #fff;
+  }
+
+  .gn-menu-main > li {
+    border-right: 1px solid @kvelle-color;
+  }
+
+  .gn-menu-main > li:last-child {
+    border-left: 1px solid @kvelle-color;
+  }
+
+  .gn-menu-wrapper {
+    background: @kvelle-color;
+    border-right: 1px solid @kvelle-color-dark;
+    border-top: 1px solid @kvelle-color-dark;
+
+    .nav {
+      li {
+        > a {
+          background-color: @kvelle-color;
+          border-bottom: 1px solid @kvelle-color-dark;
+        }
+      }
+
+      .disabled > a {
+        background-color: @kvelle-color !important;
+        color: @gray-light !important;
+      }
+    }
+  }
+
+  .gn-icon-menu::before {
+    background: #fff;
+    box-shadow: 0 3px @kvelle-color, 0 -6px #fff, 0 -9px @kvelle-color, 0 -12px #fff;
+    content: '';
+  }
+
+  .gn-menu {
+    box-shadow: inset 0 1px @kvelle-color-dark;
+  }
+
+  .gn-menu-main a:hover,
+  .gn-menu li.gn-search-item:hover,
+  .gn-menu li.gn-search-item:hover a {
+    background: @kvelle-color-light !important;
+  }
+
+  .gn-icon-menu.gn-selected::before {
+    background: @kvelle-color-dark;
+    box-shadow: 0 3px @kvelle-color, 0 -6px @kvelle-color-dark, 0 -9px @kvelle-color, 0 -12px @kvelle-color-dark;
+  }
+
+  .gn-icon-menu:hover::before,
+  .gn-icon-menu.gn-selected:hover::before {
+    background-color: #fff !important;
+    box-shadow: 0 3px @kvelle-color-light, 0 -6px #fff, 0 -9px @kvelle-color-light, 0 -12px #fff !important;
+  }
+}

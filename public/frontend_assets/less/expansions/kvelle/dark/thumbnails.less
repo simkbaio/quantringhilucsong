@@ -1,0 +1,46 @@
+.thumbnail {
+  // dark
+  &.dark-default {
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color-dark;
+    }
+  }
+  &.dark-border {
+    border: 1px solid @kvelle-color-dark;
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color;
+    }
+  }
+  &.dark-border-2px {
+    border: 2px solid @kvelle-color-dark;
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color;
+    }
+  }
+  &.dark-border-dotted {
+    border: 1px dotted @kvelle-color-dark;
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color;
+    }
+  }
+  &.dark-border-dashed {
+    border: 1px dashed @kvelle-color-dark;
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color;
+    }
+  }
+  &.dark-background {
+    background-color: @kvelle-color-dark;
+    border-color: @kvelle-color-dark;
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color;
+      background-color: @kvelle-color;
+    }
+  }
+}

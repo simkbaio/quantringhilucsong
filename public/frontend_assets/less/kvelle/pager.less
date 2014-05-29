@@ -1,0 +1,32 @@
+.pager {
+  li {
+    > a,
+    > span {
+      color: #fff;
+      text-shadow: 0 1px 0 @kvelle-color-dark;
+      .transition(~"all 170ms ease-out");
+      border: 1px solid @kvelle-color;
+    }
+
+    > a:hover,
+    > a:focus,
+    > a:active {
+      text-shadow: 1px 1px 0 @kvelle-color-dark;
+      border: 1px solid @kvelle-color-light;
+      border-bottom: 1px solid @kvelle-color;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      background-color: desaturate(@kvelle-color-lighter, 25%) !important;
+      border: 1px solid desaturate(@kvelle-color-lighter, 25%) !important;
+      border-bottom-color: @kvelle-color !important;
+      text-shadow: none !important;
+      color: @gray-lighter !important;
+    }
+  }
+}

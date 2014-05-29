@@ -64,14 +64,14 @@ jQuery(document).ready(function($) {
 			<div class="col-md-12">
 				{{portlet_open('Nội dung cần nhập','blue')}}
 				<div class="row">
-					{{Form::model($student,['route'=>['admin.students.update',$student->stu_id],'method'=>'PUT'])}}
+					{{Form::model($student,['route'=>['admin.students.update',$student->id],'method'=>'PUT'])}}
 					{{HForm::input([
-						'name'=>'stu_name',
+						'name'=>'name',
 						'title'=>'Tên học viên',
 						'width'=>'6',
 						],$errors)}}
 					{{HForm::input([
-						'name'=>'stu_sex',
+						'name'=>'sex',
 						'title'=>'Giới tính',
 						'type'=>'select',
 						'data_input'=>Config::get('admin.sex'),
@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 						<div class="form-group col-md-3">
 						<label class="control-label">Ngày sinh</label>
 						<div>
-						<input type="text" id="mask_date1" name="stu_birthday" class="form-control" value="{{date('m/d/Y',$student->stu_birthday)}}">
+						<input type="text" id="mask_date1" name="birthday" class="form-control" value="{{date('m/d/Y',$student->birthday)}}">
 							<span class="help-block">
 								Nhập theo định dạng (tháng/ngày/năm)
 							</span>
@@ -88,18 +88,18 @@ jQuery(document).ready(function($) {
 					</div>
 
 					{{HForm::input([
-						'name'=>'stu_address',
+						'name'=>'address',
 						'title'=>'Địa chỉ',
 						'width'=>'4',
 						],$errors)}}
 
 					{{HForm::input([
-						'name'=>'stu_hometown',
+						'name'=>'hometown',
 						'title'=>'Quê quán',
 						'width'=>'4',
 						],$errors)}}
 					{{HForm::input([
-						'name'=>'stu_province_id',
+						'name'=>'province_id',
 						'title'=>'Tỉnh thành',
 						'type'=>'select',
 						'data_input'=>Config::get('admin.province'),
@@ -107,19 +107,19 @@ jQuery(document).ready(function($) {
 						],$errors)}}
 
 					{{HForm::input([
-						'name'=>'stu_phone',
+						'name'=>'phone',
 						'title'=>'Số điện thoại',
 						'width'=>'4',
 						],$errors)}}
 
 					{{HForm::input([
-						'name'=>'stu_email',
+						'name'=>'email',
 						'title'=>'Hòm Thư',
 						'width'=>'4',
 						],$errors)}}
 
 					{{HForm::input([
-						'name'=>'stu_facebook',
+						'name'=>'facebook',
 						'title'=>'Facebook',
 						'width'=>'4',
 						],$errors)}}
@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
 
 
 					{{HForm::input([
-							'name'=>'stu_married',
+							'name'=>'married',
 							'title'=>'Tình trạng hôn nhân',
 							'width'=>'4',
 							'type'=>'select',
@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_educated',
+							'name'=>'educated',
 							'title'=>'Học thức',
 							'width'=>'4',
 							'type'=>'select',
@@ -143,7 +143,7 @@ jQuery(document).ready(function($) {
 							],$errors)}}
 
 						{{HForm::input([
-							'name'=>'stu_type_disabilities',
+							'name'=>'type_disabilities',
 							'title'=>'Loại khuyết tật',
 							'type'=>'select',
 							'width'=>'4',
@@ -154,13 +154,13 @@ jQuery(document).ready(function($) {
 
 							</div>
 							{{HForm::input([
-								'name'=>'stu_person_authen_name',
+								'name'=>'person_authen_name',
 								'title'=>'Người xác nhận',
 								'width'=>'6',
 								],$errors)}}
 
 							{{HForm::input([
-								'name'=>'stu_person_authen_address',
+								'name'=>'person_authen_address',
 								'title'=>'Địa chỉ người xác nhận',
 								'width'=>'6',
 								],$errors)}}
@@ -184,7 +184,7 @@ jQuery(document).ready(function($) {
 		</div>
 		<!-- END CONTENT -->
 	</div>
-@include('quanlyhoctap.students.elements.modal_changepassword')->withId($student->stu_id);
+@include('quanlyhoctap.students.elements.modal_changepassword')->withId($student->id);
 
 
 	@stop

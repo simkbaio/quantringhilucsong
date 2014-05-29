@@ -1,0 +1,407 @@
+/* IMPORTING OVERRIDES & EXPANSIONS
+*******************************************************************************************************/
+
+//== Core
+// Main LESS files: mostly overrides the default BS config
+@import "alerts";
+@import "../expansions/kvelle/alerts";
+@import "badges";
+@import "../expansions/kvelle/badges";
+@import "buttons";
+@import "../expansions/kvelle/buttons";
+@import "breadcrumbs";
+@import "carousel";
+@import "../expansions/kvelle/carousel";
+@import "dropdowns";
+@import "../expansions/kvelle/dropdowns";
+@import "forms";
+@import "../expansions/kvelle/forms";
+@import "input-groups";
+@import "jumobotron";
+@import "../expansions/kvelle/jumbotron";
+@import "labels";
+@import "list-groups";
+@import "../expansions/kvelle/list-groups";
+@import "media";
+@import "../expansions/kvelle/mixins";
+@import "navs";
+@import "../expansions/kvelle/navs";
+@import "navbar";
+@import "panels";
+@import "../expansions/kvelle/panels";
+@import "pagination";
+@import "pager";
+@import "popovers";
+@import "progress-bars";
+@import "scaffolding";
+@import "../expansions/kvelle/scaffolding";
+@import "tables";
+@import "../expansions/kvelle/tables";
+@import "../expansions/kvelle/thumbnails";
+@import "type";
+@import "../expansions/kvelle/type";
+@import "wells";
+@import "../expansions/kvelle/wells";
+// Core expansions
+@import "../expansions/kvelle/core-expansions";
+
+
+//== External Plugins
+// Gn menu
+@import "../expansions/side-menu/gn-menu";
+
+// Font Awesome
+@import "../fa/font-awesome";
+
+// Color picker
+@import "../expansions/color-pickers/colorpicker";
+
+// Date-time picker
+@import "../expansions/date-time-picker/bootstrap-datetimepicker";
+
+// Date range picker
+@import "../expansions/date-range-picker/daterangepicker-bs3";
+
+// Fuel UX components (custom made)
+@import "../expansions/fuel-ux/spinner";
+@import "../expansions/fuel-ux/combobox";
+@import "../expansions/fuel-ux/select";
+@import "../expansions/fuel-ux/pillbox";
+@import "../expansions/fuel-ux/tree";
+@import "../expansions/fuel-ux/search";
+@import "../expansions/fuel-ux/wizard";
+
+// Jasny
+@import "../expansions/jasny/fileinput";
+@import "../expansions/jasny/rowlink";
+@import "../expansions/jasny/button-labels";
+
+// Portlets
+@import "../expansions/portlets/portlets";
+
+// Slim scroll
+@import "../expansions/slim-scroll/slim-scroll";
+
+// Select2
+@import "../expansions/select2/select2";
+
+// Image hovers
+@import "../expansions/image-hovers/image-hovers";
+
+// Lightbox2
+@import "../expansions/lightbox2/lightbox2";
+
+// Pricing tables
+@import "../expansions/pricing-tables/pricing-tables";
+
+// Google mmaps
+@import "../expansions/gmaps/gmaps";
+
+// Bootstrap switch
+@import "../expansions/bootstrap-switch/bootstrap-switch";
+
+// Nestable
+@import "../expansions/nestable/nestable";
+
+// Magnific popup
+@import "../expansions/magnific-popup/magnific-popup";
+
+// Progress bars
+@import "../expansions/progress-bars/bootstrap-progressbar-3.x.x.less";
+
+// Circular graphs
+@import "../expansions/graphs-circular/graphs-circular";
+
+// Bootstrap select
+@import "../expansions/bootstrap-select/bootstrap-select";
+
+// jQuery slider
+@import "../expansions/jquery-slider/jQuery-slider";
+
+// Ion range slider
+@import "../expansions/ion-range-slider/ion-range-slider";
+
+// Gritter notifications
+@import "../expansions/gritter/gritter";
+
+// Flex video
+@import "../expansions/flex-video/flex-video";
+
+// Fitvids
+@import "../expansions/fitvids/fitvids";
+
+
+/* NEW VARIABLE DEFINITIONS
+*******************************************************************************************************/
+@kvelle-color:				        #646464;
+@kvelle-color-rgba:				    rgba(red(@kvelle-color), green(@kvelle-color), blue(@kvelle-color), .55);
+@kvelle-color-light:				lighten(@kvelle-color, 10%);
+@kvelle-color-light-rgba:			rgba(red(@kvelle-color-light), green(@kvelle-color-light), blue(@kvelle-color-light), .55);
+@kvelle-color-lighter:				lighten(@kvelle-color, 20%);
+@kvelle-color-lighter-rgba:		    rgba(red(@kvelle-color-lighter), green(@kvelle-color-lighter), blue(@kvelle-color-lighter), .55);
+@kvelle-color-dark:				    darken(@kvelle-color, 10%);
+@kvelle-color-dark-rgba:			rgba(red(@kvelle-color-dark), green(@kvelle-color-dark), blue(@kvelle-color-dark), .55);
+@kvelle-color-darker:				darken(@kvelle-color, 20%);
+@kvelle-color-darker-rgba:			rgba(red(@kvelle-color-darker), green(@kvelle-color-darker), blue(@kvelle-color-darker), .55);
+@kvelle-color-neutral:				#697060;
+@kvelle-color-neutral-rgba:			rgba(red(@kvelle-color-neutral), green(@kvelle-color-neutral), blue(@kvelle-color-neutral), .55);
+
+
+/* NEW CLASSES
+*******************************************************************************************************/
+//== Text colors
+.kvelle-color {color: @kvelle-color;}
+.kvelle-color-light {color: @kvelle-color-light;}
+.kvelle-color-lighter {color: @kvelle-color-lighter;}
+.kvelle-color-dark {color: @kvelle-color-dark;}
+.kvelle-color-darker {color: @kvelle-color-darker;}
+.kvelle-color-neutral {color: @kvelle-color-neutral;}
+.kvelle-color-white {color: #fff;}
+
+//== Font sizes
+.kvelle-font-100 {font-weight: 100 !important;}
+.kvelle-font-300 {font-weight: 300 !important;}
+.kvelle-font-400 {font-weight: 400 !important;}
+.kvelle-font-700 {font-weight: 700 !important;}
+
+// Navbar offset
+.navbar-offset-top {
+  margin-top: @navbar-height;
+}
+
+//== Other offsets
+.push-down {padding-top: 52px;}
+.push-down-thin {padding-top: 26px;}
+.push-down-tiny {padding-top: 6px;}
+.push-up {padding-bottom: 52px;}
+.push-up-thin {padding-bottom: 26px;}
+.push-up-tiny {padding-bottom: 6px;}
+
+.push-down-margin {margin-top: 40px;}
+.push-down-margin-thin {margin-top: 20px;}
+.push-down-margin-tiny {margin-top: 6px;}
+
+.push-up-margin {margin-bottom: 40px;}
+.push-up-margin-thin {margin-bottom: 20px;}
+.push-up-margin-tiny {margin-bottom: 6px;}
+
+.no-margins {margin: 0;}
+.no-padding {padding: 0;}
+
+//== Site and page title
+.site-title {
+  font-size: 120px !important;
+}
+.page-title {
+  font-size: (@font-size-base * 4) !important;
+  font-weight: 100;
+}
+@media screen and (max-width: @screen-sm-min) {
+  .site-title {
+    font-size: (@font-size-base * 2.6) !important;
+  }
+  .page-title {
+    font-size: (@font-size-base * 2.6) !important;
+  }
+}
+
+
+/* VARIABLE OVERRIDES
+*******************************************************************************************************/
+
+//== Colors
+@brand-primary:         @kvelle-color;
+@brand-success:         #77C123;
+@brand-info:            #177FB3;
+@brand-warning:         #E5AD12;
+@brand-danger:          #D64E18;
+
+//== Scaffolding
+@body-bg:               #f7f7f7;
+@text-color:            @kvelle-color-neutral;
+
+//== Typography
+@font-family-sans-serif:          'Lato', Helvetica, Arial, sans-serif;
+@font-size-base:                  16px;
+@headings-font-family:            @font-family-sans-serif;
+@headings-font-weight:            300;
+@font-size-h1:                    floor((@font-size-base * 3.2)); // ~36px
+@font-size-h2:                    floor((@font-size-base * 2.7)); // ~30px
+@font-size-h3:                    ceil((@font-size-base * 2.1)); // ~24px
+@font-size-h4:                    ceil((@font-size-base * 1.7)); // ~18px
+@font-size-h5:                    ceil((@font-size-base * 1.2)); // ~18px
+@font-size-h6:                    ceil((@font-size-base * 0.85)); // ~12px
+@line-height-base:                1.25; // 20/16
+@padding-small-vertical:          3px;
+// custom extra small variables
+@font-size-extra-small:           ceil((@font-size-base * 0.75)); // ~12px
+@line-height-extra-small:         1.5;
+
+//== Components
+@border-radius-none:        0;
+@border-radius-base:        @border-radius-none;
+@border-radius-large:       @border-radius-none;
+@border-radius-small:       @border-radius-none;
+
+@table-border-color:            @kvelle-color-neutral;
+
+//== Navbar
+// Basics of a navbar
+@navbar-height:                    60px;
+@navbar-default-color:             @kvelle-color;
+@navbar-default-bg:                #fff;
+@navbar-default-border:            @kvelle-color;
+// Navbar links
+@navbar-default-link-color:                   @kvelle-color;
+@navbar-default-link-hover-color:             #fff;
+@navbar-default-link-hover-bg:                @kvelle-color;
+@navbar-default-link-active-color:            @navbar-default-link-hover-color;
+@navbar-default-link-active-bg:               @navbar-default-link-hover-bg;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           @kvelle-color;
+@navbar-default-toggle-icon-bar-bg:        @kvelle-color;
+@navbar-default-toggle-border-color:       @kvelle-color;
+
+// Inverted navbar
+@navbar-inverse-color:                      #fff;
+@navbar-inverse-bg:                         @kvelle-color;
+@navbar-inverse-border:                     darken(@kvelle-color, 10%);
+@navbar-inverse-link-color:                 #fff;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              @kvelle-color-light;
+@navbar-inverse-link-active-color:          #fff;
+@navbar-inverse-link-active-bg:             @kvelle-color-light;
+@navbar-inverse-link-disabled-color:        @gray-light;
+@navbar-inverse-link-disabled-bg:           #fff;
+
+//== Navs
+@nav-link-padding:                          15px 25px;
+@nav-link-hover-bg:                         #fff;
+@nav-disabled-link-color:                   @gray-lighter;
+@nav-disabled-link-hover-color:             @gray-lighter;
+
+//== Tabs
+@nav-tabs-border-color:                     @kvelle-color;
+@nav-tabs-link-hover-border-color:          @kvelle-color;
+@nav-tabs-active-link-hover-bg:             lighten(@kvelle-color, 6%);
+@nav-tabs-active-link-hover-color:          #fff;
+@nav-tabs-active-link-hover-border-color:   @kvelle-color;
+
+//== Pills
+@nav-pills-active-link-hover-bg:            transparent;
+@nav-pills-active-link-hover-color:         @kvelle-color;
+
+//== Pagination
+@pagination-color:                     #fff;
+@pagination-bg:                        @kvelle-color;
+@pagination-border:                    transparent;
+@pagination-hover-color:               #fff;
+@pagination-hover-bg:                  @kvelle-color-light;
+@pagination-hover-border:              @kvelle-color-light;
+@pagination-active-color:              @kvelle-color;
+@pagination-active-bg:                 #fff;
+@pagination-active-border:             @kvelle-color;
+
+//== Pager
+@pager-border-radius:                  0;
+
+//== Tables
+@table-bg:                      #fff;
+
+//== Buttons
+@btn-font-weight:                300;
+
+//== Forms
+@input-bg-disabled:              lighten(@kvelle-color-neutral, 40%);
+@input-color:                    @text-color;
+@input-border:                   @kvelle-color;
+@input-border-focus:             @kvelle-color-light;
+@input-group-addon-bg:           @kvelle-color;
+@input-group-addon-border-color: @input-border;
+
+//== Dropdowns
+@dropdown-bg:                    #fff;
+@dropdown-border:                #fff;
+@dropdown-divider-bg:            lighten(@kvelle-color-neutral, 40%);
+@dropdown-fallback-border:       lighten(@kvelle-color-neutral, 10%);
+@dropdown-link-color:            @kvelle-color-neutral;
+@dropdown-link-hover-color:      @kvelle-color-darker;
+@dropdown-link-hover-bg:         transparent;
+
+
+//== Jumbotron
+@jumbotron-color:                  #fff;
+@jumbotron-bg:                     @kvelle-color;
+
+// Popovers
+// -------------------------
+@popover-border-color:                @kvelle-color;
+@popover-arrow-width:                 8px;
+@popover-title-bg:                    @kvelle-color;
+@popover-arrow-outer-color:           @kvelle-color;
+
+//== Labels
+@label-default-bg:            @kvelle-color;
+//** Primary label background color
+@label-primary-bg:            @gray-light;
+
+//== Form states and alerts
+@state-success-text:             #fff;
+@state-success-bg:               @brand-success;
+@state-info-text:                #fff;
+@state-info-bg:                  @brand-info;
+@state-warning-text:             #fff;
+@state-warning-bg:               @brand-warning;
+@state-danger-text:              #fff;
+@state-danger-bg:                @brand-danger;
+
+//== Alerts
+@alert-success-bg:            lighten(@state-success-bg, 8%);
+@alert-info-bg:               lighten(@state-info-bg, 8%);
+@alert-warning-bg:            lighten(@state-warning-bg, 8%);
+@alert-danger-bg:             lighten(@state-danger-bg, 8%);
+
+//== List group
+@list-group-border:             @kvelle-color;
+@list-group-hover-bg:           @kvelle-color;
+@list-group-active-text-color:  #fff;
+@list-group-link-color:         @kvelle-color;
+@list-group-link-heading-color: @kvelle-color;
+
+//== Panels
+@panel-bg:                    transparent;
+@panel-inner-border:          @kvelle-color;
+@panel-footer-bg:             #fff;
+@panel-default-border:        @kvelle-color;
+@panel-default-text:          @kvelle-color;
+@panel-default-heading-bg:    #fff;
+
+//== Thumbnails
+@thumbnail-padding:           3px;
+@thumbnail-border:            #ddd;
+
+//== Badges
+@badge-font-weight:           300;
+@badge-border-radius:         0;
+@badge-bg:                    @kvelle-color;
+
+//== Type
+@page-header-border-color:          @text-color;
+@blockquote-small-color:            @kvelle-color-dark;
+@blockquote-border-color:           @kvelle-color;
+
+//== Wells
+@well-bg:                     #fff;
+@well-border:                 @kvelle-color;
+
+//== Breadcrumbs
+@breadcrumb-bg:                 transparent;
+@breadcrumb-separator:          "\f105";
+@breadcrumb-color:              @kvelle-color;
+
+//== Carousel
+@carousel-text-shadow:                        none;
+@carousel-control-width:                      0;
+@carousel-control-opacity:                    .6;
+@carousel-control-font-size:                  70px;

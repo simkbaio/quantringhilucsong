@@ -1,0 +1,46 @@
+.thumbnail {
+  // lighter
+  &.lighter-default {
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color-lighter;
+    }
+  }
+  &.lighter-border {
+    border: 1px solid @kvelle-color-lighter;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-lighter, 10%);
+    }
+  }
+  &.lighter-border-2px {
+    border: 2px solid @kvelle-color-lighter;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-lighter, 10%);
+    }
+  }
+  &.lighter-border-dotted {
+    border: 1px dotted @kvelle-color-lighter;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-lighter, 10%);
+    }
+  }
+  &.lighter-border-dashed {
+    border: 1px dashed @kvelle-color-lighter;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-lighter, 10%);
+    }
+  }
+  &.lighter-background {
+    background-color: @kvelle-color-lighter;
+    border-color: @kvelle-color-lighter;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-lighter, 10%);
+      background-color: lighten(@kvelle-color-lighter, 10%);
+    }
+  }
+}

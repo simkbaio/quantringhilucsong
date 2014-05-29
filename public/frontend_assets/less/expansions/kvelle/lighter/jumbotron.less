@@ -1,0 +1,11 @@
+.jumbotron {
+  &.jumbotron-lighter {
+    .jumobtron-variant(#fff; @kvelle-color-lighter; lighten(@kvelle-color-lighter, 20%));
+  }
+  &.jumbotron-lighter-white {
+    .jumobtron-variant-white(@kvelle-color-lighter; lighten(@kvelle-color-lighter, 20%));
+  }
+  &.jumbotron-lighter-transparent {
+    .jumobtron-variant-white(@kvelle-color-lighter; lighten(@kvelle-color-lighter, 20%); transparent);
+  }
+}

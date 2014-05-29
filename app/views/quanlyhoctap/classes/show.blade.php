@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Thông tin lớp: {{$class->class_name}} <a href="{{URL::route('admin.classes.edit',$class->class_id)}}" class="btn blue btn-xs">sửa thông tin lớp học</a
+                    Thông tin lớp: {{$class->name}} <a href="{{URL::route('admin.classes.edit',$class->id)}}" class="btn blue btn-xs">sửa thông tin lớp học</a
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
@@ -28,7 +28,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            {{$class->class_name}}
+                            {{$class->name}}
                         </a>
                     </li>
                 </ul>
@@ -47,10 +47,10 @@
                         <ul class="list-group">
 
 
-                            <li class="list-group-item">Khóa học: <span class="badge badge-info">{{$class->course->course_name}}</span></li>
-                            <li class="list-group-item">Ngày bắt đầu: <span class="badge badge-info">{{date('d/m/Y',$class->course->course_start)}}</span> </li>
-                            <li class="list-group-item">Ngày Kết thúc: <span class="badge badge-info">{{date('d/m/Y',$class->course->course_end)}}</span> </li>
-                            <li class="list-group-item">Giáo viên: <span class="badge badge-info">{{($class->teacher())?$class->teacher->teacher_name:'Chưa có'}}</span></li>
+                            <li class="list-group-item">Khóa học: <span class="badge badge-info">{{$class->course->name}}</span></li>
+                            <li class="list-group-item">Ngày bắt đầu: <span class="badge badge-info">{{date('d/m/Y',$class->course->start)}}</span> </li>
+                            <li class="list-group-item">Ngày Kết thúc: <span class="badge badge-info">{{date('d/m/Y',$class->course->end)}}</span> </li>
+                            <li class="list-group-item">Giáo viên: <span class="badge badge-info">{{($class->teacher())?$class->teacher->name:'Chưa có'}}</span></li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -59,7 +59,7 @@
                             <h3 class="panel-title">Mô tả</h3>
                             </div>
                             <div class="panel-body">
-                                {{$class->class_description}}
+                                {{$class->description}}
                          </div>
                      </div>
                  </div>
@@ -70,7 +70,7 @@
          <div class="col-md-6">
             {{portlet_open('Thêm học viên vào lớp','green')}}
             <div class="row">
-                {{Form::open(['route'=>['admin.classes.addstudent',$class->class_id]])}}
+                {{Form::open(['route'=>['admin.classes.addstudent',$class->id]])}}
                 {{HForm::input([
                     'title'=>'Học viên',
                     'name'=>'student',
@@ -106,7 +106,7 @@
                         @foreach($class->students()->get() as $student)
                         <tr>
                             <td>
-                                {{$student->student->stu_name}}
+                                {{$student->student->name}}
                             </td>
                             <td>
                                 @if($student->result_type_academic)

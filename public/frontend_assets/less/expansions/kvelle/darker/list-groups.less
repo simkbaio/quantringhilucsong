@@ -1,0 +1,63 @@
+.list-group {
+  &.list-group-darker {
+    color: @kvelle-color-darker;
+
+    .list-group-item {
+      border-color: @kvelle-color-darker;
+    }
+
+    .list-group-item-heading {
+      color: @kvelle-color-darker;
+    }
+
+    a.list-group-item {
+      color: @kvelle-color-darker;
+      border-color: @kvelle-color-darker;
+      &:hover,
+      &:focus,
+      &.active {
+        background-color: @kvelle-color-darker;
+        color: @list-group-active-color;
+
+        .list-group-item-heading {
+          color: @list-group-active-color;
+        }
+
+        .list-group-item-text {
+          .transition(~"all 200ms ease-in");
+          color: @list-group-active-color;
+        }
+      }
+    }
+
+    &.list-group-inverse {
+      color: #fff;
+      .list-group-item {
+        background-color: @kvelle-color-darker;
+        border-color: @kvelle-color-dark;
+      }
+      a.list-group-item {
+        background-color: @kvelle-color-darker;
+        border-color: @kvelle-color-dark;
+        color: @list-group-active-color;
+        &:hover,
+        &:focus,
+        &.active {
+          background-color: @list-group-active-color;
+          color: @kvelle-color-dark;
+
+          .list-group-item-heading {
+            color: @kvelle-color-darker;
+          }
+
+          .list-group-item-text {
+            .transition(~"all 200ms ease-in");
+            color: @kvelle-color-darker;
+          }
+        }
+      }
+    }
+  }
+}
+
+.list-group-item-variant(darker; @kvelle-color; #fff);

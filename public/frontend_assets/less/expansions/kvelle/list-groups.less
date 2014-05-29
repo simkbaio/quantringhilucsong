@@ -1,0 +1,37 @@
+// inverse style
+.list-group {
+  &.list-group-inverse {
+    color: #fff;
+
+    .list-group-item {
+      background-color: @kvelle-color;
+      border-color: @kvelle-color-light;
+    }
+    a.list-group-item {
+      background-color: @kvelle-color;
+      border-color: @kvelle-color-light;
+      color: @list-group-active-color;
+      &:hover,
+      &:focus,
+      &.active {
+        background-color: @list-group-active-color;
+        color: @kvelle-color;
+
+        .list-group-item-heading {
+          color: @kvelle-color;
+        }
+
+        .list-group-item-text {
+          .transition(~"all 200ms ease-in");
+          color: @kvelle-color;
+        }
+      }
+
+      .list-group-item-heading {
+        color: @list-group-active-color;
+      }
+    }
+  }
+}
+
+.list-group-item-variant(default; @kvelle-color-lighter; #fff);

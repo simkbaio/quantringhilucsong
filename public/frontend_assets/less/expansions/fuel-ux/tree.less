@@ -1,0 +1,307 @@
+// the tree styles are quite complex, make sure to use the browser code analyser of your choice to
+// determine what element to change!
+
+@tree-bg-color: transparent;
+
+.tree {
+  padding-left: 14px;
+  overflow: auto;
+  position: relative;
+  background: @tree-bg-color;
+
+  &:before {
+    width: 1px;
+    z-index: 1;
+    display: block;
+    content: "";
+    position: absolute;
+    top: -21px;
+    bottom: 16px;
+    left: 0;
+    border-left: 1px dotted @text-color;
+  }
+
+  .tree-folder {
+    position: relative;
+    width: auto;
+    min-height: 20px;
+    cursor: pointer;
+    border: 1px solid @tree-bg-color;
+
+    &:before {
+      display: inline-block;
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: -13px;
+      width: 18px;
+      height: 0;
+      border-top: 1px dotted @text-color;
+      z-index: 1;
+    }
+
+    .tree-folder-header {
+      position: relative;
+      min-height: 20px;
+      line-height: 20px;
+      min-width: 100px;
+      margin: 0;
+      padding: 4px 5px 6px;
+      color: @text-color;
+      border-radius: @border-radius-base;
+      .transition(~"background-color 200ms linear");
+
+      &:hover {
+        color: #fff;
+        background-color: @kvelle-color;
+      }
+
+      .tree-folder-name {
+        display: inline;
+        z-index: 2;
+        margin-left: 2px;
+      }
+    }
+
+    img {
+      margin-left: 4px;
+    }
+
+    .tree-folder-content {
+      margin-left: 23px;
+      position: relative;
+
+      &:before {
+      display: inline-block;
+        content: "";
+        position: absolute;
+        width: 1px;
+        z-index: 1;
+        top: -9px;
+        bottom: 16px;
+        left: -12px;
+        border-left: 1px dotted @text-color;
+      }
+    }
+  }
+
+  .tree-item {
+    position: relative;
+    min-height: 20px;
+    line-height: 20px;
+    min-width: 100px;
+    cursor: pointer;
+    margin: 0;
+    padding: 4px 8px 6px;
+    color: @text-color;
+    border: 1px solid @tree-bg-color;
+    border-radius: @border-radius-small;
+    .transition(~"background-color 200ms linear");
+
+    &:before {
+      display: inline-block;
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: -13px;
+      width: 18px;
+      height: 0;
+      border-top: 1px dotted @text-color;
+      z-index: 1;
+    }
+    &:hover {
+      color: #fff;
+      background-color: @kvelle-color;
+    }
+    .tree-item-name {
+      margin-left: 2px;
+      display: inline;
+      z-index: 2;
+
+      > i{
+        margin-left: -2px;
+        // width: 14px; //uncomment this when using a font that has monospace specs!!!
+        display: inline-block;
+        text-align: center;
+        margin-right: 1px;
+      }
+    }
+  }
+
+  .tree-selected {
+    background-color: @kvelle-color;
+    color: #fff;
+    .transition(~"background-color 200ms linear");
+
+    &:hover{
+      background-color: @kvelle-color;
+      color: #fff;
+      .tree-actions > i {
+        border: 1px solid @kvelle-color;
+        color: @kvelle-color;
+      }
+    }
+
+    > i {
+      margin-left: -2px;
+      //width: 14px; //uncomment this when using a font that has monospace specs!!!
+      display: inline-block;
+      text-align: center;
+      margin-right: 1px;
+    }
+  }
+
+  .fa {
+    display: inline; // fix icon spacing bug when selecting and then unselecting
+  }
+
+  // solid line tree
+  &.tree-solid-line {
+    padding-left: 12px;
+    &:before {
+      border-left: 1px solid @text-color;
+    }
+
+    .tree-folder {
+      &:before {
+        border-top: 1px solid @text-color;
+      }
+      .tree-folder-content {
+        &:before {
+          border-left: 1px solid @text-color;
+        }
+      }
+    }
+
+    .tree-item {
+      &:before {
+        border-top: 1px solid @text-color;
+      }
+    }
+  }
+
+  // no line tree
+  &.tree-no-line {
+    padding-left: 0;
+    &:before {
+      display: none;
+    }
+
+    .tree-folder {
+      &:before {
+        display: none;
+      }
+      .tree-folder-content {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    .tree-item {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  // plus/minus
+  &.tree-plus-minus {
+    .tree-folder-header {
+      .fa-folder-open {
+        &:before {
+          font-size: 18px;
+          vertical-align: middle;
+          display: inline-block;
+          content: "\f056";
+          padding-right: 2px;
+        }
+      }
+      .fa-folder {
+        &:before {
+          font-size: 18px;
+          vertical-align: middle;
+          display: inline-block;
+          content: "\f055";
+          padding-right: 2px;
+        }
+      }
+    }
+
+    .tree-folder-name {
+      margin-left: 0px !important;
+    }
+  }
+
+  .tree-actions {
+    display: none;
+    position: absolute;
+    margin-top: 1px;
+    right: 4px;
+  }
+}
+
+
+.ie .tree.tree-plus-minus .tree-folder-header .fa-folder:before,
+.ie .tree.tree-plus-minus .tree-folder-header .fa-folder-open:before {
+  margin-top: -5px;
+}
+
+
+.tree .tree-item:hover .tree-actions,
+.tree .tree-folder-header:hover .tree-actions {
+  display: inline-block;
+}
+
+.tree .tree-actions > i {
+  font-weight: 300;
+  border: 1px solid #fff;
+  padding: 1px 3px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  margin-right: 6px;
+  margin-top: 0px;
+  display: inline-block;
+  .transition(~"background-color 200ms linear");
+}
+
+.tree .tree-actions > i:hover {
+  color: @text-color;
+  border: 1px solid @text-color;
+}
+
+
+// pulsating icon
+.icon-blink {
+  display: inline-block;
+  -moz-animation: blink .2s infinite linear;
+  -o-animation: blink .2s infinite linear;
+  -webkit-animation: blink .2s infinite linear;
+  animation: blink .2s infinite linear;
+}
+@-webkit-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-ms-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}

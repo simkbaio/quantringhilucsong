@@ -1,0 +1,76 @@
+.pillbox {
+
+	padding: 3px;
+
+	ul {
+		display: inline-block;
+		margin: 0;
+	}
+
+	li {
+
+		// Begin Bootstrap .label
+		font-size: @font-size-base * .846;
+		font-weight: 300;
+		line-height: 24px;
+		color: #fff;
+		vertical-align: baseline;
+		background-color: @kvelle-color;
+		padding: 1px 4px 2px 7px;
+		border-radius: @border-radius-base;
+		// End Bootstrap .label
+
+		display: inline-block;
+		margin: 2px;
+		cursor: pointer;
+		float:left;
+
+		&:after {
+          // Begin Bootstrap .close
+          float: right;
+          font-family: Fontawesome;
+          font-weight: bold;
+          line-height: 24px;
+          color: #fff;
+          top: 1px;
+          //.opacity(20);
+          margin-right: 3px;
+          margin-left: 2px;
+          // End Bootstrap .close
+          padding-left: 4px;
+          position: relative;
+          content: "\f057";
+		}
+
+		/*&:hover {
+          &:after {
+            .opacity(40);
+          }
+		}*/
+
+		&.status {
+          &-neutral-light {
+            background-color: @gray-light;
+          }
+          &-white {
+            background-color: #fff;
+            color: @kvelle-color;
+            &:after {
+              color: @kvelle-color;
+            }
+          }
+          &-danger {
+            background-color: @brand-danger;
+          }
+          &-warning {
+              background-color: @brand-warning;
+          }
+          &-success {
+              background-color: @brand-success;
+          }
+          &-info {
+              background-color: @brand-info;
+          }
+		}
+	}
+}

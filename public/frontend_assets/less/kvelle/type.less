@@ -1,0 +1,58 @@
+.lead {
+  font-weight: 300;
+}
+
+.page-header h1,
+.page-header .h1,
+.page-header h2,
+.page-header .h2 {
+  font-weight: 100;
+}
+
+blockquote {
+  border-left: 3px solid @blockquote-border-color;
+
+  footer,
+  small,
+  .small {
+    &:before {
+      font-family: Fontawesome;
+      content: '\f101 \00A0';
+    }
+  }
+}
+
+.blockquote-reverse,
+blockquote.pull-right {
+  border-right: 3px solid @blockquote-border-color;
+
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      font-family: Fontawesome;
+      content: '\00A0 \f100'; // nbsp, em dash
+    }
+  }
+}
+
+// Contextual colors
+.text-muted {
+  color: @text-muted;
+}
+.text-primary {
+  .text-emphasis-variant(@brand-primary);
+}
+.text-success {
+  .text-emphasis-variant(@brand-success);
+}
+.text-info {
+  .text-emphasis-variant(@brand-info);
+}
+.text-warning {
+  .text-emphasis-variant(@brand-warning);
+}
+.text-danger {
+  .text-emphasis-variant(@brand-danger);
+}

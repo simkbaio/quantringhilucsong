@@ -6,7 +6,7 @@ class StudentResult extends \Eloquent {
     public $table = "tbl_student_result";
     public $timestamps = false;
     public function student(){
-        return StudentResult::belongsTo('Student','result_student_id','stu_id');
+        return StudentResult::belongsTo('Student','result_student_id','id');
     }
 
 }

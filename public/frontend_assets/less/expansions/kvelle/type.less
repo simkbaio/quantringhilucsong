@@ -1,0 +1,367 @@
+// Colored backgrounds and corresponding page header styles
+.kvelle-background-main {
+  background-color: @kvelle-color;
+  .kvelle-color-lighter .page-header {
+    border-color: @kvelle-color-lighter;
+    box-shadow: 0 4px 0 0 @kvelle-color-light;
+  }
+  .kvelle-color-darker .page-header {
+    border-color: @kvelle-color-darker;
+    box-shadow: 0 4px 0 0 @kvelle-color-light;
+  }
+  .kvelle-color-white .page-header {
+    border-color: #fff;
+    box-shadow: 0 4px 0 0 @kvelle-color-light;
+  }
+}
+.kvelle-background-white,
+.kvelle-background-transparent {
+  background-color: #fff;
+  .kvelle-color .page-header {
+    border-color: lighten(@kvelle-color-lighter, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+  .kvelle-color-dark .page-header {
+    border-color: lighten(@kvelle-color-dark, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+  .kvelle-color-darker .page-header {
+    border-color: lighten(@kvelle-color-darker, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+  .kvelle-color-light .page-header {
+    border-color: lighten(@kvelle-color-light, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+  .kvelle-color-lighter .page-header {
+    border-color: lighten(@kvelle-color-lighter, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+  .kvelle-color-neutral .page-header {
+    border-color: lighten(@kvelle-color-neutral, 10%);
+    box-shadow: 0 4px 0 0 #eee;
+  }
+}
+
+.kvelle-background-transparent {
+  background: transparent;
+}
+
+// blockquotes
+blockquote:not(.pull-right):not(.blockquote-reverse) {
+  &.blockquote-main {
+    border-left: 3px solid @kvelle-color;
+  }
+  &.blockquote-dark {
+    border-left: 3px solid @kvelle-color-dark;
+  }
+  &.blockquote-darker {
+    border-left: 3px solid @kvelle-color-darker;
+  }
+  &.blockquote-light {
+    border-left: 3px solid @kvelle-color-light;
+  }
+  &.blockquote-lighter {
+    border-left: 3px solid @kvelle-color-lighter;
+  }
+  &.blockquote-neutral {
+    border-left: 3px solid @kvelle-color-neutral;
+  }
+}
+
+.blockquote-reverse,
+blockquote.pull-right {
+  &.blockquote-main {
+    border-right: 3px solid @kvelle-color;
+  }
+  &.blockquote-dark {
+    border-right: 3px solid @kvelle-color-dark;
+  }
+  &.blockquote-darker {
+    border-right: 3px solid @kvelle-color-darker;
+  }
+  &.blockquote-light {
+    border-right: 3px solid @kvelle-color-light;
+  }
+  &.blockquote-lighter {
+    border-right: 3px solid @kvelle-color-lighter;
+  }
+  &.blockquote-neutral {
+    border-right: 3px solid @kvelle-color-neutral;
+  }
+}
+
+// alternate colors
+// new mixin for extra variant
+.text-emphasis-variant-alt(@color) {
+  background-color: @color;
+  color: #fff;
+  a&:hover {
+    color: lighten(@color, 20%);
+  }
+}
+.text-muted-alt {
+  .text-emphasis-variant-alt(@text-muted);
+}
+.text-primary-alt {
+  .text-emphasis-variant-alt(@brand-primary);
+}
+.text-warning-alt {
+  .text-emphasis-variant-alt(@brand-warning);
+}
+.text-danger-alt {
+  .text-emphasis-variant-alt(@brand-danger);
+}
+.text-success-alt {
+  .text-emphasis-variant-alt(@brand-success);
+}
+.text-info-alt {
+  .text-emphasis-variant-alt(@brand-info);
+}
+
+// mixinxs LINE 594: Typography
+// -------------------------
+.text-emphasis-variant(@color) {
+  color: @color;
+  a&:hover {
+    color: darken(@color, 10%) !important;
+  }
+}
+
+// mixins LINE 585 - rewrite variant
+// Contextual backgrounds
+// -------------------------
+.bg-variant(@color) {
+  background-color: @color;
+  color: #fff;
+  a&:hover {
+    background-color: darken(@color, 10%);
+  }
+}
+
+// List options
+ul {
+  &.iconized,
+  &.iconized-alt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      padding-left: 1em;
+      text-indent: -.7em;
+    }
+
+    > li:before {
+      font-family: fontAwesome;
+      content: "\f101 \0020";
+      color: @kvelle-color;
+    }
+
+    > li ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    > li > ul li:before {
+      font-family: fontAwesome;
+      content: "\f105 \0020";
+      color: @kvelle-color;
+    }
+  }
+  &.iconized-alt {
+    > li:before {
+      content: "\f138 \0020";
+    }
+    > li > ul li:before {
+      content: "\f0da \0020";
+    }
+  }
+}
+
+//== New link styles
+//   stuff here is not split up into the color-specific folders as we like always having them available
+a {
+
+  // Link colors
+  &.color-dark {
+    color: @kvelle-color-dark;
+  }
+  &.color-darker {
+    color: @kvelle-color-darker;
+  }
+  &.color-light {
+    color: @kvelle-color-light;
+  }
+  &.color-lighter {
+    color: @kvelle-color-lighter;
+  }
+  &.color-neutral {
+    color: @kvelle-color-neutral;
+  }
+  &.color-white {
+    color: #fff;
+  }
+
+  // Bottom borders
+  &.border-darker {
+    border-bottom: 1px solid @kvelle-color-darker;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-dark {
+    border-bottom: 1px solid @kvelle-color-dark;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-main {
+    border-bottom: 1px solid @kvelle-color;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-light {
+    border-bottom: 1px solid @kvelle-color-light;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-lighter {
+    border-bottom: 1px solid @kvelle-color-lighter;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-white {
+    border-bottom: 1px solid #fff;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+  &.border-neutral {
+    border-bottom: 1px solid @kvelle-color-neutral;
+    &:hover {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  // Background colors
+  &.background-darker {
+    background-color: @kvelle-color-darker;
+  }
+  &.background-dark {
+    background-color: @kvelle-color-dark;
+  }
+  &.background-light {
+    background-color: @kvelle-color-light;
+  }
+  &.background-lighter {
+    background-color: @kvelle-color-lighter;
+  }
+  &.background-main {
+    background-color: @kvelle-color;
+  }
+  &.background-white {
+    background-color: #fff;
+  }
+  &.background-neutral {
+    background-color: @kvelle-color-neutral;
+  }
+
+  //== HOVER EFFECTS
+  // Text hover effects
+  &.hover-dark {
+    &:hover,
+    &:focus {
+      color: @kvelle-color-dark;
+    }
+  }
+  &.hover-darker {
+    &:hover,
+    &:focus {
+      color: @kvelle-color-darker;
+    }
+  }
+  &.hover-main {
+    &:hover,
+    &:focus {
+      color: @kvelle-color;
+    }
+  }
+  &.hover-light {
+    &:hover,
+    &:focus {
+      color: @kvelle-color-light;
+    }
+  }
+  &.hover-lighter {
+    &:hover,
+    &:focus {
+      color: @kvelle-color-lighter;
+    }
+  }
+  &.hover-white {
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
+  &.hover-neutral {
+    &:hover,
+    &:focus {
+      color: @kvelle-color-neutral;
+    }
+  }
+
+  // Text background effects
+  &.hover-bg-dark {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color-dark;
+    }
+  }
+  &.hover-bg-darker {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color-darker;
+    }
+  }
+  &.hover-bg-main {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color;
+    }
+  }
+  &.hover-bg-light {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color-light;
+    }
+  }
+  &.hover-bg-lighter {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color-lighter;
+    }
+  }
+  &.hover-bg-white {
+    &:hover,
+    &:focus {
+      background-color: #fff;
+    }
+  }
+  &.hover-bg-neutral {
+    &:hover,
+    &:focus {
+      background-color: @kvelle-color-neutral;
+    }
+  }
+  &.hover-bg-transparent {
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+body {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: @kvelle-color;
+  .transition(~"color 250ms ease-out, background-color 250ms ease-out, border-color 250ms ease-out");
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: @kvelle-color-darker;
+  }
+}
+
+.img-rounded {
+  border-radius: @border-radius-base;
+}
+
+p,
+ul {
+  line-height: 1.5;
+}

@@ -44,17 +44,17 @@ class StudentsController extends \BaseController {
 	{
 
         $input = Input::except('_method','_token','password','password_confirmation');
-        $input['stu_birthday'] = strtotime( $input['stu_birthday']);
-        $input['stu_regis_date']=time();
-        $input['stu_last_update'] = time();
-        $input['stu_active'] = 1;
-        $input['stu_password'] = md5(Input::get('password'));
+        $input['birthday'] = strtotime( $input['birthday']);
+        $input['regis_date']=time();
+        $input['last_update'] = time();
+        $input['active'] = 1;
+        $input['password'] = md5(Input::get('password'));
 //        return dd($input);
         $this->studentForm->validate(Input::all());
         $student = Student::create($input);
         $student->save();
         return Redirect::route('admin.students.index')
-            ->withFlashMessage("Bạn đã thêm thành công học viên: ".$student->stu_name);
+            ->withFlashMessage("Bạn đã thêm thành công học viên: ".$student->name);
 
 
 	}
@@ -67,7 +67,7 @@ class StudentsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        $student = Student::where('stu_id','=',$id)->firstOrFail();
+        $student = Student::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.students.show')->withStudent($student);
 
 
@@ -82,7 +82,7 @@ class StudentsController extends \BaseController {
 	public function edit($id)
 	{
 
-        $student = Student::where('stu_id','=',$id)->firstOrFail();
+        $student = Student::where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.students.edit')->withStudent($student);
 	}
 
@@ -95,12 +95,12 @@ class StudentsController extends \BaseController {
 	public function update($id)
 	{
 		$input = Input::except('_method','_token','password','password_confirmation');
-        $input['stu_birthday'] = strtotime( $input['stu_birthday']);
+        $input['birthday'] = strtotime( $input['birthday']);
         $this->studentForm->UpdateValidate($input);
-        $student = Student::where('stu_id','=',$id)->firstOrFail();
-        Student::where('stu_id','=',$id)->update($input);
+        $student = Student::where('id','=',$id)->firstOrFail();
+        Student::where('id','=',$id)->update($input);
         return Redirect::route('admin.students.index')
-            ->withFlashMessage('Bạn đã cập nhật thành công học viên: '.$student->stu_name);
+            ->withFlashMessage('Bạn đã cập nhật thành công học viên: '.$student->name);
 	}
 
 	/**
@@ -111,18 +111,18 @@ class StudentsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$student = Student::where('stu_id','=',$id)->firstOrFail();
-        Student::where('stu_id','=',$id)->delete();
+		$student = Student::where('id','=',$id)->firstOrFail();
+        Student::where('id','=',$id)->delete();
         return Redirect::route('admin.students.index')
-            ->withFlashMessage('Bạn đã xóa học viên: '.$student->stu_name);
+            ->withFlashMessage('Bạn đã xóa học viên: '.$student->name);
 	}
 	public function changepassword($id){
-        $student = Student::where('stu_id','=',$id)->firstOrFail();
+        $student = Student::where('id','=',$id)->firstOrFail();
         $valid = Validator::make(Input::all(),[
            'password'=>'required|between:6,15|confirmed',
         ]);
         if($valid->passes()){
-            $student->stu_password = md5(Input::get('password'));
+            $student->password = md5(Input::get('password'));
             $student->save();
             return "Bạn đã đổi mật khẩu hành công!";
         }else{

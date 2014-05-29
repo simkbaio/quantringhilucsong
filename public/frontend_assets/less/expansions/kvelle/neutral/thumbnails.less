@@ -1,0 +1,46 @@
+.thumbnail {
+  // neutral
+  &.neutral-default {
+    &:hover,
+    &:focus {
+      border-color: @kvelle-color-neutral;
+    }
+  }
+  &.neutral-border {
+    border: 1px solid @kvelle-color-neutral;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-neutral, 10%);
+    }
+  }
+  &.neutral-border-2px {
+    border: 2px solid @kvelle-color-neutral;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-neutral, 10%);
+    }
+  }
+  &.neutral-border-dotted {
+    border: 1px dotted @kvelle-color-neutral;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-neutral, 10%);
+    }
+  }
+  &.neutral-border-dashed {
+    border: 1px dashed @kvelle-color-neutral;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-neutral, 10%);
+    }
+  }
+  &.neutral-background {
+    background-color: @kvelle-color-neutral;
+    border-color: @kvelle-color-neutral;
+    &:hover,
+    &:focus {
+      border-color: lighten(@kvelle-color-neutral, 10%);
+      background-color: lighten(@kvelle-color-neutral, 10%);
+    }
+  }
+}

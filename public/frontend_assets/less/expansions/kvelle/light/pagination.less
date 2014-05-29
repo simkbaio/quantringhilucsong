@@ -1,0 +1,50 @@
+.pagination {
+  &.light {
+    > li {
+      > a,
+      > span {
+        text-shadow: 0 1px 0 @kvelle-color;
+        .transition(~"all 170ms ease-out");
+        background-color: @kvelle-color-light;
+        border: 1px solid @kvelle-color;
+      }
+    }
+
+    > li > a,
+    > li > span {
+      &:hover,
+      &:focus {
+        text-shadow: 1px 1px 0 @kvelle-color;
+        background-color: @kvelle-color-lighter;
+        border-color: @kvelle-color-light;
+        box-shadow: inset 0 -4px 0 0 @kvelle-color-light;
+      }
+    }
+
+    > .active > a,
+    > .active > span {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @pagination-active-bg;
+        border-color: @kvelle-color-light;
+        text-shadow: none;
+        color: @kvelle-color-light;
+      }
+    }
+
+    > .disabled {
+      > span,
+      > span:hover,
+      > span:focus,
+      > a,
+      > a:hover,
+      > a:focus {
+        color: lighten(@gray-light, 10%);
+        background-color: @kvelle-color-light;
+        border-color: @kvelle-color-light;
+        text-shadow: none;
+      }
+    }
+  }
+}

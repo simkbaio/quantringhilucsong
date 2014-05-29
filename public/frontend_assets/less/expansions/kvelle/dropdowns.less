@@ -1,0 +1,167 @@
+// new functions to create custom dropdown styles
+// Had to remove the ">" before "li > a" because of compatibility with bootstrap select
+
+.dropdown-variant(@which) {
+  background-color: @which;
+  border-color: @which;
+
+   li > a {
+    color: #fff;
+    &:hover,
+    &:focus {
+      color: lighten(@which, 20%);
+      background-color: @which;
+    }
+  }
+
+  > .active > a {
+    background-color: transparent;
+    color: lighten(@which, 20%);
+  }
+
+  .divider {
+    .nav-divider(lighten(@which, 10%));
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  // bootstrap select
+  dt > .text {
+    color: #fff;
+  }
+}
+
+.dropdown-variant-bgcolor(@which) {
+  background-color: @which;
+  border: 1px solid @which;
+   li > a {
+    color: #fff;
+    &:hover,
+    &:focus {
+      background-color: lighten(@which, 8%) !important;
+    }
+  }
+  > .active > a {
+    background-color: lighten(@which, 8%) !important;
+  }
+  .divider {
+    background-color: lighten(@which, 8%);
+  }
+  // bootstrap select
+  dt > .text {
+    color: #fff;
+  }
+}
+
+.dropdown-variant-border(@which) {
+  background-color: #fff;
+  border: 1px solid @which !important;
+   li > a {
+    color: @which;
+    &:hover,
+    &:focus {
+      color: darken(@which, 20%) !important;
+    }
+  }
+  > .active > a {
+    background-color: #fff;
+    color: darken(@which, 20%);
+    font-weight: 400;
+  }
+  .divider {
+    background-color: @which;
+  }
+  // bootstrap select
+  dt > .text {
+    color: @which;
+  }
+}
+
+// building custom buttons
+.dropdown-menu {
+
+  &.default-color {
+    .dropdown-variant(@kvelle-color);
+  }
+  &.default-bgcolor {
+    .dropdown-variant-bgcolor(@kvelle-color);
+  }
+  &.default-border {
+    .dropdown-variant-border(@kvelle-color);
+  }
+
+  &.primary-color {
+    .dropdown-variant(#fff);
+    border-color: lighten(@kvelle-color, 40%);
+    > li > a {
+      color: @kvelle-color;
+      &:hover,
+      &:focus {
+        color: darken(@kvelle-color, 30%) !important;
+      }
+    }
+    .divider {
+      background-color: lighten(@kvelle-color, 30%);
+    }
+  }
+  &.primary-bgcolor {
+    .dropdown-variant-bgcolor(#fff);
+    border-color: lighten(@kvelle-color, 40%);
+    > li > a {
+      color: @kvelle-color;
+      &:hover,
+      &focus {
+        background-color: lighten(@kvelle-color, 40%) !important;
+      }
+    }
+    .divider {
+      background-color: lighten(@kvelle-color, 30%);
+    }
+  }
+  &.primary-border {
+    .dropdown-variant-border(@kvelle-color);
+    border-color: lighten(@kvelle-color, 30%) !important;
+    .divider {
+      background-color: lighten(@kvelle-color, 30%);
+    }
+  }
+
+  &.success-color {
+    .dropdown-variant(@brand-success);
+  }
+  &.success-bgcolor {
+    .dropdown-variant-bgcolor(@brand-success);
+  }
+  &.success-border {
+    .dropdown-variant-border(@brand-success);
+  }
+
+  &.info-color {
+    .dropdown-variant(@brand-info);
+  }
+  &.info-bgcolor {
+    .dropdown-variant-bgcolor(@brand-info);
+  }
+  &.info-border {
+    .dropdown-variant-border(@brand-info);
+  }
+
+  &.warning-color {
+    .dropdown-variant(@brand-warning);
+  }
+  &.warning-bgcolor {
+    .dropdown-variant-bgcolor(@brand-warning);
+  }
+  &.warning-border {
+    .dropdown-variant-border(@brand-warning);
+  }
+
+  &.danger-color {
+    .dropdown-variant(@brand-danger);
+  }
+  &.danger-bgcolor {
+    .dropdown-variant-bgcolor(@brand-danger);
+  }
+  &.danger-border {
+    .dropdown-variant-border(@brand-danger);
+  }
+}

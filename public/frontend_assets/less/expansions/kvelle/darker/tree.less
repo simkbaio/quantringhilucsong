@@ -1,0 +1,28 @@
+.tree {
+  &.tree-darker {
+    .tree-folder {
+      .tree-folder-header {
+        &:hover {
+          background-color: @kvelle-color-darker;
+        }
+      }
+    }
+
+    .tree-item {
+      &:hover {
+        background-color: @kvelle-color-darker;
+      }
+    }
+
+    .tree-selected {
+      background-color: @kvelle-color-darker;
+
+      &:hover{
+        .tree-actions > i {
+          border: 1px solid @kvelle-color-darker;
+          color: @kvelle-color-darker;
+        }
+      }
+    }
+  }
+}

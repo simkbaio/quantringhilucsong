@@ -13,6 +13,6 @@ use Laracasts\Validation\FormValidator;
 
 class ClassForm extends FormValidator {
     public $rules = [
-        'class_name'=>'required'
+        'name'=>'required'
 ];
 } 

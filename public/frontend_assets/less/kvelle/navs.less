@@ -1,0 +1,185 @@
+.nav {
+
+  > li {
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      background-color: desaturate(@kvelle-color-light, 25%);
+      box-shadow: none !important;
+      text-shadow: none !important;
+      color: @gray-light !important;
+
+      &:active {
+        box-shadow: none !important;
+      }
+
+      &:hover,
+      &:focus {
+        text-shadow: none !important;
+      }
+    }
+  }
+
+  .open > a {
+    background-color: @nav-tabs-active-link-hover-bg;
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+      border-color: transparent;
+      background-color: @nav-tabs-active-link-hover-bg;
+    }
+
+    &:active {
+      box-shadow: none !important;
+    }
+  }
+}
+
+.nav-tabs {
+  border-bottom: 1px solid @kvelle-color;
+
+  > li {
+    > a {
+      .transition(~"background-color 170ms ease-out, box-shadow 170ms ease-out");
+      box-shadow: inset 0 1px 0 0 lighten(@kvelle-color, 8%);
+      margin-bottom: 1px;
+      margin-right: 0;
+      border: 0;
+      background-color: @kvelle-color;
+      color: #fff;
+      text-shadow: 0 1px 0 @kvelle-color-dark;
+
+      &:hover,
+      &:focus {
+        background-color: @nav-tabs-active-link-hover-bg;
+        color: #fff;
+        text-shadow: 1px 1px 0 @kvelle-color-dark;
+      }
+
+      &:active {
+        color: #fff;
+        text-shadow: 1px 1px 0 @kvelle-color-dark;
+        box-shadow: inset 0 0 6px 6px darken(@kvelle-color, 2%);
+        background-color: @kvelle-color;
+      }
+    }
+
+    &.active > a {
+      text-shadow: 1px 1px 0 @kvelle-color-dark;
+      box-shadow: none !important;
+      &,
+      &:hover,
+      &:focus {
+        border: 0;
+        box-shadow: none;
+        background-color: @nav-tabs-active-link-hover-bg !important;
+        cursor: pointer;
+      }
+    }
+
+    &.disabled > a {
+      background-color: desaturate(@kvelle-color-lighter, 25%) !important;
+      color: @gray-lighter !important;
+    }
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+
+  &.nav-justified {
+    border-bottom: 1px solid @kvelle-color;
+
+    > li {
+      float: none;
+
+      > a {
+        border: 0;
+      }
+    }
+
+    .dropdown-menu {
+      margin-top: 1px;
+    }
+
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border: 0;
+    }
+
+    @media (min-width: @screen-sm-min) {
+      > li > a {
+        border-bottom: 0;
+        border-radius: 0;
+      }
+      > .active > a,
+      > .active > a:hover,
+      > .active > a:focus {
+        border-bottom-color: none;
+      }
+    }
+  }
+}
+
+.nav-pills {
+  > li {
+    > a {
+      border-bottom: 1px solid @kvelle-color;
+      color: @text-color;
+      .transition(~"background-color 170ms ease-out, box-shadow 170ms ease-out");
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-shadow: none;
+        color: @kvelle-color;
+        background-color: transparent;
+        box-shadow: inset 0 -4px 0 0 lighten(@kvelle-color, 8%);
+      }
+    }
+
+    &.active > a {
+      text-shadow: none;
+      box-shadow: inset 0 -4px 0 0 lighten(@kvelle-color, 8%);
+
+      &,
+      &:hover,
+      &:focus {
+        background-color: @nav-pills-active-link-hover-bg;
+      }
+    }
+
+    &.dropdown.open a {
+      &:focus {color: #fff;}
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      background-color: @nav-pills-active-link-hover-bg !important;
+      color: @gray-light !important;
+    }
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+
+  &.nav-justified {
+    li + li {
+      margin-left: 0;
+    }
+  }
+}
+
+.tab-content {
+  padding-top: 10px;
+}
+
+.nav-stacked {
+  .badge {
+    position: relative;
+    top: 4px;
+  }
+}

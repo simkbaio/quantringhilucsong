@@ -1,0 +1,47 @@
+.dropdown-menu {
+  &.neutral-color {
+    .dropdown-variant(@kvelle-color-neutral);
+  }
+  &.neutral-bgcolor {
+    .dropdown-variant-bgcolor(@kvelle-color-neutral);
+  }
+  &.neutral-border {
+    .dropdown-variant-border(@kvelle-color-neutral);
+  }
+
+  &.neutral-light-color {
+    .dropdown-variant(lighten(@kvelle-color-neutral, 50%));
+    border-color: lighten(@kvelle-color-neutral, 30%);
+    > li > a {
+      color: @kvelle-color-neutral;
+      &:hover,
+      &focus {
+        color: lighten(@kvelle-color-neutral, 20%) !important;
+      }
+    }
+    .divider {
+      background-color: lighten(@kvelle-color-neutral, 30%);
+    }
+  }
+  &.neutral-light-bgcolor {
+    .dropdown-variant-bgcolor(lighten(@kvelle-color-neutral, 50%));
+    border-color: lighten(@kvelle-color-neutral, 30%);
+    > li > a {
+      color: @kvelle-color-neutral;
+      &:hover,
+      &focus {
+        background-color: lighten(@kvelle-color-neutral, 40%) !important;
+      }
+    }
+    .divider {
+      background-color: lighten(@kvelle-color-neutral, 30%);
+    }
+  }
+  &.neutral-light-border {
+    .dropdown-variant-border(@kvelle-color-neutral);
+    border-color: lighten(@kvelle-color-neutral, 30%) !important;
+    .divider {
+      background-color: lighten(@kvelle-color-neutral, 30%);
+    }
+  }
+}

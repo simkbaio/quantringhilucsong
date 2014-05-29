@@ -125,7 +125,7 @@ return array(
 		'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
 		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
         'Bogardo\Mailgun\MailgunServiceProvider',
-        'Boparaiamrit\Facebook\FacebookServiceProvider',
+        'Artdarek\OAuth\OAuthServiceProvider',
 
 	),
 
@@ -194,7 +194,7 @@ return array(
 		'View' => 'Illuminate\Support\Facades\View',
 		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Bugsnag' => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
-        'Facebook' => 'Boparaiamrit\Facebook\FacebookFacade',
+		'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
 
 	),
 

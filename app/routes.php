@@ -4,8 +4,56 @@ use \Carbon\Carbon;
 Route::get('/',function(){
     return View::make('frontend.layouts.master');
 });
+Route::get('facebook',function(){
+
+     // get data from input
+    $code = Input::get( 'code' );
+
+
+    // get fb service
+    $fb = OAuth::consumer( 'Facebook' );
+         $url = $fb->getAuthorizationUri();
+
+        // return to facebook login url
+        return Redirect::to( (string)$url );
+
+    // check if code is valid
+
+    // if code is provided get user data and sign in
+    if ( !empty( $code ) ) {
+
+        // This was a callback request from facebook, get the token
+        $token = $fb->requestAccessToken( $code );
+
+        // Send a request with it
+        $result = json_decode( $fb->request( '/me' ), true );
+
+        $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
+        echo $message. "<br/>";
+
+        //Var_dump
+        //display whole array().
+        dd($result);
+
+    }
+    // if not ask for permission first
+    else {
+        // get fb authorization
+        $url = $fb->getAuthorizationUri();
+
+        // return to facebook login url
+        return Redirect::to( (string)$url );
+    }
+
+});
+Route::get('facebook/logout',function(){
+    return "Log";
+});
 Route::get('facebook/login',function(){
-    return Facebook::loginUrl();
+   $profile = Facebook::api('/me?fields=id,name,first_name,last_name,username,email,gender,birthday,hometown,location,picture.width(100)');
+   return dd(Facebook::getUser());
+   $login_url = Facebook::loginUrl();
+   return View::make('hello')->with('login_url',$login_url);
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
@@ -48,8 +96,8 @@ Route::any('admin/user/{id}/resetpassword/{resetcode}',['uses'=>'UsersController
 
 
 //Route::resource('profile','ProfilesController',['only'=>['update','destroy','store']]);lo
-    Route::get('admin/login',['as'=>'admin.login','uses'=>'SessionsController@create']);
-    Route::resource('admin/sessions','SessionsController',['only'=>['create','store','destroy']]);
+Route::get('admin/login',['as'=>'admin.login','uses'=>'SessionsController@create']);
+Route::resource('admin/sessions','SessionsController',['only'=>['create','store','destroy']]);
 
 Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     #Authendication

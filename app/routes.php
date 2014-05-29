@@ -10,12 +10,7 @@ Route::get('facebook/login',function(){
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
 Route::get('thuxem',function(){
-    return Redirect::route('admin')->withFlashMessage('Hello Fucker!');
-
-
-    $mgClient = new \Mailgun\Mailgun('key-4n4k5wb7tvu-d3szvefg4lomr5k817m1');
-    $domain = "ecnet.vn";
-    $campaignId = 'c8vng';
+    return View::make('hello');
 
 # Issue the call to the client.
 //    $result = $mgClient->get($domain."/campaings/".$campaignId."/stats");

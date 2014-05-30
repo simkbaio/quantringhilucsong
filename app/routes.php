@@ -12,10 +12,7 @@ Route::get('facebook',function(){
 
     // get fb service
     $fb = OAuth::consumer( 'Facebook' );
-         $url = $fb->getAuthorizationUri();
 
-        // return to facebook login url
-        return Redirect::to( (string)$url );
 
     // check if code is valid
 
@@ -23,13 +20,21 @@ Route::get('facebook',function(){
     if ( !empty( $code ) ) {
 
         // This was a callback request from facebook, get the token
-        $token = $fb->requestAccessToken( $code );
+        
+        try{
+            $token = $fb->requestAccessToken( $code );
+        }catch(OAuth\Common\Http\Exception\TokenResponseException $e){
+            $url = $fb->getAuthorizationUri();
+
+        // return to facebook login url
+                        return $url;
+
+        return Redirect::to( (string)$url );
+        }
 
         // Send a request with it
         $result = json_decode( $fb->request( '/me' ), true );
 
-        $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-        echo $message. "<br/>";
 
         //Var_dump
         //display whole array().
@@ -50,10 +55,7 @@ Route::get('facebook/logout',function(){
     return "Log";
 });
 Route::get('facebook/login',function(){
-   $profile = Facebook::api('/me?fields=id,name,first_name,last_name,username,email,gender,birthday,hometown,location,picture.width(100)');
-   return dd(Facebook::getUser());
-   $login_url = Facebook::loginUrl();
-   return View::make('hello')->with('login_url',$login_url);
+
 });
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);

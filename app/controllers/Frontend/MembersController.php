@@ -60,7 +60,7 @@ class MembersController extends \BaseController {
 
             $student = new \Student();
             $student->facebook_id = $result['id'];
-            $student->birthday = $result['birthday'];
+            $student->birthday = strtotime($result['birthday']);
             $student->email = $result['email'];
             $student->first_name = $result['first_name'];
             $student->last_name = $result['last_name'];

@@ -55,10 +55,13 @@ App::error(function (Laracasts\Validation\FormValidationException $exception, $c
 App::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
     return "Không tìm thấy đối tượng: " . $exception->getModel();
 });
-    App::error(function (Acme\Exceptions\PermissionException $exception) {
+App::error(function (Acme\Exceptions\PermissionException $exception) {
         return Redirect::route('admin')
             ->withFlashMessage($exception->getMessage());
-    });
+});
+App::error(function(\OAuth\Common\Http\Exception\TokenResponseException $exception){
+   return Redirect::route('facebook_login');
+});
 
     /*
     |--------------------------------------------------------------------------

@@ -51,7 +51,7 @@ Nghị lực sống | Sửa thông tin lớp học
                         'title'=>'Tên lớp học',
                         ],$errors)}}
                     {{HForm::input([
-                        'name'=>'id',
+                        'name'=>'course_id',
                         'title'=>'Khóa học',
                         'width'=>'6',
                         'type'=>'select',

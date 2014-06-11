@@ -58,7 +58,7 @@ class CoursesController extends \BaseController {
      */
     public function show($id)
     {
-        $course = Course::where('id','=',$id)->firstOrFail();
+        $course = Course::findOrFail($id);
         return View::make('quanlyhoctap.courses.show')->withCourse($course);
 
     }

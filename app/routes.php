@@ -1,9 +1,8 @@
 <?php
 #home
-use \Carbon\Carbon;
-Route::get('/',function(){
-    return View::make('frontend.layouts.master');
-});
+Route::get('/',['as'=>'home','uses'=>'\Frontend\PagesController@home']);
+Route::post('dang-ki',['uses'=>'\Frontend\MembersController@storeMember']);
+Route::get('facebooklogin',['as'=>'facebook_login','uses'=>'\Frontend\MembersController@facebookLogin']);
 Route::get('facebook',function(){
 
      // get data from input
@@ -58,7 +57,7 @@ Route::get('facebook/login',function(){
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
 Route::get('thuxem',function(){
-    return View::make('hello');
+    return NClass::all();
 
 # Issue the call to the client.
 //    $result = $mgClient->get($domain."/campaings/".$campaignId."/stats");
@@ -102,7 +101,7 @@ Route::resource('admin/sessions','SessionsController',['only'=>['create','store'
 Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     #Authendication
     Route::get('logout',['as'=>'admin.logout','uses'=>'SessionsController@destroy']);
-    
+
 
     #Users
     Route::post('users/{id}/resetpassword/{resetCode}',['as'=>'admin.users.changepassword','uses'=>'UsersController@changepassword']);
@@ -127,7 +126,10 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     Route::resource('teachers','TeachersController');
 
     Route::post('class/{id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
+
     Route::resource('classes','ClassesController');
+    Route::resource('classes.schedules','ClassSchedulesController');
+
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');
     Route::get('ajax/changelog',['as'=>'admin.ajax.changelog','uses'=>'AjaxController@changelog']);

@@ -89,7 +89,7 @@
 											Lớp học
 										</div>
 										<div class="number">
-											{{Nclass::count()}}
+											{{NClass::count()}}
 										</div>
 									</div>
 								</div>

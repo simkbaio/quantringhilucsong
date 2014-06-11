@@ -14,4 +14,7 @@ class Student extends Eloquent {
     public function results(){
         return Student::belongsTo('Student','result_student_id','id');
     }
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = md5($password);
+    }
 }

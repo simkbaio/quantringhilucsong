@@ -24,4 +24,5 @@ class Course extends Eloquent{
     public function classes(){
         return Course::hasMany('NClass','course_id','id');
     }
+
 }

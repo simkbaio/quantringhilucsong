@@ -42,7 +42,7 @@ class StudentsController extends \BaseController {
 	 */
 	public function store()
 	{
-
+//        return dd(Input::all());
         $input = Input::except('_method','_token','password','password_confirmation');
         $input['birthday'] = strtotime( $input['birthday']);
         $input['regis_date']=time();

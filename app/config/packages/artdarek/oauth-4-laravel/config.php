@@ -22,9 +22,9 @@ return array(
 		 * Facebook
 		 */
         'Facebook' => array(
-            'client_id'     => '250783585121840',
-            'client_secret' => 'f751438390a1fb418114929f400bd602',
-            'scope'         => array('email','public_profile','user_friends'),
+            'client_id'     => '253066224893576',
+            'client_secret' => '095d09167e8e3551de51a870ac5e90cd',
+            'scope'         => array('email','user_about_me','user_friends','user_birthday','user_hometown','user_location'),
         ),		
 
 	)

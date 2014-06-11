@@ -90,8 +90,8 @@ class ClassesController extends \BaseController
     {
         $input = Input::except('_method', '_token');
         $this->classForm->validate(Input::all());
-        $class = NClass::where('id', '=', $id)->firstOrFail();
-        if (NClass::where('id', '=', $id)->update($input))
+        $class = NClass::findOrFail($id);
+        if ($class->update($input))
             return Redirect::route('admin.classes.show',$class->id)
                 ->withFlashMessage('Bạn đã cập nhật thành công lớp học: ' . $class->name);
         else
@@ -115,8 +115,11 @@ class ClassesController extends \BaseController
     }
     public function addstudent($id){
         $class = NClass::where('id','=',$id)->firstOrFail();
-        $class->addstudent(Input::get('student_id'));
+        $class->addstudent(Input::get('student'));
         return Redirect::back()->withFlashMessage('Đã thêm sinh viên mới thành công');
+    }
+    public function removeStudent($id){
+        return 'Remove';
     }
 
 }

@@ -40,7 +40,7 @@
             </div>
             <div class="portlet-body">
 <?php
-$teachers = teacher::orderBy('name')->get();
+$teachers = Teacher::orderBy('name')->get();
 ?>
     <a href="{{URL::route('admin.teachers.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm giáo viên mới</a>
 

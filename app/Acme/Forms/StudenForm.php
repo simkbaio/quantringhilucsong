@@ -21,7 +21,7 @@ class StudenForm extends FormValidator
         'hometown' => 'required',
         'province_id' => 'required',
         'phone' => 'required',
-        'email' => 'required|unique:tbl_student,email',
+        'email' => 'required|unique:hosohocvien_db.tbl_student,email',
         'facebook' => 'required',
         'married' => 'required',
         'educated' => 'required',
@@ -46,9 +46,21 @@ class StudenForm extends FormValidator
         'person_authen_name' => 'required',
         'person_authen_address' => 'required',
     ];
+    protected $rules_simple = [
+        'last_name' => 'required',
+        'first_name' => 'required',
+        'email' => 'required',
+        'password' => 'required|confirmed',
+
+    ];
     public function UpdateValidate($input){
         $this->rules = $this->rules_update;
         return $this->validate($input);
     }
+    public function SimpleValidate($input){
+        $this->rules = $this->rules_simple;
 
+        return $this->validate($input);
+
+    }
 } 

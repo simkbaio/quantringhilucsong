@@ -265,11 +265,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'Open sans', Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.25;
   color: #697060;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }
 input,
 button,
@@ -354,7 +354,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Open sans', Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 300;
   line-height: 1.1;
   color: inherit;
@@ -765,26 +765,19 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
 }
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
+
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  width:75%;
 }
 .row {
   margin-left: -15px;
@@ -1824,7 +1817,7 @@ output {
   width: 100%;
   height: 34px;
   padding: 6px 12px;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.25;
   color: #697060;
   background-color: #ffffff;
@@ -4006,7 +3999,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: 40px;
+    margin-left: -15px;
   }
 }
 .navbar-toggle {
@@ -4195,11 +4188,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #ffffff;
-  border-color: #43923e;
+  background-color: #7db829;
+  border-color: #55b44f;
 }
 .navbar-default .navbar-brand {
-  color: #43923e;
+  color: #ffffff;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4210,7 +4203,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #43923e;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #43923e;
+  color: #ffffff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -4230,14 +4223,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-toggle {
-  border-color: #43923e;
+  border-color: #ffffff;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #43923e;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #43923e;
+  background-color: #ffffff;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -7243,7 +7236,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.default-border > .active > a {
   background-color: #fff;
   color: #224a20;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.default-border .divider {
   background-color: #43923e;
@@ -7335,7 +7328,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.primary-border > .active > a {
   background-color: #fff;
   color: #224a20;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.primary-border .divider {
   background-color: #43923e;
@@ -7407,7 +7400,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.success-border > .active > a {
   background-color: #fff;
   color: #426b13;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.success-border .divider {
   background-color: #77c123;
@@ -7476,7 +7469,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.info-border > .active > a {
   background-color: #fff;
   color: #0b3f59;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.info-border .divider {
   background-color: #177fb3;
@@ -7545,7 +7538,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.warning-border > .active > a {
   background-color: #fff;
   color: #86660b;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.warning-border .divider {
   background-color: #e5ad12;
@@ -7614,7 +7607,7 @@ fieldset[disabled] .btn.btn-danger.active {
 .dropdown-menu.danger-border > .active > a {
   background-color: #fff;
   color: #7a2d0e;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.danger-border .divider {
   background-color: #d64e18;
@@ -7633,7 +7626,7 @@ fieldset[disabled] .form-control {
   border-radius: 1px;
 }
 label {
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
 }
 .input-group-addon {
@@ -8777,7 +8770,7 @@ a.list-group-item-default.active:focus {
   background-color: #fff;
 }
 .navbar-default .navbar-brand {
-  border-right: 1px solid #55b44f;
+ 
   height: inherit;
   display: block;
 }
@@ -9990,7 +9983,7 @@ ul {
   border-color: #43923e;
 }
 .table > thead > tr > th {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
 }
 @media (max-width: 767px) {
@@ -12539,7 +12532,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.cyanide-border > .active > a {
   background-color: #fff;
   color: #196090;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.cyanide-border .divider {
   background-color: #3498db;
@@ -12608,7 +12601,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.meadow-border > .active > a {
   background-color: #fff;
   color: #373e06;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.meadow-border .divider {
   background-color: #8a9b0f;
@@ -12677,7 +12670,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.cocktail-border > .active > a {
   background-color: #fff;
   color: #844801;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.cocktail-border .divider {
   background-color: #e97f02;
@@ -12746,7 +12739,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.hearts-border > .active > a {
   background-color: #fff;
   color: #610b29;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.hearts-border .divider {
   background-color: #bd1550;
@@ -12815,7 +12808,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.party-border > .active > a {
   background-color: #fff;
   color: #000000;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.party-border .divider {
   background-color: #490a3d;
@@ -12884,7 +12877,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.midnight-border > .active > a {
   background-color: #fff;
   color: #080b0e;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.midnight-border .divider {
   background-color: #2c3e50;
@@ -12953,7 +12946,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.concrete-border > .active > a {
   background-color: #fff;
   color: #617374;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.concrete-border .divider {
   background-color: #95a5a6;
@@ -13022,7 +13015,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.gunmetal-border > .active > a {
   background-color: #fff;
   color: #000000;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.gunmetal-border .divider {
   background-color: #292e37;
@@ -13091,7 +13084,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.hollow-border > .active > a {
   background-color: #fff;
   color: #080706;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.hollow-border .divider {
   background-color: #423732;
@@ -13160,7 +13153,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.mango-border > .active > a {
   background-color: #fff;
   color: #93710b;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.mango-border .divider {
   background-color: #eeb816;
@@ -13229,7 +13222,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.berry-border > .active > a {
   background-color: #fff;
   color: #a82315;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.berry-border .divider {
   background-color: #e74c3c;
@@ -13298,7 +13291,7 @@ fieldset[disabled] .btn.btn-hollow.active {
 .dropdown-menu.cello-border > .active > a {
   background-color: #fff;
   color: #66381c;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.cello-border .divider {
   background-color: #b66432;
@@ -18317,7 +18310,7 @@ fieldset[disabled] .btn.btn-lighter.active {
 .dropdown-menu.lighter-border > .active > a {
   background-color: #fff;
   color: #43923e;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.lighter-border .divider {
   background-color: #77c373;
@@ -19864,7 +19857,7 @@ fieldset[disabled] .btn.btn-light.active {
 .dropdown-menu.light-border > .active > a {
   background-color: #fff;
   color: #336e2f;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.light-border .divider {
   background-color: #55b44f;
@@ -21359,7 +21352,7 @@ fieldset[disabled] .btn.btn-dark.active {
 .dropdown-menu.dark-border > .active > a {
   background-color: #fff;
   color: #122710;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.dark-border .divider {
   background-color: #336e2f;
@@ -22854,7 +22847,7 @@ fieldset[disabled] .btn.btn-darker.active {
 .dropdown-menu.darker-border > .active > a {
   background-color: #fff;
   color: #010301;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.darker-border .divider {
   background-color: #224a20;
@@ -24421,7 +24414,7 @@ fieldset[disabled] .btn.btn-neutral-light.active {
 .dropdown-menu.neutral-border > .active > a {
   background-color: #fff;
   color: #363931;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.neutral-border .divider {
   background-color: #697060;
@@ -24513,7 +24506,7 @@ fieldset[disabled] .btn.btn-neutral-light.active {
 .dropdown-menu.neutral-light-border > .active > a {
   background-color: #fff;
   color: #363931;
-  font-weight: 300;
+  font-weight: 400;
 }
 .dropdown-menu.neutral-light-border .divider {
   background-color: #697060;
@@ -25778,7 +25771,7 @@ a.bg-neutral:hover {
   list-style: none;
   text-transform: none;
   font-weight: 300;
-  font-family: 'Open sans', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   line-height: 60px;
 }
 .gn-menu-main {
@@ -27689,7 +27682,7 @@ input.gn-search:focus {
 .bootstrap-datetimepicker-widget td span.timepicker-minute,
 .bootstrap-datetimepicker-widget td span.timepicker-second {
   margin: 0 !important;
-  font-weight: 300;
+  font-weight: 400;
 }
 .bootstrap-datetimepicker-widget td.separator {
   padding: 0;
@@ -27708,7 +27701,7 @@ input.gn-search:focus {
   padding: 0;
 }
 .bootstrap-datetimepicker-widget table thead th {
-  font-weight: 300;
+  font-weight: 400;
 }
 .bootstrap-datetimepicker-widget .picker-switch {
   margin: 5px auto;
@@ -27769,7 +27762,7 @@ input.gn-search:focus {
 }
 .daterangepicker .calendar th,
 .daterangepicker .calendar td {
-  font-family: 'Open sans', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   white-space: nowrap;
   text-align: center;
   min-width: 32px;
@@ -27994,7 +27987,7 @@ input.gn-search:focus {
   border: 1px solid #43923e;
 }
 .daterangepicker table thead th {
-  font-weight: 300;
+  font-weight: 400;
 }
 .daterangepicker .range_inputs {
   text-align: center;
@@ -30015,7 +30008,7 @@ body:after {
   line-height: 22px;
   margin-bottom: 15px;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   border-bottom: 1px solid rgba(67, 146, 62, 0.55);
   padding-bottom: 16px;
 }
@@ -31960,7 +31953,7 @@ object {
   margin-top: 60px;
 }
 .push-down {
-  padding-top: 52px;
+  padding-top: 40px;
 }
 .push-down-thin {
   padding-top: 26px;
@@ -31969,7 +31962,7 @@ object {
   padding-top: 6px;
 }
 .push-up {
-  padding-bottom: 52px;
+  padding-bottom: 40px;
 }
 .push-up-thin {
   padding-bottom: 26px;

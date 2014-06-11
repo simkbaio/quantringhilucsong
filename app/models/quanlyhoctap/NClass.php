@@ -63,9 +63,8 @@ class NClass extends \Eloquent
             return false;
         }
 
-
-
-
-
+    }
+    public function schedules(){
+       return NClass::hasMany('ClassSchedule','class_id','id');
     }
 }

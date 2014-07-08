@@ -134,6 +134,9 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
 
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');
+
+    Route::resource('subjects','SubjectsController');
+
     Route::get('ajax/changelog',['as'=>'admin.ajax.changelog','uses'=>'AjaxController@changelog']);
 
 

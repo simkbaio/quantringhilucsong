@@ -39,7 +39,6 @@ class MembersController extends \BaseController {
     public function facebookLogin(){
         $code = \Input::get( 'code' );
 
-        // get fb service
         $fb = \OAuth::consumer( 'Facebook' );
 
         // check if code is valid

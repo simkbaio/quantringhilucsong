@@ -189,7 +189,7 @@
                  {{portlet_open('Lịch học','green')}}
                  <div class="row">
                      <div class="col-md-12">
-                         <a class="btn green" data-toggle="modal" href='#add-new-schedule'>Thêm Lịch học</a>
+                         <a class="btn green" data-toggle="modal" href='#add-new-subject'>Thêm lịch học</a>
 
 
                      </div>
@@ -214,7 +214,7 @@
                              </tbody>
                          </table> 
                          @else
-                         <h2>Chưa có lịch học</h2>
+                         <h2>Chưa có môn học nào</h2>
                          @endif
                      </div>
                      {{portlet_close()}}
@@ -226,7 +226,8 @@
  </div>
  <!-- END CONTENT -->
 </div>
-<div class="modal fade" id="add-new-schedule">
+
+<div class="modal fade" id="add-new-subject">
  <div class="modal-dialog">
      <div class="modal-content">
          <div class="modal-header">
@@ -235,45 +236,69 @@
          </div>
          <div class="modal-body">
              <div class="row">
-                 {{Form::open(['route'=>['admin.classes.schedules.create',$class->id]])}}
+                 {{Form::open(['route'=>['admin.classes.schedules.store',$class->id]])}}
+                 <?php 
+                 $times = array();
+                 $minues_arr =['00','15','20','25','30','35','45','40','45','50','55'];
+                 for($i=6;$i<=22;$i++){
+                    foreach($minues_arr as $j ){
+                        if($i<10){
+                            $times['0'.$i.":".$j]= '0'.$i.":".$j;
+                        }
+                        else{
+                            $times[$i.":".$j]= $i.":".$j;
+                        }
+                    }
+                 }
+
+                 ?>
+                 {{HForm::input([
+                    'title'=>'Môn học',
+                    'name'=>'subject_id',
+                    'type'=>'select',
+                    'data_input'=>Subject::getSelectData(),
+                    'width'=>'6',
+                ])}}
+                {{HForm::input([
+                    'title'=>'Giáo viên',
+                    'name'=>'teacher_id',
+                    'type'=>'select',
+                    'data_input'=>Teacher::getAllSelectData(),
+                    'width'=>6,
+                ])}}
                  {{HForm::input([
                     'title'=>'Thứ',
                     'name'=>'day',
                     'type'=>'select',
                     'data_input'=>Config::get('admin.days'),
-                    'width'=>3,
+                    'width'=>4,
                     ])}}
-                    <div class="form-group col-m-3">
-                        <label class="control-label">Giờ bắt đầu</label>
-                        <div>
-                            <div class="input-group">
-                                <input type="text" id="gio-bat-dau" class="form-control timepicker timepicker-no-seconds">
-                                <span class="input-group-btn">
-                                    <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                </span>
-                            </div>
-                            <?php
-                                $time = array();
+                {{HForm::input([
+                    'title'=>'Giờ bắt đầu',
+                    'name'=>'time_start',
+                    'type'=>'select',
+                    'data_input'=>$times,
+                    'width'=>4,
 
+                ])}}
+                {{HForm::input([
+                    'title'=>'Giờ kết thúc',
+                    'name'=>'time_end',
+                    'type'=>'select',
+                    'data_input'=>$times,
+                    'width'=>4,
 
-                            ?>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Input</label>
-                                <div class="col-md-3">
-                                    <input type="text" value="2:30 PM" data-format="hh:mm A" class="form-control clockface_1"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{Form::close()}}
+                ])}}
+                    
+                    
                 </div>
 
             </div>
             <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             <button type="button" class="btn btn-primary">Save changes</button>
+            {{Form::submit('Thêm',['class'=>'btn btn-primary'])}}
+             {{Form::close()}}
          </div>
      </div><!-- /.modal-content -->
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-@stop

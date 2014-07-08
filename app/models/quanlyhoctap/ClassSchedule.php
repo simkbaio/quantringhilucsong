@@ -7,7 +7,7 @@ class ClassSchedule extends Eloquent {
     protected $guarded = [
 
     ];
-    // public function NClass(){
-    // 	return ClassSchedule::belongto('Nclass');
-    // }
+     public function NClass(){
+     	return ClassSchedule::belongto('Nclass','class_id','id');
+     }
 } 

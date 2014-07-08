@@ -44,7 +44,8 @@ Nghị lực sống | Thêm lớp học mới
         <div class="row">
             <div class="col-md-12">
                 {{portlet_open('Nội dung cần nhập','green')}}
-
+                
+                {{flash_message()}}
                 <div class="row">
                     {{Form::open(['route'=>'admin.classes.store'])}}
                     @if(Input::has('course'))

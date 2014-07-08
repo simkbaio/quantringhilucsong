@@ -8,9 +8,9 @@ class $NAME$ extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	protected $MODEL$Form;
-	public function __construct($MODEL$Form $MODEL$form){
-        $this->$MODEL$Form = $MODEL$form;
+	protected $$MODEL$Form;
+	public function __construct($MODEL$Form $$MODEL$form){
+        $this->$MODEL$Form = $$MODEL$form;
 	}
 	public function index()
 	{

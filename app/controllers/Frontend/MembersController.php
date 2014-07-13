@@ -74,7 +74,12 @@ class MembersController extends \BaseController {
             $facebook_id = $result['id'];
             $student = \Student::where("facebook_id",'=',$facebook_id)->first();
             if($student){
-                $user = \Sentry::findUserById($student->user_id);
+                try{
+                    $user = \Sentry::findUserById($student->user_id);
+                }catch (\Exception $e){
+                    return \Redirect::to('/')
+                        ->withFlashMessage('Tài khoản đăng nhập của bạn chưa được tạo, liên hệ với Admin để được hỗ trợ');
+                }
                 if(\Sentry::check()){
                     return \Redirect::to('/');
                 }

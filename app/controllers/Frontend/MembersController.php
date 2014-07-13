@@ -31,8 +31,28 @@ class MembersController extends \BaseController {
         if(\Student::whereEmail($input['email'])->first()){
             return Redirect::back()->withFlashMessage('Mail đăng kí đã được dùng bởi tài khoản khác!');
         }else{
-            \Student::create($input);
-            return "Đăng kí thành công!";
+            $student  = \Student::create($input);
+            $account_data = [
+                'email' => $student->email,
+                'first_name' => $student->first_name,
+                'last_name' => $student->last_name,
+                'password'=>$input['password'],
+
+            ];
+            $account = \Sentry::createUser(array(
+                'email' => $account_data['email'],
+                'password' => $account_data['password'],
+                'first_name' => ucfirst($account_data['first_name']),
+                'last_name' => ucfirst($account_data['last_name']),
+                'activated' => true,
+            ));
+            $group = \Sentry::findGroupById(7);
+            $account->addGroup($group);
+            $student->user_id = $account->id;
+            $student->save();
+            return \Redirect::to('/')
+                ->withFlashMessage('Bạn Đã đăng kí thành công tài khoản học viên của Nghị Lực Sống.</br>
+                Xin mời đăng nhập để có thể sử dụng đầy đủ tính năng của website');
         }
 
      }
@@ -54,9 +74,19 @@ class MembersController extends \BaseController {
             $facebook_id = $result['id'];
             $student = \Student::where("facebook_id",'=',$facebook_id)->first();
             if($student){
-                return "Chào mừng: ".$student->name." Quay trở lại!";
-            }
+                $user = \Sentry::findUserById($student->user_id);
+                if(\Sentry::check()){
+                    return \Redirect::to('/');
+                }
 
+                if($user ){
+                    \Sentry::login($user,false);
+                    return \Redirect::to('/');
+                }else{
+                    return \Redirect::to('/')
+                        ->withFlashMessage('Tài khoản đăng nhập của bạn chưa được tạo, liên hệ với Admin để được hỗ trợ');
+                }
+            }
             $student = new \Student();
             $student->facebook_id = $result['id'];
             $student->birthday = strtotime($result['birthday']);
@@ -67,13 +97,32 @@ class MembersController extends \BaseController {
             $student->sex = ($result['gender']=='male')?1:0;
             $hometown = str_replace(", Vietnam","",$result["hometown"]["name"]);
             $student->hometown = $hometown;
+
+            $input = [
+              'email' => $student->email,
+                'first_name' => $student->first_name,
+                'last_name' => $student->last_name,
+                'password'=>\Str::random(8),
+
+            ];
+            $account = \Sentry::createUser(array(
+                'email' => $input['email'],
+                'password' => $input['password'],
+                'first_name' => ucfirst($input['first_name']),
+                'last_name' => ucfirst($input['last_name']),
+                'activated' => true,
+            ));
+            $group = \Sentry::findGroupById(7);
+            $account->addGroup($group);
+            $student->user_id = $account->id;
             $student->save();
 
-            return "Đăng kí thành công!";
+            return \Redirect::to('/')
+                ->withFlashMessage('Bạn Đã đăng kí thành công tài khoản học viên của Nghị Lực Sống.</br>
+                Xin mời đăng nhập để có thể sử dụng đầy đủ tính năng của website');
 
-            //Var_dump
-            //display whole array().
-            dd($result);
+
+
 
         }
         // if not ask for permission first
@@ -87,6 +136,9 @@ class MembersController extends \BaseController {
     }
     public function EmailVerify(){
 
+    }
+    public function login(){
+        return dd(\Input::all());
     }
 
 

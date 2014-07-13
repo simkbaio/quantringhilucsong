@@ -1,5 +1,9 @@
 <?php
 #home
+
+Route::get('test',function(){
+   return View::make('frontend.layouts.master');
+});
 Route::get('/',['as'=>'home','uses'=>'\Frontend\PagesController@home']);
 Route::post('dang-ki',['uses'=>'\Frontend\MembersController@storeMember']);
 Route::get('facebooklogin',['as'=>'facebook_login','uses'=>'\Frontend\MembersController@facebookLogin']);
@@ -56,29 +60,20 @@ Route::get('facebook/logout',function(){
 Route::get('facebook/login',function(){
 
 });
+Route::post('dang-nhap',['uses'=>'\Frontend\SessionsController@store']);
+
+Route::group(['before'=>'auth'],function(){
+    Route::get('dashbroad','\Frontend\PagesController@dashbroad');
+    Route::get('dang-xuat','\Frontend\SessionsController@destroy');
+
+    Route::get('student-profile','\Frontend\PagesController@student_profile');
+});
+
+
+
 Route::get('admin',['as'=>'admin','uses'=>'AdminPagesController@index'])->before('auth_admin');
 Route::get('admin/notice',['as'=>'admin.notice','uses'=>'AdminPagesController@notice']);
-Route::get('thuxem',function(){
-    return NClass::all();
 
-# Issue the call to the client.
-//    $result = $mgClient->get($domain."/campaings/".$campaignId."/stats");
-    return $domain."/campaings/".$campaignId."/stats";
-# Make the call to the client.
-//    $result = $mgClient->sendMessage("$domain",
-//        array('from'       => 'Developer <noreply@ecnet.vn>',
-//            'to'         => 'DEV <dev@ecnet.vn>',
-//            'subject'    => 'Hello DEV',
-//            'text'       => 'Testing some Mailgun awesomness!',
-//            'o:campaign' => 'c8vng'));
-
-//    $result = $mgClient->post("lists/$listAddress/members",
-//        array('address'     => 'simkbaio@gmail.com',
-//            'name'        => 'Ngọc Anh',
-//            'description' => 'Developer',
-//            'subscribed'  => true,
-//        ));
-});
 Route::get('theme',function(){
     return View::make('admin.example');
 });

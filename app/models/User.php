@@ -192,5 +192,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         $user = Sentry::findUserById($this->id);
         return $user->getGroups();
     }
+    public function StudentInfo(){
+        return Student::where('user_id','=',$this->id)->first();
+    }
+
 
 }

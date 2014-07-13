@@ -38,6 +38,17 @@ Route::filter('auth_admin', function()
 	if ( ! Sentry::check()) return Redirect::route('admin.login');
 });
 
+Route::filter('auth', function()
+{
+    if ( ! Sentry::check()) return Redirect::to('/');
+});
+
+Route::filter('student',function(){
+    if(!Sentry::getUser()->StudentInfo()){
+        return Redirect::to('/');
+    }
+});
+
 
 Route::filter('auth.basic', function()
 {

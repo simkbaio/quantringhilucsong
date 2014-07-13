@@ -99,6 +99,9 @@ class StudentsController extends \BaseController {
         $this->studentForm->UpdateValidate($input);
         $student = Student::where('id','=',$id)->firstOrFail();
         Student::where('id','=',$id)->update($input);
+        if(URL::previous()== URL::to('student-profile')){
+                return Redirect::back()->withFlashMessage('Cập nhật thông tin thành công');
+            }
         return Redirect::route('admin.students.index')
             ->withFlashMessage('Bạn đã cập nhật thành công học viên: '.$student->name);
 	}

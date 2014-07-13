@@ -6,7 +6,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">\x3C/script>')</script>
 <script src="/frontend_assets/extra/jquery-ui/jquery-ui.min.js"></script>
-
 <script src="/frontend_assets/js/bootstrap.min.js"></script>
 <script src="/frontend_assets/extra/side-menu/modernizr.custom.js"></script>
 <script src="/frontend_assets/extra/side-menu/classie.js"></script>

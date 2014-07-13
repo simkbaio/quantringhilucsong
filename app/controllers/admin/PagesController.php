@@ -14,7 +14,6 @@ class PagesController extends \BaseController {
 
 	public function notice(){
 			return View::make('admin.notice');
-		}
 	}
 
 }

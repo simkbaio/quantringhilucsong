@@ -17,4 +17,16 @@ class Student extends Eloquent {
     public function setPasswordAttribute($password){
         $this->attributes['password'] = md5($password);
     }
+    public function account(){
+        return $this->hasOne('User','id','user_id');
+    }
+    public function NotCompleteProfile(){
+        $arr = $this->toArray();
+        foreach($arr as $e){
+            if(!$e){
+                return false;
+            }
+        }
+        return true;
+    }
 }

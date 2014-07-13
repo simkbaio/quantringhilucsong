@@ -18,7 +18,7 @@ class NClass extends \Eloquent
 
     public function teacher()
     {
-        if (Teacher::find($this->teacher_id)->count())
+        if (Teacher::find($this->teacher_id))
             return NClass::belongsTo('Teacher', 'teacher_id', 'id');
         else
             return false;

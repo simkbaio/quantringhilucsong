@@ -64,6 +64,16 @@ class NClass extends \Eloquent
         }
 
     }
+    public function removeStudent($id){
+        $student = Student::where('id','=',$id)->firstOrFail();
+        $result = StudentResult::whereResultStudentId($student->id)->delete();
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     public function schedules(){
        return NClass::hasMany('ClassSchedule','class_id','id');
     }

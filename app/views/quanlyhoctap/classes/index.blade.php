@@ -49,7 +49,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Tên</th>
-                            <th>Khóa học</th>
+                            <th>Bộ môn</th>
                             <th>Giáo viên
 
                                 <th class="col-md-1"></th>

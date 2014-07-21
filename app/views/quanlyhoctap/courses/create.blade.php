@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('meta_title')
-Nghị lực sống | Thêm khóa học mới
+Nghị lực sống | Thêm Bộ môn mới
 @stop
 @section('head')
 <link rel="stylesheet" type="text/css" href="/admin_assets/plugins/bootstrap-datepicker/css/datepicker.css"/>
@@ -34,7 +34,7 @@ Nghị lực sống | Thêm khóa học mới
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Thêm khóa học mới
+                    Thêm Bộ môn mới
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
@@ -46,13 +46,13 @@ Nghị lực sống | Thêm khóa học mới
                     </li>
                     <li>
                         <a href="{{URL::route("admin.courses.index")}} ">
-                            khóa học
+                            Bộ môn
                         </a>
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
                         <a href="#">
-                            Thêm khóa học mới
+                            Thêm Bộ môn mới
                         </a>
                     </li>
                 </ul>
@@ -68,7 +68,7 @@ Nghị lực sống | Thêm khóa học mới
                     {{Form::open(['route'=>'admin.courses.store'])}}
                     {{HForm::input([
                         'name'=>'name',
-                        'title'=>'Tên khóa học',
+                        'title'=>'Tên Bộ môn',
                         'width'=>'6',
                         ],$errors)}}
 
@@ -88,13 +88,13 @@ Nghị lực sống | Thêm khóa học mới
 
                     {{HForm::input([
                         'name'=>'description',
-                        'title'=>'Mô tả khóa học',
+                        'title'=>'Mô tả Bộ môn',
                         'type'=>'textarea',
                         ],$errors)}}
 
 
                         <div class="col-md-12" style="text-align: center;">
-                            {{Form::submit('Tạo khóa học mới',['class'=>'btn green'],$errors)}}
+                            {{Form::submit('Tạo Bộ môn mới',['class'=>'btn green'],$errors)}}
 
                         </div>
 

@@ -118,8 +118,11 @@ class ClassesController extends \BaseController
         $class->addstudent(Input::get('student'));
         return Redirect::back()->withFlashMessage('Đã thêm sinh viên mới thành công');
     }
-    public function removeStudent($id){
-        return 'Remove';
+    public function removestudent($id,$student_id = 0){
+        $class = NClass::where('id','=',$id)->firstOrFail();
+
+        $class->removeStudent($student_id);
+        return Redirect::back()->withFlashMessage('Hủy sinh viên thành công');
     }
 
 }

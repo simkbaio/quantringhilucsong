@@ -58,7 +58,7 @@ Nghị lực sống | Thêm lớp học mới
 
                     {{HForm::input([
                         'name'=>'course_id',
-                        'title'=>'Khóa học',
+                        'title'=>'Bộ môn',
                         'width'=>'6',
                         'type'=>'select',
                         'value'=>(Input::has('course')?Input::get('course'):Input::old('course_id')),
@@ -76,7 +76,7 @@ Nghị lực sống | Thêm lớp học mới
 
                     {{HForm::input([
                         'name'=>'description',
-                        'title'=>'Mô tả khóa học',
+                        'title'=>'Mô tả Bộ môn',
                         'type'=>'textarea',
                         ],$errors)}}
 

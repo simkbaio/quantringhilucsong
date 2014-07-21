@@ -123,9 +123,12 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
     Route::resource('teachers','TeachersController');
 
     Route::post('class/{id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
+    Route::get('class/{class_id}/remove-student/{student_id}',['as'=>'admin.classes.removestudent','uses'=>'ClassesController@removestudent']);
 
     Route::resource('classes','ClassesController');
     Route::resource('classes.schedules','ClassSchedulesController');
+    Route::get('schedules/delete/{id}',['as'=>'admin.classes.schedules.delete','uses'=>'ClassSchedulesController@destroy']);
+
 
     Route::resource('courses','CoursesController');
     Route::resource('disablities','DisablitiesController');

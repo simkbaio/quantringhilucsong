@@ -71,6 +71,7 @@ class MembersController extends \BaseController {
 
             // Send a request with it
             $result = json_decode( $fb->request( '/me' ), true );
+
             $facebook_id = $result['id'];
             $student = \Student::where("facebook_id",'=',$facebook_id)->first();
             if($student){
@@ -93,14 +94,21 @@ class MembersController extends \BaseController {
                 }
             }
             $student = new \Student();
-            $student->facebook_id = $result['id'];
-            $student->birthday = strtotime($result['birthday']);
-            $student->email = $result['email'];
-            $student->first_name = $result['first_name'];
-            $student->last_name = $result['last_name'];
-            $student->name = $result['first_name']." ".$result["last_name"];
-            $student->sex = ($result['gender']=='male')?1:0;
-            $hometown = str_replace(", Vietnam","",$result["hometown"]["name"]);
+            $student->facebook_id = (isset($result['id']))?$result['id']:null;
+            if(isset($result['birthday']))
+                $student->birthday = strtotime($result['birthday']);
+            if($result['email'])
+                $student->email = $result['email'];
+            if(isset($result['first_name']))
+                $student->first_name = $result['first_name'];
+            if(isset($result['last_name']))
+                $student->last_name = $result['last_name'];
+            if(isset($result['first_name']) && isset($result['last_name']))
+                $student->name = $result['first_name']." ".$result["last_name"];
+            if(isset($result['gender']))
+                $student->sex = ($result['gender']=='male')?1:0;
+            if(isset($result['hometown']))
+                $hometown = str_replace(", Vietnam","",$result["hometown"]["name"]);
             $student->hometown = $hometown;
 
             $input = [
@@ -121,10 +129,9 @@ class MembersController extends \BaseController {
             $account->addGroup($group);
             $student->user_id = $account->id;
             $student->save();
-
-            return \Redirect::to('/')
-                ->withFlashMessage('Bạn Đã đăng kí thành công tài khoản học viên của Nghị Lực Sống.</br>
-                Xin mời đăng nhập để có thể sử dụng đầy đủ tính năng của website');
+            \Sentry::login($account);
+            return \Redirect::to('dashbroad')
+                ->withFlashMessage('Bạn Đã đăng kí thành công tài khoản học viên của Nghị Lực Sống!');
 
 
 

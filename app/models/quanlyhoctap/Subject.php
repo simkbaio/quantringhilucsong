@@ -14,6 +14,9 @@ class Subject extends \Eloquent {
         }
         return $arr;
     }
+    public function course(){
+        return $this->belongsToMany('NClass');
+    }
 
 
 }

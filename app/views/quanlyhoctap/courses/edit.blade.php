@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('meta_title')
-Nghị lực sống | Thêm khóa học mới
+Nghị lực sống | Thêm Bộ môn mới
 @stop
 @section('head')
 <link rel="stylesheet" type="text/css" href="/admin_assets/plugins/bootstrap-datepicker/css/datepicker.css"/>
@@ -34,7 +34,7 @@ Nghị lực sống | Thêm khóa học mới
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Thêm khóa học mới
+                    Thêm Bộ môn mới
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
@@ -46,7 +46,7 @@ Nghị lực sống | Thêm khóa học mới
                     </li>
                     <li>
                         <a href="{{URL::route("admin.courses.index")}} ">
-                            khóa học
+                            Bộ môn
                         </a>
                         <i class="fa fa-angle-right"></i>
                     </li>
@@ -68,7 +68,7 @@ Nghị lực sống | Thêm khóa học mới
                     {{Form::model($course,['route'=>['admin.courses.update',$course->id],'method'=>'PUT'])}}
                     {{HForm::input([
                         'name'=>'name',
-                        'title'=>'Tên khóa học',
+                        'title'=>'Tên Bộ môn',
                         'width'=>'6',
                         ],$errors)}}
 
@@ -88,7 +88,7 @@ Nghị lực sống | Thêm khóa học mới
 
                     {{HForm::input([
                         'name'=>'description',
-                        'title'=>'Mô tả khóa học',
+                        'title'=>'Mô tả Bộ môn',
                         'type'=>'textarea',
                         ],$errors)}}
 

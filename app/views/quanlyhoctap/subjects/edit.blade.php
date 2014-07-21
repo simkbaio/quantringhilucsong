@@ -48,13 +48,13 @@
 
                     {{HForm::input([
                         'name'=>'description',
-                        'title'=>'Mô tả khóa học',
+                        'title'=>'Mô tả Bộ môn',
                         'type'=>'textarea',
                         ],$errors)}}
 
 
                         <div class="col-md-12" style="text-align: center;">
-                            {{Form::submit('Tạo môn học mới',['class'=>'btn green'])}}
+                            {{Form::submit('Cập nhật',['class'=>'btn blue'])}}
 
                         </div>
 

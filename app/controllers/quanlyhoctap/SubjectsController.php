@@ -53,7 +53,7 @@ class SubjectsController extends \BaseController {
 	public function show($id)
 	{
 		$subject = Subject::findOrFail($id);
-		return View::make('quanlyhoctap.subjects.show', compact('subject'));
+		return Redirect::route('admin.subjects.edit',$id);
 	}
 
 	/**

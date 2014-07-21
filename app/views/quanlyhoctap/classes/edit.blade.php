@@ -52,7 +52,7 @@ Nghị lực sống | Sửa thông tin lớp học
                         ],$errors)}}
                     {{HForm::input([
                         'name'=>'course_id',
-                        'title'=>'Khóa học',
+                        'title'=>'Bộ môn',
                         'width'=>'6',
                         'type'=>'select',
                         'data_input'=>Course::getAllSelectData(),
@@ -69,7 +69,7 @@ Nghị lực sống | Sửa thông tin lớp học
 
                     {{HForm::input([
                         'name'=>'description',
-                        'title'=>'Mô tả khóa học',
+                        'title'=>'Mô tả Bộ môn',
                         'type'=>'textarea',
                         ],$errors)}}
 

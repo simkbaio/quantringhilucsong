@@ -94,16 +94,18 @@
         <!-- BEGIN PAGE CONTENT-->
 
         <!-- Thêm học viên mới -->
-
+        {{flash_message()}}
         <div class="row">
+
             <div class="col-md-6">
                 {{portlet_open('Thông tin cơ bản','yellow')}}
+                
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-group">
 
 
-                            <li class="list-group-item">Khóa học: <span class="badge badge-info">{{$class->course->name}}</span></li>
+                            <li class="list-group-item">Bộ môn: <span class="badge badge-info">{{$class->course->name}}</span></li>
                             <li class="list-group-item">Ngày bắt đầu: <span class="badge badge-info">{{date('d/m/Y',$class->course->start)}}</span> </li>
                             <li class="list-group-item">Ngày Kết thúc: <span class="badge badge-info">{{date('d/m/Y',$class->course->end)}}</span> </li>
                             <li class="list-group-item">Giáo viên: <span class="badge badge-info">{{($class->teacher())?$class->teacher->name:'Chưa có'}}</span></li>
@@ -178,7 +180,7 @@
                                      Chưa xét duyệt
                                      @endif
                                  </td>
-                                 <td><a href="#" class="btn red">Hủy</a></td>
+                                 <td><a href="{{URL::route('admin.classes.removestudent',[$class->id,$student->student->id])}}" class="btn red">Hủy</a></td>
                              </tr>
                              @endforeach
                          </tbody>
@@ -196,12 +198,14 @@
                  </div>
                  <div class="row">
                      <div class="col-md-12">
-                         @if($class->schedules->toArray())
+                         @if($class->schedules)
                          <table class="table table-striped table-bordered table-advance table-hover">
                              <thead>
                                  <tr>
+                                    <th>Môn học </th>
                                      <th>Thứ</th>
-                                     <th>Vào lúc</th>
+                                     <th>Băt đầu</th>
+                                     <th>Kết thúc</th>
                                      <th>Địa điểm</th>
                                      <th></th>
                                      <th></th>
@@ -209,8 +213,17 @@
                                  </tr>
                              </thead>
                              <tbody>
+                             @foreach($class->schedules as $item)
                                  <tr>
+                                 <td>{{ $item->subject->name }}</td>
+                                 <td>{{Config::get('admin.days')[$item->day]}}</td>
+                                 <td>{{ $item->time_start}}</td>
+                                 <td>{{ $item->time_end}}</td>
+                                 <td>{{ $item->place}}</td>
+                                 <td><a href="{{URL::route('admin.classes.schedules.edit',[$class->id,$item->id])}}" title="" class="btn blue">EDIT</a></td>
+                                 <td><a href="{{URL::route('admin.classes.schedules.delete',$item->id)}}" title="" class="btn red">DELETE</a></td>
                                  </tr>
+                            @endforeach
                              </tbody>
                          </table> 
                          @else
@@ -235,6 +248,7 @@
              <h4 class="modal-title">Thêm lịch học</h4>
          </div>
          <div class="modal-body">
+         <p>Môn học chưa có trong danh sách? Hãy <a href="{{URL::route('admin.subjects.create')}}" title="">Thêm môn học mới tại đây</a></p>
              <div class="row">
                  {{Form::open(['route'=>['admin.classes.schedules.store',$class->id]])}}
                  <?php 
@@ -252,10 +266,12 @@
                  }
 
                  ?>
+                 {{ Form::hidden('class_id',$class->id) }}
                  {{HForm::input([
                     'title'=>'Môn học',
                     'name'=>'subject_id',
                     'type'=>'select',
+
                     'data_input'=>Subject::getSelectData(),
                     'width'=>'6',
                 ])}}
@@ -289,6 +305,21 @@
                     'width'=>4,
 
                 ])}}
+                {{HForm::input(
+                [
+                    'title'=>'Địa điểm',
+                    'name'=>'place',
+                    'width'=>'12',
+                ]
+                )}}
+                {{HForm::input(
+                [
+                    'title'=>'Ghi chú',
+                    'name'=>'description',
+                    'type'=>'textarea',
+                    'width'=>'12',
+                ]
+                )}}
                     
                     
                 </div>
@@ -302,3 +333,4 @@
      </div><!-- /.modal-content -->
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@stop

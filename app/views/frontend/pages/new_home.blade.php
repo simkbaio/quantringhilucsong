@@ -89,19 +89,19 @@
 
             <form role="form" class="has-light" action="/dang-ki" method = "POST">
                 <div class="form-group">
-                    <input type="text"  class="form-control" value="last_name" name="last_name" id="email" placeholder="Họ">
+                    <input type="text"  class="form-control" value="{{Input::old('last_name')}}" name="last_name" id="email" placeholder="Họ">
                     {{error_for('last_name',$errors)}}
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" value="first_name" name="first_name" id="name" placeholder="Tên">
+                    <input type="text" class="form-control" value="{{Input::old('first_name')}}" name="first_name" id="name" placeholder="Tên">
                     {{error_for('first_name',$errors)}}
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" value="email" name="email" id="email" placeholder="Email của bạn">
+                    <input type="text" class="form-control" value="{{Input::old('email')}}" name="email" id="email" placeholder="Email của bạn">
                     {{error_for('email',$errors)}}
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password" id="pass" placeholder="Mật khẩu truy cập">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu truy cập">
                     {{error_for('password',$errors)}}
                 </div>
                 <div class="form-group">

@@ -35,14 +35,14 @@
 		<div class="portlet box green">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-reorder"></i>Danh sách lớp học
+					<i class="fa fa-reorder"></i>Danh sách môn học
 				</div>
 			</div>
 			<div class="portlet-body">
 				<?php
 				$subjects = Subject::orderBy('name')->get();
 				?>
-				<a href="{{URL::route('admin.subjects.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm lớp học mới</a>
+				<a href="{{URL::route('admin.subjects.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm môn học mới</a>
 
 				<table class="table table-striped table-bordered table-advance table-hover">
 					<thead>

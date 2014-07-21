@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Thông tin khóa học: {{$course->name}} <a href="{{URL::route('admin.courses.edit',$course->id)}}" class="btn blue btn-sm">sửa thông tin</a>
+                    Thông tin Bộ môn: {{$course->name}} <a href="{{URL::route('admin.courses.edit',$course->id)}}" class="btn blue btn-sm">sửa thông tin</a>
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
@@ -22,7 +22,7 @@
                     </li>
                     <li>
                         <a href="{{URL::route('admin.courses.index')}}">
-                            Khóa học
+                            Bộ môn
                         </a>
                         <i class="fa fa-angle-right"></i>
                     </li>

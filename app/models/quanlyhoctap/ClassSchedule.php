@@ -8,6 +8,9 @@ class ClassSchedule extends Eloquent {
 
     ];
      public function NClass(){
-     	return ClassSchedule::belongto('Nclass','class_id','id');
+     	return ClassSchedule::belongsTo('NClass','class_id','id');
      }
+    public function subject(){
+        return $this->belongsTo('Subject','subject_id','id');
+    }
 } 

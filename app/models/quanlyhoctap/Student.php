@@ -29,4 +29,7 @@ class Student extends Eloquent {
         }
         return true;
     }
+    public function StudentResult(){
+        return $this->hasMany('StudentResult','student_id','id');
+    }
 }

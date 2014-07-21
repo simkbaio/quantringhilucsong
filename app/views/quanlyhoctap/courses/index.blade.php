@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Quản lý khóa học
+                    Quản lý Bộ môn
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
 
@@ -22,7 +22,7 @@
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                        Quản lý khóa học
+                        Quản lý Bộ môn
 
                     </li>
                 </ul>
@@ -35,14 +35,14 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-reorder"></i>Danh sách khóa học
+                    <i class="fa fa-reorder"></i>Danh sách Bộ môn
                 </div>
             </div>
             <div class="portlet-body">
                 <?php
                 $courses = Course::orderBy('name')->get();
                 ?>
-                <a href="{{URL::route('admin.courses.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm khóa học mới</a>
+                <a href="{{URL::route('admin.courses.create')}}" class="btn green" style="margin-bottom: 20px;">Thêm Bộ môn mới</a>
 
                 <table class="table table-striped table-bordered table-advance table-hover">
                     <thead>

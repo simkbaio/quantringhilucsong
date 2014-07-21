@@ -46,7 +46,7 @@ class CoursesController extends \BaseController {
         $course = Course::create($input);
 
         return Redirect::route('admin.courses.index')
-            ->withFlashMessage('Bạn đã thêm thành công khóa học mới: '.$course->name);
+            ->withFlashMessage('Bạn đã thêm thành công Bộ môn mới: '.$course->name);
 
     }
 
@@ -92,7 +92,7 @@ class CoursesController extends \BaseController {
         $course = Course::where('id','=',$id)->firstOrFail();
         if(Course::where('id','=',$id)->update($input))
             return Redirect::route('admin.courses.index')
-                ->withFlashMessage('Bạn đã cập nhật thành công khóa học: '.$course->name);
+                ->withFlashMessage('Bạn đã cập nhật thành công Bộ môn: '.$course->name);
         else
             return Redirect::route('admin.courses.index')
                 ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
@@ -110,7 +110,7 @@ class CoursesController extends \BaseController {
         $course = Course::where('id','=',$id)->firstOrFail();
         Course::where('id','=',$id)->delete();
         return Redirect::route('admin.courses.index')
-            ->withFlashMessage('Bạn đã xóa khóa học: '.$course->name);
+            ->withFlashMessage('Bạn đã xóa Bộ môn: '.$course->name);
     }
 
 }

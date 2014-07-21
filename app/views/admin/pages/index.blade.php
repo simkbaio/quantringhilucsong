@@ -69,7 +69,7 @@
 									</div>
 									<div class="tile-object">
 										<div class="name">
-											Khóa học
+											Bộ môn
 										</div>
 										<div class="number">
 											{{Course::get()->count()}}

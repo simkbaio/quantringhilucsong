@@ -75,7 +75,7 @@ class TeachersController extends \BaseController {
     {
 
 
-        $teacher = findOrFail($id);
+        $teacher = Teacher::findOrFail($id);
 //        return dd($teacher);
         return View::make('quanlyhoctap.teachers.edit')->withTeacher($teacher);
     }

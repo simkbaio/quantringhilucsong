@@ -94,11 +94,22 @@ class StudentsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_method','_token','password','password_confirmation');
+		$input = Input::except('_method','_token','password','password_confirmation','new_password','new_password_confirmation');
         $input['birthday'] = strtotime( $input['birthday']);
-        $this->studentForm->UpdateValidate($input);
+
+        $this->studentForm->UpdateValidate(Input::all());
+
+
         $student = Student::where('id','=',$id)->firstOrFail();
         Student::where('id','=',$id)->update($input);
+        if(Input::has("new_password")){
+            $account = $student->account;
+            if($account){
+                $account->password = Input::get('new_password');
+                $account->save();
+            }
+        }
+
         if(URL::previous()== URL::to('student-profile')){
                 return Redirect::back()->withFlashMessage('Cập nhật thông tin thành công');
             }

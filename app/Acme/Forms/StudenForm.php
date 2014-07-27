@@ -45,6 +45,7 @@ class StudenForm extends FormValidator
         'type_disabilities' => 'required',
         'person_authen_name' => 'required',
         'person_authen_address' => 'required',
+        'new_password'=>'alpha_dash|confirmed'
     ];
     protected $rules_simple = [
         'last_name' => 'required',

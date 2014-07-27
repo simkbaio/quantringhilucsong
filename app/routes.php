@@ -2,58 +2,12 @@
 #home
 
 Route::get('test',function(){
-   return View::make('frontend.layouts.master');
+   return View::make('frontend.layouts.notice');
 });
 Route::get('/',['as'=>'home','uses'=>'\Frontend\PagesController@home']);
 Route::post('dang-ki',['uses'=>'\Frontend\MembersController@storeMember']);
 Route::get('facebooklogin',['as'=>'facebook_login','uses'=>'\Frontend\MembersController@facebookLogin']);
-Route::get('facebook',function(){
 
-     // get data from input
-    $code = Input::get( 'code' );
-
-
-    // get fb service
-    $fb = OAuth::consumer( 'Facebook' );
-
-
-    // check if code is valid
-
-    // if code is provided get user data and sign in
-    if ( !empty( $code ) ) {
-
-        // This was a callback request from facebook, get the token
-        
-        try{
-            $token = $fb->requestAccessToken( $code );
-        }catch(OAuth\Common\Http\Exception\TokenResponseException $e){
-            $url = $fb->getAuthorizationUri();
-
-        // return to facebook login url
-                        return $url;
-
-        return Redirect::to( (string)$url );
-        }
-
-        // Send a request with it
-        $result = json_decode( $fb->request( '/me' ), true );
-
-
-        //Var_dump
-        //display whole array().
-        dd($result);
-
-    }
-    // if not ask for permission first
-    else {
-        // get fb authorization
-        $url = $fb->getAuthorizationUri();
-
-        // return to facebook login url
-        return Redirect::to( (string)$url );
-    }
-
-});
 Route::get('facebook/logout',function(){
     return "Log";
 });
@@ -64,10 +18,14 @@ Route::post('dang-nhap',['uses'=>'\Frontend\SessionsController@store']);
 
 Route::group(['before'=>'auth'],function(){
     Route::get('dashbroad','\Frontend\PagesController@dashbroad');
+    Route::get('thoi-khoa-bieu','\Frontend\PagesController@schedules');
     Route::get('dang-xuat','\Frontend\SessionsController@destroy');
 
     Route::get('student-profile','\Frontend\PagesController@student_profile');
 });
+Route::get('quen-mat-khau',['uses'=>'\Frontend\SessionsController@forgotPassword']);
+Route::post('reset-password',['uses'=>'\Frontend\SessionsController@resetsutPassword']);
+Route::get('member/{member_id}/resetpassword/{resetCode}/{new_password}',['uses'=>'\Frontend\SessionsController@processResetPassword']);
 
 
 

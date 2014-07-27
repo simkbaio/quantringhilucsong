@@ -30,6 +30,10 @@ class Student extends Eloquent {
         return true;
     }
     public function StudentResult(){
-        return $this->hasMany('StudentResult','student_id','id');
+        return $this->hasOne('StudentResult','result_student_id','id');
+    }
+    public function NClass(){
+        return $this->hasOne(' StudentResult','result_student_id','id');
+
     }
 }

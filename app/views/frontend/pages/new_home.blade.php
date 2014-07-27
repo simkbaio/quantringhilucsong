@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group" style="margin-top:-3px">
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Mật khẩu">
-                                <p><a  style="font-size: 12px;color: #ffffff;" href="">Quên mật khẩu?</a></p>
+                                <p><a  style="font-size: 12px;color: #ffffff;" href="/quen-mat-khau">Quên mật khẩu?</a></p>
                             </div>
 
 

@@ -8,5 +8,8 @@ class StudentResult extends \Eloquent {
     public function student(){
         return StudentResult::belongsTo('Student','result_student_id','id');
     }
+    public function NClass(){
+        return $this->belongsTo('NClass','result_class_id','id');
+    }
 
 }

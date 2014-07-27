@@ -86,6 +86,7 @@ class ClassesController extends \BaseController
      * @param  int $id
      * @return Response
      */
+    //test
     public function update($id)
     {
         $input = Input::except('_method', '_token');

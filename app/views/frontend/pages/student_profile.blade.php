@@ -114,15 +114,24 @@
 						'title'=>'Địa chỉ người xác nhận',
 						'width'=>'6',
 						],$errors)}}
+					<legend>Đổi mật khẩu</legend>
+					{{HForm::input([
+						'name'=>'new_password',
+						'title'=>'Mật khẩu mới',
+						'type'=>'password',
+						'width'=>'6',
+						],$errors)}}
+					{{HForm::input([
+						'name'=>'new_password_confirmation',
+						'title'=>'Gõ lại mật khẩu mới',
+						'type'=>'password',
+						'width'=>'6',
+						],$errors)}}
 						<div class="col-md-12" style="text-align: center;">
 							{{Form::submit('Cập nhật thông tin',['class'=>'btn btn-info'])}}
 							<a href="/dashbroad" title="" class="btn btn-default"> Quay trở lại</a>
 
 						</div>
-
-
-
-
 
 					</div>
 

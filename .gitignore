@@ -9,3 +9,7 @@ Thumbs.db
 /templates
 /.idea
 _ide_helper.php
+/config/database.php
+/app/config/packages/artdarek/oauth-4-laravel
+/app/config/packages/bugsnag/bugsnag-laravel
+/app/templates

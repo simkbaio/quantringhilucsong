@@ -7,7 +7,7 @@
         @include('frontend.layouts.sidebar')
         
         <div class="col-sm-9"> 
-        @yield('content','<h1>You forgot Content yield Dude??</h1>');
+        @yield('content','<h1>You forgot Content yield Dude??</h1>')
         </div>
        
     </div>

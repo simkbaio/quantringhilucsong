@@ -107,9 +107,10 @@ class MembersController extends \BaseController {
                 $student->name = $result['first_name']." ".$result["last_name"];
             if(isset($result['gender']))
                 $student->sex = ($result['gender']=='male')?1:0;
-            if(isset($result['hometown']))
+            if(isset($result['hometown'])){
                 $hometown = str_replace(", Vietnam","",$result["hometown"]["name"]);
-            $student->hometown = $hometown;
+                $student->hometown = $hometown;
+            }
 
             $input = [
               'email' => $student->email,

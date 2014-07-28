@@ -25,4 +25,7 @@ class Teacher extends Eloquent{
     public function classes(){
         return Teacher::hasMany('NClass','teacher_id','id');
     }
+    function account(){
+
+    }
 }

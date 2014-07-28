@@ -195,6 +195,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     public function StudentInfo(){
         return Student::where('user_id','=',$this->id)->first();
     }
-
-
 }

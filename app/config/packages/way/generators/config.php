@@ -8,19 +8,19 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'model_template_path' => 'D:\wamp\www\users-API\app/templates/model.txt',
+    'model_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/model.txt',
 
-    'scaffold_model_template_path' => 'D:\wamp\www\users-API\app/templates/scaffolding/model.txt',
+    'scaffold_model_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/scaffolding/model.txt',
 
-    'controller_template_path' => 'D:\wamp\www\users-API\app/templates/controller.txt',
+    'controller_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/controller.txt',
 
-    'scaffold_controller_template_path' => 'D:\wamp\www\users-API\app/templates/scaffolding/controller.txt',
+    'scaffold_controller_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/scaffolding/controller.txt',
 
-    'migration_template_path' => 'D:\wamp\www\users-API\app/templates/migration.txt',
+    'migration_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/migration.txt',
 
-    'seed_template_path' => 'D:\wamp\www\users-API\app/templates/seed.txt',
+    'seed_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/seed.txt',
 
-    'view_template_path' => 'D:\wamp\www\users-API\app/templates/view.txt',
+    'view_template_path' => 'D:\wamp\www\quantringhilucsong\app/templates/view.txt',
 
 
     /*

@@ -5,9 +5,10 @@
         @if($account->StudentInfo())
         <li><a href="/student-profile"><i class="fa fa-user"></i> Thông tin học viên</a></li>
         @endif
-        <!--<li><a href="#"><i class="fa fa-comment-o"></i> Tin nhắn của bạn (3)</a></li>-->
         <li><a href="/thoi-khoa-bieu"><i class="fa fa-calendar"></i> Thời khóa biểu</a></li>
-        <!--<li><a href="#"><i class="fa fa-pencil-square-o"></i> Kết quả học tập</a></li>-->
+        <li><a href="/ket-qua-hoc-tap"><i class="fa fa-pencil-square-o"></i> Kết quả học tập</a></li>
+        <!--<li><a href="#"><i class="fa fa-comment-o"></i> Tin nhắn của bạn (3)</a></li>-->
+
         <!--<li><a href="#"><i class="fa fa-bullhorn"></i> Thông báo từ NLS (2)</a></li>-->
         <!--<li><a href="#"><i class="fa fa-hand-o-up"></i> Đăng ký lớp học</a></li>-->
         @if(Sentry::getUser()->hasAccess('admin'))

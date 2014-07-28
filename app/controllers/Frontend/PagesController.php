@@ -9,18 +9,9 @@
 namespace Frontend;
 
 
-use Cartalyst\Sentry\Facades\Laravel\Sentry;
-use View;
 
-class PagesController extends \BaseController {
-    public $account;
-    function __construct()
-    {
-        if(Sentry::check()){
-            $user = \User::findOrFail(Sentry::getUser()->id);
-            $this->account = $user;
-        }
-    }
+
+class PagesController extends FrontendController {
 
     public function home(){
         if(\Sentry::check()){
@@ -73,11 +64,10 @@ class PagesController extends \BaseController {
         return $this->view('frontend.pages.student_profile')
             ->with('student',$student);
     }
-    public function view($layout =''){
-        if($layout){
-            return \View::make($layout)
-                ->withAccount($this->account);
-        }
+    public function student_scores()
+     {
+         return $this->view('frontend.pages.student_scores');
 
-    }
+     } 
+
 } 

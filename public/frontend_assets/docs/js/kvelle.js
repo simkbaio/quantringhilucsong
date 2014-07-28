@@ -54,36 +54,36 @@
 
         /* SIDEBAR
         ------------------------------------------------------------------------------------- */
-        window.onload = function() {
+        // window.onload = function() {
 
-            new gnMenu( document.getElementById( 'gn-menu' ) );
+        //     new gnMenu( document.getElementById( 'gn-menu' ) );
 
-            $('.gn-menu-wrapper').show();
+        //     $('.gn-menu-wrapper').show();
 
-            // sidebar navigation
-            $('.parent').on('click', function() {
-                var subMenu = $(this).siblings('ul');
-                var icon = $(this).find('i.parent-icon');
+        //     // sidebar navigation
+        //     $('.parent').on('click', function() {
+        //         var subMenu = $(this).siblings('ul');
+        //         var icon = $(this).find('i.parent-icon');
 
-                if ($(subMenu).hasClass('visible')) {
-                    $(subMenu).stop(true, true).fadeOut();
-                    $(subMenu).removeClass('visible').addClass('hidden');
-                    icon.fadeOut(150, function() {
-                        icon.removeClass('fa-minus').addClass('fa-plus');
-                        icon.fadeIn(150);
-                    });
-                }
-                else {
-                    $(subMenu).stop(true, true).fadeIn();
-                    $(subMenu).removeClass('hidden').addClass('visible');
-                    icon.fadeOut(150, function() {
-                        icon.removeClass('fa-plus').addClass('fa-minus');
-                        icon.fadeIn(150);
-                    });
-                }
-            });
+        //         if ($(subMenu).hasClass('visible')) {
+        //             $(subMenu).stop(true, true).fadeOut();
+        //             $(subMenu).removeClass('visible').addClass('hidden');
+        //             icon.fadeOut(150, function() {
+        //                 icon.removeClass('fa-minus').addClass('fa-plus');
+        //                 icon.fadeIn(150);
+        //             });
+        //         }
+        //         else {
+        //             $(subMenu).stop(true, true).fadeIn();
+        //             $(subMenu).removeClass('hidden').addClass('visible');
+        //             icon.fadeOut(150, function() {
+        //                 icon.removeClass('fa-plus').addClass('fa-minus');
+        //                 icon.fadeIn(150);
+        //             });
+        //         }
+        //     });
 
-        };
+        // };
 
     });
 }(window.jQuery);

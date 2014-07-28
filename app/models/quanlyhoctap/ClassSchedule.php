@@ -13,4 +13,7 @@ class ClassSchedule extends Eloquent {
     public function subject(){
         return $this->belongsTo('Subject','subject_id','id');
     }
+    public function teacher(){
+        return $this->hasOne('Teacher','id','teacher_id');
+    }
 } 

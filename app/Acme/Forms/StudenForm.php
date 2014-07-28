@@ -38,7 +38,7 @@ class StudenForm extends FormValidator
         // 'hometown' => 'required',
         // 'province_id' => 'required',
         // 'phone' => 'required',
-        'email' => 'required|unique:hosohocvien_db.tbl_student,email',       
+//        'email' => 'required|unique:hosohocvien_db.tbl_student,email',
         // 'facebook' => 'required',
         // 'married' => 'required',
         // 'educated' => 'required',

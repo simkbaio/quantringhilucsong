@@ -74,11 +74,13 @@
 							'width'=>'4',
 							],$errors)}}
 
-						{{HForm::input([
-							'name'=>'email',
-							'title'=>'Hòm Thư',
-							'width'=>'4',
-							],$errors)}}
+						<div class="form-group col-md-4">
+						    <label for="name" class="control-label">Email</label>
+						    <div class="controls">
+						    	<input type="text" name="email" class="form-control"  value="{{$student->email}}" disabled="" required="required" pattern="" title="">
+						
+						    </div>
+						</div>
 
 						{{HForm::input([
 							'name'=>'facebook',

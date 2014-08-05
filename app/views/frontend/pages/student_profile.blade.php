@@ -88,9 +88,7 @@
 							'width'=>'4',
 							],$errors)}}
 
-
-
-						{{HForm::input([
+						{{HForm::input([		
 							'name'=>'married',
 							'title'=>'Tình trạng hôn nhân',
 							'width'=>'4',

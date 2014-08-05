@@ -73,7 +73,8 @@ class MembersController extends \BaseController {
             $result = json_decode( $fb->request( '/me' ), true );
 
             $facebook_id = $result['id'];
-            $student = \Student::where("facebook_id",'=',$facebook_id)->first();
+            $student = \Student::where("facebook_id",'=',$facebook_id)
+                ->orWhere('email','=',$result['email'])->first();
             if($student){
                 try{
                     $user = \Sentry::findUserById($student->user_id);

@@ -24,8 +24,18 @@ class PagesController extends FrontendController {
         return $this->view('frontend.pages.dashbroad');
     }
     public function schedules(){
-        $student = $this->account->StudentInfo();
-        $student_class = $student->StudentResult->NClass;
+        try{
+            $student = $this->account->StudentInfo();
+        }catch (\Exception $e){
+            return \Redirect::to('dashbroad')
+                ->withFlashMessage('Xin lỗi, bạn chưa phải là học viên!');
+        }
+        try{
+            $student_class = $student->StudentResult->NClass;
+        }catch (\Exception $e){
+            return \Redirect::to('dashbroad')
+                ->withFlashMessage('Xin lỗi, bạn chưa được sắp xếp lớp');
+        }
         $schedules = array();
 
         foreach($student_class->schedules as $schedule){

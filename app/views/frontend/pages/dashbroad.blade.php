@@ -19,10 +19,15 @@
 		<h3 class="panel-title">Thông tin chung</h3>
 	</div>
 	<div class="panel-body">
-		<h4>
-			Đang cập nhật
-		</h4>
-		
+	<!-- Flash message -->
+	@if(Session::has('flash_message'))
+	<div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		{{Session::get('flash_message')}}
+	</div>
+	@endif
+	<!-- End flash message -->
+
 	</div>
 	<div class="panel-footer">
 <!-- 		<a type="button" class="btn btn-light" href="/student-profile"><i class="fa fa-check-circle-o"></i> Sửa thông tin cá nhân</a>

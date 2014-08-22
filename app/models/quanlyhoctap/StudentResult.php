@@ -5,6 +5,7 @@ class StudentResult extends \Eloquent {
     protected $guarded = [];
     public $table = "tbl_student_result";
     public $timestamps = false;
+    public $primaryKey = 'result_id';
     public function student(){
         return StudentResult::belongsTo('Student','result_student_id','id');
     }

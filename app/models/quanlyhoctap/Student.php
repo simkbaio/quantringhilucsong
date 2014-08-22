@@ -20,6 +20,7 @@ class Student extends Eloquent {
     public function account(){
         return $this->hasOne('User','id','user_id');
     }
+
     public function NotCompleteProfile(){
         $arr = $this->toArray();
         foreach($arr as $e){
@@ -30,10 +31,9 @@ class Student extends Eloquent {
         return true;
     }
     public function StudentResult(){
-        return $this->hasOne('StudentResult','result_student_id','id');
+        return $this->hasMany('StudentResult','result_student_id','id');
     }
     public function NClass(){
-        return $this->hasOne(' StudentResult','result_student_id','id');
-
+        return $this->hasMany(' StudentResult','result_student_id','id');
     }
 }

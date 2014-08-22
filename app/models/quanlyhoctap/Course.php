@@ -21,7 +21,7 @@ class Course extends Eloquent{
         return $data;
     }
     public function classes(){
-        return Course::hasMany('NClass','course_id','id');
+        return $this->hasMany('NClass','course_id','id');
     }
 
 }

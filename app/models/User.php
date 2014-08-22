@@ -13,8 +13,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface
      */
     protected $guarded = array();
     protected $table = 'users';
+	public static function currentUser(){
+	    $user = Sentry::getUser();
+		if(!$user){
+			return false;
+		}else{
+			return self::find($user->id);
+		}
+	}
+	public function sentry(){
+	    return Sentry::findUserById($this->id);
+	}
     // Basic Function
-
+	public function isAdmin(){
+	    return $this->sentry()->hasPermission('admin');
+	}
 
 //    Create User
     public static function createUser($input,$activated)
@@ -195,4 +208,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     public function StudentInfo(){
         return Student::where('user_id','=',$this->id)->first();
     }
+	public function TeacherInfo(){
+	    return Teacher::whereUserId($this->id)->first();
+	}
+
 }

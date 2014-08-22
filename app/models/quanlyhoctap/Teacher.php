@@ -10,9 +10,7 @@ class Teacher extends Eloquent{
     public $timestamps = false;
     protected $table = "tbl_teacher";
     protected $connection ="hosohocvien";
-    protected $fillable = [
-        ''
-    ];
+    protected $guarded = [];
     public static function getAllSelectData(){
         $data = array();
         $data[0]='Chưa xác định';

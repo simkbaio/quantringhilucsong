@@ -65,7 +65,7 @@ return array(
         'hosohocvien' => array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'hosohocvien_db',
+            'database'  => 'quanlyhoctap_db',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',

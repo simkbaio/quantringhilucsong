@@ -2,7 +2,15 @@
 #home
 
 Route::get('test',function(){
-   return View::make('frontend.layouts.notice');
+	$user = User::whereEmail("test123@gmail.com")->firstOrFail();
+	$result = $user->sentry()->update([
+		'password'=>'asdasd'
+	]);
+	return dd($result);
+	$user = Sentry::findUserByEmail('test123@gmail.com');
+	return dd($user);
+
+
 });
 Route::get('/',['as'=>'home','uses'=>'\Frontend\PagesController@home']);
 Route::post('dang-ki',['uses'=>'\Frontend\MembersController@storeMember']);
@@ -82,6 +90,8 @@ Route::group(array('prefix' => 'admin','before'=>'auth_admin'), function () {
 
     Route::post('class/{id}/addstudent',['as'=>'admin.classes.addstudent','uses'=>'ClassesController@addstudent']);
     Route::get('class/{class_id}/remove-student/{student_id}',['as'=>'admin.classes.removestudent','uses'=>'ClassesController@removestudent']);
+    Route::post('class/{class_id}/add-subject',['as'=>'admin.classes.addsubject','uses'=>'ClassesController@add_subject']);
+    Route::get('class/{class_id}/remove-subject/{subject_id}',['as'=>'admin.classes.removesubject','uses'=>'ClassesController@remove_subject']);
 
     Route::resource('classes','ClassesController');
     Route::resource('classes.schedules','ClassSchedulesController');

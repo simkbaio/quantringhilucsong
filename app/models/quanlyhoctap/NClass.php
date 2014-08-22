@@ -4,16 +4,13 @@ class NClass extends \Eloquent
 {
     protected $fillable = [];
     protected $guarded = [];
-    protected $table = 'tbl_class';
+    protected $table = 'classes';
     protected $connection = 'hosohocvien';
     public $timestamps = false;
 
     public function course()
     {
-        if (Course::find($this->course_id))
-            return NClass::belongsTo('Course', 'course_id', 'id');
-        else
-            return false;
+            return $this->belongsTo('Course', 'course_id', 'id');
     }
 
     public function teacher()
@@ -27,7 +24,7 @@ class NClass extends \Eloquent
     public function students()
     {
 
-        return NClass::hasMany('StudentResult','result_class_id','id');
+        return $this->hasMany('StudentResult','result_class_id','id');
 
     }
     public  function notInStudents(){
@@ -73,6 +70,28 @@ class NClass extends \Eloquent
             return false;
         }
 
+    }
+    public function subjects(){
+        return $this->hasMany('ClassSubject','class_id','id');
+    }
+    public function subjects_array(){
+        $subjects_arr = [];
+        foreach($this->subjects as $subject){
+            $subjects_arr[$subject->subject_id] = $subject->subject_id;
+        }
+        return $subjects_arr;
+    }
+    public function subjects_not_in(){
+        $subjects = $this->subjects_array();
+        $subjects_not_in = [];
+        foreach(Subject::all() as $s){
+            if(isset($subjects[$s->id])){
+                continue;
+            }else{
+                $subjects_not_in[$s->id] = $s->name;
+            }
+        }
+        return $subjects_not_in;
     }
     public function schedules(){
        return NClass::hasMany('ClassSchedule','class_id','id');

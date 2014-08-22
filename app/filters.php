@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth_admin', function()
 {
-	if ( ! Sentry::check()) return Redirect::to('/');
+	if ( ! Sentry::check()) return Redirect::to('/admin/login');
     if( !Sentry::getUser()->hasAccess('admin'))
         return Redirect::route('admin.login')
             ->withFlashMessage("Bạn không có quyền truy cập khu vực này");

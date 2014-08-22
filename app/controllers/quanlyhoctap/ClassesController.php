@@ -60,7 +60,7 @@ class ClassesController extends \BaseController
      */
     public function show($id)
     {
-        $class = NClass::where('id','=',$id)->firstOrFail();
+        $class = NClass::with('course')->where('id','=',$id)->firstOrFail();
         return View::make('quanlyhoctap.classes.show')->withClass($class);
 
 
@@ -114,6 +114,8 @@ class ClassesController extends \BaseController
         return Redirect::back()
             ->withFlashMessage('Bạn đã xóa lớp học: ' . $class->name);
     }
+
+//    Student functions
     public function addstudent($id){
         $class = NClass::where('id','=',$id)->firstOrFail();
         $class->addstudent(Input::get('student'));
@@ -124,6 +126,33 @@ class ClassesController extends \BaseController
 
         $class->removeStudent($student_id);
         return Redirect::back()->withFlashMessage('Hủy sinh viên thành công');
+    }
+
+    //Subject Functions
+    public function add_subject($class_id){
+        $input = Input::only('subject');
+        try{
+            $class= NClass::findOrFail($class_id);
+            $subject = Subject::findOrFail(Input::get('subject'));
+
+        }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return Redirect::back()
+                ->withFlashMessage('Lỗi nhập thông tin');
+        }
+        $class_subject = ClassSubject::create([
+            'class_id'=>$class->id,
+            'subject_id'=>$subject->id,
+            'status'=>0,
+        ]);
+        return Redirect::back()
+            ->withFlashMessage('Thêm môn học thành công!');
+    }
+    public function remove_subject($class_id,$subject_id){
+        ClassSubject::whereClassId($class_id)
+            ->whereSubjectId($subject_id)
+            ->delete();
+        return Redirect::back()
+            ->withFlashMessage('Hủy môn học thành công!');
     }
 
 }

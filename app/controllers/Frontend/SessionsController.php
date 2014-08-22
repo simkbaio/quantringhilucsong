@@ -52,6 +52,9 @@ class SessionsController extends \BaseController
         catch(\Exception $e){
             return  Redirect::back()->withFlashMessage("Bạn nhập sai email hoặc password!");
         }
+	    if(\User::currentUser()->isAdmin()){
+		    return Redirect::to("admin");
+	    }
         return Redirect::to('dashbroad');
     }
 

@@ -50,7 +50,6 @@
                             <th>ID</th>
                             <th>Tên</th>
                             <th>Bộ môn</th>
-                            <th>Giáo viên
 
                                 <th class="col-md-1"></th>
                                 <th class="col-md-1"></th>
@@ -64,20 +63,14 @@
                                 <td>
                                     <a href="{{URL::route('admin.classes.show',$class->id)}}">{{$class->name}}</a></td>
                                      <td>
-                                     @if ($class->course())
+                                     @if ($class->course)
                                          {{$class->course->name}}
                                     @else
                                         Chưa có học phần
                                      @endif
 
                                      </td>
-                                        <td>
-                                            @if($class->teacher())
-                                            {{$class->teacher->teacher_name}}
-                                            @else
-                                            Chưa có giáo viên
-                                            @endif
-                                        </td>
+
 
 
                                     <td>

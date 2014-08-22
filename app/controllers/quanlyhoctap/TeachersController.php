@@ -40,6 +40,7 @@ class TeachersController extends \BaseController {
     public function store()
     {
         $input = Input::except('_method','_token','join_date','out_date');
+        return dd($input);
         $input['join_date'] = strtotime(Input::get('join_date'));
         $input['out_date'] = strtotime(Input::get('out_date'));
 

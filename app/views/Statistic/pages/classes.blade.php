@@ -6,6 +6,9 @@
 	Classes Statistic
 </h1>
 <table class="table table-bordered table-hover">
+<?php
+	$days_in_week = Config::get('admin.days');
+?>
 	<thead>
 		<tr>
 			<th>Class</th>
@@ -30,7 +33,7 @@
 			@if($class->schedules)
 				<ul>
 				@foreach($class->schedules as $schedule)
-					<li>{{$schedule->subject->name}} ({{$schedule->time_start}} - {{$schedule->time_end}})</li>
+					<li>{{$schedule->subject->name}} ({{$schedule->time_start}} - {{$schedule->time_end}}) {{$days_in_week[$schedule->day]}}</li>
 				@endforeach
 				</ul>
 			@else

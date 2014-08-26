@@ -19,7 +19,17 @@ class ClassSchedulesController extends \BaseController {
     }
     public function store(){
         $input = Input::except('_token');
-        ClassSchedule::create($input);
+        $schedule = ClassSchedule::create($input);
+	    if(!$schedule){
+		    return Redirect::back()
+		                   ->withFlashMessage('Lỗi khi thêm môn học');
+	    }
+	    if(ClassSubject::whereClassId($schedule->class_id)->whereSubjectId($schedule->subject_id)->count() == 0){
+		    ClassSubject::create([
+			    'class_id'=>$schedule->class_id,
+			    'subject_id'=>$schedule->subject_id,
+		    ]);
+	    }
         return Redirect::back()
             ->withFlashMessage('Thêm lịch học thành công');
     }

@@ -37,6 +37,11 @@
         <tbody>
             @foreach(array_keys($schedules) as $key)
             <tr>
+                <?php
+                if($key == 'class'){
+                    continue;
+                }
+                ?>
                 <td>{{$key}}</td>
                 @for($i=1;$i<=7;$i++)
                 @if(isset($schedules[$key][$i]))

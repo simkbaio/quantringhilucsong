@@ -64,7 +64,7 @@
                                     <a href="{{URL::route('admin.classes.show',$class->id)}}">{{$class->name}}</a></td>
                                      <td>
                                      @if ($class->course)
-                                         {{$class->course->name}}
+                                         {{link_to_route('admin.courses.show',$class->course->name,$class->course->id)}}
                                     @else
                                         Chưa có học phần
                                      @endif

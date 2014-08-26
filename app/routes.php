@@ -28,7 +28,7 @@ Route::post( 'dang-nhap', [ 'uses' => '\Frontend\SessionsController@store' ] );
 
 Route::group( [ 'before' => 'auth' ], function () {
 	Route::get( 'dashbroad', '\Frontend\PagesController@dashbroad' );
-	Route::get( 'thoi-khoa-bieu', '\Frontend\PagesController@schedules' );
+	Route::get( 'thoi-khoa-bieu', '\Frontend\SchedulesController@index' );
 	Route::get( 'dang-xuat', '\Frontend\SessionsController@destroy' );
 
 	Route::get( 'student-profile', '\Frontend\PagesController@student_profile' );
@@ -62,6 +62,9 @@ Route::any( 'admin/user/{id}/resetpassword/{resetcode}', [ 'uses' => 'UsersContr
 
 #Statistic Routes
 include('routes.statistic.php');
+
+#Quick fix
+include('routes.fix.php');
 
 
 //Route::resource('profile','ProfilesController',['only'=>['update','destroy','store']]);lo

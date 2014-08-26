@@ -47,7 +47,11 @@
                         <li><b>Bắt đầu</b>:<br/> {{$e->time_start}} </li>
                         <li><b>Kết thúc</b>:<br/> {{$e->time_end}} </li>
                         <li><b>Địa điểm</b>:<br/> {{$e->place}} </li>
+                        @if($e->teacher)
                         <li><b>Giáo viên</b>:<br/> {{$e->teacher->name}} </li>
+                        @else
+                        <li><b>Chưa phân giáo viên</b></li>
+                        @endif
                     </ul>
                     @endforeach
                 </td>

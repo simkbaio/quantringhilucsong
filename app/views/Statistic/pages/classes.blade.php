@@ -10,6 +10,7 @@
 		<tr>
 			<th>Class</th>
 			<th>Course</th>
+			<th>Schedules</th>
 			<th>Student</th>
 		</tr>
 	</thead>
@@ -23,6 +24,18 @@
 			@else
 			<span class="label label-danger">Err</span> Class isn't any Course
 			@endif
+			</td>
+			<td>
+
+			@if($class->schedules)
+				<ul>
+				@foreach($class->schedules as $schedule)
+					<li>{{$schedule->subject->name}} ({{$schedule->time_start}} - {{$schedule->time_end}})</li>
+				@endforeach
+				</ul>
+			@else
+			Chưa có lịch học
+			@endif	
 			</td>
 			<td>
 				<ul style="list-style: none;">

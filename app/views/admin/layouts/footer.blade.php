@@ -26,6 +26,7 @@
 <script src="{{URL::to('admin_assets')}}/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="{{URL::to('admin_assets')}}/plugins/jquery.cokie.min.js" type="text/javascript"></script>
 <script src="{{URL::to('admin_assets')}}/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+</script>
 
 <!-- END CORE PLUGINS -->
 <script src="{{URL::to('admin_assets')}}/scripts/core/app.js"></script>

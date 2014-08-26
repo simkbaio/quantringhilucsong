@@ -48,6 +48,7 @@ class SessionsController extends \BaseController
         {
             // Authenticate the user
             $user = Sentry::authenticate($input,$remember);
+
         }
         catch(\Exception $e){
             return  Redirect::back()->withFlashMessage("Bạn nhập sai email hoặc password!");

@@ -2,16 +2,6 @@
 #home
 
 Route::get( 'test', function () {
-	$user   = User::whereEmail( "test123@gmail.com" )->firstOrFail();
-	$result = $user->sentry()->update( [
-		'password' => 'asdasd'
-	] );
-
-	return dd( $result );
-	$user = Sentry::findUserByEmail( 'test123@gmail.com' );
-
-	return dd( $user );
-
 
 } );
 Route::get( '/', [ 'as' => 'home', 'uses' => '\Frontend\PagesController@home' ] );
@@ -30,6 +20,7 @@ Route::group( [ 'before' => 'auth' ], function () {
 	Route::get( 'dashbroad', '\Frontend\PagesController@dashbroad' );
 	Route::get( 'thoi-khoa-bieu', '\Frontend\SchedulesController@index' );
 	Route::get( 'dang-xuat', '\Frontend\SessionsController@destroy' );
+	Route::get('ket-qua-hoc-tap','\Frontend\ScoresController@index');
 
 	Route::get( 'student-profile', '\Frontend\PagesController@student_profile' );
 } );

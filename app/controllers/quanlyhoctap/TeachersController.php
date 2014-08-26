@@ -4,117 +4,145 @@ use Acme\Forms\TeacherForm;
 
 class TeachersController extends \BaseController {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    protected $teacherForm;
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	protected $teacherForm;
 
-    function __construct(TeacherForm $teacherForm)
-    {
-        $this->teacherForm = $teacherForm;
-    }
-
-
-    public function index()
-    {
-        return View::make('quanlyhoctap.teachers.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make("quanlyhoctap.teachers.create");
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        $input = Input::except('_method','_token','join_date','out_date');
-        return dd($input);
-        $input['join_date'] = strtotime(Input::get('join_date'));
-        $input['out_date'] = strtotime(Input::get('out_date'));
-
-        $this->teacherForm->validate(Input::all());
-        $teacher = Teacher::create($input);
-
-        return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã thêm thành công giáo viên mới: '.$teacher->name);
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        $teacher = Teacher::findOrFail($id);
-        return View::make('quanlyhoctap.teachers.show')->withTeacher($teacher);
+	function __construct( TeacherForm $teacherForm ) {
+		$this->teacherForm = $teacherForm;
+	}
 
 
-    }
+	public function index() {
+		return View::make( 'quanlyhoctap.teachers.index' );
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create() {
+		return View::make( "quanlyhoctap.teachers.create" );
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store() {
+		$this->teacherForm->validate( Input::all() );
+		$account_input               = Input::only( 'email', 'password' );
+		$account_input['first_name'] = Input::get( 'first_name' );
+		$account_input['last_name']  = Input::get( 'last_name' );
 
 
-        $teacher = Teacher::findOrFail($id);
-//        return dd($teacher);
-        return View::make('quanlyhoctap.teachers.edit')->withTeacher($teacher);
-    }
+		$teacher_input         = Input::only( 'phone', 'address', 'join_date', 'out_date', 'email' );
+		$teacher_input['name'] = Input::get( "first_name" ) . " " . Input::get( 'last_name' );
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        $input = Input::except('_method','_token','join_date','out_date');
-        $input['join_date'] = strtotime(Input::get('join_date'));
-        $input['out_date'] = strtotime(Input::get('out_date'));
+		$teacher_input['join_date'] = strtotime( Input::get( 'join_date' ) );
+		$teacher_input['out_date']  = strtotime( Input::get( 'out_date' ) );
 
-        $teacher = Teacher::where('id','=',$id)->firstOrFail();
-        if(Teacher::where('id','=',$id)->update($input))
-            return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã cập nhật thành công giáo viên: '.$teacher->name);
-        else
-            return Redirect::route('admin.teachers.index')
-                ->withFlashMessage('Có lỗi trong quá trình cập nhật thông tin hoặc chưa có trường thông tin nào thay đổi. Xin bạn vui lòng thử lại!');
+		User::whereEmail( Input::get( 'email' ) );
 
-    }
+		$account = User::createUser( $account_input );
+		if ( $account ) {
+			$teacher_input['user_id'] = $account->id;
+		}
+		$teacher = Teacher::create( $teacher_input );
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $teacher = Teacher::where('id','=',$id)->firstOrFail();
-        Teacher::where('id','=',$id)->delete();
-        return Redirect::route('admin.teachers.index')
-            ->withFlashMessage('Bạn đã xóa giáo viên: '.$teacher->name);
-    }
+		return Redirect::route( 'admin.teachers.index' )
+		               ->withFlashMessage( 'Bạn đã thêm thành công giáo viên mới: ' . $teacher->name );
+
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int $id
+	 *
+	 * @return Response
+	 */
+	public function show( $id ) {
+		$teacher = Teacher::findOrFail( $id );
+
+		return View::make( 'quanlyhoctap.teachers.show' )->withTeacher( $teacher );
+
+
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int $id
+	 *
+	 * @return Response
+	 */
+	public function edit( $id ) {
+
+
+		$teacher = Teacher::findOrFail( $id );
+
+		return View::make( 'quanlyhoctap.teachers.edit' )->withTeacher( $teacher );
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int $id
+	 *
+	 * @return Response
+	 */
+	public function update( $id ) {
+
+		$teacher_input              = Input::only( 'phone', 'address', 'email' );
+		$teacher_input['join_date'] = strtotime( Input::get( 'join_date' ) );
+		$teacher_input['out_date']  = strtotime( Input::get( 'out_date' ) );
+		$teacher_input['name']      = Input::get( 'first_name' ) . " " . Input::get( 'last_name' );
+
+		$teacher = Teacher::find($id);
+		$teacher->update($teacher_input);
+		if(Input::has('password') && Input::has('password_confirmation')){
+			$this->teacherForm->rules = ['password'=>'confirmed|between:6,30'];
+			$this->teacherForm->validate(Input::all());
+			$account = $teacher->account();
+			if($account){
+				User::updateUser($account->id,[
+					'first_name'=>Input::get('first_name'),
+					'last_name'=>Input::get('last_name'),
+					'password'=>Input::get('password'),
+				]);
+			}else{
+				User::createUser([
+					'first_name'=>Input::get('first_name'),
+					'last_name'=>Input::get('last_name'),
+					'password'=>Input::get('password'),
+				]);
+			}
+		}
+
+		return Redirect::route( 'admin.teachers.index' )
+		               ->withFlashMessage( 'Bạn đã cập nhật thành công giáo viên: ' . $teacher->name );
+
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int $id
+	 *
+	 * @return Response
+	 */
+	public function destroy( $id ) {
+		$teacher = Teacher::where( 'id', '=', $id )->firstOrFail();
+		Teacher::where( 'id', '=', $id )->delete();
+
+		return Redirect::route( 'admin.teachers.index' )
+		               ->withFlashMessage( 'Bạn đã xóa giáo viên: ' . $teacher->name );
+	}
 
 }

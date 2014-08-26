@@ -13,11 +13,13 @@ use Laracasts\Validation\FormValidator;
 
 class TeacherForm extends FormValidator
 {
-    protected $rules = [
-        'name'=>'required',
+    public  $rules = [
+        'first_name'=>'required',
+        'last_name'=>'required',
         'phone'=>'required',
         'address'=>'required',
         'email'=>'required',
+	    'password'=>'required|confirmed',
     ];
     protected $rules_update = [
 

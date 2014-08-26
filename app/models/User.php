@@ -30,7 +30,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 	}
 
 //    Create User
-    public static function createUser($input,$activated)
+    public static function createUser($input,$activated=true)
     {
         $user = Sentry::createUser(array(
             'email' => $input['email'],
@@ -64,14 +64,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     }
 
     //Update User
-    public static function updateUser($id,$input){
+    public static function updateUser($id,$input,$active = true){
         try{
 
             $user = Sentry::findUserById($id);
             $arr_keys = array_keys($input);
             $user->first_name = $input['first_name'];
             $user->last_name = $input['last_name'];
-            $user->activated = $input['activated'];
+            $user->activated = $active;
             if(Input::has('permissions')){
                 $user->permissions = $input['permissions'];
             }
@@ -109,7 +109,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         }
         return $user;
     }
-
     public function profile()
     {
         return $this->hasOne('Profile');

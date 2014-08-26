@@ -11,13 +11,8 @@ class ClassSubject extends Eloquent {
     public $connection = 'hosohocvien';
     public $guarded = [];
     public function subject(){
-        return $this->belongsTo('Subject','subject_id','id');
-//        try{
-//            $subject = Subject::findOrFail($this->subject->id);
-//        }catch (Exception $e){
-//            return false;
-//        }
-//        return $subject;
+        return $this->hasOne('Subject','id','subject_id');
+
     }
 
 } 

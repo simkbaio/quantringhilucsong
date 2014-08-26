@@ -16,6 +16,17 @@ class FrontendController extends \BaseController {
     {
         if(Sentry::check()){
             $user = \User::findOrFail(Sentry::getUser()->id);
+	        if(!\Session::has('member_type')){
+		        if($user->TeacherInfo()){
+			        \Session::put( 'member_type', 'teacher' );
+		        }else if($user->StudentInfo()){
+			        \Session::put( 'member_type', 'student' );
+
+		        }else{
+			        \Session::put( 'member_type', 'normal' );
+
+		        }
+	        }
             $this->account = $user;
         }
     }

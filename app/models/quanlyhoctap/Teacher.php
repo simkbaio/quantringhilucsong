@@ -26,6 +26,18 @@ class Teacher extends Eloquent{
         return Teacher::hasMany('NClass','teacher_id','id');
     }
     function account(){
-
+		if($this->user_id){
+			return User::find($this->user_id);
+		}else{
+			$account = User::whereEmail($this->email)->first();
+			if($account){
+				$this->user_id = $account->id;
+				$this->save();
+			}
+			return $account;
+		}
     }
+//	public function getAccountAttribute(){
+//	    return $this->account();
+//	}
 }

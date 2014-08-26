@@ -5,11 +5,11 @@ Nghị lực sống | Thêm giáo viên mới
 @section('footer')
 <script type="text/javascript" src="/admin_assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
 <script>
-jQuery(document).ready(function($) {
-$(".date_formated").inputmask("m/d/y", {
-            "placeholder": "*"
-        });
-});
+	jQuery(document).ready(function($) {
+		$(".date_formated").inputmask("m/d/y", {
+			"placeholder": "*"
+		});
+	});
 </script>
 @stop
 @section('content')
@@ -55,67 +55,89 @@ $(".date_formated").inputmask("m/d/y", {
 				<div class="row">
 					{{Form::open(['route'=>'admin.teachers.store'])}}
 					{{HForm::input([
-						'name'=>'name',
-						'title'=>'Tên giáo viên',
-						'width'=>'6',
+						'name'=>'last_name',
+						'title'=>'Họ',
+						'width'=>'3',
 						],$errors)}}
-						
-						
 					{{HForm::input([
-						'name'=>'address',
-						'title'=>'Địa chỉ',
-						'width'=>'4',
+						'name'=>'first_name',
+						'title'=>'Tên',
+						'width'=>'3',
 						],$errors)}}
-
+						
 						
 						
 					{{HForm::input([
 						'name'=>'phone',
 						'title'=>'Số điện thoại',
-						'width'=>'6',
+						'width'=>'4',
 						],$errors)}}
 
+
+						
 					{{HForm::input([
-						'name'=>'email',
-						'title'=>'Hòm Thư',
+						'name'=>'address',
+						'title'=>'Địa chỉ',
 						'width'=>'6',
 						],$errors)}}
-						
-					
 
-					<div class="form-group col-md-6">
-						<label class="control-label">Ngày gia nhập</label>
-						<div>
-						<input type="text" class="date_formated  form-control" name="join_date" class="form-control">
-							<span class="help-block">
-								Nhập theo định dạng (tháng/ngày/năm)
-							</span>
+
+						<div class="form-group col-md-3">
+							<label class="control-label">Ngày gia nhập</label>
+							<div>
+								<input type="text" class="date_formated  form-control" name="join_date" class="form-control">
+								<span class="help-block">
+									Nhập theo định dạng (tháng/ngày/năm)
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label class="control-label">ngày kết thúc</label>
+							<div>
+								<input type="text" class="date_formated form-control" name="out_date" class="form-control">
+								<span class="help-block">
+									Nhập theo định dạng (tháng/ngày/năm)
+								</span>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<legend>Thông tin đăng nhập</legend>
+							{{HForm::input([
+								'name'=>'email',
+								'title'=>'Hòm Thư',
+								'width'=>'4',
+								],$errors)}}
+							{{HForm::input([
+								'name'=>'password',
+								'type'=>'password',
+								'title'=>'mật khẩu',
+								'width'=>'4',
+								]
+								,$errors)}}
+							{{HForm::input([
+								'name'=>'password_confirmation',
+								'type'=>'password',
+								'title'=>'Gõ lại mật khẩu',
+								'width'=>'4',
+								],$errors)}}
+
+							</div>
+							<div class="col-md-12" style="text-align: center;">
+								{{Form::submit('Tạo giáo viên mới',['class'=>'btn green'],$errors)}}
+
+							</div>
+							
+							{{portlet_close()}}
+
+
 						</div>
 					</div>
-						<div class="form-group col-md-6">
-						<label class="control-label">ngày kết thúc</label>
-						<div>
-						<input type="text" class="date_formated form-control" name="out_date" class="form-control">
-							<span class="help-block">
-								Nhập theo định dạng (tháng/ngày/năm)
-							</span>
-						</div>
-					</div>
-					<div class="col-md-12" style="text-align: center;">
-							{{Form::submit('Tạo giáo viên mới',['class'=>'btn green'],$errors)}}
-
-						</div>
-						
-						{{portlet_close()}}
-
-
-					</div>
+					<!-- END PAGE CONTENT-->
 				</div>
-				<!-- END PAGE CONTENT-->
 			</div>
+			<!-- END CONTENT -->
 		</div>
-		<!-- END CONTENT -->
-	</div>
 
 
-	@stop
+		@stop

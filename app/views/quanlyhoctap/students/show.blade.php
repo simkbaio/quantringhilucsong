@@ -76,8 +76,11 @@
 							</li>
 							<li class="list-group-item">
 								Tỉnh thành
+								<?php
+									$province = Config::get('admin.province');
+								?>
 								<span class="label label-info pull-right">
-									{{Config::get('admin.province')[$student->province_id]}}
+									{{(isset($province[$student->province_id]))?$province[$student->province_id]:""}}
 								</span>
 							</li>
 							<li class="list-group-item">

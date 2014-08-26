@@ -34,6 +34,6 @@ class Student extends Eloquent {
         return $this->hasMany('StudentResult','result_student_id','id');
     }
     public function NClass(){
-        return $this->hasMany(' StudentResult','result_student_id','id');
+        return $this->hasMany('StudentResult','result_student_id','id');
     }
 }

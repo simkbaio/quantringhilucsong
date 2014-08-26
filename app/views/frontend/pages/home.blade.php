@@ -73,7 +73,7 @@
                 <div class="form-group" style="padding-top:20px"> 
 
                     <button style="font-size:40px;" type="submit" class="btn btn-light" >Đăng ký</button>
-                    <a style="height:64px" href="{{URL::route('facebook_login')}}" class="btn btn-light" >Đăng ký bằng tài khoản Facebook</a>       
+                    <a style="height:64px" href="{{URL::route('facebook_login')}}" class="btn btn-light" >Đăng ký bằng tài khoản Facebook</a>
                 </div>
             </form>
         </div>

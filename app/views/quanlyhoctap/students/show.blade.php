@@ -113,21 +113,31 @@
 							<li class="list-group-item">
 								Tình trạng hôn nhân
 								<span class="label label-info pull-right">
-									{{Config::get('admin.married')[$student->married]}}
+								<?php
+									$married = Config::get('admin.married');
+								?>
+									{{(isset($married[$student->married]))?$married[$student->married]:0}}
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Học thức
 								<span class="label label-info pull-right">
-									{{Config::get('admin.educated')[$student->educated]}}
+								<?php
+									$educated = Config::get('admin.educated');
+								?>
+									{{(isset($educated[$student->educated]))?$educated[$student->educated]:0}}
+
 								</span>
 							</li>
 
 							<li class="list-group-item">
 								Loại khuyết tật
 								<span class="label label-info pull-right">
-									{{Config::get('admin.disabilities')[$student->type_disabilities]}}
+								<?php
+									$disabilities = Config::get('admin.disabilities');
+								?>
+									{{(isset($disabilities[$student->disabilities]))?$disabilities[$student->disabilities]:0}}	
 								</span>
 							</li>
 

@@ -6,13 +6,18 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "willdurand/faker-bundle": "1.2.*@dev",
-        "way/generators": "2.6",
 		"laracasts/validation": "~1.0",
         "cartalyst/sentry": "2.1.*",
         "rtablada/package-installer": "dev-master",
 		"bugsnag/bugsnag-laravel": "dev-master",
         "bogardo/mailgun": "2.0",
          "artdarek/oauth-4-laravel": "dev-master"
+    },
+    "require-dev": {
+        "way/generators": "2.*",
+        "codeception/codeception": "~2.0",
+        "laracasts/testdummy": "~1.0"
+
     },
 	"autoload": {
 		"classmap": [

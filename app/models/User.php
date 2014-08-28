@@ -40,27 +40,28 @@ class User extends Eloquent implements UserInterface, RemindableInterface
             'activated' => $activated,
         ));
         if(isset($input['group'])) {
-            foreach ($input['group'] as $group_id) {
-                try {
-                    $group = Sentry::FindGroupById($group_id);
-                    $user->addGroup($group);
-                }
-                catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
-                {
-                    return Redirect::back()->withFlashMessage('Group was not found.');
-                }
+	        if(is_array($input['group'])) {
+		        foreach ( $input['group'] as $group_id ) {
+			        try {
+				        $group = Sentry::FindGroupById( $group_id );
+				        $user->addGroup( $group );
+			        } catch ( Cartalyst\Sentry\Groups\GroupNotFoundException $e ) {
+				        return $e->getMessage();
+			        }
 
-            }
+		        }
+	        }else{
+		        try {
+			        $group = Sentry::FindGroupByName("Users");
+			        $user->addGroup($group);
+		        }catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+		        {
+			        return $e->getMessage();
+		        }
+	        }
         }else{
-            try {
-                $group = Sentry::FindGroupByName("Users");
-                $user->addGroup($group);
-            }catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
-            {
-                return Redirect::back()->withFlashMessage('Group was not found.');
-            }
+			return $user;
         }
-        return $user;
     }
 
     //Update User

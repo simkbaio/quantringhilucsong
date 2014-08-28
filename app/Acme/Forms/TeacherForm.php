@@ -18,10 +18,15 @@ class TeacherForm extends FormValidator
         'last_name'=>'required',
         'phone'=>'required',
         'address'=>'required',
-        'email'=>'required',
+        'email'=>'required|unique:users,email',
 	    'password'=>'required|confirmed',
     ];
     protected $rules_update = [
+	    'first_name'=>'required',
+	    'last_name'=>'required',
+	    'phone'=>'required',
+	    'address'=>'required',
+	    'email'=>'required',
 
     ];
     public function UpdateValidate($input){

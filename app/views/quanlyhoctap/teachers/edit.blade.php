@@ -132,7 +132,7 @@ Nghị lực sống | Sửa thông tin giáo viên
 
                             </div>
                             <div class="col-md-12" style="text-align: center;">
-                                {{Form::submit('Tạo giáo viên mới',['class'=>'btn green'],$errors)}}
+                                {{Form::submit('Cập nhật',['class'=>'btn blue'])}}
 
                             </div>
                             {{portlet_close()}}

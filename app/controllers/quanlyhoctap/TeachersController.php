@@ -35,7 +35,7 @@ class TeachersController extends \BaseController {
 	 * @return Response
 	 */
 	public function store() {
-		$this->teacherForm->validate( Input::all() );
+
 		$account_input               = Input::only( 'email', 'password' );
 		$account_input['first_name'] = Input::get( 'first_name' );
 		$account_input['last_name']  = Input::get( 'last_name' );
@@ -46,7 +46,7 @@ class TeachersController extends \BaseController {
 
 		$teacher_input['join_date'] = strtotime( Input::get( 'join_date' ) );
 		$teacher_input['out_date']  = strtotime( Input::get( 'out_date' ) );
-
+		$this->teacherForm->validate( Input::all() );
 		User::whereEmail( Input::get( 'email' ) );
 
 		$account = User::createUser( $account_input );
@@ -104,24 +104,27 @@ class TeachersController extends \BaseController {
 		$teacher_input['out_date']  = strtotime( Input::get( 'out_date' ) );
 		$teacher_input['name']      = Input::get( 'first_name' ) . " " . Input::get( 'last_name' );
 
-		$teacher = Teacher::find($id);
-		$teacher->update($teacher_input);
-		if(Input::has('password') && Input::has('password_confirmation')){
-			$this->teacherForm->rules = ['password'=>'confirmed|between:6,30'];
-			$this->teacherForm->validate(Input::all());
+		$teacher = Teacher::find( $id );
+		$this->teacherForm->validate( Input::all() );
+		$teacher->update( $teacher_input );
+		if ( Input::has( 'password' ) && Input::has( 'password_confirmation' ) ) {
+			$this->teacherForm->rules = [ 'password' => 'confirmed|between:6,30' ];
+			$this->teacherForm->validate( Input::all() );
 			$account = $teacher->account();
-			if($account){
-				User::updateUser($account->id,[
-					'first_name'=>Input::get('first_name'),
-					'last_name'=>Input::get('last_name'),
-					'password'=>Input::get('password'),
-				]);
-			}else{
-				User::createUser([
-					'first_name'=>Input::get('first_name'),
-					'last_name'=>Input::get('last_name'),
-					'password'=>Input::get('password'),
-				]);
+			if ( $account ) {
+				User::updateUser( $account->id, [
+					'email'      => Input::get( 'email' ),
+					'first_name' => Input::get( 'first_name' ),
+					'last_name'  => Input::get( 'last_name' ),
+					'password'   => Input::get( 'password' ),
+				] );
+			} else {
+				User::createUser( [
+					'email'      => Input::get( 'email' ),
+					'first_name' => Input::get( 'first_name' ),
+					'last_name'  => Input::get( 'last_name' ),
+					'password'   => Input::get( 'password' ),
+				] );
 			}
 		}
 
@@ -131,7 +134,7 @@ class TeachersController extends \BaseController {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the specified resource from storage
 	 *
 	 * @param  int $id
 	 *
@@ -139,6 +142,15 @@ class TeachersController extends \BaseController {
 	 */
 	public function destroy( $id ) {
 		$teacher = Teacher::where( 'id', '=', $id )->firstOrFail();
+		try{
+			$account = Sentry::findUserById($teacher->user_id);
+			if($account){
+				$account->delete();
+			}
+		}catch(\Cartalyst\Sentry\Users\UserNotFoundException $e){
+			Log::debug('Teacher with id:'.$id.' Have no account');
+		}
+
 		Teacher::where( 'id', '=', $id )->delete();
 
 		return Redirect::route( 'admin.teachers.index' )

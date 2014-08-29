@@ -122,6 +122,8 @@ Route::group( array( 'prefix' => 'admin', 'before' => 'auth_admin' ), function (
 		'uses' => 'ClassSchedulesController@destroy'
 	] );
 
+	Route::post('classes/{id}/subjects/update','ClassesController@updateSubjectStatus');
+
 
 	Route::resource( 'courses', 'CoursesController' );
 	Route::resource( 'disablities', 'DisablitiesController' );

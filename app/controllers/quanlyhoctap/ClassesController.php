@@ -129,7 +129,13 @@ class ClassesController extends \BaseController
     }
 
     //Subject Functions
-    public function add_subject($class_id){
+	/**
+	 *
+	 * Add subject to Class
+	 * @param $class_id
+	 *
+	 * @return mixed
+	 */public function add_subject($class_id){
         $input = Input::only('subject');
         try{
             $class= NClass::findOrFail($class_id);
@@ -147,12 +153,42 @@ class ClassesController extends \BaseController
         return Redirect::back()
             ->withFlashMessage('Thêm môn học thành công!');
     }
-    public function remove_subject($class_id,$subject_id){
+
+	/**
+	 * Remove a Subject form Class
+	 * @param $class_id
+	 * @param $subject_id
+	 *
+	 * @return mixed
+	 */public function remove_subject($class_id,$subject_id){
         ClassSubject::whereClassId($class_id)
             ->whereSubjectId($subject_id)
             ->delete();
         return Redirect::back()
             ->withFlashMessage('Hủy môn học thành công!');
     }
+
+	public function updateSubjectStatus($id){
+		$valid = Validator::make(Input::all(),[
+			'subject'=>'required|numeric',
+			'n_class'=>'required|numeric',
+			'status'=>'required|numeric',
+		]);
+	    try{
+		    $n_class = NClass::findOrFail($id);
+		    $class_subject = ClassSubject::findOrFail(Input::get('subject'));
+	    }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+		    return [
+			    'result'=>'false',
+			    'message'=>'Không tìm thấy thông tin cần cập nhật',
+		    ];
+	    }
+		$class_subject->status = Input::get('status');
+		$class_subject->save();
+		return [
+			'result'=>'success',
+			'message'=>'Done!',
+		];
+	}
 
 }

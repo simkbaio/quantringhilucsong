@@ -9,8 +9,15 @@
 namespace Frontend;
 
 
+use Session;
+
 class SchedulesController extends FrontendController {
 	public function index(){
+		switch(Session::get('member_type')){
+			case 'teacher':
+				return $this->teacherSchedule();
+				break;
+		}
 		try{
 			$student = $this->account->StudentInfo();
 		}catch (\Exception $e){
@@ -58,5 +65,10 @@ class SchedulesController extends FrontendController {
 		return $this->view('frontend.pages.student_schedules')
 		            ->with('student',$student)
 		            ->with('all_schedules',$all_schedules);
+	}
+	public function teacherSchedule(){
+		$all_class =
+		$all_schedules = \ClassSchedule::whereTeacherID($this->account->TeacherInfo()->id)->get();
+		return dd($all_schedules->toArray());
 	}
 } 

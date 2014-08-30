@@ -109,7 +109,7 @@
 
       </style>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           {{portlet_open('Danh sách môn học','green')}}
           <table class="table table-striped table-bordered table-advance table-hover">
             <thead>
@@ -124,129 +124,158 @@
               <tr>
                 <td>{{$subject->subject->name}}</td>
                 <td>
-                  <div class="form-group  col-md-6">
+                  <div class="form-group  col-md-12">
                     {{Form::select('status',[
-                    '0'=>'Chưa bắt đầu',
-                    '1'=>'Đang học',
-                    '2'=>'Đã kết thúc',
-                    ],$subject->status,[
-                    'class'=>'form-control subject-status',
-                    'class-subject-id'=>$subject->id,
-                    'class-id'=>$class->id])
-                  }}
+                      '0'=>'Chưa bắt đầu',
+                      '1'=>'Đang học',
+                      '2'=>'Đã kết thúc',
+                      ],$subject->status,[
+                      'class'=>'form-control subject-status',
+                      'class-subject-id'=>$subject->id,
+                      'class-id'=>$class->id])
+                    }}
                   </div>
 
-                  </td>
+                </td>
+                <td>
+                  <a href="{{URL::route("admin.classes.removesubject",[$class->id,$subject->subject->id])}}" class="btn btn-sm btn-danger">Hủy</a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+
+
+          {{portlet_close()}}
+        </div>
+        <div class="col-md-6">
+        {{portlet_open('Danh sách giáo viên','blue')}}
+          <table class="table table-striped table-bordered table-advance table-hover">
+            <thead>
+              <tr>
+                <th>Tên</th>
+                <th class="col-md-1">Hủy</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if($class->getTeachers())
+              @foreach($class->getTeachers()  as $teacher)
+                <tr>
                   <td>
-                    <a href="{{URL::route("admin.classes.removesubject",[$class->id,$subject->subject->id])}}" class="btn btn-sm btn-danger">Hủy</a>
+                    {{$teacher->name}}
                   </td>
                 </tr>
-                @endforeach
-              </tbody>
-            </table>
+              @endforeach
+              @else
+              @endif
+            </tbody>
+          </table>
 
 
-            {{portlet_close()}}
-          </div>
+          {{portlet_close()}}
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            {{portlet_open('Danh sách học viên','blue')}}
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-advance table-hover">
-                <thead>
-                  <tr>
-                    <th>Tên</th>
-                    <th>Kết quả học lực</th>
-                    <th>Kết quả hạnh kiểm</th>
-                    <th class="col-md-1">Hủy</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($class->students()->get() as $student)
-                  <?php
-                  if(!$student->student){
-                    $student->delete();
-                    continue;
-                  }
-                  ?>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          {{portlet_open('Danh sách học viên','blue')}}
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-advance table-hover">
+              <thead>
+                <tr>
+                  <th>Tên</th>
+                  <th>Kết quả học lực</th>
+                  <th>Kết quả hạnh kiểm</th>
+                  <th class="col-md-1">Hủy</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($class->students()->get() as $student)
+                <?php
+                if(!$student->student){
+                  $student->delete();
+                  continue;
+                }
+                ?>
 
-                  <tr>
-                    <td>
-                      {{isset($student->student->name)?$student->student->name:'no name!'}}
-                    </td>
-                    <td>
-                      @if($student->result_type_academic)
-                      {{$student->result_type_academic}}
-                      @else
-                      Chưa xét duyệt
-                      @endif
-                    </td>
-                    <td>
-                     @if($student->result_type_conduct)
-                     {{$student->result_type_conduct}}
-                     @else
-                     Chưa xét duyệt
-                     @endif
-                   </td>
-                   <td><a href="{{URL::route('admin.classes.removestudent',[$class->id,$student->student->id])}}" class="btn red">Hủy</a></td>
-                 </tr>
-                 @endforeach
-               </tbody>
-             </table>
-           </div>
-
-           {{portlet_close()}}
-           {{portlet_open('Lịch học','green')}}
-           <div class="row">
-             <div class="col-md-12">
-               <a class="btn green" data-toggle="modal" href='#add-new-subject'>Thêm lịch học</a>
-
-
-             </div>
-           </div>
-           <div class="row">
-             <div class="col-md-12">
-               @if($class->schedules)
-               <table class="table table-striped table-bordered table-advance table-hover">
-                 <thead>
-                   <tr>
-                    <th>Môn học </th>
-                    <th>Thứ</th>
-                    <th>Băt đầu</th>
-                    <th>Kết thúc</th>
-                    <th>Địa điểm</th>
-                    <th></th>
-                    <th></th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                 @foreach($class->schedules as $item)
-                 <tr>
-                   <td>{{ $item->subject->name }}</td>
-                   <td>{{Config::get('admin.days')[$item->day]}}</td>
-                   <td>{{ $item->time_start}}</td>
-                   <td>{{ $item->time_end}}</td>
-                   <td>{{ $item->place}}</td>
-                   <td><a href="{{URL::route('admin.classes.schedules.edit',[$class->id,$item->id])}}" title="" class="btn blue">EDIT</a></td>
-                   <td><a href="{{URL::route('admin.classes.schedules.delete',$item->id)}}" title="" class="btn red">DELETE</a></td>
-                 </tr>
-                 @endforeach
-               </tbody>
-             </table> 
-             @else
-             <h2>Chưa có môn học nào</h2>
-             @endif
-           </div>
-           {{portlet_close()}}
+                <tr>
+                  <td>
+                    {{isset($student->student->name)?$student->student->name:'no name!'}}
+                  </td>
+                  <td>
+                    @if($student->result_type_academic)
+                    {{$student->result_type_academic}}
+                    @else
+                    Chưa xét duyệt
+                    @endif
+                  </td>
+                  <td>
+                   @if($student->result_type_conduct)
+                   {{$student->result_type_conduct}}
+                   @else
+                   Chưa xét duyệt
+                   @endif
+                 </td>
+                 <td><a href="{{URL::route('admin.classes.removestudent',[$class->id,$student->student->id])}}" class="btn red">Hủy</a></td>
+               </tr>
+               @endforeach
+             </tbody>
+           </table>
          </div>
+
+         {{portlet_close()}}
+         {{portlet_open('Lịch học','green')}}
+         <div class="row">
+           <div class="col-md-12">
+             <a class="btn green" data-toggle="modal" href='#add-new-subject'>Thêm lịch học</a>
+
+
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-md-12">
+             @if($class->schedules)
+             <table class="table table-striped table-bordered table-advance table-hover">
+               <thead>
+                 <tr>
+                  <th>Môn học </th>
+                  <th>Thứ</th>
+                  <th>Băt đầu</th>
+                  <th>Kết thúc</th>
+                  <th>Giáo viên</th>
+                  <th></th>
+                  <th></th>
+
+                </tr>
+              </thead>
+              <tbody>
+               @foreach($class->schedules as $item)
+               <tr>
+                 <td>{{ $item->subject->name }}</td>
+                 <?php
+                 $days = Config::get('admin.days');
+                 ?>
+                 <td>{{(isset($days[$item->day]))?$days[$item->day]:""}}</td>
+                 <td>{{ $item->time_start}}</td>
+                 <td>{{ $item->time_end}}</td>
+                 <td>{{ $item->teacher->name}}</td>
+                 <td><a href="{{URL::route('admin.classes.schedules.edit',[$class->id,$item->id])}}" title="" class="btn blue">EDIT</a></td>
+                 <td><a href="{{URL::route('admin.classes.schedules.delete',$item->id)}}" title="" class="btn red">DELETE</a></td>
+               </tr>
+               @endforeach
+             </tbody>
+           </table> 
+           @else
+           <h2>Chưa có môn học nào</h2>
+           @endif
+         </div>
+         {{portlet_close()}}
        </div>
      </div>
-     <!-- END PAGE CONTENT-->
    </div>
+   <!-- END PAGE CONTENT-->
  </div>
- <!-- END CONTENT -->
+</div>
+<!-- END CONTENT -->
 </div>
 
 <div class="modal fade" id="add-new-subject">

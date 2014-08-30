@@ -30,6 +30,12 @@ class ClassSchedulesController extends \BaseController {
 			    'subject_id'=>$schedule->subject_id,
 		    ]);
 	    }
+	    if(ClassTeacher::whereClassId($schedule->class_id)->whereTeacherId($schedule->teacher_id)->count() == 0){
+		    ClassTeacher::create([
+			    'class_id'=>$schedule->class_id,
+			    'teacher_id'=>$schedule->teacher_id,
+		    ]);
+	    }
         return Redirect::back()
             ->withFlashMessage('Thêm lịch học thành công');
     }

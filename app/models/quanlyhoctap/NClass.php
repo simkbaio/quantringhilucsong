@@ -96,4 +96,45 @@ class NClass extends \Eloquent
     public function schedules(){
        return NClass::hasMany('ClassSchedule','class_id','id');
     }
+
+	/**
+	 * Add a Teacher into this Class
+	 * @param $teacher_id
+	 *
+	 * @return bool|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|static
+	 */public function addTeacher($teacher_id){
+	    try{
+		    $teacher = Teacher::findOrFail($teacher_id);
+
+	    }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+		    Log::debug('Add teacher for Class: '.$this->name.'but not found teacher id: '.$teacher_id);
+		    return false;
+	    }
+		$class_teacher = ClassTeacher::whereTeacherId($teacher->id)
+			->whereClassId($this-id)
+			->first();
+		if($class_teacher){
+			return false;
+		}
+		ClassTeacher::create([
+			'class_id'=>$this->id,
+			'teacher_id'=>$teacher_id,
+		]);
+		return $teacher;
+
+	}
+	public function getTeachers(){
+	    $class_teacher = ClassTeacher::whereClassId($this->id)->get();
+		$teacher_id_arr = array();
+		if($class_teacher->count()){
+			foreach($class_teacher as $el){
+				$teacher_id_arr[] = $el->teacher_id;
+			}
+			$teachers = Teacher::whereIn('id',$teacher_id_arr)->get();
+			return $teachers;
+		}else{
+			return null;
+		}
+
+	}
 }
